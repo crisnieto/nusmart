@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}</ProjectGuid>
+    <ProjectGuid>{53345F7E-F32B-4616-AD0A-86DDEBA9769B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NuSmart</RootNamespace>
-    <AssemblyName>NuSmart</AssemblyName>
+    <RootNamespace>NuSmart.BLL</RootNamespace>
+    <AssemblyName>NuSmart.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLBitacora.cs" />
+    <Compile Include="BLLUsuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

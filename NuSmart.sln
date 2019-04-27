@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuSmart", "NuSmart\NuSmart.csproj", "{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuSmart.GUI", "NuSmart\NuSmart.GUI.csproj", "{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuSmart.BE", "NuSmart.Entities\NuSmart.BE.csproj", "{2C8BD9D6-65E6-4886-99DE-BB82E3981A14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuSmart.BLL", "NuSmart.BLL\NuSmart.BLL.csproj", "{53345F7E-F32B-4616-AD0A-86DDEBA9769B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuSmart.DAL", "NuSmart.DAL\NuSmart.DAL.csproj", "{57414CED-B6EC-4239-B367-35D278ACAF81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0018E3A8-86AD-4F69-B0E7-F2CA9E8E4570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8BD9D6-65E6-4886-99DE-BB82E3981A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8BD9D6-65E6-4886-99DE-BB82E3981A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8BD9D6-65E6-4886-99DE-BB82E3981A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8BD9D6-65E6-4886-99DE-BB82E3981A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53345F7E-F32B-4616-AD0A-86DDEBA9769B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53345F7E-F32B-4616-AD0A-86DDEBA9769B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53345F7E-F32B-4616-AD0A-86DDEBA9769B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53345F7E-F32B-4616-AD0A-86DDEBA9769B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57414CED-B6EC-4239-B367-35D278ACAF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57414CED-B6EC-4239-B367-35D278ACAF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57414CED-B6EC-4239-B367-35D278ACAF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57414CED-B6EC-4239-B367-35D278ACAF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace NuSmart
+﻿namespace NuSmart.Entities
 {
     partial class Form1
     {
