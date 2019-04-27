@@ -81,5 +81,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NuSmart.Entities\NuSmart.BE.csproj">
+      <Project>{2c8bd9d6-65e6-4886-99de-bb82e3981a14}</Project>
+      <Name>NuSmart.BE</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

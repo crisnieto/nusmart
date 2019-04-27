@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BLL
 {
-    class BLLUsuario
+    public class BLLUsuario
     {
     }
 }
