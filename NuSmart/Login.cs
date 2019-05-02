@@ -29,7 +29,7 @@ namespace NuSmart
             Usuario usuario = new Usuario();
 
             usuario.Username = txtUsuario.Text;
-            usuario.Password = txtUsuario.Text;
+            usuario.Password = txtPassword.Text;
 
             BLLUsuario bllUsuario = new BLLUsuario();
             bllUsuario.conseguirUsuario(usuario);

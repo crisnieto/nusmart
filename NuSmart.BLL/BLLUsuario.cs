@@ -18,18 +18,18 @@ namespace NuSmart.BLL
         public Usuario conseguirUsuario(Usuario usuario)
         {
             Seguridad seguridad = new Seguridad();
-            seguridad.encriptar(usuario.Password);
+            usuario.Password = seguridad.encriptar(usuario.Password);
 
             DALUsuario dalUsuario = new DALUsuario();
             Usuario usuarioConseguido = dalUsuario.conseguir(usuario);
 
-            if (seguridad.validar(usuarioConseguido)) {
+            if (seguridad.validar(usuarioConseguido, usuario)) {
+                Console.WriteLine("Login exitoso!");
                 return usuarioConseguido;
             } else
             {
                 return null;
             }
-
         }
 
         public bool EliminarUsuario(int id)

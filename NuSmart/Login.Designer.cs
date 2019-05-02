@@ -48,6 +48,7 @@ namespace NuSmart
             // 
             this.txtPassword.Location = new System.Drawing.Point(12, 108);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(278, 20);
             this.txtPassword.TabIndex = 1;
             // 
