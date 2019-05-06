@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NuSmart.BLL.
+using NuSmart.BLL;
+using NuSmart.BE;
 
 namespace NuSmart
 {
@@ -25,6 +26,13 @@ namespace NuSmart
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
+
+            usuario.Username = txtUsuario.Text;
+            usuario.Password = txtPassword.Text;
+
+            BLLUsuario bllUsuario = new BLLUsuario();
+            bllUsuario.conseguirUsuario(usuario);
 
         }
     }

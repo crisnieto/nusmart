@@ -1,1 +1,4 @@
 NuSmart/obj/Debug/**
+**/Debug/**
+*.cache
+.vs**
