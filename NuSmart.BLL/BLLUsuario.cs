@@ -10,6 +10,13 @@ namespace NuSmart.BLL
 {
     public class BLLUsuario
     {
+        public BLLRol bllRol;
+
+        public BLLUsuario()
+        {
+            bllRol = new BLLRol();
+        }
+
         public int calcularDVH()
         {
             return 0;
@@ -25,6 +32,7 @@ namespace NuSmart.BLL
 
             if (seguridad.validar(usuarioConseguido, usuario)) {
                 Console.WriteLine("Login exitoso!");
+                usuarioConseguido.Rol = bllRol.conseguir(usuarioConseguido);
                 return usuarioConseguido;
             } else
             {

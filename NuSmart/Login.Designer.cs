@@ -30,6 +30,7 @@ namespace NuSmart
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -39,14 +40,14 @@ namespace NuSmart
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(12, 44);
+            this.txtUsuario.Location = new System.Drawing.Point(166, 142);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(278, 20);
             this.txtUsuario.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(12, 108);
+            this.txtPassword.Location = new System.Drawing.Point(166, 210);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(278, 20);
@@ -55,7 +56,7 @@ namespace NuSmart
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 28);
+            this.lblUsuario.Location = new System.Drawing.Point(163, 126);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(43, 13);
             this.lblUsuario.TabIndex = 2;
@@ -65,7 +66,7 @@ namespace NuSmart
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(12, 92);
+            this.lblPassword.Location = new System.Drawing.Point(163, 194);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 3;
@@ -73,9 +74,9 @@ namespace NuSmart
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(114, 147);
+            this.btnLogin.Location = new System.Drawing.Point(261, 279);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(88, 37);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Log In";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -85,13 +86,15 @@ namespace NuSmart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(302, 182);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(584, 371);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsuario);
             this.Name = "Login";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
