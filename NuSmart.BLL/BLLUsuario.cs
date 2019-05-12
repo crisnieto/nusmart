@@ -30,11 +30,14 @@ namespace NuSmart.BLL
             DALUsuario dalUsuario = new DALUsuario();
             Usuario usuarioConseguido = dalUsuario.conseguir(usuario);
 
-            if (seguridad.validar(usuarioConseguido, usuario)) {
+            if (seguridad.validar(usuarioConseguido, usuario))
+            {
                 Console.WriteLine("Login exitoso!");
                 usuarioConseguido.Rol = bllRol.conseguir(usuarioConseguido);
+                calcularDVH(usuarioConseguido);
                 return usuarioConseguido;
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -49,7 +52,7 @@ namespace NuSmart.BLL
         {
             return 0;
         }
-        
+
         public int logout()
         {
             return 0;
@@ -57,6 +60,30 @@ namespace NuSmart.BLL
 
         public int validarUsuarioIngresado(Usuario user)
         {
+            return 0;
+        }
+
+        public int calcularDVH(Usuario user)
+        {
+            string concatenacion = Convert.ToString(user.ID) + user.Username + user.Password;
+            Seguridad seguridad = new Seguridad();
+            string md5 = seguridad.encriptar(concatenacion);
+
+
+            //En este punto, verifico cada uno de los caracteres del MD5 obtenido, y los transformo al numero de codigo ASCII
+            //multiplicado por su posicion en la cadena original
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(md5);
+
+            int DVH = 0;
+            int posicion = 0;
+
+            foreach (byte b in asciiBytes)
+            {
+                posicion += 1;
+                DVH = DVH + (int)b * posicion;
+            }
+
+            Console.WriteLine("DVH CONSEGUIDO = {0}", DVH);
             return 0;
         }
     }
