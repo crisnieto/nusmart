@@ -21,7 +21,8 @@ namespace NuSmart
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            DVVH dvvh = new DVVH();
+            dvvh.verificarIntegridad();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

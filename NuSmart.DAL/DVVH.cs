@@ -17,15 +17,23 @@ namespace NuSmart.DAL
             sqlHelper = new SqlHelper();
         }
 
-
-        public List<int> obtenerListaDVHdeTabla(string tabla)
+        public int conseguirDVV(string tabla)
         {
-            string textoComando = "SELECT DVH FROM @TABLA;";
+            string textoComando = "SELECT valor FROM DVV WHERE nombreTabla=@TABLA";
 
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@TABLA", tabla));
 
-            DataSet dvhDS = sqlHelper.ejecutarDataAdapter(textoComando, lista);
+            DataSet dvvDS = sqlHelper.ejecutarDataAdapter(textoComando, lista);
+            return (int)dvvDS.Tables[0].Rows[0]["valor"];
+        }
+
+
+
+        public List<int> obtenerListaDVHdeTabla(string tabla)
+        {
+            string textoComando = "SELECT DVH FROM " + tabla;
+            DataSet dvhDS = sqlHelper.ejecutarDataAdapter(textoComando);
 
             List<int> listaDVH = new List<int>();
 
@@ -35,11 +43,6 @@ namespace NuSmart.DAL
             }
                 
             return listaDVH;
-        }
-
-        public int conseguirDVV(string nombre)
-        {
-            return 0;
         }
     }
 }
