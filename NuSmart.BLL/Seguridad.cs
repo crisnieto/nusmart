@@ -21,7 +21,6 @@ namespace NuSmart.BLL
             {
                 hash.Append(result[i].ToString("x2"));
             }
-            Console.WriteLine(hash.ToString());
             return hash.ToString();
         }
         

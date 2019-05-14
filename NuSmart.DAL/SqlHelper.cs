@@ -63,11 +63,14 @@ namespace NuSmart.DAL
             return new SqlCommand(textoComando, conexion);
         }
 
-        public DataSet ejecutarDataAdapter(String textoComando, List<SqlParameter> lista)
+        public DataSet ejecutarDataAdapter(String textoComando, List<SqlParameter> lista = null)
         {
             SqlConnection conexion = conseguirStringConexion();
             SqlCommand comando = nuevoComando(textoComando, conexion);
-            agregarParametro(comando, lista);
+            if(lista != null)
+            {
+                agregarParametro(comando, lista);
+            }
             abrirConexion(conexion);
             DataSet data = ejecutarSelect(comando);
             cerrarConexion(conexion);
