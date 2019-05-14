@@ -46,6 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormObserver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IObserver.cs" />
+    <Compile Include="Lenguaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lenguaje.Designer.cs">
+      <DependentUpon>Lenguaje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +64,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormObserver.resx">
+      <DependentUpon>FormObserver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lenguaje.resx">
+      <DependentUpon>Lenguaje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,7 +106,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\english.jpg" />
     <Content Include="Resources\login.jpeg" />
+    <Content Include="Resources\spanish.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
