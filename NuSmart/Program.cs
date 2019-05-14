@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NuSmart.BE;
 
 namespace NuSmart
 {
@@ -16,6 +17,8 @@ namespace NuSmart
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Inicializo el Singleton de la sesion
+            Sesion.Instancia();
             Application.Run(new Lenguaje());
         }
     }

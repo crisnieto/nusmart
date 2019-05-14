@@ -26,18 +26,18 @@ namespace NuSmart.BLL
 
         public void Attach(Form observer)
         {
-            Idioma.Instancia().Observers.Add(observer);
+            Sesion.Instancia().IdiomaActual.Observers.Add(observer);
             
         }
 
         public void Detach(Form observer)
         {
-            Idioma.Instancia().Observers.Remove(observer);
+            Sesion.Instancia().IdiomaActual.Observers.Remove(observer);
         }
 
         public void Notify()
         {
-            foreach (Form o in Idioma.Instancia().Observers)
+            foreach (Form o in Sesion.Instancia().IdiomaActual.Observers)
             {
                 o.Update();
             }
@@ -45,7 +45,7 @@ namespace NuSmart.BLL
 
         public string conseguirLeyenda(Control control)
         {
-            Leyenda leyenda = Idioma.Instancia().Leyendas.Find(i => i.Nombre == control.Name);
+            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.Nombre == control.Name);
             if (leyenda != null){
                 return leyenda.Texto;
             }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NuSmart.BLL;
+using NuSmart.BE;
+
 
 namespace NuSmart
 {
@@ -22,7 +24,7 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bllIdioma.conseguirIdioma(1);
+            Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(1);
             new Login().Show();
             this.Hide();
         }
@@ -33,7 +35,7 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            bllIdioma.conseguirIdioma(2);
+            Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(2);
             new Login().Show();
             this.Hide();
         }

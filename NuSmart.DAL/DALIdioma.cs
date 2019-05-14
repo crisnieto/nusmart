@@ -27,7 +27,7 @@ namespace NuSmart.DAL
 
             DataRow idiomaDR = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0].Rows[0];
 
-            Idioma idiomaConseguido = Idioma.Instancia();
+            Idioma idiomaConseguido = new Idioma();
 
             idiomaConseguido.NombreIdioma = Convert.ToString(idiomaDR["nombreIdioma"]);
             idiomaConseguido.DescripcionIdioma = Convert.ToString(idiomaDR["descripcionIdioma"]);
