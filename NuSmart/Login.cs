@@ -12,11 +12,12 @@ using NuSmart.BE;
 
 namespace NuSmart
 {
-    public partial class Login : Form
+    public partial class Login : FormObserver
     {
         public Login()
         {
             InitializeComponent();
+            base.setup();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -34,7 +35,8 @@ namespace NuSmart
 
             BLLUsuario bllUsuario = new BLLUsuario();
             bllUsuario.conseguirUsuario(usuario);
-
         }
+
+
     }
 }
