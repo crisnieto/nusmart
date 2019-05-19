@@ -24,22 +24,29 @@ namespace NuSmart.BLL
 
         public Usuario conseguirUsuario(Usuario usuario)
         {
-            Seguridad seguridad = new Seguridad();
-            usuario.Password = seguridad.encriptar(usuario.Password);
+            try {
+                Seguridad seguridad = new Seguridad();
+                usuario.Password = seguridad.encriptar(usuario.Password);
 
-            DALUsuario dalUsuario = new DALUsuario();
-            Usuario usuarioConseguido = dalUsuario.conseguir(usuario);
+                DALUsuario dalUsuario = new DALUsuario();
+                Usuario usuarioConseguido = dalUsuario.conseguir(usuario);
 
-            if (seguridad.validar(usuarioConseguido, usuario))
+                if (seguridad.validar(usuarioConseguido, usuario))
+                {
+                    Console.WriteLine("Login exitoso!");
+                    usuarioConseguido.Rol = bllRol.conseguir(usuarioConseguido);
+                    calcularDVH(usuarioConseguido);
+                    return usuarioConseguido;
+                }
+                else
+                {
+                    throw new Exception("No se pudo loguear correctamente");
+                }
+            } catch (Exception exception)
             {
-                Console.WriteLine("Login exitoso!");
-                usuarioConseguido.Rol = bllRol.conseguir(usuarioConseguido);
-                calcularDVH(usuarioConseguido);
-                return usuarioConseguido;
-            }
-            else
-            {
-                return null;
+                Console.Write(exception);
+                throw new Exception("No se pudo loguear correctamente");
+
             }
         }
 

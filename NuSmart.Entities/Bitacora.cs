@@ -12,10 +12,12 @@ namespace NuSmart.BE
         string descripción;
         DateTime fecha;
         string tipoCriticidad;
+        Usuario usuario;
 
         public string Actividad { get => actividad; set => actividad = value; }
         public string Descripción { get => descripción; set => descripción = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public string TipoCriticidad { get => tipoCriticidad; set => tipoCriticidad = value; }
+        public Usuario Usuario { get => usuario; set => usuario = value; }
     }
 }

@@ -29,6 +29,9 @@ namespace NuSmart.DAL
 
             Usuario usuarioConseguido = new Usuario();
 
+            usuarioConseguido.ID = (int)(usuarioDS.Tables[0].Rows[0]
+            ["usuarioID"]);
+
             usuarioConseguido.Username = Convert.ToString(usuarioDS.Tables[0].Rows[0]
             ["username"]);
 

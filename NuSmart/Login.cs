@@ -34,7 +34,17 @@ namespace NuSmart
             usuario.Password = txtPassword.Text;
 
             BLLUsuario bllUsuario = new BLLUsuario();
-            bllUsuario.conseguirUsuario(usuario);
+            try { 
+                Sesion.Instancia().UsuarioActual = bllUsuario.conseguirUsuario(usuario);
+                new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Baja);
+                new Agenda().Show();
+                this.Hide();
+                            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+
         }
 
 
