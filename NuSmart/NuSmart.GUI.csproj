@@ -52,6 +52,18 @@
     <Compile Include="Agenda.Designer.cs">
       <DependentUpon>Agenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackupManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupManager.Designer.cs">
+      <DependentUpon>BackupManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bitacora.Designer.cs">
+      <DependentUpon>Bitacora.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormObserver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +84,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Agenda.resx">
       <DependentUpon>Agenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupManager.resx">
+      <DependentUpon>BackupManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bitacora.resx">
+      <DependentUpon>Bitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormObserver.resx">
       <DependentUpon>FormObserver.cs</DependentUpon>
@@ -115,6 +133,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\bananas-carrots-cherries.jpg" />
     <Content Include="Resources\english.jpg" />
     <Content Include="Resources\login.jpeg" />
     <Content Include="Resources\spanish.jpg" />

@@ -69,6 +69,7 @@
     <Compile Include="Criticidad.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Idioma.cs" />
+    <Compile Include="IObserver.cs" />
     <Compile Include="Leyenda.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

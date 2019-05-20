@@ -37,9 +37,9 @@ namespace NuSmart.BLL
 
         public void Notify()
         {
-            foreach (Form o in Sesion.Instancia().IdiomaActual.Observers)
+            foreach (IObserver observer in Sesion.Instancia().IdiomaActual.Observers)
             {
-                o.Update();
+                observer.Actualizar();
             }
         }
 
