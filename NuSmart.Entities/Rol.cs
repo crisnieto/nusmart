@@ -20,6 +20,6 @@ namespace NuSmart.BE
 
         abstract public void eliminar(Rol rol);
 
-        abstract public void mostrar();
+        abstract public List<Rol> mostrar();
     }
 }

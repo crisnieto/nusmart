@@ -18,9 +18,9 @@ namespace NuSmart.DAL
             sqlHelper = new SqlHelper();
         }
 
-        public Familia conseguirRolesDeUsuario(Usuario usuario)
+        public List<Rol> conseguirRolesDeUsuario(Usuario usuario)
         {
-            Familia listaRoles = new Familia();
+            List<Rol> listaRoles = new List<Rol>();
             string textoComando = "select A.permisoID, P.descripcion, P.codigo from JoinUsuarioPermiso A join (select permisoID, descripcion, codigo from Permiso) P " +
                                   "ON(A.permisoID = P.permisoID) where A.permisoID IN(select permisoID from JoinUsuarioPermiso where usuarioID = @USER_ID)";
 
@@ -29,14 +29,14 @@ namespace NuSmart.DAL
             DataTable permisosDS = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
             foreach (DataRow i in permisosDS.Rows)
             {
-                buscarRecursivamente(Convert.ToInt32(i["permisoID"]), listaRoles);
+                listaRoles.Add(buscarRecursivamente(Convert.ToInt32(i["permisoID"])));
             }
 
             return listaRoles;
             
         }
 
-        private Rol buscarRecursivamente(int permisoId, Familia familiaSuperior)
+        private Rol buscarRecursivamente(int permisoId, Rol familiaSuperior = null)
         {
             string textoComando = "select A.IdPadrePermiso, A.IdHijoPermiso, P.codigo, P.descripcion, C.codigoPadre, C.descripcionPadre " +
                                   "from Permiso_Jerarquia A JOIN(select permisoID, codigo, descripcion from Permiso) P " +
@@ -56,7 +56,11 @@ namespace NuSmart.DAL
                 familia.Id = Convert.ToInt32(permisosHijosDT.Rows[0]["IdPadrePermiso"]);
                 familia.Codigo = Convert.ToString(permisosHijosDT.Rows[0]["codigoPadre"]);
                 familia.Descripcion = Convert.ToString(permisosHijosDT.Rows[0]["descripcionPadre"]);
-                familiaSuperior.agregar(familia);
+
+                //Si tengo una familia sobre la familia actual. Si no, es la primera familia.
+                if (familiaSuperior != null){
+                    familiaSuperior.agregar(familia);
+                }
 
                 //Entonces busco recursivamente ahora
                 foreach (DataRow i in permisosHijosDT.Rows)

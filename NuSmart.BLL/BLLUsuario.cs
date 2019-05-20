@@ -34,7 +34,7 @@ namespace NuSmart.BLL
                 if (seguridad.validar(usuarioConseguido, usuario))
                 {
                     Console.WriteLine("Login exitoso!");
-                    usuarioConseguido.Rol = bllRol.conseguir(usuarioConseguido);
+                    usuarioConseguido.Roles = bllRol.conseguir(usuarioConseguido);
                     calcularDVH(usuarioConseguido);
                     return usuarioConseguido;
                 }

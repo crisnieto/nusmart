@@ -22,7 +22,9 @@ namespace NuSmart
 
         private void Agenda_Load(object sender, EventArgs e)
         {
-
+            agenda_btn_bitacora.Enabled = Sesion.Instancia().UsuarioActual.validar("OP45");
+            agenda_btn_backup.Enabled = Sesion.Instancia().UsuarioActual.validar("OP46");
+            agenda_btn_gestion_pacientes.Enabled = Sesion.Instancia().UsuarioActual.validar("GE100");
         }
 
 
@@ -64,6 +66,11 @@ namespace NuSmart
             }
 
                 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

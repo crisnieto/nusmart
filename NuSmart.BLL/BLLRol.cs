@@ -11,13 +11,13 @@ namespace NuSmart.BLL
 {
     public class BLLRol
     {
-       public Familia conseguir( Usuario usuario )
+       public List<Rol> conseguir( Usuario usuario )
         {
             Familia familia = new Familia();
 
             DALRol dalRol = new DALRol();
 
-            Familia roles = dalRol.conseguirRolesDeUsuario(usuario);
+            List<Rol> roles = dalRol.conseguirRolesDeUsuario(usuario);
             return roles;
         }
 
@@ -30,6 +30,5 @@ namespace NuSmart.BLL
         {
 
         }
-
     }
 }

@@ -18,7 +18,7 @@ namespace NuSmart.BE
             throw new NotImplementedException();
         }
 
-        public override void mostrar()
+        public override List<Rol> mostrar()
         {
             throw new NotImplementedException();
         }

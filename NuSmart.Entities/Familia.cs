@@ -27,9 +27,9 @@ namespace NuSmart.BE
 
         }
 
-        public override void mostrar()
+        public override List<Rol> mostrar()
         {
-            
+            return roles;
         }
 
     }
