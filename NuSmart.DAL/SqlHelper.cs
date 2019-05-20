@@ -38,11 +38,14 @@ namespace NuSmart.DAL
         }
 
            
-        public int ejecutarNonQuery(String textoComando, List<SqlParameter> lista)
+        public int ejecutarNonQuery(String textoComando, List<SqlParameter> lista = null)
         {
             SqlConnection conexion = conseguirStringConexion();
             SqlCommand comando = nuevoComando(textoComando, conexion);
-            agregarParametro(comando, lista);
+            if (lista != null)
+            {
+                agregarParametro(comando, lista);
+            }
             abrirConexion(conexion);
             ejecutarComando(comando);
             cerrarConexion(conexion);

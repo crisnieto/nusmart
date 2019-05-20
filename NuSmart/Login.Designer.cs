@@ -61,7 +61,6 @@ namespace NuSmart
             this.login_lbl_usuario.Size = new System.Drawing.Size(43, 13);
             this.login_lbl_usuario.TabIndex = 2;
             this.login_lbl_usuario.Text = "Usuario";
-            this.login_lbl_usuario.Click += new System.EventHandler(this.lblUser_Click);
             // 
             // login_lbl_password
             // 
@@ -100,11 +99,6 @@ namespace NuSmart
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void lblUser_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

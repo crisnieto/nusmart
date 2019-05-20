@@ -28,6 +28,18 @@ namespace NuSmart.BLL
 
         }
 
+        public List<Usuario> conseguirUsuarios()
+        {
+            DALBitacora dalBitacora = new DALBitacora();
+            return dalBitacora.conseguirUsuarios();
+        }
+
+        public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario)
+        {
+            DALBitacora dalBitacora = new DALBitacora();
+            return dalBitacora.conseguirBitacorasConUsuario(usuario);
+        }
+
         public bool guardarBitacora()
         {
             return true;

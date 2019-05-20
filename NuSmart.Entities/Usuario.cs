@@ -19,5 +19,10 @@ namespace NuSmart.BE
         public int DVH { get => _dvh; set => _dvh = value; }
         public int ID { get => _id; set => _id = value; }
         public Rol Rol { get => rol; set => rol = value; }
+
+        public override string ToString()
+        {
+            return this._username;
+        }
     }
 }

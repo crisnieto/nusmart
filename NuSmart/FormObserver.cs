@@ -8,7 +8,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public class FormObserver : Form
+    public class FormObserver : Form , BE.IObserver
     {
         BLLIdioma bllIdioma;
         public void setup()
