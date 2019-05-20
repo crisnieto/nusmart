@@ -41,6 +41,7 @@ namespace NuSmart
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "FormObserver";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormObserver_FormClosed);
             this.Load += new System.EventHandler(this.FormObserver_Load);
             this.ResumeLayout(false);
 
@@ -49,6 +50,14 @@ namespace NuSmart
         private void FormObserver_Load(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void FormObserver_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+                Application.Exit();
         }
     }
 }
+

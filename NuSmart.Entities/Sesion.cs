@@ -29,6 +29,13 @@ namespace NuSmart.BE
             return _instancia;
         }
 
+        public void Eliminar()
+        {
+            _instancia = null;
+            UsuarioActual = null;
+            IdiomaActual = null;
+        }
+
 
     }
 }

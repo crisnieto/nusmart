@@ -19,7 +19,8 @@ namespace NuSmart
             Application.SetCompatibleTextRenderingDefault(false);
             //Inicializo el Singleton de la sesion
             Sesion.Instancia();
-            Application.Run(new Lenguaje());
+            new Lenguaje().Show();
+            Application.Run();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agenda));
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -117,6 +118,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Cerrar Sesi\'on";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -144,6 +146,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Cornsilk;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1010, 590);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -158,6 +162,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Agenda";
             this.Text = "Agenda";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Agenda_FormClosed);
             this.Load += new System.EventHandler(this.Agenda_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

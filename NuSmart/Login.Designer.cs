@@ -40,42 +40,47 @@ namespace NuSmart
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(166, 142);
+            this.txtUsuario.Location = new System.Drawing.Point(332, 273);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(6);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(278, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(552, 31);
             this.txtUsuario.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(166, 210);
+            this.txtPassword.Location = new System.Drawing.Point(332, 404);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(6);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(278, 20);
+            this.txtPassword.Size = new System.Drawing.Size(552, 31);
             this.txtPassword.TabIndex = 1;
             // 
             // login_lbl_usuario
             // 
             this.login_lbl_usuario.AutoSize = true;
-            this.login_lbl_usuario.Location = new System.Drawing.Point(163, 126);
+            this.login_lbl_usuario.Location = new System.Drawing.Point(326, 242);
+            this.login_lbl_usuario.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.login_lbl_usuario.Name = "login_lbl_usuario";
-            this.login_lbl_usuario.Size = new System.Drawing.Size(43, 13);
+            this.login_lbl_usuario.Size = new System.Drawing.Size(86, 25);
             this.login_lbl_usuario.TabIndex = 2;
             this.login_lbl_usuario.Text = "Usuario";
             // 
             // login_lbl_password
             // 
             this.login_lbl_password.AutoSize = true;
-            this.login_lbl_password.Location = new System.Drawing.Point(163, 194);
+            this.login_lbl_password.Location = new System.Drawing.Point(326, 373);
+            this.login_lbl_password.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.login_lbl_password.Name = "login_lbl_password";
-            this.login_lbl_password.Size = new System.Drawing.Size(53, 13);
+            this.login_lbl_password.Size = new System.Drawing.Size(106, 25);
             this.login_lbl_password.TabIndex = 3;
             this.login_lbl_password.Text = "Password";
             // 
             // login_btn_login
             // 
-            this.login_btn_login.Location = new System.Drawing.Point(261, 279);
+            this.login_btn_login.Location = new System.Drawing.Point(522, 537);
+            this.login_btn_login.Margin = new System.Windows.Forms.Padding(6);
             this.login_btn_login.Name = "login_btn_login";
-            this.login_btn_login.Size = new System.Drawing.Size(88, 37);
+            this.login_btn_login.Size = new System.Drawing.Size(176, 71);
             this.login_btn_login.TabIndex = 4;
             this.login_btn_login.Text = "Log In";
             this.login_btn_login.UseVisualStyleBackColor = true;
@@ -83,18 +88,20 @@ namespace NuSmart
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(584, 371);
+            this.ClientSize = new System.Drawing.Size(1168, 713);
             this.Controls.Add(this.login_btn_login);
             this.Controls.Add(this.login_lbl_password);
             this.Controls.Add(this.login_lbl_usuario);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsuario);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

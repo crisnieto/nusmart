@@ -133,6 +133,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\bananas-carrots-cherries.jpg" />
     <Content Include="Resources\english.jpg" />
     <Content Include="Resources\login.jpeg" />
     <Content Include="Resources\spanish.jpg" />

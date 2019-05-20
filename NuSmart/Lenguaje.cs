@@ -26,18 +26,27 @@ namespace NuSmart
         {
             Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(1);
             new Login().Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void Lenguaje_Load(object sender, EventArgs e)
-        {
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(2);
             new Login().Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void Lenguaje_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lenguaje_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+                Application.Exit();
         }
     }
 }
+
