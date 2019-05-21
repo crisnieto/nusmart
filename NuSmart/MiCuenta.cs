@@ -26,6 +26,7 @@ namespace NuSmart
         {
             if (new BLLUsuario().actualizarPassword(Sesion.Instancia().UsuarioActual, micuenta_txt_cambiar.Text) == 0)
             {
+                new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se ejecutó un cambio de password", Criticidad.Media);
                 MessageBox.Show("Contraseña Actualizada Correctamente");
             }
             else
