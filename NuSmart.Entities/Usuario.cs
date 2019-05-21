@@ -24,6 +24,9 @@ namespace NuSmart.BE
             bool valido = false;
             foreach(Rol rol in roles){
                 valido = busquedaRecursiva(rol, codigo);
+                if(valido == true){
+                    break;
+                }
             };
             return valido;
         }

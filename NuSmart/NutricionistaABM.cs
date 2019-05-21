@@ -42,6 +42,8 @@ namespace NuSmart
 
             //Consigo el usuario insertado en la BD para continuar, con su correspondiente ID
             nutricionista.Usuario = bllUsuario.conseguir(nutricionista.Usuario.Username);
+               
+
 
             BLLNutricionista bllNutricionista = new BLLNutricionista();
             if (bllNutricionista.ingresar(nutricionista) == 0) {

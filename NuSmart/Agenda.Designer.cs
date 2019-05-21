@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agenda));
+            this.agenda_btn_idioma = new System.Windows.Forms.Button();
+            this.agenda_btn_gestion_dietas = new System.Windows.Forms.Button();
+            this.agenda_btn_gestion_ejercicios = new System.Windows.Forms.Button();
+            this.agenda_btn_gestion_comidas = new System.Windows.Forms.Button();
+            this.agenda_btn_micuenta = new System.Windows.Forms.Button();
+            this.agenda_btn_usuarios = new System.Windows.Forms.Button();
             this.agenda_btn_backup = new System.Windows.Forms.Button();
             this.agenda_btn_bitacora = new System.Windows.Forms.Button();
             this.agenda_btn_cerrar = new System.Windows.Forms.Button();
@@ -39,13 +45,71 @@
             this.agenda_lbl_appointments = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.agenda_btn_usuarios = new System.Windows.Forms.Button();
-            this.agenda_btn_micuenta = new System.Windows.Forms.Button();
-            this.agenda_btn_gestion_comidas = new System.Windows.Forms.Button();
-            this.agenda_btn_gestion_ejercicios = new System.Windows.Forms.Button();
-            this.agenda_btn_gestion_dietas = new System.Windows.Forms.Button();
-            this.agenda_btn_idioma = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // agenda_btn_idioma
+            // 
+            this.agenda_btn_idioma.Location = new System.Drawing.Point(418, 168);
+            this.agenda_btn_idioma.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_idioma.Name = "agenda_btn_idioma";
+            this.agenda_btn_idioma.Size = new System.Drawing.Size(144, 67);
+            this.agenda_btn_idioma.TabIndex = 15;
+            this.agenda_btn_idioma.Text = "Cambiar Idioma";
+            this.agenda_btn_idioma.UseVisualStyleBackColor = true;
+            this.agenda_btn_idioma.Click += new System.EventHandler(this.agenda_btn_idioma_Click);
+            // 
+            // agenda_btn_gestion_dietas
+            // 
+            this.agenda_btn_gestion_dietas.Location = new System.Drawing.Point(628, 229);
+            this.agenda_btn_gestion_dietas.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_gestion_dietas.Name = "agenda_btn_gestion_dietas";
+            this.agenda_btn_gestion_dietas.Size = new System.Drawing.Size(408, 60);
+            this.agenda_btn_gestion_dietas.TabIndex = 14;
+            this.agenda_btn_gestion_dietas.Text = "Gestion de Dietas";
+            this.agenda_btn_gestion_dietas.UseVisualStyleBackColor = true;
+            // 
+            // agenda_btn_gestion_ejercicios
+            // 
+            this.agenda_btn_gestion_ejercicios.Location = new System.Drawing.Point(628, 157);
+            this.agenda_btn_gestion_ejercicios.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_gestion_ejercicios.Name = "agenda_btn_gestion_ejercicios";
+            this.agenda_btn_gestion_ejercicios.Size = new System.Drawing.Size(408, 60);
+            this.agenda_btn_gestion_ejercicios.TabIndex = 13;
+            this.agenda_btn_gestion_ejercicios.Text = "Gestion de Ejercicios";
+            this.agenda_btn_gestion_ejercicios.UseVisualStyleBackColor = true;
+            // 
+            // agenda_btn_gestion_comidas
+            // 
+            this.agenda_btn_gestion_comidas.Location = new System.Drawing.Point(628, 87);
+            this.agenda_btn_gestion_comidas.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_gestion_comidas.Name = "agenda_btn_gestion_comidas";
+            this.agenda_btn_gestion_comidas.Size = new System.Drawing.Size(408, 60);
+            this.agenda_btn_gestion_comidas.TabIndex = 12;
+            this.agenda_btn_gestion_comidas.Text = "Gestion de Comidas";
+            this.agenda_btn_gestion_comidas.UseVisualStyleBackColor = true;
+            this.agenda_btn_gestion_comidas.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // agenda_btn_micuenta
+            // 
+            this.agenda_btn_micuenta.Location = new System.Drawing.Point(418, 80);
+            this.agenda_btn_micuenta.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_micuenta.Name = "agenda_btn_micuenta";
+            this.agenda_btn_micuenta.Size = new System.Drawing.Size(198, 67);
+            this.agenda_btn_micuenta.TabIndex = 11;
+            this.agenda_btn_micuenta.Text = "Gestionar Cuenta";
+            this.agenda_btn_micuenta.UseVisualStyleBackColor = true;
+            this.agenda_btn_micuenta.Click += new System.EventHandler(this.btn_gestionar_mi_cuenta_Click);
+            // 
+            // agenda_btn_usuarios
+            // 
+            this.agenda_btn_usuarios.Location = new System.Drawing.Point(27, 565);
+            this.agenda_btn_usuarios.Margin = new System.Windows.Forms.Padding(6);
+            this.agenda_btn_usuarios.Name = "agenda_btn_usuarios";
+            this.agenda_btn_usuarios.Size = new System.Drawing.Size(247, 74);
+            this.agenda_btn_usuarios.TabIndex = 10;
+            this.agenda_btn_usuarios.Text = "Gestionar Usuarios";
+            this.agenda_btn_usuarios.UseVisualStyleBackColor = true;
+            this.agenda_btn_usuarios.Click += new System.EventHandler(this.button1_Click);
             // 
             // agenda_btn_backup
             // 
@@ -149,69 +213,7 @@
             this.monthCalendar1.Margin = new System.Windows.Forms.Padding(18, 17, 18, 17);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
-            // 
-            // agenda_btn_usuarios
-            // 
-            this.agenda_btn_usuarios.Location = new System.Drawing.Point(27, 565);
-            this.agenda_btn_usuarios.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_usuarios.Name = "agenda_btn_usuarios";
-            this.agenda_btn_usuarios.Size = new System.Drawing.Size(247, 74);
-            this.agenda_btn_usuarios.TabIndex = 10;
-            this.agenda_btn_usuarios.Text = "Gestionar Usuarios";
-            this.agenda_btn_usuarios.UseVisualStyleBackColor = true;
-            this.agenda_btn_usuarios.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // agenda_btn_micuenta
-            // 
-            this.agenda_btn_micuenta.Location = new System.Drawing.Point(418, 80);
-            this.agenda_btn_micuenta.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_micuenta.Name = "agenda_btn_micuenta";
-            this.agenda_btn_micuenta.Size = new System.Drawing.Size(198, 67);
-            this.agenda_btn_micuenta.TabIndex = 11;
-            this.agenda_btn_micuenta.Text = "Gestionar Cuenta";
-            this.agenda_btn_micuenta.UseVisualStyleBackColor = true;
-            this.agenda_btn_micuenta.Click += new System.EventHandler(this.btn_gestionar_mi_cuenta_Click);
-            // 
-            // agenda_btn_gestion_comidas
-            // 
-            this.agenda_btn_gestion_comidas.Location = new System.Drawing.Point(628, 87);
-            this.agenda_btn_gestion_comidas.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_gestion_comidas.Name = "agenda_btn_gestion_comidas";
-            this.agenda_btn_gestion_comidas.Size = new System.Drawing.Size(408, 60);
-            this.agenda_btn_gestion_comidas.TabIndex = 12;
-            this.agenda_btn_gestion_comidas.Text = "Gestion de Comidas";
-            this.agenda_btn_gestion_comidas.UseVisualStyleBackColor = true;
-            this.agenda_btn_gestion_comidas.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // agenda_btn_gestion_ejercicios
-            // 
-            this.agenda_btn_gestion_ejercicios.Location = new System.Drawing.Point(628, 157);
-            this.agenda_btn_gestion_ejercicios.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_gestion_ejercicios.Name = "agenda_btn_gestion_ejercicios";
-            this.agenda_btn_gestion_ejercicios.Size = new System.Drawing.Size(408, 60);
-            this.agenda_btn_gestion_ejercicios.TabIndex = 13;
-            this.agenda_btn_gestion_ejercicios.Text = "Gestion de Ejercicios";
-            this.agenda_btn_gestion_ejercicios.UseVisualStyleBackColor = true;
-            // 
-            // agenda_btn_gestion_dietas
-            // 
-            this.agenda_btn_gestion_dietas.Location = new System.Drawing.Point(628, 229);
-            this.agenda_btn_gestion_dietas.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_gestion_dietas.Name = "agenda_btn_gestion_dietas";
-            this.agenda_btn_gestion_dietas.Size = new System.Drawing.Size(408, 60);
-            this.agenda_btn_gestion_dietas.TabIndex = 14;
-            this.agenda_btn_gestion_dietas.Text = "Gestion de Dietas";
-            this.agenda_btn_gestion_dietas.UseVisualStyleBackColor = true;
-            // 
-            // agenda_btn_idioma
-            // 
-            this.agenda_btn_idioma.Location = new System.Drawing.Point(418, 168);
-            this.agenda_btn_idioma.Margin = new System.Windows.Forms.Padding(6);
-            this.agenda_btn_idioma.Name = "agenda_btn_idioma";
-            this.agenda_btn_idioma.Size = new System.Drawing.Size(144, 67);
-            this.agenda_btn_idioma.TabIndex = 15;
-            this.agenda_btn_idioma.Text = "Cambiar Idioma";
-            this.agenda_btn_idioma.UseVisualStyleBackColor = true;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // Agenda
             // 

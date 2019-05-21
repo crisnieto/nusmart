@@ -82,7 +82,13 @@ namespace NuSmart.DAL
                 permiso.Codigo = Convert.ToString(permisoDR["codigo"]);
                 permiso.Descripcion = Convert.ToString(permisoDR["descripcion"]);
                 permiso.Id = Convert.ToInt32(permisoDR["permisoID"]);
-                familiaSuperior.agregar(permiso);
+
+                //Si tengo una familiaSuperior, agrego el permiso a ella
+                if (familiaSuperior != null)
+                {
+                    familiaSuperior.agregar(permiso);
+                }
+
                 Console.WriteLine("Hoja: " + Convert.ToString(permisoDR["codigo"]));
                 return permiso;
             }

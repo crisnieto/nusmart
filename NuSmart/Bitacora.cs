@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class Bitacora : Form
+    public partial class Bitacora : FormObserver
     {
         BLLBitacora bllBitacora;
         List<BE.Usuario> usuariosConBitacoras;
@@ -20,6 +20,7 @@ namespace NuSmart
         public Bitacora()
         {
             InitializeComponent();
+            setup();
         }
 
         private void Bitacora_Load(object sender, EventArgs e)

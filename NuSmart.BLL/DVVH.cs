@@ -11,9 +11,9 @@ namespace NuSmart.BLL
         public bool verificarIntegridad() {
             string[] listaTablasIntegridad =
             {
-                "Usuario",
-               // "nutricionista",
-               // "paciente"
+               "Usuario",
+               "Nutricionista",
+               // "Paciente" (no implementado aun ya que es una entidad a desarrollar para el negocio)
             };
             
             //Primero debo obtener todas las tablas que tienen DVH y DVV
@@ -44,18 +44,17 @@ namespace NuSmart.BLL
             return dalDVVH.actualizarDVV(tabla);
         }
 
-        public bool compararCalculadoConObtenido(int calculado, int obtenido)
+        public void compararCalculadoConObtenido(int calculado, int obtenido)
         {
 
             if (calculado == obtenido)
             {
                 Console.WriteLine("Calculo de integridad correcto!!!");
-                return true;
             }
             else
             {
                 Console.WriteLine("Existe un error de integridad en la base de datos. Por favor contacte a un Administrador");
-                return false;
+                throw new Exception("Existe un error de integridad, cerrando aplicación.");
             }
         }
     }

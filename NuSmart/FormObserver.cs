@@ -16,6 +16,10 @@ namespace NuSmart
             bllIdioma = new BLLIdioma();
             bllIdioma.Attach(this);
             this.conseguirLeyendas();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void Actualizar()
@@ -41,6 +45,7 @@ namespace NuSmart
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "FormObserver";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormObserver_FormClosed);
             this.Load += new System.EventHandler(this.FormObserver_Load);
             this.ResumeLayout(false);
@@ -49,7 +54,6 @@ namespace NuSmart
 
         private void FormObserver_Load(object sender, EventArgs e)
         {
-
 
         }
 

@@ -24,20 +24,20 @@ namespace NuSmart.BLL
             return idioma;
         }
 
-        public void Attach(Form observer)
+        public void Attach(IObserver observer)
         {
-            Sesion.Instancia().IdiomaActual.Observers.Add(observer);
+            Sesion.Instancia().Observers.Add(observer);
             
         }
 
-        public void Detach(Form observer)
+        public void Detach(IObserver observer)
         {
-            Sesion.Instancia().IdiomaActual.Observers.Remove(observer);
+            Sesion.Instancia().Observers.Remove(observer);
         }
 
         public void Notify()
         {
-            foreach (IObserver observer in Sesion.Instancia().IdiomaActual.Observers)
+            foreach (BE.IObserver observer in Sesion.Instancia().Observers)
             {
                 observer.Actualizar();
             }

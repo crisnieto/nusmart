@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NuSmart.BE;
+using NuSmart.BLL;
 
 namespace NuSmart
 {
@@ -27,6 +28,12 @@ namespace NuSmart
             agenda_btn_bitacora.Enabled = Sesion.Instancia().UsuarioActual.validar("OP45");
             agenda_btn_backup.Enabled = Sesion.Instancia().UsuarioActual.validar("OP46");
             agenda_btn_gestion_pacientes.Enabled = Sesion.Instancia().UsuarioActual.validar("GE100");
+            agenda_btn_gestion_comidas.Enabled = Sesion.Instancia().UsuarioActual.validar("GE102");
+            agenda_btn_gestion_ejercicios.Enabled = Sesion.Instancia().UsuarioActual.validar("GE102");
+            agenda_btn_gestion_dietas.Enabled = Sesion.Instancia().UsuarioActual.validar("GE102");
+            agenda_btn_micuenta.Enabled = Sesion.Instancia().UsuarioActual.validar("GE110");
+            agenda_btn_usuarios.Enabled = Sesion.Instancia().UsuarioActual.validar("AA099");
+            agenda_btn_start_appointment.Enabled = Sesion.Instancia().UsuarioActual.validar("AA099");
         }
 
 
@@ -52,6 +59,7 @@ namespace NuSmart
 
         private void button4_Click(object sender, EventArgs e)
         {
+            new BLLBitacora().crearNuevaBitacora("Logout de Usuario", "Se detectó un logout", Criticidad.Baja);
             Sesion.Instancia().Eliminar();
             new Lenguaje().Show();
             sessionOut = true;
@@ -88,6 +96,16 @@ namespace NuSmart
         private void button1_Click(object sender, EventArgs e)
         {
             new NutricionistaABM().Show();
+        }
+
+        private void agenda_btn_idioma_Click(object sender, EventArgs e)
+        {
+            new Lenguaje().Show();
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
         }
     }
 }

@@ -12,11 +12,12 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class BackupManager : Form
+    public partial class BackupManager : FormObserver
     {
         public BackupManager()
         {
             InitializeComponent();
+            base.setup();
         }
 
 
@@ -53,6 +54,11 @@ namespace NuSmart
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackupManager_Load(object sender, EventArgs e)
         {
 
         }

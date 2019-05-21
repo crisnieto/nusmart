@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bitacora));
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.bitacora_btn_buscar = new System.Windows.Forms.Button();
+            this.bitacora_lbl_usuarios = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -46,24 +46,24 @@
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // button1
+            // bitacora_btn_buscar
             // 
-            this.button1.Location = new System.Drawing.Point(1004, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 179);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Buscar Eventos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bitacora_btn_buscar.Location = new System.Drawing.Point(1004, 55);
+            this.bitacora_btn_buscar.Name = "bitacora_btn_buscar";
+            this.bitacora_btn_buscar.Size = new System.Drawing.Size(199, 179);
+            this.bitacora_btn_buscar.TabIndex = 1;
+            this.bitacora_btn_buscar.Text = "Buscar Eventos";
+            this.bitacora_btn_buscar.UseVisualStyleBackColor = true;
+            this.bitacora_btn_buscar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // bitacora_lbl_usuarios
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Usuario";
+            this.bitacora_lbl_usuarios.AutoSize = true;
+            this.bitacora_lbl_usuarios.Location = new System.Drawing.Point(12, 27);
+            this.bitacora_lbl_usuarios.Name = "bitacora_lbl_usuarios";
+            this.bitacora_lbl_usuarios.Size = new System.Drawing.Size(86, 25);
+            this.bitacora_lbl_usuarios.TabIndex = 3;
+            this.bitacora_lbl_usuarios.Text = "Usuario";
             // 
             // dataGridView1
             // 
@@ -83,8 +83,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1225, 615);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bitacora_lbl_usuarios);
+            this.Controls.Add(this.bitacora_btn_buscar);
             this.Controls.Add(this.listBox1);
             this.Name = "Bitacora";
             this.Text = "Bitacora";
@@ -98,8 +98,8 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bitacora_btn_buscar;
+        private System.Windows.Forms.Label bitacora_lbl_usuarios;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

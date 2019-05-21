@@ -40,43 +40,48 @@ namespace NuSmart
             // 
             // txtUsuario
             // 
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(332, 273);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(6);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(552, 31);
+            this.txtUsuario.Size = new System.Drawing.Size(552, 38);
             this.txtUsuario.TabIndex = 0;
             // 
             // txtPassword
             // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(332, 404);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(552, 31);
+            this.txtPassword.Size = new System.Drawing.Size(552, 38);
             this.txtPassword.TabIndex = 1;
             // 
             // login_lbl_usuario
             // 
             this.login_lbl_usuario.AutoSize = true;
+            this.login_lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_lbl_usuario.Location = new System.Drawing.Point(326, 242);
             this.login_lbl_usuario.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.login_lbl_usuario.Name = "login_lbl_usuario";
-            this.login_lbl_usuario.Size = new System.Drawing.Size(86, 25);
+            this.login_lbl_usuario.Size = new System.Drawing.Size(108, 31);
             this.login_lbl_usuario.TabIndex = 2;
             this.login_lbl_usuario.Text = "Usuario";
             // 
             // login_lbl_password
             // 
             this.login_lbl_password.AutoSize = true;
+            this.login_lbl_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_lbl_password.Location = new System.Drawing.Point(326, 373);
             this.login_lbl_password.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.login_lbl_password.Name = "login_lbl_password";
-            this.login_lbl_password.Size = new System.Drawing.Size(106, 25);
+            this.login_lbl_password.Size = new System.Drawing.Size(134, 31);
             this.login_lbl_password.TabIndex = 3;
             this.login_lbl_password.Text = "Password";
             // 
             // login_btn_login
             // 
+            this.login_btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_btn_login.Location = new System.Drawing.Point(522, 537);
             this.login_btn_login.Margin = new System.Windows.Forms.Padding(6);
             this.login_btn_login.Name = "login_btn_login";
