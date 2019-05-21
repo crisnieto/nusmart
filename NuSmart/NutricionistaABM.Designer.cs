@@ -45,6 +45,7 @@
             this.nutricionista_txt_especializacion = new System.Windows.Forms.TextBox();
             this.nutricionista_txt_sexo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -190,12 +191,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(11, 649);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(438, 25);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "WIP: Solo alta para tener más valores en BD";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
             // NutricionistaABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(568, 683);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nutricionista_txt_sexo);
             this.Controls.Add(this.nutricionista_txt_especializacion);
@@ -240,5 +252,6 @@
         private System.Windows.Forms.TextBox nutricionista_txt_especializacion;
         private System.Windows.Forms.ComboBox nutricionista_txt_sexo;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label9;
     }
 }

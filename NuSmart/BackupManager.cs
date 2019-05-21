@@ -33,7 +33,12 @@ namespace NuSmart
             {
                 Console.WriteLine(Path.GetFullPath(saveFileDialog1.FileName));
                 BLLBackupManager bllBackupManager = new BLLBackupManager();
-                bllBackupManager.crearBackup(Path.GetFullPath(saveFileDialog1.FileName));
+
+                if (bllBackupManager.crearBackup(Path.GetFullPath(saveFileDialog1.FileName)) == 0)
+                {
+                    MessageBox.Show("OK!");
+                };
+                
             }
 
         }
@@ -47,7 +52,10 @@ namespace NuSmart
             {
                 Console.WriteLine(Path.GetFullPath(openFileDialog1.FileName));
                 BLLBackupManager bllBackupManager = new BLLBackupManager();
-                bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName));
+                if (bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName)) == 0)
+                {
+                    MessageBox.Show("OK!");
+                }
             }
 
 

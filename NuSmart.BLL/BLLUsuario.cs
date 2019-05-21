@@ -71,7 +71,7 @@ namespace NuSmart.BLL
             usuario.Password = new Seguridad().encriptar(password);
             usuario.DVH = calcularDVH(usuario);
             dalUsuario.ingresar(usuario);
-            return new DVVH().actualizarDVV("usuario");
+            return new DVVH().actualizarDVV("Usuario");
 
         }
 
