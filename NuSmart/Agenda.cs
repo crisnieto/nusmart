@@ -18,6 +18,8 @@ namespace NuSmart
         public Agenda()
         {
             InitializeComponent();
+            base.setup();
+            agenda_lbl_username.Text = Sesion.Instancia().UsuarioActual.Username;
         }
 
         private void Agenda_Load(object sender, EventArgs e)
@@ -71,6 +73,21 @@ namespace NuSmart
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_gestionar_mi_cuenta_Click(object sender, EventArgs e)
+        {
+            new MiCuenta().Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new NutricionistaABM().Show();
         }
     }
 }

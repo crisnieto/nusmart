@@ -12,7 +12,7 @@ namespace NuSmart.BE
         int _dvh;
         string _password;
         string _username;
-        List<Rol> roles;
+        List<Rol> roles;    
 
         public string Username { get => _username; set => _username = value; }
         public string Password { get => _password; set => _password = value; }

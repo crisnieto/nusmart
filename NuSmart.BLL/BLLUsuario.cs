@@ -11,10 +11,12 @@ namespace NuSmart.BLL
     public class BLLUsuario
     {
         public BLLRol bllRol;
+        public DALUsuario dalUsuario;
 
         public BLLUsuario()
         {
             bllRol = new BLLRol();
+            dalUsuario = new DALUsuario();
         }
 
         public int calcularDVH()
@@ -22,14 +24,13 @@ namespace NuSmart.BLL
             return 0;
         }
 
-        public Usuario conseguirUsuario(Usuario usuario)
+        public Usuario conseguirUsuarioLogIn(Usuario usuario)
         {
             try {
                 Seguridad seguridad = new Seguridad();
                 usuario.Password = seguridad.encriptar(usuario.Password);
 
-                DALUsuario dalUsuario = new DALUsuario();
-                Usuario usuarioConseguido = dalUsuario.conseguir(usuario);
+                Usuario usuarioConseguido = dalUsuario.conseguir(usuario.Username);
 
                 if (seguridad.validar(usuarioConseguido, usuario))
                 {
@@ -48,6 +49,28 @@ namespace NuSmart.BLL
                 throw new Exception("No se pudo loguear correctamente");
 
             }
+        }
+
+        public Usuario conseguir(string usuario)
+        {
+            return dalUsuario.conseguir(usuario);
+        }
+
+        public int actualizarPassword(Usuario usuario, string password)
+        {
+            Console.WriteLine("Nueva contraseña: " + password);
+            usuario.Password = new Seguridad().encriptar(password);
+            Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
+            usuario.DVH = calcularDVH(usuario);
+            dalUsuario.actualizarContraseña(usuario);
+            return new DVVH().actualizarDVV("Usuario");
+        }
+
+        public int crearUsuario(Usuario usuario, string password)
+        {
+            usuario.Password = new Seguridad().encriptar(password);
+            usuario.DVH = calcularDVH(usuario);
+            return dalUsuario.ingresar(usuario);
         }
 
         public bool EliminarUsuario(int id)
@@ -72,7 +95,7 @@ namespace NuSmart.BLL
 
         public int calcularDVH(Usuario user)
         {
-            string concatenacion = Convert.ToString(user.ID) + user.Username + user.Password;
+            string concatenacion = user.Username + user.Password;
             Seguridad seguridad = new Seguridad();
             string md5 = seguridad.encriptar(concatenacion);
 
@@ -91,7 +114,7 @@ namespace NuSmart.BLL
             }
 
             Console.WriteLine("DVH CONSEGUIDO = {0}", DVH);
-            return 0;
+            return DVH;
         }
     }
 }

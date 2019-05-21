@@ -71,6 +71,7 @@
     <Compile Include="Idioma.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="Leyenda.cs" />
+    <Compile Include="Nutricionista.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />

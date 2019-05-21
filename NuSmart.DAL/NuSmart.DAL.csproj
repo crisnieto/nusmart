@@ -52,6 +52,7 @@
     <Compile Include="DALBackupManager.cs" />
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALLeyenda.cs" />
+    <Compile Include="DALNutricionista.cs" />
     <Compile Include="DALRol.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="DVVH.cs" />

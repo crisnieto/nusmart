@@ -38,6 +38,12 @@ namespace NuSmart.BLL
             return dvvCalculado;
         }
 
+        public int actualizarDVV(string tabla)
+        {
+            DAL.DVVH dalDVVH = new DAL.DVVH();
+            return dalDVVH.actualizarDVV(tabla);
+        }
+
         public bool compararCalculadoConObtenido(int calculado, int obtenido)
         {
 

@@ -80,6 +80,18 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiCuenta.Designer.cs">
+      <DependentUpon>MiCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NutricionistaABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NutricionistaABM.Designer.cs">
+      <DependentUpon>NutricionistaABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Agenda.resx">
@@ -99,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiCuenta.resx">
+      <DependentUpon>MiCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NutricionistaABM.resx">
+      <DependentUpon>NutricionistaABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

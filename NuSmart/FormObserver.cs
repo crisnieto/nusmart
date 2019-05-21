@@ -55,8 +55,6 @@ namespace NuSmart
 
         private void FormObserver_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Application.OpenForms.Count == 0)
-                Application.Exit();
         }
     }
 }
