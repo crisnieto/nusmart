@@ -80,5 +80,21 @@ namespace NuSmart.BLL
         {
             return dalIdioma.conseguirIdiomas();
         }
+
+        public int guardar(Idioma idioma)
+        {
+            return dalIdioma.guardar(idioma);
+        }
+
+        public int eliminar(int idiomaId)
+        {
+            return dalIdioma.eliminar(idiomaId);
+        }
+
+        public int modificar(Idioma idioma)
+        {
+            return dalIdioma.modificar(idioma);
+        }
+
     }
- }
+}

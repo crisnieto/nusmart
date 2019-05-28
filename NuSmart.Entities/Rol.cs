@@ -21,5 +21,11 @@ namespace NuSmart.BE
         abstract public void eliminar(Rol rol);
 
         abstract public List<Rol> mostrar();
+
+        public override string ToString()
+        {
+            return this.codigo + " - " + this.descripcion;
+        }
+
     }
 }

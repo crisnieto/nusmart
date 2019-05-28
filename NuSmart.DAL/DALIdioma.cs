@@ -35,7 +35,7 @@ namespace NuSmart.DAL
         
         public List<Idioma> conseguirIdiomas()
         {
-            string textoComando = "SELECT * FROM IDIOMA";
+            string textoComando = "SELECT idiomaID, nombreIdioma, descripcionIdioma FROM IDIOMA";
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
 
@@ -52,6 +52,33 @@ namespace NuSmart.DAL
 
             return listaIdioma;
            
+        }
+
+        public int guardar(Idioma idioma)
+        {
+            string textoComando = "INSERT INTO Idioma (nombreIdioma, descripcionIdioma) VALUES (@NOMBRE,@DESCRIPCION)";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@NOMBRE", idioma.NombreIdioma));
+            lista.Add(new SqlParameter("@DESCRIPCION", idioma.DescripcionIdioma));
+            return sqlHelper.ejecutarNonQuery(textoComando, lista);
+        }
+
+        public int eliminar(int idiomaID)
+        {
+            string textoComando = "DELETE FROM Idioma WHERE idiomaId = @ID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@ID", idiomaID));
+            return sqlHelper.ejecutarNonQuery(textoComando, lista);
+        }
+
+        public int modificar(Idioma idioma)
+        {
+            string textoComando = "UPDATE Idioma SET nombreIdioma = @NOMBRE, descripcionIdioma = @DESCRIPCION WHERE idiomaID = @ID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@NOMBRE", idioma.NombreIdioma));
+            lista.Add(new SqlParameter("@DESCRIPCION", idioma.DescripcionIdioma));
+            lista.Add(new SqlParameter("@ID", idioma.Id));
+            return sqlHelper.ejecutarNonQuery(textoComando, lista);
         }
     }
 }

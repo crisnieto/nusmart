@@ -198,5 +198,10 @@ namespace NuSmart
         {
             crearFormulario(typeof(GestionNutricionistas));
         }
+
+        private void gestionarIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionIdioma));
+        }
     }
 }

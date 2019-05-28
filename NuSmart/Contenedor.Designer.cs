@@ -47,6 +47,7 @@
             this.menu_gestion_backup = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionarIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +182,8 @@
             // menu_idioma
             // 
             this.menu_idioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_cambiar_idioma});
+            this.menu_cambiar_idioma,
+            this.gestionarIdiomasToolStripMenuItem});
             this.menu_idioma.Name = "menu_idioma";
             this.menu_idioma.Size = new System.Drawing.Size(100, 38);
             this.menu_idioma.Text = "Idioma";
@@ -192,6 +194,13 @@
             this.menu_cambiar_idioma.Size = new System.Drawing.Size(324, 38);
             this.menu_cambiar_idioma.Text = "Cambiar Idioma";
             this.menu_cambiar_idioma.Click += new System.EventHandler(this.cambiarIdiomaToolStripMenuItem_Click);
+            // 
+            // gestionarIdiomasToolStripMenuItem
+            // 
+            this.gestionarIdiomasToolStripMenuItem.Name = "gestionarIdiomasToolStripMenuItem";
+            this.gestionarIdiomasToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.gestionarIdiomasToolStripMenuItem.Text = "Gestionar Idiomas";
+            this.gestionarIdiomasToolStripMenuItem.Click += new System.EventHandler(this.gestionarIdiomasToolStripMenuItem_Click);
             // 
             // Contenedor
             // 
@@ -233,5 +242,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_turnos;
         private System.Windows.Forms.ToolStripMenuItem menu_pacientes;
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_pacientes;
+        private System.Windows.Forms.ToolStripMenuItem gestionarIdiomasToolStripMenuItem;
     }
 }
