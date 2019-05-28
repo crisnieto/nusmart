@@ -45,7 +45,7 @@ namespace NuSmart
             try { 
                 Sesion.Instancia().UsuarioActual = bllUsuario.conseguirUsuarioLogIn(usuario);
                 new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Baja);
-                new Agenda().Show();
+                new Contenedor().Show();
                 this.Close();
                             } catch(Exception exception)
             {

@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agenda.cs">
+    <Compile Include="Contenedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Agenda.Designer.cs">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <Compile Include="Contenedor.Designer.cs">
+      <DependentUpon>Contenedor.cs</DependentUpon>
     </Compile>
     <Compile Include="BackupManager.cs">
       <SubType>Form</SubType>
@@ -67,7 +67,6 @@
     <Compile Include="FormObserver.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IObserver.cs" />
     <Compile Include="Lenguaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,16 +85,22 @@
     <Compile Include="MiCuenta.Designer.cs">
       <DependentUpon>MiCuenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="NutricionistaABM.cs">
+    <Compile Include="GestionNutricionistas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NutricionistaABM.Designer.cs">
-      <DependentUpon>NutricionistaABM.cs</DependentUpon>
+    <Compile Include="GestionNutricionistas.Designer.cs">
+      <DependentUpon>GestionNutricionistas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Agenda.resx">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <Compile Include="Turnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Turnos.Designer.cs">
+      <DependentUpon>Turnos.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Contenedor.resx">
+      <DependentUpon>Contenedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackupManager.resx">
       <DependentUpon>BackupManager.cs</DependentUpon>
@@ -115,8 +120,8 @@
     <EmbeddedResource Include="MiCuenta.resx">
       <DependentUpon>MiCuenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NutricionistaABM.resx">
-      <DependentUpon>NutricionistaABM.cs</DependentUpon>
+    <EmbeddedResource Include="GestionNutricionistas.resx">
+      <DependentUpon>GestionNutricionistas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Turnos.resx">
+      <DependentUpon>Turnos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,6 +161,7 @@
   <ItemGroup>
     <Content Include="Resources\bananas-carrots-cherries.jpg" />
     <Content Include="Resources\english.jpg" />
+    <Content Include="Resources\food_main.jpg" />
     <Content Include="Resources\login.jpeg" />
     <Content Include="Resources\spanish.jpg" />
   </ItemGroup>

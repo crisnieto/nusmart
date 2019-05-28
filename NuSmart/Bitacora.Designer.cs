@@ -87,7 +87,6 @@
             this.Controls.Add(this.bitacora_btn_buscar);
             this.Controls.Add(this.listBox1);
             this.Name = "Bitacora";
-            this.Text = "Bitacora";
             this.Load += new System.EventHandler(this.Bitacora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -55,6 +55,7 @@ namespace NuSmart
                 if (bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName)) == 0)
                 {
                     MessageBox.Show("OK!");
+                    Application.Exit();
                 }
             }
 

@@ -56,6 +56,9 @@ insert into Permiso (descripcion, codigo) values ('Gestión de paciente', 'GE100'
 
 select * from JoinUsuarioPermiso
 
+select * from Usuario
+insert into JoinUsuarioPermiso(usuarioID, permisoID) values (9, 48)
+
 select * from Permiso where permisoID = 38
 select * from Permiso_Jerarquia
 select * from permiso where permisoid=5
@@ -98,6 +101,8 @@ insert into JoinUsuarioPermiso (usuarioID, permisoID) values
 (1, 45)
 
 select * from Permiso_Jerarquia
+
+select * from Idioma
 
 select permisoID from JoinUsuarioPermiso where usuarioID = 1
 

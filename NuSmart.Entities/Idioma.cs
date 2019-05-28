@@ -19,5 +19,10 @@ namespace NuSmart.BE
         public string NombreIdioma { get => _nombreIdioma; set => _nombreIdioma = value; }
         public int Id { get => _id; set => _id = value; }
         public List<Leyenda> Leyendas { get => leyendas; set => leyendas = value; }
+
+        public override string ToString()
+        {
+            return this.NombreIdioma;
+        }
     }
 }

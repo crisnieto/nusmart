@@ -22,7 +22,7 @@ namespace NuSmart
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public void Actualizar()
+        public virtual void Actualizar()
         {
             conseguirLeyendas();
         }
@@ -33,9 +33,40 @@ namespace NuSmart
 
             foreach (Control control in this.Controls)
             {
-                control.Text = bllIdioma.conseguirLeyenda(control);
+                control.Text = bllIdioma.conseguirLeyenda(control);                
             }
         }
+
+        protected void reloadMainMenu(MenuStrip menu)
+        {
+            foreach (ToolStripMenuItem subitem in menu.Items) // access each items
+            {
+                subitem.Text = bllIdioma.conseguirLeyendaMenu(subitem);
+                if (subitem.HasDropDownItems)
+                {
+                    foreach(ToolStripMenuItem child in subitem.DropDownItems)
+                    {
+                        reloadMainMenu(child);
+                    }
+                }
+            }
+        }
+
+        private void reloadMainMenu(ToolStripMenuItem item)
+        {
+            item.Text = bllIdioma.conseguirLeyendaMenu(item);
+            if (item.HasDropDownItems)
+            {
+                foreach (ToolStripMenuItem subitem in item.DropDownItems) // access each items
+                {
+                    foreach (ToolStripMenuItem dropdownItem in subitem.DropDownItems) {
+                        reloadMainMenu(dropdownItem);
+                    }
+                }
+            }
+        }
+
+
 
         private void InitializeComponent()
         {
@@ -43,10 +74,8 @@ namespace NuSmart
             // 
             // FormObserver
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(274, 229);
             this.Name = "FormObserver";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormObserver_FormClosed);
             this.Load += new System.EventHandler(this.FormObserver_Load);
             this.ResumeLayout(false);
 
@@ -56,10 +85,8 @@ namespace NuSmart
         {
 
         }
-
-        private void FormObserver_FormClosed(object sender, FormClosedEventArgs e)
-        {
-        }
+   
+ 
     }
 }
 

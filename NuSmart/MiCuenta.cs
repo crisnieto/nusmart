@@ -12,13 +12,14 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class MiCuenta : Form
+    public partial class MiCuenta : FormObserver
     {
         BLLNutricionista bllNutricionista;
 
         public MiCuenta()
         {
             InitializeComponent();
+            setup();
             bllNutricionista = new BLLNutricionista();
         }
 

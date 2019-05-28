@@ -12,11 +12,17 @@ namespace NuSmart.BLL
     public class BLLIdioma
     {
 
-        public Idioma conseguirIdioma(int idiomaId)
+        DALIdioma dalIdioma;
+
+        public BLLIdioma()
         {
-            DALIdioma dalIdioma = new DALIdioma();
+            dalIdioma = new DALIdioma();
+        }
+
+        public Idioma establecerIdioma(int idiomaId)
+        {
             BLLLeyenda bllLeyenda = new BLLLeyenda();
-            
+
             //Va a buscar en la BD e instancia el singleton Idioma. Referencio el singleton a la variable idioma
             //para hacerlo mas semantico
             Idioma idioma = dalIdioma.conseguir(idiomaId);
@@ -27,7 +33,7 @@ namespace NuSmart.BLL
         public void Attach(IObserver observer)
         {
             Sesion.Instancia().Observers.Add(observer);
-            
+
         }
 
         public void Detach(IObserver observer)
@@ -46,7 +52,8 @@ namespace NuSmart.BLL
         public string conseguirLeyenda(Control control)
         {
             Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.Nombre == control.Name);
-            if (leyenda != null){
+            if (leyenda != null)
+            {
                 return leyenda.Texto;
             }
             else
@@ -54,5 +61,24 @@ namespace NuSmart.BLL
                 return control.Text;
             }
         }
+
+        public string conseguirLeyendaMenu(ToolStripMenuItem item)
+        {
+            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.Nombre == item.Name);
+            if (leyenda != null)
+            {
+                return leyenda.Texto;
+            }
+            else
+            {
+                return item.Text;
+            }
+        }
+
+
+        public List<Idioma> conseguirIdiomas()
+        {
+            return dalIdioma.conseguirIdiomas();
+        }
     }
-}
+ }

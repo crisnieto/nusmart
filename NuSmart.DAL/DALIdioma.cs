@@ -32,5 +32,26 @@ namespace NuSmart.DAL
 
             return idiomaConseguido;
         }
+        
+        public List<Idioma> conseguirIdiomas()
+        {
+            string textoComando = "SELECT * FROM IDIOMA";
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+
+            List<Idioma> listaIdioma = new List<Idioma>();
+            
+            foreach(DataRow dr in dt.Rows)
+            {
+                Idioma idioma = new Idioma();
+                idioma.DescripcionIdioma = (string)dr["descripcionIdioma"];
+                idioma.NombreIdioma = (string)dr["nombreIdioma"];
+                idioma.Id = (int)dr["idiomaID"];
+                listaIdioma.Add(idioma);
+            }
+
+            return listaIdioma;
+           
+        }
     }
 }

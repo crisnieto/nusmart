@@ -16,6 +16,7 @@ namespace NuSmart
     public partial class Lenguaje : Form
     {
         BLLIdioma bllIdioma;
+        bool flagCargando = true;
         public Lenguaje()
         {
             InitializeComponent();
@@ -28,14 +29,12 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(1);
             validarNavegación();
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Sesion.Instancia().IdiomaActual = bllIdioma.conseguirIdioma(2);
             validarNavegación();
         }
 
@@ -56,13 +55,28 @@ namespace NuSmart
 
         private void Lenguaje_Load(object sender, EventArgs e)
         {
-
+            BLLIdioma bllIdioma = new BLLIdioma();
+            listBox1.DataSource = bllIdioma.conseguirIdiomas();
+            listBox1.SelectedIndex = -1;
+            flagCargando = false;
         }
 
         private void Lenguaje_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
+        }
+
+        public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!flagCargando) { 
+                Sesion.Instancia().IdiomaActual = bllIdioma.establecerIdioma(((Idioma)listBox1.SelectedItem).Id);
+                validarNavegación();
+            }
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
