@@ -48,6 +48,7 @@
             this.menu_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,14 +83,14 @@
             // menu_gestion_micuenta
             // 
             this.menu_gestion_micuenta.Name = "menu_gestion_micuenta";
-            this.menu_gestion_micuenta.Size = new System.Drawing.Size(324, 38);
+            this.menu_gestion_micuenta.Size = new System.Drawing.Size(298, 38);
             this.menu_gestion_micuenta.Text = "Gestionar Cuenta";
             this.menu_gestion_micuenta.Click += new System.EventHandler(this.menu_gestionar_cuenta_Click);
             // 
             // menu_cerrar_sesion
             // 
             this.menu_cerrar_sesion.Name = "menu_cerrar_sesion";
-            this.menu_cerrar_sesion.Size = new System.Drawing.Size(324, 38);
+            this.menu_cerrar_sesion.Size = new System.Drawing.Size(298, 38);
             this.menu_cerrar_sesion.Text = "Cerrar Sesión";
             // 
             // menu_turnos
@@ -103,7 +104,7 @@
             // menu_gestion_turnos
             // 
             this.menu_gestion_turnos.Name = "menu_gestion_turnos";
-            this.menu_gestion_turnos.Size = new System.Drawing.Size(324, 38);
+            this.menu_gestion_turnos.Size = new System.Drawing.Size(304, 38);
             this.menu_gestion_turnos.Text = "Gestion de turnos";
             this.menu_gestion_turnos.Click += new System.EventHandler(this.gestionarTurnosToolStripMenuItem_Click);
             // 
@@ -183,7 +184,8 @@
             // 
             this.menu_idioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_cambiar_idioma,
-            this.gestionarIdiomasToolStripMenuItem});
+            this.gestionarIdiomasToolStripMenuItem,
+            this.gestionarEtiquetasToolStripMenuItem});
             this.menu_idioma.Name = "menu_idioma";
             this.menu_idioma.Size = new System.Drawing.Size(100, 38);
             this.menu_idioma.Text = "Idioma";
@@ -201,6 +203,13 @@
             this.gestionarIdiomasToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
             this.gestionarIdiomasToolStripMenuItem.Text = "Gestionar Idiomas";
             this.gestionarIdiomasToolStripMenuItem.Click += new System.EventHandler(this.gestionarIdiomasToolStripMenuItem_Click);
+            // 
+            // gestionarEtiquetasToolStripMenuItem
+            // 
+            this.gestionarEtiquetasToolStripMenuItem.Name = "gestionarEtiquetasToolStripMenuItem";
+            this.gestionarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.gestionarEtiquetasToolStripMenuItem.Text = "Gestionar Etiquetas";
+            this.gestionarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.gestionarEtiquetasToolStripMenuItem_Click);
             // 
             // Contenedor
             // 
@@ -243,5 +252,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu_pacientes;
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_pacientes;
         private System.Windows.Forms.ToolStripMenuItem gestionarIdiomasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionarEtiquetasToolStripMenuItem;
     }
 }

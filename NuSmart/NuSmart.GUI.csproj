@@ -73,6 +73,12 @@
     <Compile Include="GestionIdioma.Designer.cs">
       <DependentUpon>GestionIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionLeyenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionLeyenda.Designer.cs">
+      <DependentUpon>GestionLeyenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lenguaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionIdioma.resx">
       <DependentUpon>GestionIdioma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionLeyenda.resx">
+      <DependentUpon>GestionLeyenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lenguaje.resx">
       <DependentUpon>Lenguaje.cs</DependentUpon>

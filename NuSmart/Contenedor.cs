@@ -203,5 +203,10 @@ namespace NuSmart
         {
             crearFormulario(typeof(GestionIdioma));
         }
+
+        private void gestionarEtiquetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionLeyenda));
+        }
     }
 }
