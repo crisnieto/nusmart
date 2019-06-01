@@ -131,8 +131,12 @@ select permisoID, codigo, descripcion from Permiso where permisoID = 45
 
 select A.permisoID, B.codigo, B.descripcion,  C.IdPadrePermiso, C.IdHijoPermiso from JoinUsuarioPermiso A
 JOIN (select permisoID, codigo, descripcion from Permiso) B ON (A.permisoID = B.permisoId)
-JOIN (select IdPadrePermiso, IdHijoPermiso from Permiso_Jerarquia) C ON (a.permisoID = c.IdHijoPermiso )
-where A.usuarioID = 6
+JOIN (select IdPadrePermiso, IdHijoPermiso from Permiso_Jerarquia) C ON (a.permisoID = c.IdPadrePermiso )
+where A.usuarioID = 1
+
+
+select * from JoinUsuarioPermiso where usuarioID = 6
+
 
 
 select * from permiso id where permisoID IN (36, 37, 38, 43)

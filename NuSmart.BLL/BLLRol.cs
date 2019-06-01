@@ -11,11 +11,17 @@ namespace NuSmart.BLL
 {
     public class BLLRol
     {
+
+        DALRol dalRol;
+
+        public BLLRol()
+        {
+            dalRol = new DALRol();
+        }
+
        public List<Rol> conseguir( Usuario usuario )
         {
             Familia familia = new Familia();
-
-            DALRol dalRol = new DALRol();
 
             List<Rol> roles = dalRol.conseguirRolesDeUsuario(usuario);
             return roles;
@@ -23,12 +29,27 @@ namespace NuSmart.BLL
 
         public void eliminar()
         {
-
+            
         }
 
         public void insertar()
         {
 
         }
+
+        public List<Rol> conseguirRolesHijosdeFamilia(Familia familia)
+        {
+            return dalRol.conseguirHijosDeFamilia(familia);
+        }
+
+        public bool validarCodigoDeRol(string codigo)
+        {
+            if(codigo.Length > 0) {
+            return dalRol.validarCodigoDeRol(codigo);
+            }
+            return false;
+        }
+
+           
     }
 }

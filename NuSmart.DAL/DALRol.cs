@@ -93,6 +93,26 @@ namespace NuSmart.DAL
                 return permiso;
             }
         }
+
+
+        public List<Familia> conseguirFamilias()
+        {
+            String textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID)";
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+
+            List<Familia> listaFamilia = new List<Familia>();
+
+            foreach(DataRow dr in dt.Rows)
+            {
+                Familia familia = new Familia();
+                familia.Codigo = (string)dr["codigo"];
+                familia.Id = (int)dr["idPadrePermiso"];
+                familia.Descripcion = (string)dr["descripcion"];
+                listaFamilia.Add(familia);
+            }
+
+            return listaFamilia;
+        }
     
 
         public void eliminar()
@@ -105,5 +125,63 @@ namespace NuSmart.DAL
 
         }
 
+        public List<Rol> conseguirHijosDeFamilia(Familia familia)
+        {
+            List<Rol> listaRoles = new List<Rol>();
+            llenarPermisosDeFamilia(familia.Id, listaRoles);
+            llenarFamiliasDeFamilia(familia.Id, listaRoles);
+
+            return listaRoles;
+        }
+
+        public void llenarFamiliasDeFamilia(int familiaID, List<Rol> listaRoles)
+        {
+            string textoComando = "select distinct a.IdHijoPermiso, b.codigo, b.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdHijoPermiso = B.permisoID) " +
+          "where IdPadrePermiso = @IdFamilia and idHijoPermiso in (select IdPadrePermiso from Permiso_Jerarquia);";
+
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@IdFamilia", familiaID));
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Familia familia = new Familia();
+                familia.Codigo = (string)dr["codigo"];
+                familia.Descripcion = (string)dr["descripcion"];
+                familia.Id = (int)dr["IdHijoPermiso"];
+                listaRoles.Add(familia);
+            }
+        }
+
+        public void llenarPermisosDeFamilia(int familiaID, List<Rol> listaRoles)
+        {
+            string textoComando = "select distinct a.IdHijoPermiso, b.codigo, b.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdHijoPermiso = B.permisoID) " +
+                      "where IdPadrePermiso = @IdFamilia and idHijoPermiso not in (select IdPadrePermiso from Permiso_Jerarquia);";
+
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@IdFamilia", familiaID));
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Permiso permiso = new Permiso();
+                permiso.Codigo = (string)dr["codigo"];
+                permiso.Descripcion = (string)dr["descripcion"];
+                permiso.Id = (int)dr["IdHijoPermiso"];
+                listaRoles.Add(permiso);
+            }
+        }
+
+        public bool validarCodigoDeRol(string codigo)
+        {
+            //Verifico que no existan duplicados de Código
+            string textoComando = "select codigo from Permiso where codigo = @CODIGO";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@CODIGO",codigo));
+
+            return sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0].Rows.Count == 0;
+        }
     }
 }

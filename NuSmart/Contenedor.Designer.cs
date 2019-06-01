@@ -49,6 +49,8 @@
             this.menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónDeRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,12 +65,14 @@
             this.menu_dieta_ejercicio,
             this.menu_gestion_bitacora,
             this.menu_gestion_backup,
+            this.rolesToolStripMenuItem,
             this.menu_idioma});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1182, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1335, 42);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // menu_micuenta
             // 
@@ -211,13 +215,28 @@
             this.gestionarEtiquetasToolStripMenuItem.Text = "Gestionar Etiquetas";
             this.gestionarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.gestionarEtiquetasToolStripMenuItem_Click);
             // 
+            // rolesToolStripMenuItem
+            // 
+            this.rolesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónDeRolesToolStripMenuItem});
+            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
+            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(83, 38);
+            this.rolesToolStripMenuItem.Text = "Roles";
+            // 
+            // gestiónDeRolesToolStripMenuItem
+            // 
+            this.gestiónDeRolesToolStripMenuItem.Name = "gestiónDeRolesToolStripMenuItem";
+            this.gestiónDeRolesToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.gestiónDeRolesToolStripMenuItem.Text = "Gestión de Roles";
+            this.gestiónDeRolesToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeRolesToolStripMenuItem_Click);
+            // 
             // Contenedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1182, 740);
+            this.ClientSize = new System.Drawing.Size(1335, 740);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -253,5 +272,7 @@
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_pacientes;
         private System.Windows.Forms.ToolStripMenuItem gestionarIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarEtiquetasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónDeRolesToolStripMenuItem;
     }
 }

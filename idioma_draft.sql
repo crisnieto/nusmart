@@ -45,19 +45,24 @@ insert into Leyenda (nombreLeyenda, texto, idiomaID) values
 
 
 insert into Leyenda (nombreLeyenda, texto, idiomaID) values 
-('backup_lbl_title', 'Gestión de Backup', 1),
-('backup_lbl_title', 'Backup Management', 2),
-('backup_btn_crear', 'Crear Backup', 1),
-('backup_btn_crear', 'Create Backup', 2),
-('backup_btn_restaurar', 'Restaurar Base de Datos', 1),
-('backup_btn_restaurar', 'Restore Database', 2)
+('menu_micuenta', 'Mi Cuenta', 1),
+('menu_micuenta', 'My Account', 2),
+('menu_turnos', 'Turnos', 1),
+('menu_turnos', 'Appointments', 2),
+('menu_pacientes', 'Pacientes', 1),
+('menu_pacientes', 'Patients', 2),
+('menu_nutricionistas','Nutricionistas', 1),
+('menu_nutricionistas','Nutricionists', 2),
+('menu_dieta_ejercicio','Dieta y Ejercicios', 1),
+('menu_dieta_ejercicio','Diet and Exercices', 2),
+('menu_idioma','Idioma', 1),
+('menu_idioma','Language', 2)
+
 
 
 insert into Leyenda (nombreLeyenda, texto, idiomaID) values 
-('bitacora_lbl_usuarios', 'Usuarios', 1),
+('menu_cambiar_idioma', 'Usuarios', 1),
 ('bitacora_lbl_usuarios', 'Usuarios', 2),
-('bitacora_btn_buscar', 'Buscar Eventos', 1),
-('bitacora_btn_buscar', 'Search Events', 2)
 
 update leyenda set texto = 'Users' where nombreLeyenda = 'bitacora_lbl_usuarios' and IdiomaID = 2
 
@@ -70,4 +75,16 @@ select * from usuario
 select * from DVV
 
 
+select * from leyenda where nombreLeyenda LIKE '%menu%'; 
+
+update leyenda set nombreLeyenda = replace(nombreLeyenda, 'menu_gestion_gestion_', 'menu_gestion_')
+where nombreLeyenda LIKE 'menu_gestion_gestion_%';
+
+update leyenda set nombreLeyenda = 'menu_cerrar_sesion' where nombreLeyenda = 'menu_gestion_cerrar'
+
+
 update DVV set valor = 105075 where idDVV=1
+
+select distinct nombreLeyenda from leyenda
+
+select * from leyenda

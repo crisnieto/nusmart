@@ -208,5 +208,15 @@ namespace NuSmart
         {
             crearFormulario(typeof(GestionLeyenda));
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void gestiónDeRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(Roles));
+        }
     }
 }
