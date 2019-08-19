@@ -160,3 +160,9 @@ update usuario set password ='561b8551f6f11713c9f5440db30ad42c' where username =
 select * from Permiso where codigo = 'OP46';
 
 select * from Permiso_Jerarquia
+
+select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID)
+
+select distinct a.IdHijoPermiso, b.codigo, b.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdHijoPermiso = B.permisoID)
+where IdPadrePermiso = 48 and idHijoPermiso not in (select IdPadrePermiso from Permiso_Jerarquia);
+

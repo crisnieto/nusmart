@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class Roles : FormObserver
+    public partial class GestionRoles : FormObserver
     {
 
         BLLFamilia bllFamilia;
@@ -21,7 +21,7 @@ namespace NuSmart
         Familia familiaSeleccionada;
         Permiso permisoSeleccionado;
         
-        public Roles()
+        public GestionRoles()
         {
             InitializeComponent();
             setup();
@@ -81,16 +81,31 @@ namespace NuSmart
             }
         }
 
+        public void actualizarGrids()
+        {
+            dataGridView1.DataSource = bllFamilia.conseguirFamilias();
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             if (bllRol.validarCodigoDeRol(roles_txt_codigo_permiso.Text))
             {
-                
+                Permiso nuevoPermiso = new Permiso();
+                nuevoPermiso.Descripcion = roles_txt_descripcion_permiso.Text;
+                nuevoPermiso.Codigo = roles_txt_codigo_permiso.Text;
+                bllFamilia.agregarAFamilia(familiaSeleccionada, nuevoPermiso);
+                actualizarGrids();
             }
             else
             {
                 MessageBox.Show("Error: Ya existe el codigo ingresado!");
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            bllRol.eliminar(permisoSeleccionado);
+            actualizarGrids();
         }
     }
 }

@@ -216,7 +216,7 @@ namespace NuSmart
 
         private void gestiónDeRolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            crearFormulario(typeof(Roles));
+            crearFormulario(typeof(GestionRoles));
         }
     }
 }

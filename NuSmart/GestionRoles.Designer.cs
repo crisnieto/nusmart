@@ -1,6 +1,6 @@
 ﻿namespace NuSmart
 {
-    partial class Roles
+    partial class GestionRoles
     {
         /// <summary>
         /// Required designer variable.
@@ -139,6 +139,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Borrar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -159,7 +160,7 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Roles
+            // GestionRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,7 +178,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Roles";
+            this.Name = "GestionRoles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Load += new System.EventHandler(this.Roles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

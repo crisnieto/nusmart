@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="DALBackupManager.cs" />
     <Compile Include="DALBitacora.cs" />
+    <Compile Include="DALComando.cs" />
+    <Compile Include="DALFamilia.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALNutricionista.cs" />
     <Compile Include="DALRol.cs" />

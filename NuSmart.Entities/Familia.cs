@@ -24,7 +24,7 @@ namespace NuSmart.BE
 
         public override void eliminar(Rol rol)
         {
-
+            roles.Remove(rol);
         }
 
         public override List<Rol> mostrar()

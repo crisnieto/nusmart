@@ -97,7 +97,7 @@ namespace NuSmart.DAL
 
         public List<Familia> conseguirFamilias()
         {
-            String textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID)";
+            string textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID)";
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
 
             List<Familia> listaFamilia = new List<Familia>();
@@ -180,8 +180,53 @@ namespace NuSmart.DAL
             string textoComando = "select codigo from Permiso where codigo = @CODIGO";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@CODIGO",codigo));
-
             return sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0].Rows.Count == 0;
+        }
+
+        public int agregarAFamilia(Rol rolPadre, Rol rolHijo)
+        {
+            string textoComandoNuevo = "insert into Permiso (descripcion, codigo) values (@DESCRIPCION, @CODIGO)";
+            List<SqlParameter> listaNuevo = new List<SqlParameter>();
+            listaNuevo.Add(new SqlParameter("@DESCRIPCION", rolHijo.Descripcion));
+            listaNuevo.Add(new SqlParameter("@CODIGO", rolHijo.Codigo));
+
+
+            string textoComandoAsociar = "insert into Permiso_Jerarquia(IdPadrePermiso, IdHijoPermiso) values " +
+                                         "(@IDPADRE, (select permisoID from Permiso where codigo = @CODIGO))";
+
+            List<SqlParameter> listaAsociar = new List<SqlParameter>();
+            listaAsociar.Add(new SqlParameter("@IDPADRE", rolPadre.Id));
+            listaAsociar.Add(new SqlParameter("@CODIGO", rolHijo.Codigo));
+
+            Dictionary<string, List<SqlParameter>> comandosTransaccionales = new Dictionary<string, List<SqlParameter>>();
+            comandosTransaccionales.Add(textoComandoNuevo, listaNuevo);
+            comandosTransaccionales.Add(textoComandoAsociar, listaAsociar);
+
+            return sqlHelper.ejecutarTransaccion(comandosTransaccionales);
+        }
+
+        public int eliminarRecursivamente(int id)
+        {
+            string textoComandoHijos = "select idhijopermiso from permiso_jerarquia where IdPadrePermiso = @IDPadre";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@IDPadre", id));
+
+            DataTable hijos = sqlHelper.ejecutarDataAdapter(textoComandoHijos, lista).Tables[0];
+            
+            foreach(DataRow dr in hijos.Rows)
+            {
+                eliminarRecursivamente((int)dr["idHijoPermiso"]);
+            }
+
+            string textoEliminarAsociación = "delete from permiso_jerarquia where IdHijoPermiso = @ID";
+            List<SqlParameter> listaEliminarAsociacion = new List<SqlParameter>();
+            listaEliminarAsociacion.Add(new SqlParameter("@ID", id));
+            sqlHelper.ejecutarNonQuery(textoEliminarAsociación, listaEliminarAsociacion);
+
+            string textoEliminarPadre = "delete from permiso where permisoId = @ID";
+            List<SqlParameter> listaEliminar = new List<SqlParameter>();
+            listaEliminar.Add(new SqlParameter("@ID", id));
+            return sqlHelper.ejecutarNonQuery(textoEliminarPadre, listaEliminar);
         }
     }
 }

@@ -27,9 +27,9 @@ namespace NuSmart.BLL
             return roles;
         }
 
-        public void eliminar()
+        public void eliminar(Rol rol)
         {
-            
+            dalRol.eliminarRecursivamente(rol.Id);
         }
 
         public void insertar()

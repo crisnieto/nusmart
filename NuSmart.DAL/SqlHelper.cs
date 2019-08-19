@@ -51,7 +51,37 @@ namespace NuSmart.DAL
             cerrarConexion(conexion);
             return 0;
         }
-        
+
+        public int ejecutarTransaccion(Dictionary<string, List<SqlParameter>> listaComandoYParametros)
+        {
+            SqlConnection conexion = conseguirStringConexion();
+            List<SqlCommand> comandos = new List<SqlCommand>();
+            SqlTransaction transaccion = null;
+            try
+            {
+                abrirConexion(conexion);
+                transaccion = conexion.BeginTransaction();
+                foreach (KeyValuePair<string, List<SqlParameter>> entry in listaComandoYParametros)
+                {
+                    SqlCommand comando = nuevoComando(entry.Key, conexion);
+                    comando.Transaction = transaccion;
+                    agregarParametro(comando, entry.Value);
+                    ejecutarComando(comando);   
+                }
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaccion.Rollback();
+                return 1;
+            }
+            finally
+            {
+                cerrarConexion(conexion);
+            }
+            return 0;
+        }
+
         public DataSet ejecutarSelect(SqlCommand comando)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -66,7 +96,7 @@ namespace NuSmart.DAL
             return new SqlCommand(textoComando, conexion);
         }
 
-        public DataSet ejecutarDataAdapter(String textoComando, List<SqlParameter> lista = null)
+        public DataSet ejecutarDataAdapter(string textoComando, List<SqlParameter> lista = null)
         {
             SqlConnection conexion = conseguirStringConexion();
             SqlCommand comando = nuevoComando(textoComando, conexion);
@@ -79,5 +109,6 @@ namespace NuSmart.DAL
             cerrarConexion(conexion);
             return data;
         }
+
     }
 }
