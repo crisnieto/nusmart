@@ -30,7 +30,7 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@ACTIVIDAD", bitacora.Actividad));
             lista.Add(new SqlParameter("@MENSAJE", bitacora.Descripción));
             lista.Add(new SqlParameter("@CRITICIDAD", bitacora.TipoCriticidad));
-            lista.Add(new SqlParameter("@USUARIO", bitacora.Usuario.ID));
+            lista.Add(new SqlParameter("@USUARIO", bitacora.Usuario.Id));
             SqlParameter parametroFecha = new SqlParameter("@FECHA", SqlDbType.DateTime);
             parametroFecha.Value = bitacora.Fecha;
             lista.Add(parametroFecha);
@@ -45,7 +45,7 @@ namespace NuSmart.DAL
             "WHERE a.usuarioID = @IDUSUARIO ORDER BY b.fecha DESC";
 
             List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@IDUSUARIO", usuario.ID));
+            lista.Add(new SqlParameter("@IDUSUARIO", usuario.Id));
 
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
@@ -82,7 +82,7 @@ namespace NuSmart.DAL
             {
                 Usuario usuarioDeBitacora = new Usuario();
                 usuarioDeBitacora.Username = (string)row["username"];
-                usuarioDeBitacora.ID = (int)row["usuarioID"];
+                usuarioDeBitacora.Id = (int)row["usuarioID"];
                 listaUsuariosConBitacora.Add(usuarioDeBitacora);
             }
 

@@ -39,7 +39,7 @@ namespace NuSmart
 
         private void MiCuenta_Load(object sender, EventArgs e)
         {
-            Nutricionista nutricionista = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.ID);
+            Nutricionista nutricionista = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.Id);
             nutricionista.Usuario = Sesion.Instancia().UsuarioActual;
 
             micuenta_txt_usuario.Text = nutricionista.Usuario.Username;
@@ -59,7 +59,7 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Nutricionista nutricionista = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.ID);
+            Nutricionista nutricionista = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.Id);
             nutricionista.Usuario = Sesion.Instancia().UsuarioActual;
             Console.WriteLine("DVH ACTUAL: " + bllNutricionista.calcularDVH(nutricionista));
         }

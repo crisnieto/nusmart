@@ -12,17 +12,77 @@ namespace NuSmart.BE
         int _dvh;
         string _password;
         string _username;
-        List<Rol> roles;    
+        List<Rol> roles;
 
-        public string Username { get => _username; set => _username = value; }
-        public string Password { get => _password; set => _password = value; }
-        public int DVH { get => _dvh; set => _dvh = value; }
-        public int ID { get => _id; set => _id = value; }
-        public List<Rol> Roles { get => roles; set => roles = value; }
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public int Dvh
+        {
+            get
+            {
+                return _dvh;
+            }
+
+            set
+            {
+                _dvh = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+
+            set
+            {
+                _password = value;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return _username;
+            }
+
+            set
+            {
+                _username = value;
+            }
+        }
+
+        public List<Rol> Roles
+        {
+            get
+            {
+                return roles;
+            }
+
+            set
+            {
+                roles = value;
+            }
+        }
+
         public bool validar(string codigo)
         {
             bool valido = false;
-            foreach(Rol rol in roles){
+            foreach(Rol rol in Roles){
                 valido = busquedaRecursiva(rol, codigo);
                 if(valido == true){
                     break;
@@ -52,7 +112,7 @@ namespace NuSmart.BE
 
         public override string ToString()
         {
-            return this._username;
+            return this.Username;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace NuSmart.DAL
                                   "ON(A.permisoID = P.permisoID) where A.permisoID IN(select permisoID from JoinUsuarioPermiso where usuarioID = @USER_ID)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@USER_ID", usuario.ID));
+            lista.Add(new SqlParameter("@USER_ID", usuario.Id));
             DataTable permisosDS = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
             foreach (DataRow i in permisosDS.Rows)
             {

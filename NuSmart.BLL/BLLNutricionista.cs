@@ -25,7 +25,7 @@ namespace NuSmart.BLL
 
         public int calcularDVH(Nutricionista nutricionista)
         {
-            string concatenacion = Convert.ToString(nutricionista.Dni) + nutricionista.Especializacion + nutricionista.Matricula + nutricionista.Apellido + Convert.ToString(nutricionista.Usuario.ID) + nutricionista.Sexo;
+            string concatenacion = Convert.ToString(nutricionista.Dni) + nutricionista.Especializacion + nutricionista.Matricula + nutricionista.Apellido + Convert.ToString(nutricionista.Usuario.Id) + nutricionista.Sexo;
             Seguridad seguridad = new Seguridad();
             string md5 = seguridad.encriptar(concatenacion);
 

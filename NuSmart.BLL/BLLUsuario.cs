@@ -61,7 +61,7 @@ namespace NuSmart.BLL
             Console.WriteLine("Nueva contraseña: " + password);
             usuario.Password = new Seguridad().encriptar(password);
             Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
-            usuario.DVH = calcularDVH(usuario);
+            usuario.Dvh = calcularDVH(usuario);
             dalUsuario.actualizarContraseña(usuario);
             return new DVVH().actualizarDVV("Usuario");
         }
@@ -69,7 +69,7 @@ namespace NuSmart.BLL
         public int crearUsuario(Usuario usuario, string password)
         {
             usuario.Password = new Seguridad().encriptar(password);
-            usuario.DVH = calcularDVH(usuario);
+            usuario.Dvh = calcularDVH(usuario);
             dalUsuario.ingresar(usuario);
             return new DVVH().actualizarDVV("Usuario");
 

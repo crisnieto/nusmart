@@ -18,14 +18,121 @@ namespace NuSmart.BE
         string _sexo;
         int _dvh;
 
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public string Apellido { get => _apellido; set => _apellido = value; }
-        public string Matricula { get => _matricula; set => _matricula = value; }
-        public int Dni { get => _dni; set => _dni = value; }
-        public string Especializacion { get => _especializacion; set => _especializacion = value; }
-        public Usuario Usuario { get => usuario; set => usuario = value; }
-        public string Sexo { get => _sexo; set => _sexo = value; }
-        public int Dvh { get => _dvh; set => _dvh = value; }
-        public int Id { get => _id; set => _id = value; }
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+
+            set
+            {
+                _nombre = value;
+            }
+        }
+
+        public string Apellido
+        {
+            get
+            {
+                return _apellido;
+            }
+
+            set
+            {
+                _apellido = value;
+            }
+        }
+
+        public string Matricula
+        {
+            get
+            {
+                return _matricula;
+            }
+
+            set
+            {
+                _matricula = value;
+            }
+        }
+
+        public int Dni
+        {
+            get
+            {
+                return _dni;
+            }
+
+            set
+            {
+                _dni = value;
+            }
+        }
+
+        public string Especializacion
+        {
+            get
+            {
+                return _especializacion;
+            }
+
+            set
+            {
+                _especializacion = value;
+            }
+        }
+
+        public Usuario Usuario
+        {
+            get
+            {
+                return usuario;
+            }
+
+            set
+            {
+                usuario = value;
+            }
+        }
+
+        public string Sexo
+        {
+            get
+            {
+                return _sexo;
+            }
+
+            set
+            {
+                _sexo = value;
+            }
+        }
+
+        public int Dvh
+        {
+            get
+            {
+                return _dvh;
+            }
+
+            set
+            {
+                _dvh = value;
+            }
+        }
     }
 }

@@ -13,13 +13,37 @@ namespace NuSmart.DAL
         string _textoComando;
         List<SqlParameter> _parametros;
 
-        public DALComando(string textoComando, List<SqlParameter> parametros) 
+        public string TextoComando
         {
-            this._textoComando = textoComando;
-            this._parametros = parametros;
+            get
+            {
+                return _textoComando;
+            }
+
+            set
+            {
+                _textoComando = value;
+            }
         }
 
-        public string TextoComando { get => _textoComando; set => _textoComando = value; }
-        public List<SqlParameter> Parametros { get => _parametros; set => _parametros = value; }
+        public List<SqlParameter> Parametros
+        {
+            get
+            {
+                return _parametros;
+            }
+
+            set
+            {
+                _parametros = value;
+            }
+        }
+
+        public DALComando(string textoComando, List<SqlParameter> parametros) 
+        {
+            this.TextoComando = textoComando;
+            this.Parametros = parametros;
+        }
+
     }
 }

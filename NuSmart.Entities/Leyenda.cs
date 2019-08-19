@@ -12,8 +12,43 @@ namespace NuSmart.BE
         string _nombre;
         string _texto;
 
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public string Texto { get => _texto; set => _texto = value; }
-        public int Id { get => _id; set => _id = value; }
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+
+            set
+            {
+                _nombre = value;
+            }
+        }
+
+        public string Texto
+        {
+            get
+            {
+                return _texto;
+            }
+
+            set
+            {
+                _texto = value;
+            }
+        }
     }
 }

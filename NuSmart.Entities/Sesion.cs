@@ -10,14 +10,47 @@ namespace NuSmart.BE
     {
         Usuario _usuarioActual;
         Idioma _idiomaActual;
-        static Sesion _instancia;
         private List<IObserver> _observers = new List<IObserver>();
+        static Sesion _instancia;
 
+        public Usuario UsuarioActual
+        {
+            get
+            {
+                return _usuarioActual;
+            }
 
+            set
+            {
+                _usuarioActual = value;
+            }
+        }
 
-        public Usuario UsuarioActual { get => _usuarioActual; set => _usuarioActual = value; }
-        public Idioma IdiomaActual { get => _idiomaActual; set => _idiomaActual = value; }
-        public List<IObserver> Observers { get => _observers; set => _observers = value; }
+        public Idioma IdiomaActual
+        {
+            get
+            {
+                return _idiomaActual;
+            }
+
+            set
+            {
+                _idiomaActual = value;
+            }
+        }
+
+        public List<IObserver> Observers
+        {
+            get
+            {
+                return _observers;
+            }
+
+            set
+            {
+                _observers = value;
+            }
+        }
 
         protected Sesion()
         {

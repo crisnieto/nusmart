@@ -46,7 +46,7 @@ namespace NuSmart.DAL
             string textoComando = "INSERT INTO Nutricionista (dni, especialización, matricula, apellido, usuarioID, nombre, sexo, DVH) " +
                 "VALUES (@DNI, @ESPECIALIZACION, @MATRICULA, @APELLIDO, @IDUSUARIO, @NOMBRE, @SEXO, @DVH)";
             List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@IDUSUARIO", nutricionista.Usuario.ID));
+            lista.Add(new SqlParameter("@IDUSUARIO", nutricionista.Usuario.Id));
             lista.Add(new SqlParameter("@DNI", nutricionista.Dni));
             lista.Add(new SqlParameter("@ESPECIALIZACION", nutricionista.Especializacion));
             lista.Add(new SqlParameter("@MATRICULA", nutricionista.Matricula));

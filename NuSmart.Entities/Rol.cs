@@ -12,9 +12,44 @@ namespace NuSmart.BE
         string descripcion;
         string codigo;
 
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-        public string Codigo { get => codigo; set => codigo = value; }
-        public int Id { get => id; set => id = value; }
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public string Descripcion
+        {
+            get
+            {
+                return descripcion;
+            }
+
+            set
+            {
+                descripcion = value;
+            }
+        }
+
+        public string Codigo
+        {
+            get
+            {
+                return codigo;
+            }
+
+            set
+            {
+                codigo = value;
+            }
+        }
 
         abstract public void agregar(Rol rol);
 
@@ -24,7 +59,7 @@ namespace NuSmart.BE
 
         public override string ToString()
         {
-            return this.codigo + " - " + this.descripcion;
+            return this.Codigo + " - " + this.Descripcion;
         }
 
     }

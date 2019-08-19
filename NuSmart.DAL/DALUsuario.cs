@@ -29,13 +29,13 @@ namespace NuSmart.DAL
 
             Usuario usuarioConseguido = new Usuario();
 
-            usuarioConseguido.ID = (int)(usuarioDS["usuarioID"]);
+            usuarioConseguido.Id = (int)(usuarioDS["usuarioID"]);
 
             usuarioConseguido.Username = Convert.ToString(usuarioDS["username"]);
 
             usuarioConseguido.Password = Convert.ToString(usuarioDS["password"]);
 
-            usuarioConseguido.DVH = Convert.ToInt32(usuarioDS["DVH"]);
+            usuarioConseguido.Dvh = Convert.ToInt32(usuarioDS["DVH"]);
 
             return usuarioConseguido;
         }
@@ -56,7 +56,7 @@ namespace NuSmart.DAL
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@PASSWORD", usuario.Password));
             lista.Add(new SqlParameter("@USERNAME", usuario.Username));
-            lista.Add(new SqlParameter("@DVH", usuario.DVH));
+            lista.Add(new SqlParameter("@DVH", usuario.Dvh));
             return sqlHelper.ejecutarNonQuery(textoComando, lista);
 
         }
@@ -66,8 +66,8 @@ namespace NuSmart.DAL
             string textoComando = "UPDATE Usuario set password = @PASSWORD, dvh = @DVH WHERE UsuarioID = @USUARIOID;";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@PASSWORD", usuario.Password));
-            lista.Add(new SqlParameter("@DVH", usuario.DVH));
-            lista.Add(new SqlParameter("@USUARIOID", usuario.ID));
+            lista.Add(new SqlParameter("@DVH", usuario.Dvh));
+            lista.Add(new SqlParameter("@USUARIOID", usuario.Id));
         
             return sqlHelper.ejecutarNonQuery(textoComando, lista);
         }

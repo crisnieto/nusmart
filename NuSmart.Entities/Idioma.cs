@@ -14,11 +14,58 @@ namespace NuSmart.BE
         string _nombreIdioma;
         private List<Leyenda> leyendas = new List<Leyenda>();
 
+        
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
 
-        public string DescripcionIdioma { get => _descripcionIdioma; set => _descripcionIdioma = value; }
-        public string NombreIdioma { get => _nombreIdioma; set => _nombreIdioma = value; }
-        public int Id { get => _id; set => _id = value; }
-        public List<Leyenda> Leyendas { get => leyendas; set => leyendas = value; }
+            set
+            {
+                _id = value;
+            }
+        }
+
+        public string DescripcionIdioma
+        {
+            get
+            {
+                return _descripcionIdioma;
+            }
+
+            set
+            {
+                _descripcionIdioma = value;
+            }
+        }
+
+        public string NombreIdioma
+        {
+            get
+            {
+                return _nombreIdioma;
+            }
+
+            set
+            {
+                _nombreIdioma = value;
+            }
+        }
+
+        public List<Leyenda> Leyendas
+        {
+            get
+            {
+                return leyendas;
+            }
+
+            set
+            {
+                leyendas = value;
+            }
+        }
 
         public override string ToString()
         {

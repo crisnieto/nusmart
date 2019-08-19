@@ -14,10 +14,69 @@ namespace NuSmart.BE
         string tipoCriticidad;
         Usuario usuario;
 
-        public string Actividad { get => actividad; set => actividad = value; }
-        public string Descripción { get => descripción; set => descripción = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
-        public string TipoCriticidad { get => tipoCriticidad; set => tipoCriticidad = value; }
-        public Usuario Usuario { get => usuario; set => usuario = value; }
+        public string Actividad
+        {
+            get
+            {
+                return actividad;
+            }
+
+            set
+            {
+                actividad = value;
+            }
+        }
+
+        public string Descripción
+        {
+            get
+            {
+                return descripción;
+            }
+
+            set
+            {
+                descripción = value;
+            }
+        }
+
+        public DateTime Fecha
+        {
+            get
+            {
+                return fecha;
+            }
+
+            set
+            {
+                fecha = value;
+            }
+        }
+
+        public string TipoCriticidad
+        {
+            get
+            {
+                return tipoCriticidad;
+            }
+
+            set
+            {
+                tipoCriticidad = value;
+            }
+        }
+
+        public Usuario Usuario
+        {
+            get
+            {
+                return usuario;
+            }
+
+            set
+            {
+                usuario = value;
+            }
+        }
     }
 }
