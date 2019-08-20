@@ -10,12 +10,10 @@ namespace NuSmart.BLL
 {
     public class BLLUsuario
     {
-        public BLLRol bllRol;
         public DALUsuario dalUsuario;
 
         public BLLUsuario()
         {
-            bllRol = new BLLRol();
             dalUsuario = new DALUsuario();
         }
 
@@ -35,7 +33,6 @@ namespace NuSmart.BLL
                 if (seguridad.validar(usuarioConseguido, usuario))
                 {
                     Console.WriteLine("Login exitoso!");
-                    usuarioConseguido.Roles = bllRol.conseguir(usuarioConseguido);
                     calcularDVH(usuarioConseguido);
                     return usuarioConseguido;
                 }
@@ -58,21 +55,14 @@ namespace NuSmart.BLL
 
         public int actualizarPassword(Usuario usuario, string password)
         {
-            Console.WriteLine("Nueva contraseña: " + password);
-            usuario.Password = new Seguridad().encriptar(password);
-            Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
-            usuario.Dvh = calcularDVH(usuario);
-            dalUsuario.actualizarContraseña(usuario);
-            return new DVVH().actualizarDVV("Usuario");
+            //TO DO
+            return 0;
         }
 
         public int crearUsuario(Usuario usuario, string password)
         {
-            usuario.Password = new Seguridad().encriptar(password);
-            usuario.Dvh = calcularDVH(usuario);
-            dalUsuario.ingresar(usuario);
-            return new DVVH().actualizarDVV("Usuario");
-
+            //TO DO
+            return 0;
         }
 
         public bool EliminarUsuario(int id)

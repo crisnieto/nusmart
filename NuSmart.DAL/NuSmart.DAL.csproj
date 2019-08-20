@@ -49,15 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALBackupManager.cs" />
-    <Compile Include="DALBitacora.cs" />
     <Compile Include="DALComando.cs" />
-    <Compile Include="DALFamilia.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALNutricionista.cs" />
-    <Compile Include="DALRol.cs" />
     <Compile Include="DALUsuario.cs" />
-    <Compile Include="DVVH.cs" />
     <Compile Include="DALIdioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />

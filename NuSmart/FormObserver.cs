@@ -37,36 +37,6 @@ namespace NuSmart
             }
         }
 
-        protected void reloadMainMenu(MenuStrip menu)
-        {
-            foreach (ToolStripMenuItem subitem in menu.Items) // access each items
-            {
-                subitem.Text = bllIdioma.conseguirLeyendaMenu(subitem);
-                if (subitem.HasDropDownItems)
-                {
-                    foreach(ToolStripMenuItem child in subitem.DropDownItems)
-                    {
-                        reloadMainMenu(child);
-                    }
-                }
-            }
-        }
-
-        private void reloadMainMenu(ToolStripMenuItem item)
-        {
-            item.Text = bllIdioma.conseguirLeyendaMenu(item);
-            if (item.HasDropDownItems)
-            {
-                foreach (ToolStripMenuItem subitem in item.DropDownItems) // access each items
-                {
-                    foreach (ToolStripMenuItem dropdownItem in subitem.DropDownItems) {
-                        reloadMainMenu(dropdownItem);
-                    }
-                }
-            }
-        }
-
-
 
         private void InitializeComponent()
         {

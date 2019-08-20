@@ -1,0 +1,17 @@
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.exe.config
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.exe
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BE.dll
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BLL.dll
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.DAL.dll
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BLL.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BE.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.DAL.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GUI.csprojResolveAssemblyReference.cache
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.FormObserver.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Lenguaje.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Login.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Properties.Resources.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GUI.csproj.GenerateResource.Cache
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.exe
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.pdb

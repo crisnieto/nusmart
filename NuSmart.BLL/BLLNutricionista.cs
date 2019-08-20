@@ -50,9 +50,8 @@ namespace NuSmart.BLL
 
         public int ingresar(Nutricionista nutricionista)
         {
-            nutricionista.Dvh = calcularDVH(nutricionista);
-            dalNutricionista.ingresar(nutricionista);
-            return new DVVH().actualizarDVV("Nutricionista");
+            //TO DO
+            return 0;
         }
     }
 }
