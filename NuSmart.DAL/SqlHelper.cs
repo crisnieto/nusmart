@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace NuSmart.DAL
 {
@@ -29,8 +30,19 @@ namespace NuSmart.DAL
 
         public SqlConnection conseguirStringConexion()
         {
-            return new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True");
+            
+            Console.WriteLine(System.AppContext.BaseDirectory);
+            string textFile = System.AppContext.BaseDirectory + "test.txt";
+            if (File.Exists(textFile))
+            {
+                return new SqlConnection(File.ReadAllText(textFile));
+            }else
+            {
+                return new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True");
+            }
         }
+
+
 
         public int ejecutarComando(SqlCommand comando)
         {

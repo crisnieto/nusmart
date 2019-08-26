@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLIdioma.cs" />
     <Compile Include="BLLLeyenda.cs" />
     <Compile Include="BLLNutricionista.cs" />

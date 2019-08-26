@@ -74,6 +74,7 @@ namespace NuSmart
             this.login_lbl_password.Size = new System.Drawing.Size(69, 17);
             this.login_lbl_password.TabIndex = 3;
             this.login_lbl_password.Text = "Password";
+            this.login_lbl_password.Click += new System.EventHandler(this.login_lbl_password_Click);
             // 
             // login_btn_login
             // 

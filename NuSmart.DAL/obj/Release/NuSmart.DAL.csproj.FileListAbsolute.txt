@@ -8,3 +8,13 @@ C:\Users\Cristian\workspace\nusmart\NuSmart.DAL\obj\Release\NuSmart.DAL.Properti
 C:\Users\Cristian\workspace\nusmart\NuSmart.DAL\obj\Release\NuSmart.DAL.csproj.GenerateResource.Cache
 C:\Users\Cristian\workspace\nusmart\NuSmart.DAL\obj\Release\NuSmart.DAL.dll
 C:\Users\Cristian\workspace\nusmart\NuSmart.DAL\obj\Release\NuSmart.DAL.pdb
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\bin\Release\NuSmart.DAL.dll.config
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\bin\Release\NuSmart.DAL.dll
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\bin\Release\NuSmart.DAL.pdb
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\bin\Release\NuSmart.BE.dll
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\bin\Release\NuSmart.BE.pdb
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\obj\Release\NuSmart.DAL.csprojResolveAssemblyReference.cache
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\obj\Release\NuSmart.DAL.Properties.Resources.resources
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\obj\Release\NuSmart.DAL.csproj.GenerateResource.Cache
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\obj\Release\NuSmart.DAL.dll
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.DAL\obj\Release\NuSmart.DAL.pdb

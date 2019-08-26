@@ -26,22 +26,28 @@ namespace NuSmart
             usuario.Password = txtPassword.Text;
 
             BLLUsuario bllUsuario = new BLLUsuario();
-            try { 
+            try
+            {
                 Sesion.Instancia().UsuarioActual = bllUsuario.conseguirUsuarioLogIn(usuario);
-                MessageBox.Show("Login Correcto!");
+                new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Baja);
+                new Contenedor().Show();
                 this.Close();
-                            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
-
-
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Application.OpenForms.Count == 0)
                 Application.Exit();
+        }
+
+        private void login_lbl_password_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

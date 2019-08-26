@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using NuSmart.BE;
 using NuSmart.DAL;
 using System.Windows.Forms;
+
+
 
 namespace NuSmart.BLL
 {
