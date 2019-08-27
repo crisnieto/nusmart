@@ -13,6 +13,7 @@ namespace NuSmart.BE
         string _password;
         string _username;
         List<Rol> roles;
+        int _intentos;
 
         public int Id
         {
@@ -76,6 +77,19 @@ namespace NuSmart.BE
             set
             {
                 roles = value;
+            }
+        }
+
+        public int Intentos
+        {
+            get
+            {
+                return _intentos;
+            }
+
+            set
+            {
+                _intentos = value;
             }
         }
 

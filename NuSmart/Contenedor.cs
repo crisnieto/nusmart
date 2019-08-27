@@ -65,5 +65,30 @@ namespace NuSmart
             sessionOut = true;
             this.Close();
         }
+
+        private void menu_gestion_nutricionistas_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionNutricionista));
+        }
+
+        private void Contenedor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Si se está cerrando el formulario (no haciendo un logout),
+            //salgo directamente de la aplicación.
+            if (sessionOut == false)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void menu_micuenta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menu_gestion_micuenta_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(MiCuenta));
+        }
     }
 }

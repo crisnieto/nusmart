@@ -31,39 +31,23 @@ namespace NuSmart
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.MaskedTextBox();
-            this.login_lbl_usuario = new System.Windows.Forms.Label();
-            this.login_lbl_password = new System.Windows.Forms.Label();
             this.login_btn_login = new System.Windows.Forms.Button();
+            this.login_lbl_password = new System.Windows.Forms.Label();
+            this.login_lbl_usuario = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.MaskedTextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtUsuario
+            // login_btn_login
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(166, 142);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(278, 23);
-            this.txtUsuario.TabIndex = 0;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(166, 210);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(278, 23);
-            this.txtPassword.TabIndex = 1;
-            // 
-            // login_lbl_usuario
-            // 
-            this.login_lbl_usuario.AutoSize = true;
-            this.login_lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_lbl_usuario.Location = new System.Drawing.Point(163, 126);
-            this.login_lbl_usuario.Name = "login_lbl_usuario";
-            this.login_lbl_usuario.Size = new System.Drawing.Size(57, 17);
-            this.login_lbl_usuario.TabIndex = 2;
-            this.login_lbl_usuario.Text = "Usuario";
+            this.login_btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_btn_login.Location = new System.Drawing.Point(261, 279);
+            this.login_btn_login.Name = "login_btn_login";
+            this.login_btn_login.Size = new System.Drawing.Size(88, 37);
+            this.login_btn_login.TabIndex = 4;
+            this.login_btn_login.Text = "Log In";
+            this.login_btn_login.UseVisualStyleBackColor = true;
+            this.login_btn_login.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // login_lbl_password
             // 
@@ -76,16 +60,32 @@ namespace NuSmart
             this.login_lbl_password.Text = "Password";
             this.login_lbl_password.Click += new System.EventHandler(this.login_lbl_password_Click);
             // 
-            // login_btn_login
+            // login_lbl_usuario
             // 
-            this.login_btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_btn_login.Location = new System.Drawing.Point(261, 279);
-            this.login_btn_login.Name = "login_btn_login";
-            this.login_btn_login.Size = new System.Drawing.Size(88, 37);
-            this.login_btn_login.TabIndex = 4;
-            this.login_btn_login.Text = "Log In";
-            this.login_btn_login.UseVisualStyleBackColor = true;
-            this.login_btn_login.Click += new System.EventHandler(this.btnLogin_Click);
+            this.login_lbl_usuario.AutoSize = true;
+            this.login_lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_lbl_usuario.Location = new System.Drawing.Point(163, 126);
+            this.login_lbl_usuario.Name = "login_lbl_usuario";
+            this.login_lbl_usuario.Size = new System.Drawing.Size(57, 17);
+            this.login_lbl_usuario.TabIndex = 2;
+            this.login_lbl_usuario.Text = "Usuario";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(166, 210);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(278, 23);
+            this.txtPassword.TabIndex = 1;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(166, 142);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(278, 23);
+            this.txtUsuario.TabIndex = 0;
             // 
             // Login
             // 

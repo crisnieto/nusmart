@@ -55,8 +55,7 @@ namespace NuSmart
             try
             {
                 Usuario usuario = (Usuario)listBox1.SelectedItem;
-
-                dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario);
+                dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
                 dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
                 return;
             }
@@ -65,6 +64,21 @@ namespace NuSmart
                 MessageBox.Show("Ocurrió un error al ejecutar la consulta. Verifique la selección de usuario y la conexión");
                 Console.WriteLine(ex);
             }
+        }
+
+        private string conseguirFiltroCriticidad()
+        {
+            if (bitacora_radio_alta.Checked)
+            {
+                return "Alta";
+            }else if (bitacora_radio_media.Checked)
+            {
+                return "Media";
+            }else if (bitacora_radio_baja.Checked)
+            {
+                return "Baja";
+            }
+            return null;
         }
     }
 }

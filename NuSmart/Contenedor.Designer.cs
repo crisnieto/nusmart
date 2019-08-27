@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contenedor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu_micuenta = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_gestion_micuenta = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,12 +82,14 @@
             this.menu_micuenta.Name = "menu_micuenta";
             this.menu_micuenta.Size = new System.Drawing.Size(74, 22);
             this.menu_micuenta.Text = "Mi Cuenta";
+            this.menu_micuenta.Click += new System.EventHandler(this.menu_micuenta_Click);
             // 
             // menu_gestion_micuenta
             // 
             this.menu_gestion_micuenta.Name = "menu_gestion_micuenta";
             this.menu_gestion_micuenta.Size = new System.Drawing.Size(165, 22);
             this.menu_gestion_micuenta.Text = "Gestionar Cuenta";
+            this.menu_gestion_micuenta.Click += new System.EventHandler(this.menu_gestion_micuenta_Click);
             // 
             // menu_cerrar_sesion
             // 
@@ -136,6 +139,7 @@
             this.menu_gestion_nutricionistas.Name = "menu_gestion_nutricionistas";
             this.menu_gestion_nutricionistas.Size = new System.Drawing.Size(206, 22);
             this.menu_gestion_nutricionistas.Text = "Gestión de Nutricionistas";
+            this.menu_gestion_nutricionistas.Click += new System.EventHandler(this.menu_gestion_nutricionistas_Click);
             // 
             // menu_dieta_ejercicio
             // 
@@ -224,6 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1149, 515);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -231,6 +236,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contenedor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Contenedor_FormClosed);
             this.Load += new System.EventHandler(this.Contenedor_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

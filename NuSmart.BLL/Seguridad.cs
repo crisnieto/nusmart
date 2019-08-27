@@ -43,5 +43,17 @@ namespace NuSmart.BLL
                 return false;
             }
         }
+
+        //Se verifica si el usuario tiene mas de tres intentos
+        public bool esBloqueado(Usuario usuario)
+        {
+            if(usuario.Intentos >= 3)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
     }
 }

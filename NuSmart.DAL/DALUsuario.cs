@@ -37,6 +37,8 @@ namespace NuSmart.DAL
 
             usuarioConseguido.Dvh = Convert.ToInt32(usuarioDS["DVH"]);
 
+            usuarioConseguido.Intentos = Convert.ToInt32(usuarioDS["intentos"]);
+
             return usuarioConseguido;
         }
 
@@ -82,6 +84,22 @@ namespace NuSmart.DAL
 
             return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
 
+        }
+
+        public bool agregarIntento(Usuario usuario)
+        {
+            string textoComando = "UPDATE Usuario SET intentos = intentos + 1 where username = @USER";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@USER", usuario.Username));
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
+        }
+
+        public bool desbloquear(Usuario usuario)
+        {
+            string textoComando = "UPDATE Usuario SET intentos = 0 where username = @USER";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@USER", usuario.Username));
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
         }
     }
 }

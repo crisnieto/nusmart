@@ -32,11 +32,12 @@ namespace NuSmart.BLL
             return dalBitacora.conseguirUsuarios();
         }
 
-        public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario)
+        public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario, DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
             DALBitacora dalBitacora = new DALBitacora();
-            return dalBitacora.conseguirBitacorasConUsuario(usuario);
+            return dalBitacora.conseguirBitacorasConUsuario(usuario, fechaInicio, fechaFin, criticidad);
         }
+
 
         public bool guardarBitacora()
         {

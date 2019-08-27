@@ -35,14 +35,24 @@ namespace NuSmart.DAL
             return sqlHelper.ejecutarNonQuery(textoComando, lista);
         }
 
-        public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario)
+        public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario, DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
             string textoComando = "SELECT A.username, b.actividad, b.fecha, b.mensaje, b.tipoCriticidad, b.bitacoraID " +
             "FROM Usuario a JOIN Bitacora b ON(a.usuarioID = b.usuarioID) " +
-            "WHERE a.usuarioID = @IDUSUARIO ORDER BY b.fecha DESC";
+            "WHERE a.usuarioID = @IDUSUARIO AND fecha >= @FECHAINICIO AND fecha <= @FECHAFIN";
 
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@IDUSUARIO", usuario.Id));
+            lista.Add(new SqlParameter("@FECHAINICIO", fechaInicio));
+            lista.Add(new SqlParameter("@FECHAFIN", fechaFin));
+
+            if(criticidad != null)
+            {
+                textoComando += " AND b.tipoCriticidad = @CRITICIDAD";
+                lista.Add(new SqlParameter("@CRITICIDAD", criticidad));
+            }
+
+            textoComando += " ORDER BY b.fecha DESC";
 
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
