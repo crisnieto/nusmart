@@ -17,13 +17,12 @@ namespace NuSmart.BLL
             Bitacora bitacora = new Bitacora();
             bitacora.Actividad = actividad;
             bitacora.Descripción = descripcion;
-            bitacora.Fecha = DateTime.Now;
+            bitacora.Fecha = DateTime.Now;    
             bitacora.Usuario = Sesion.Instancia().UsuarioActual;
+            
             bitacora.TipoCriticidad = criticidad.Value;
-
             DALBitacora dalBitacora = new DALBitacora();
             return dalBitacora.guardarBitacora(bitacora);
-
         }
 
         public List<Usuario> conseguirUsuarios()

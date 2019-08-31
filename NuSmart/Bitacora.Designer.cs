@@ -77,7 +77,8 @@
             this.bitacora_datepicker_desde.Name = "bitacora_datepicker_desde";
             this.bitacora_datepicker_desde.Size = new System.Drawing.Size(200, 20);
             this.bitacora_datepicker_desde.TabIndex = 14;
-            this.bitacora_datepicker_desde.Value = new System.DateTime(2019, 7, 1, 0, 0, 0, 0);
+            this.bitacora_datepicker_desde.Value = new System.DateTime(2019, 8, 31, 0, 0, 0, 0);
+            this.bitacora_datepicker_desde.ValueChanged += new System.EventHandler(this.bitacora_datepicker_desde_ValueChanged);
             // 
             // bitacora_lbl_criticidad
             // 

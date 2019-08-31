@@ -28,8 +28,7 @@ namespace NuSmart
             BLLUsuario bllUsuario = new BLLUsuario();
             try
             {
-                Sesion.Instancia().UsuarioActual = bllUsuario.conseguirUsuarioLogIn(usuario);
-                new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
+                bllUsuario.conseguirUsuarioLogIn(usuario);
                 new Contenedor().Show();
                 this.Close();
             }

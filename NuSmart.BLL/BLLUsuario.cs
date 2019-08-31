@@ -56,17 +56,21 @@ namespace NuSmart.BLL
                 {
                     if (seguridad.validar(usuarioConseguido, usuario))
                     {
+                        Sesion.Instancia().UsuarioActual = usuarioConseguido;
+                        new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
                         Console.WriteLine("Login exitoso!");
                     }
                     else
                     {
                         agregarIntento(usuarioConseguido);
+                        new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Media);
                         throw new Exception("No se pudo loguear correctamente");
                     }
 
                 }
                 else
                 {
+                    new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Alta);
                     throw new Exception("El usuario se encuentra bloqueado, por favor contactarse con un Administrador");
                 }
 

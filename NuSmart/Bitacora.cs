@@ -54,8 +54,11 @@ namespace NuSmart
         {
             try
             {
+
+
+
                 Usuario usuario = (Usuario)listBox1.SelectedItem;
-                dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
+                dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
                 dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
                 return;
             }
@@ -79,6 +82,11 @@ namespace NuSmart
                 return "Baja";
             }
             return null;
+        }
+
+        private void bitacora_datepicker_desde_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

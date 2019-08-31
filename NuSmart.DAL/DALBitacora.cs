@@ -27,7 +27,13 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@ACTIVIDAD", bitacora.Actividad));
             lista.Add(new SqlParameter("@MENSAJE", bitacora.Descripción));
             lista.Add(new SqlParameter("@CRITICIDAD", bitacora.TipoCriticidad));
-            lista.Add(new SqlParameter("@USUARIO", bitacora.Usuario.Id));
+            if (bitacora.Usuario != null)
+            {
+                lista.Add(new SqlParameter("@USUARIO", bitacora.Usuario.Id));
+            }else
+            {
+                lista.Add(new SqlParameter("@USUARIO", DBNull.Value));
+            }
             SqlParameter parametroFecha = new SqlParameter("@FECHA", SqlDbType.DateTime);
             parametroFecha.Value = bitacora.Fecha;
             lista.Add(parametroFecha);
