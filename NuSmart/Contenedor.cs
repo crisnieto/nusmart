@@ -30,6 +30,15 @@ namespace NuSmart
         private void Contenedor_Load(object sender, EventArgs e)
         {
             //TODO: Validar el Rol del usuario para validar qué opciones se muestran
+            reloadMainMenu(menuStrip1);
+            menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
+            menu_gestion_backup.Enabled = Sesion.Instancia().validar("OP46");
+            menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
+            menu_gestion_comidas.Enabled = Sesion.Instancia().validar("GE102");
+            menu_gestion_ejercicios.Enabled = Sesion.Instancia().validar("GE102");
+            menu_gestion_dietas.Enabled = Sesion.Instancia().validar("GE102");
+            menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
+            menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)
@@ -89,6 +98,11 @@ namespace NuSmart
         private void menu_gestion_micuenta_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(MiCuenta));
+        }
+
+        private void gestiónDeRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionRoles));
         }
     }
 }

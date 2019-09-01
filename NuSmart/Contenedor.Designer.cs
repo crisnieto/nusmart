@@ -195,6 +195,7 @@
             this.gestiónDeRolesToolStripMenuItem.Name = "gestiónDeRolesToolStripMenuItem";
             this.gestiónDeRolesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.gestiónDeRolesToolStripMenuItem.Text = "Gestión de Roles";
+            this.gestiónDeRolesToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeRolesToolStripMenuItem_Click);
             // 
             // menu_idioma
             // 

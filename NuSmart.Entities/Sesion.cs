@@ -73,6 +73,48 @@ namespace NuSmart.BE
             IdiomaActual = null;
         }
 
+        public bool validar(string codigo)
+        {
+            bool valido = false;
+            foreach (Rol rol in UsuarioActual.Roles)
+            {
+                valido = busquedaRecursiva(rol, codigo);
+                if (valido == true)
+                {
+                    break;
+                }
+            };
+            return valido;
+        }
+
+        public void verificarPermiso(string codigo)
+        {
+            if (!validar(codigo))
+            {
+                throw new Exception("El usuario no posee permisos para realizar la accion");
+            }
+        }
+
+        public bool busquedaRecursiva(Rol rol, string codigo)
+        {
+            if (rol.Codigo == codigo)
+            {
+                return true;
+            }
+
+            if (rol is Familia)
+            {
+                foreach (Rol nuevoRol in rol.mostrar())
+                {
+                    if (busquedaRecursiva(nuevoRol, codigo) == true)
+                    {
+                        return true;
+                    };
+                };
+            }
+            return false;
+        }
+
 
     }
 }

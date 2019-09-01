@@ -8,6 +8,7 @@ namespace NuSmart.BLL
 {
     public class BLLBitacora
     {
+
         public int borrarAntiguo()
         {
             return 0;

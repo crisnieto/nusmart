@@ -67,6 +67,12 @@
     <Compile Include="GestionNutricionista.Designer.cs">
       <DependentUpon>GestionNutricionista.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionRoles.Designer.cs">
+      <DependentUpon>GestionRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lenguaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GestionNutricionista.resx">
       <DependentUpon>GestionNutricionista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionRoles.resx">
+      <DependentUpon>GestionRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lenguaje.resx">
       <DependentUpon>Lenguaje.cs</DependentUpon>

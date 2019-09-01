@@ -50,13 +50,14 @@ namespace NuSmart
 
         }
 
+        /** 
+         * Nota: Se toma el valor solo de Date del datepicker_desde para que use como punto de partida por default 00:00:00. Hasta toma el Value completo, que tiene el horario actual. 
+         *
+         */ 
         private void bitacora_btn_buscar_Click(object sender, EventArgs e)
         {
             try
             {
-
-
-
                 Usuario usuario = (Usuario)listBox1.SelectedItem;
                 dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
                 dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";

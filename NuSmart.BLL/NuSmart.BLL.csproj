@@ -50,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLBitacora.cs" />
+    <Compile Include="BLLFamilia.cs" />
     <Compile Include="BLLIdioma.cs" />
     <Compile Include="BLLLeyenda.cs" />
     <Compile Include="BLLNutricionista.cs" />
+    <Compile Include="BLLRol.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad.cs" />

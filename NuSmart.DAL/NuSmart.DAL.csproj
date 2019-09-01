@@ -53,6 +53,7 @@
     <Compile Include="DALComando.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALNutricionista.cs" />
+    <Compile Include="DALRol.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="DALIdioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

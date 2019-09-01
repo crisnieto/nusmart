@@ -10,10 +10,12 @@ namespace NuSmart.BLL
 {
     public class BLLUsuario
     {
+        public BLLRol bllRol;
         public DALUsuario dalUsuario;
 
         public BLLUsuario()
         {
+            bllRol = new BLLRol();
             dalUsuario = new DALUsuario();
         }
 
@@ -56,6 +58,7 @@ namespace NuSmart.BLL
                 {
                     if (seguridad.validar(usuarioConseguido, usuario))
                     {
+                        usuarioConseguido.Roles = bllRol.conseguir(usuarioConseguido);
                         Sesion.Instancia().UsuarioActual = usuarioConseguido;
                         new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
                         Console.WriteLine("Login exitoso!");
