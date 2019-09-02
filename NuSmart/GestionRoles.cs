@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NuSmart.BE;
 using NuSmart.BLL;
@@ -65,26 +59,27 @@ namespace NuSmart
         private void GestionRoles_Load(object sender, EventArgs e)
         {
             PopularTreeView();
-            //dataGridView1.DataSource = bllFamilia.conseguirFamilias();
             this.Width = 1000;
         }
 
-    
+
 
         private void PopularTreeView()
         {
+            treeView1.Nodes.Clear();
             List<Rol> roles = bllRol.conseguir();
             List<TreeNode> treenodes = new List<TreeNode>();
 
             foreach (Rol rol in roles)
             {
-                if(rol is Familia)
+                if (rol is Familia)
                 {
                     TreeNode treeNode = new TreeNode(rol.Descripcion, PopularHijos((Familia)rol));
                     treeNode.Tag = rol;
                     treeView1.Nodes.Add(treeNode);
-                  
-                }else
+
+                }
+                else
                 {
                     TreeNode treeNode = new TreeNode(rol.Descripcion);
                     treeNode.Tag = rol;
@@ -99,7 +94,8 @@ namespace NuSmart
 
             foreach (Rol rol in familia.Roles)
             {
-                if (rol is Familia) {
+                if (rol is Familia)
+                {
                     TreeNode treeNode = new TreeNode(rol.Descripcion, PopularHijos((Familia)rol));
                     treeNode.Tag = rol;
                     treeNodes.Add(treeNode);
@@ -117,13 +113,18 @@ namespace NuSmart
 
         private void roles_btn_crear_familia_Click(object sender, EventArgs e)
         {
+            Familia familia = new Familia();
+            familia.Codigo = roles_txt_codigo_familia.Text;
+            familia.Descripcion = roles_txt_descripcion_familia.Text;
+            bllRol.crearRol(familia, familiaSeleccionada);
+            PopularTreeView();
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
             TreeNode treeNode = treeView1.SelectedNode;
-            
+
 
             if (treeNode.Tag is Familia)
             {
@@ -147,12 +148,26 @@ namespace NuSmart
         private void GestionRoles_Click(object sender, EventArgs e)
         {
             treeView1.SelectedNode = null;
+            familiaSeleccionada = null;
+            permisoSeleccionado = null;
             roles_txt_codigo_familia.Text = "";
             roles_txt_descripcion_familia.Text = "";
 
             roles_txt_codigo_permiso.Text = "";
             roles_txt_descripcion_permiso.Text = "";
 
+        }
+
+        private void roles_btn_borrar_permiso_Click(object sender, EventArgs e)
+        {
+            bllRol.eliminar(permisoSeleccionado);
+            PopularTreeView();
+        }
+
+        private void roles_btn_borrar_familia_Click(object sender, EventArgs e)
+        {
+            bllRol.eliminar(permisoSeleccionado);
+            PopularTreeView();
         }
     }
 }

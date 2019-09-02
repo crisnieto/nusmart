@@ -41,11 +41,6 @@ namespace NuSmart.BLL
 
         }
 
-        public List<Rol> conseguirRolesHijosdeFamilia(Familia familia)
-        {
-            return dalRol.conseguirHijosDeFamilia(familia);
-        }
-
         public bool validarCodigoDeRol(string codigo)
         {
             if (codigo.Length > 0)
@@ -55,9 +50,14 @@ namespace NuSmart.BLL
             return false;
         }
 
-        public bool crearRol(Rol rol)
+        public bool crearRol(Rol rol, Familia familiaPadre = null)
         {
+            if(rol is Familia)
+            {
+                return dalRol.crearFamilia((Familia)rol, familiaPadre);
+            }
             return true;
+            
         }
 
 

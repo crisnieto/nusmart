@@ -45,7 +45,8 @@ namespace NuSmart.DAL
                 {
                     listaRoles.Add(buscarRecursivamente(familia.Id));
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -75,6 +76,30 @@ namespace NuSmart.DAL
             return permisos;
         }
 
+        private Familia conseguirFamilia(int permisoId)
+        {
+            string textoComando = "select A.permisoID, A.codigo, A.descripcion from Permiso A join Permiso_Jerarquia B on (A.permisoID = b.IdPadrePermiso) where B.idPadrePermiso = @ID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@ID", permisoId));
+
+            DataTable familiaDt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+            
+            if(familiaDt.Rows.Count > 0)
+            {
+                Familia familia = new Familia();
+                familia.Codigo = (string)familiaDt.Rows[0]["codigo"];
+                familia.Descripcion = (string)familiaDt.Rows[0]["descripcion"];
+                familia.Id = (int)familiaDt.Rows[0]["permisoId"];
+                return familia;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
 
         private Rol buscarRecursivamente(int permisoId, Rol familiaSuperior = null)
         {
@@ -88,27 +113,38 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@PERMISO_ID", permisoId));
             DataTable permisosHijosDT = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
 
-            if (permisosHijosDT.Rows.Count > 0)
-            {
-                //Significa que tiene hijos, por lo tanto es Familia
-                Console.WriteLine("Encontre una familia!");
-                Familia familia = new Familia();
-                familia.Id = Convert.ToInt32(permisosHijosDT.Rows[0]["IdPadrePermiso"]);
-                familia.Codigo = Convert.ToString(permisosHijosDT.Rows[0]["codigoPadre"]);
-                familia.Descripcion = Convert.ToString(permisosHijosDT.Rows[0]["descripcionPadre"]);
+            Familia familia = conseguirFamilia(permisoId);
 
-                //Si tengo una familia sobre la familia actual. Si no, es la primera familia.
+            if (conseguirFamilia(permisoId) != null)
+            {
                 if (familiaSuperior != null)
                 {
                     familiaSuperior.agregar(familia);
                 }
 
-                //Entonces busco recursivamente ahora
-                foreach (DataRow i in permisosHijosDT.Rows)
+                if (permisosHijosDT.Rows.Count > 0)
                 {
-                    Console.WriteLine("Busco recursivamente para la familia " + Convert.ToString(permisosHijosDT.Rows[0]["codigoPadre"]));
-                    buscarRecursivamente(Convert.ToInt32(i["IdHijoPermiso"]), familia);
+                    //Significa que tiene hijos
+                    /*
+                    Console.WriteLine("Encontre una familia con hijos!");
+                    Familia familia = new Familia();
+                    familia.Id = Convert.ToInt32(permisosHijosDT.Rows[0]["IdPadrePermiso"]);
+                    familia.Codigo = Convert.ToString(permisosHijosDT.Rows[0]["codigoPadre"]);
+                    familia.Descripcion = Convert.ToString(permisosHijosDT.Rows[0]["descripcionPadre"]);
+                    */
+
+                    //Si tengo una familia sobre la familia actual. Si no, es la primera familia.
+
+
+                    //Entonces busco recursivamente ahora
+                    
+                    foreach (DataRow i in permisosHijosDT.Rows)
+                    {
+                        Console.WriteLine("Busco recursivamente para la familia " + Convert.ToString(permisosHijosDT.Rows[0]["codigoPadre"]));
+                        buscarRecursivamente(Convert.ToInt32(i["IdHijoPermiso"]), familia);
+                    }
                 }
+                
                 return familia;
             }
             else
@@ -119,6 +155,8 @@ namespace NuSmart.DAL
                 List<SqlParameter> listaParametroHijo = new List<SqlParameter>();
                 listaParametroHijo.Add(new SqlParameter("@PERMISO_ID", permisoId));
                 DataRow permisoDR = sqlHelper.ejecutarDataAdapter(textoComandoParaHijo, listaParametroHijo).Tables[0].Rows[0];
+
+
                 Permiso permiso = new Permiso();
                 permiso.Codigo = Convert.ToString(permisoDR["codigo"]);
                 permiso.Descripcion = Convert.ToString(permisoDR["descripcion"]);
@@ -164,55 +202,6 @@ namespace NuSmart.DAL
         public void insertar()
         {
 
-        }
-
-        public List<Rol> conseguirHijosDeFamilia(Familia familia)
-        {
-            List<Rol> listaRoles = new List<Rol>();
-            llenarPermisosDeFamilia(familia.Id, listaRoles);
-            llenarFamiliasDeFamilia(familia.Id, listaRoles);
-
-            return listaRoles;
-        }
-
-        public void llenarFamiliasDeFamilia(int familiaID, List<Rol> listaRoles)
-        {
-            string textoComando = "select distinct a.IdHijoPermiso, b.codigo, b.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdHijoPermiso = B.permisoID) " +
-          "where IdPadrePermiso = @IdFamilia and idHijoPermiso in (select IdPadrePermiso from Permiso_Jerarquia);";
-
-            List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@IdFamilia", familiaID));
-
-            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Familia familia = new Familia();
-                familia.Codigo = (string)dr["codigo"];
-                familia.Descripcion = (string)dr["descripcion"];
-                familia.Id = (int)dr["IdHijoPermiso"];
-                listaRoles.Add(familia);
-            }
-        }
-
-        public void llenarPermisosDeFamilia(int familiaID, List<Rol> listaRoles)
-        {
-            string textoComando = "select distinct a.IdHijoPermiso, b.codigo, b.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdHijoPermiso = B.permisoID) " +
-                      "where IdPadrePermiso = @IdFamilia and idHijoPermiso not in (select IdPadrePermiso from Permiso_Jerarquia);";
-
-            List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@IdFamilia", familiaID));
-
-            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Permiso permiso = new Permiso();
-                permiso.Codigo = (string)dr["codigo"];
-                permiso.Descripcion = (string)dr["descripcion"];
-                permiso.Id = (int)dr["IdHijoPermiso"];
-                listaRoles.Add(permiso);
-            }
         }
 
         public bool validarCodigoDeRol(string codigo)
@@ -270,14 +259,53 @@ namespace NuSmart.DAL
             return sqlHelper.ejecutarNonQuery(textoEliminarPadre, listaEliminar);
         }
 
-        public bool crearFamilia(Familia familia)
+
+        public Rol conseguirRol(string codigo)
         {
-            string textoComando = "insert into PERMISO (codigo, descripcion) VALUES (@CODIGO, @DESCRIPCION)";
+            string textoComando = "select PermisoId, Codigo, Descripcion from Permiso where codigo = @CODIGO";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@CODIGO", codigo));
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+
+            Permiso permiso = new Permiso();
+
+            permiso.Codigo = (string)dt.Rows[0]["codigo"];
+            permiso.Descripcion = (string)dt.Rows[0]["descripcion"];
+            permiso.Id = (int)dt.Rows[0]["permisoId"];
+
+            return permiso;
+        }
+
+        public bool crearFamilia(Familia familia, Familia familiaPadre = null)
+        {
+            string textoComando = "insert into PERMISO (codigo, descripcion) OUTPUT Inserted.PermisoId VALUES (@CODIGO, @DESCRIPCION)";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@CODIGO", familia.Codigo));
             lista.Add(new SqlParameter("@DESCRIPCION", familia.Descripcion));
+            sqlHelper.ejecutarNonQuery(textoComando, lista);
+
+            Rol rolCreado = conseguirRol(familia.Codigo);
+
+
+            if (familiaPadre != null)
+            {
+                textoComando = "insert into permiso_jerarquia (IdPadrePermiso, IdHijoPermiso) VALUES (@IDPADRE, @IDHIJO)";
+                lista = new List<SqlParameter>();
+                lista.Add(new SqlParameter("@IDPADRE", familiaPadre.Id));
+                lista.Add(new SqlParameter("@IDHIJO", rolCreado.Id));
+                sqlHelper.ejecutarNonQuery(textoComando, lista);
+            }
+
+
+            textoComando = "insert into permiso_jerarquia (IdPadrePermiso, IdHijoPermiso) VALUES (@IDPADRE, @IDHIJO)";
+            lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@IDPADRE", rolCreado.Id));
+            lista.Add(new SqlParameter("@IDHIJO", DBNull.Value));
 
             return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
+
+
+
         }
 
     }
