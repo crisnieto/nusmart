@@ -50,14 +50,10 @@ namespace NuSmart.BLL
             return false;
         }
 
-        public bool crearRol(Rol rol, Familia familiaPadre = null)
+        public bool crearRol(Rol rol, Rol padre = null)
         {
-            if(rol is Familia)
-            {
-                return dalRol.crearFamilia((Familia)rol, familiaPadre);
-            }
-            return true;
-            
+            return dalRol.crearRol(rol, padre);
+                        
         }
 
 

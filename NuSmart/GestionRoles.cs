@@ -14,6 +14,7 @@ namespace NuSmart
 
         Familia familiaSeleccionada;
         Permiso permisoSeleccionado;
+        Rol rolSeleccionado;
 
         public GestionRoles()
         {
@@ -128,16 +129,23 @@ namespace NuSmart
 
             if (treeNode.Tag is Familia)
             {
+
                 familiaSeleccionada = (Familia)treeNode.Tag;
                 roles_txt_codigo_familia.Text = familiaSeleccionada.Codigo;
                 roles_txt_descripcion_familia.Text = familiaSeleccionada.Descripcion;
+                roles_txt_codigo_tipo.Text = "Familia";
             }
             else
             {
                 permisoSeleccionado = (Permiso)treeNode.Tag;
                 roles_txt_codigo_permiso.Text = permisoSeleccionado.Codigo;
                 roles_txt_descripcion_permiso.Text = permisoSeleccionado.Descripcion;
+                roles_txt_codigo_tipo.Text = "Permiso";
             }
+            rolSeleccionado = (Rol)treeNode.Tag;
+
+            roles_txt_codigo_seleccion.Text = rolSeleccionado.Codigo;
+            roles_txt_descripcion_seleccion.Text = rolSeleccionado.Descripcion;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -167,6 +175,30 @@ namespace NuSmart
         private void roles_btn_borrar_familia_Click(object sender, EventArgs e)
         {
             bllRol.eliminar(permisoSeleccionado);
+            PopularTreeView();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bllRol.eliminar(rolSeleccionado);
+            PopularTreeView();
+        }
+
+        private void roles_btn_crear_rol_Click(object sender, EventArgs e)
+        {
+            Permiso permiso = new Permiso();
+            permiso.Codigo = roles_txt_codigo_rol.Text;
+            permiso.Descripcion = roles_txt_descripcion_rol.Text;
+            bllRol.crearRol(permiso);
+            PopularTreeView();
+        }
+
+        private void roles_btn_asociar_rol_Click(object sender, EventArgs e)
+        {
+            Permiso permiso = new Permiso();
+            permiso.Codigo = roles_txt_codigo_rol.Text;
+            permiso.Descripcion = roles_txt_descripcion_rol.Text;
+            bllRol.crearRol(permiso, rolSeleccionado);
             PopularTreeView();
         }
     }
