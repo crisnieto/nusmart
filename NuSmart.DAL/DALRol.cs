@@ -36,6 +36,46 @@ namespace NuSmart.DAL
 
         }
 
+        public List<Rol> conseguirRoles()
+        {
+            List<Rol> listaRoles = new List<Rol>();
+            try
+            {
+                foreach (Familia familia in conseguirFamilias())
+                {
+                    listaRoles.Add(buscarRecursivamente(familia.Id));
+                }
+            }catch(Exception ex)
+            {
+
+            }
+            listaRoles.AddRange(conseguirPermisosSinPadre());
+            return listaRoles;
+
+        }
+
+        public List<Rol> conseguirPermisosSinPadre()
+        {
+            List<Rol> permisos = new List<Rol>();
+
+            string textoComando = "SELECT t1.permisoID, t1.codigo, t1.descripcion, t2.IdHijoPermiso, t2.IdPadrePermiso " +
+                                  "FROM permiso t1  left JOIN Permiso_Jerarquia t2 ON t2.IdPadrePermiso = t1.permisoID " +
+                                  "or t2.IdHijoPermiso = t1.permisoID WHERE t2.IdHijoPermiso IS NULL and t2.IdPadrePermiso is null";
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Permiso permiso = new Permiso();
+                permiso.Codigo = (string)dr["codigo"];
+                permiso.Descripcion = (string)dr["descripcion"];
+                permiso.Id = (int)dr["permisoId"];
+                permisos.Add(permiso);
+            }
+
+            return permisos;
+        }
+
+
         private Rol buscarRecursivamente(int permisoId, Rol familiaSuperior = null)
         {
             string textoComando = "select A.IdPadrePermiso, A.IdHijoPermiso, P.codigo, P.descripcion, C.codigoPadre, C.descripcionPadre " +
@@ -229,5 +269,16 @@ namespace NuSmart.DAL
             listaEliminar.Add(new SqlParameter("@ID", id));
             return sqlHelper.ejecutarNonQuery(textoEliminarPadre, listaEliminar);
         }
+
+        public bool crearFamilia(Familia familia)
+        {
+            string textoComando = "insert into PERMISO (codigo, descripcion) VALUES (@CODIGO, @DESCRIPCION)";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@CODIGO", familia.Codigo));
+            lista.Add(new SqlParameter("@DESCRIPCION", familia.Descripcion));
+
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
+        }
+
     }
 }

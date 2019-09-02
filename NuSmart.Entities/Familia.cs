@@ -12,10 +12,10 @@ namespace NuSmart.BE
 
         public Familia()
         {
-            Roles1 = new List<Rol>();
+            Roles = new List<Rol>();
         }
 
-        public List<Rol> Roles1
+        public List<Rol> Roles
         {
             get
             {
@@ -30,17 +30,17 @@ namespace NuSmart.BE
 
         public override void agregar(Rol rol)
         {
-            Roles1.Add(rol);
+            Roles.Add(rol);
         }
 
         public override void eliminar(Rol rol)
         {
-            Roles1.Remove(rol);
+            Roles.Remove(rol);
         }
 
         public override List<Rol> mostrar()
         {
-            return Roles1;
+            return Roles;
         }
 
     }

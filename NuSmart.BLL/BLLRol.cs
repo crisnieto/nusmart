@@ -21,9 +21,13 @@ namespace NuSmart.BLL
 
         public List<Rol> conseguir(Usuario usuario)
         {
-            Familia familia = new Familia();
-
             List<Rol> roles = dalRol.conseguirRolesDeUsuario(usuario);
+            return roles;
+        }
+
+        public List<Rol> conseguir()
+        {
+            List<Rol> roles = dalRol.conseguirRoles();
             return roles;
         }
 
@@ -50,6 +54,13 @@ namespace NuSmart.BLL
             }
             return false;
         }
+
+        public bool crearRol(Rol rol)
+        {
+            return true;
+        }
+
+
 
 
     }
