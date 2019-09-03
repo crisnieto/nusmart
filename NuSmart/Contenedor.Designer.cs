@@ -51,6 +51,7 @@
             this.menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignarPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,7 +130,8 @@
             // menu_nutricionistas
             // 
             this.menu_nutricionistas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_gestion_nutricionistas});
+            this.menu_gestion_nutricionistas,
+            this.asignarPermisosToolStripMenuItem});
             this.menu_nutricionistas.Name = "menu_nutricionistas";
             this.menu_nutricionistas.Size = new System.Drawing.Size(92, 22);
             this.menu_nutricionistas.Text = "Nutricionistas";
@@ -225,6 +227,12 @@
             this.gestionarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.gestionarEtiquetasToolStripMenuItem.Text = "Gestionar Etiquetas";
             // 
+            // asignarPermisosToolStripMenuItem
+            // 
+            this.asignarPermisosToolStripMenuItem.Name = "asignarPermisosToolStripMenuItem";
+            this.asignarPermisosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.asignarPermisosToolStripMenuItem.Text = "Asignar Permisos";
+            // 
             // Contenedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,5 +278,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu_cambiar_idioma;
         private System.Windows.Forms.ToolStripMenuItem gestionarIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionarEtiquetasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asignarPermisosToolStripMenuItem;
     }
 }

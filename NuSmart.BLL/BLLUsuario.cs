@@ -193,5 +193,10 @@ namespace NuSmart.BLL
             }
             return false;
         }
+
+        public List<Usuario> conseguirUsuarios()
+        {
+            return dalUsuario.conseguirTodos();
+        }
     }
 }

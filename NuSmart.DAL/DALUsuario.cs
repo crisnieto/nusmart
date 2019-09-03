@@ -42,9 +42,24 @@ namespace NuSmart.DAL
             return usuarioConseguido;
         }
 
-        public int conseguirTodos()
+        public List<Usuario> conseguirTodos()
         {
-            return 0;
+            string textoComando = "SELECT usuarioiD, username, password, intentos, DVH FROM USUARIO";
+
+            DataTable usuarioDt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            
+            foreach(DataRow dr in usuarioDt.Rows)
+            {
+                Usuario usuarioConseguido = new Usuario();
+                usuarioConseguido.Id = (int)(dr["usuarioID"]);
+                usuarioConseguido.Username = Convert.ToString(dr["username"]);
+                usuarioConseguido.Password = Convert.ToString(dr["password"]);
+                usuarioConseguido.Dvh = Convert.ToInt32(dr["DVH"]);
+                usuarioConseguido.Intentos = Convert.ToInt32(dr["intentos"]);
+                listaUsuarios.Add(usuarioConseguido);
+            }
+            return listaUsuarios;
         }
 
         public bool eliminar(int id)

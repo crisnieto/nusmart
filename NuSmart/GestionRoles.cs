@@ -6,90 +6,53 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
+
     public partial class GestionRoles : FormObserver
     {
-
-        BLLFamilia bllFamilia;
         BLLRol bllRol;
-
-        Familia familiaSeleccionada;
-        Permiso permisoSeleccionado;
+        BLLUsuario bllUsuario;
         Rol rolSeleccionado;
+        Rol rolUsuarioSeleccionado;
+        Usuario usuarioSeleccionado;
 
         public GestionRoles()
         {
             InitializeComponent();
             setup();
-            bllFamilia = new BLLFamilia();
             bllRol = new BLLRol();
+            bllUsuario = new BLLUsuario();
         }
-
-
-        public void actualizarSeleccion(Rol rol)
-        {
-            if (rol is Familia)
-            {
-                familiaSeleccionada = (Familia)rol;
-                roles_txt_codigo_familia.Text = rol.Codigo;
-                roles_txt_descripcion_familia.Text = rol.Descripcion;
-            }
-            else
-            {
-                permisoSeleccionado = (Permiso)rol;
-                roles_txt_codigo_permiso.Text = rol.Codigo;
-                roles_txt_descripcion_permiso.Text = rol.Descripcion;
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (bllRol.validarCodigoDeRol(roles_txt_codigo_permiso.Text))
-            {
-                Permiso nuevoPermiso = new Permiso();
-                nuevoPermiso.Descripcion = roles_txt_descripcion_permiso.Text;
-                nuevoPermiso.Codigo = roles_txt_codigo_permiso.Text;
-                bllFamilia.agregarAFamilia(familiaSeleccionada, nuevoPermiso);
-            }
-            else
-            {
-                MessageBox.Show("Error: Ya existe el codigo ingresado!");
-            }
-        }
-
 
         private void GestionRoles_Load(object sender, EventArgs e)
         {
-            PopularTreeView();
-            this.Width = 1000;
+            popularTreeView(treeView1, bllRol.conseguir());
+            obtenerUsuarios();
         }
 
-
-
-        private void PopularTreeView()
+        private void popularTreeView(TreeView treeview, List<Rol> roles)
         {
-            treeView1.Nodes.Clear();
-            List<Rol> roles = bllRol.conseguir();
+            treeview.Nodes.Clear();
             List<TreeNode> treenodes = new List<TreeNode>();
 
             foreach (Rol rol in roles)
             {
                 if (rol is Familia)
                 {
-                    TreeNode treeNode = new TreeNode(rol.Descripcion, PopularHijos((Familia)rol));
+                    TreeNode treeNode = new TreeNode(rol.Descripcion, popularHijos((Familia)rol));
                     treeNode.Tag = rol;
-                    treeView1.Nodes.Add(treeNode);
+                    treeview.Nodes.Add(treeNode);
 
                 }
                 else
                 {
                     TreeNode treeNode = new TreeNode(rol.Descripcion);
                     treeNode.Tag = rol;
-                    treeView1.Nodes.Add(treeNode);
+                    treeview.Nodes.Add(treeNode);
                 }
             }
         }
 
-        private TreeNode[] PopularHijos(Familia familia)
+        private TreeNode[] popularHijos(Familia familia)
         {
             List<TreeNode> treeNodes = new List<TreeNode>();
 
@@ -97,7 +60,7 @@ namespace NuSmart
             {
                 if (rol is Familia)
                 {
-                    TreeNode treeNode = new TreeNode(rol.Descripcion, PopularHijos((Familia)rol));
+                    TreeNode treeNode = new TreeNode(rol.Descripcion, popularHijos((Familia)rol));
                     treeNode.Tag = rol;
                     treeNodes.Add(treeNode);
                 }
@@ -111,16 +74,6 @@ namespace NuSmart
             return treeNodes.ToArray();
         }
 
-
-        private void roles_btn_crear_familia_Click(object sender, EventArgs e)
-        {
-            Familia familia = new Familia();
-            familia.Codigo = roles_txt_codigo_familia.Text;
-            familia.Descripcion = roles_txt_descripcion_familia.Text;
-            bllRol.crearRol(familia, familiaSeleccionada);
-            PopularTreeView();
-        }
-
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
@@ -129,17 +82,10 @@ namespace NuSmart
 
             if (treeNode.Tag is Familia)
             {
-
-                familiaSeleccionada = (Familia)treeNode.Tag;
-                roles_txt_codigo_familia.Text = familiaSeleccionada.Codigo;
-                roles_txt_descripcion_familia.Text = familiaSeleccionada.Descripcion;
                 roles_txt_codigo_tipo.Text = "Familia";
             }
             else
             {
-                permisoSeleccionado = (Permiso)treeNode.Tag;
-                roles_txt_codigo_permiso.Text = permisoSeleccionado.Codigo;
-                roles_txt_descripcion_permiso.Text = permisoSeleccionado.Descripcion;
                 roles_txt_codigo_tipo.Text = "Permiso";
             }
             rolSeleccionado = (Rol)treeNode.Tag;
@@ -155,51 +101,153 @@ namespace NuSmart
 
         private void GestionRoles_Click(object sender, EventArgs e)
         {
+            limpiarSelecciones();
+        }
+
+        private void limpiarSelecciones()
+        {
             treeView1.SelectedNode = null;
-            familiaSeleccionada = null;
-            permisoSeleccionado = null;
-            roles_txt_codigo_familia.Text = "";
-            roles_txt_descripcion_familia.Text = "";
-
-            roles_txt_codigo_permiso.Text = "";
-            roles_txt_descripcion_permiso.Text = "";
-
-        }
-
-        private void roles_btn_borrar_permiso_Click(object sender, EventArgs e)
-        {
-            bllRol.eliminar(permisoSeleccionado);
-            PopularTreeView();
-        }
-
-        private void roles_btn_borrar_familia_Click(object sender, EventArgs e)
-        {
-            bllRol.eliminar(permisoSeleccionado);
-            PopularTreeView();
+            treeView2.SelectedNode = null;
+            rolSeleccionado = null;
+            rolUsuarioSeleccionado = null;
+            roles_txt_codigo_seleccion.Text = "";
+            roles_txt_descripcion_seleccion.Text = "";
+            roles_txt_codigo_tipo.Text = "";
+            roles_txt_codigo_seleccion_usuario.Text = "";
+            roles_txt_descripcion_seleccion_usuario.Text = "";
+            roles_txt_codigo_tipo_usuario.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             bllRol.eliminar(rolSeleccionado);
-            PopularTreeView();
+            popularTreeView(treeView1, bllRol.conseguir());
+            popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
         }
 
         private void roles_btn_crear_rol_Click(object sender, EventArgs e)
         {
-            Permiso permiso = new Permiso();
-            permiso.Codigo = roles_txt_codigo_rol.Text;
-            permiso.Descripcion = roles_txt_descripcion_rol.Text;
-            bllRol.crearRol(permiso);
-            PopularTreeView();
+            try
+            {
+                Permiso permiso = new Permiso();
+                permiso.Codigo = roles_txt_codigo_rol.Text;
+                permiso.Descripcion = roles_txt_descripcion_rol.Text;
+                bllRol.crearRol(permiso);
+                popularTreeView(treeView1, bllRol.conseguir());
+                limpiarSelecciones();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error en la consulta");
+            }
         }
 
         private void roles_btn_asociar_rol_Click(object sender, EventArgs e)
         {
-            Permiso permiso = new Permiso();
-            permiso.Codigo = roles_txt_codigo_rol.Text;
-            permiso.Descripcion = roles_txt_descripcion_rol.Text;
-            bllRol.crearRol(permiso, rolSeleccionado);
-            PopularTreeView();
+            try
+            {
+                Permiso permiso = new Permiso();
+                permiso.Codigo = roles_txt_codigo_rol.Text;
+                permiso.Descripcion = roles_txt_descripcion_rol.Text;
+                bllRol.crearRol(permiso, rolSeleccionado);
+                popularTreeView(treeView1, bllRol.conseguir());
+                limpiarSelecciones();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error en la consulta");
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            treeView1.SelectedNode = null;
+            rolSeleccionado = null;
+            roles_txt_codigo_seleccion.Text = "";
+            roles_txt_descripcion_seleccion.Text = "";
+        }
+
+        private void obtenerUsuarios()
+        {
+            comboBox1.DataSource = bllUsuario.conseguirUsuarios();
+        }
+
+        private void roles_btn_obtener_usuarios_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            usuarioSeleccionado = (Usuario)comboBox1.SelectedItem;
+            List<Rol> roles = bllRol.conseguir(usuarioSeleccionado);
+            usuarioSeleccionado.Roles = roles;
+            popularTreeView(treeView2, roles);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try {
+                bllRol.asociarAUsuario(rolSeleccionado, usuarioSeleccionado);
+                List<Rol> roles = bllRol.conseguir(usuarioSeleccionado);
+                usuarioSeleccionado.Roles = roles;
+                popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
+                limpiarSelecciones();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode treeNode = treeView2.SelectedNode;
+
+
+            if (treeNode.Tag is Familia)
+            {
+                roles_txt_codigo_tipo_usuario.Text = "Familia";
+            }
+            else
+            {
+                roles_txt_codigo_tipo_usuario.Text = "Permiso";
+            }
+            rolUsuarioSeleccionado = (Rol)treeNode.Tag;
+
+            roles_txt_codigo_seleccion_usuario.Text = rolUsuarioSeleccionado.Codigo;
+            roles_txt_descripcion_seleccion_usuario.Text = rolUsuarioSeleccionado.Descripcion;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bllRol.desasociarDeUsuario(rolUsuarioSeleccionado, usuarioSeleccionado);
+                List<Rol> roles = bllRol.conseguir(usuarioSeleccionado);
+                usuarioSeleccionado.Roles = roles;
+                popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
+                limpiarSelecciones();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void roles_txt_codigo_seleccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void roles_txt_descripcion_seleccion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
+

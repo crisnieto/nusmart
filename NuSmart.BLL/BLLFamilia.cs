@@ -22,10 +22,6 @@ namespace NuSmart.BLL
             return dalRol.conseguirFamilias();
         }
 
-        public int agregarAFamilia(Rol familia, Rol hijo)
-        {
-            return dalRol.agregarAFamilia(familia, hijo);
-        }
 
     }
 }
