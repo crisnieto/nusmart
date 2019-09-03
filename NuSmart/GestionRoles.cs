@@ -123,6 +123,7 @@ namespace NuSmart
             bllRol.eliminar(rolSeleccionado);
             popularTreeView(treeView1, bllRol.conseguir());
             popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
+            limpiarSelecciones();
         }
 
         private void roles_btn_crear_rol_Click(object sender, EventArgs e)

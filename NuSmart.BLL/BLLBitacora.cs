@@ -28,12 +28,14 @@ namespace NuSmart.BLL
 
         public List<Usuario> conseguirUsuarios()
         {
+            Sesion.Instancia().verificarPermiso("OP45");
             DALBitacora dalBitacora = new DALBitacora();
             return dalBitacora.conseguirUsuarios();
         }
 
         public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario, DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
+            Sesion.Instancia().verificarPermiso("OP45");
             DALBitacora dalBitacora = new DALBitacora();
             return dalBitacora.conseguirBitacorasConUsuario(usuario, fechaInicio, fechaFin, criticidad);
         }

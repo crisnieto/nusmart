@@ -140,10 +140,12 @@ namespace NuSmart.DAL
             }
         }
 
-
+        /**
+         * Consigo las familias del primer nivel 
+         */
         public List<Familia> conseguirFamilias()
         {
-            string textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID)";
+            string textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID) WHERE A.IdPadrePermiso NOT IN (select IdHijoPermiso from Permiso_Jerarquia)";
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
 
             List<Familia> listaFamilia = new List<Familia>();

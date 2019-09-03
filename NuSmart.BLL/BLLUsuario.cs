@@ -109,10 +109,13 @@ namespace NuSmart.BLL
 
         public int actualizarPassword(Usuario usuario, string password)
         {
+            Sesion.Instancia().verificarPermiso("GE110");
             usuario.Password = new Seguridad().encriptar(password);
             Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
             usuario.Dvh = 1234; //TODO: Calcular DVH
             dalUsuario.actualizarContraseña(usuario);
+            new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
+
             //TODO: Actalizar DVV
             return 0;
         }
@@ -187,6 +190,7 @@ namespace NuSmart.BLL
 
         public bool agregarIntento(Usuario usuario)
         {
+            //TODO: Hacer algo mas elegante aca...
             if(usuario.Username != "test")
             {
               return dalUsuario.agregarIntento(usuario);

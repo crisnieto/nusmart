@@ -27,14 +27,17 @@ namespace NuSmart.BLL
 
         public List<Rol> conseguir()
         {
+            Sesion.Instancia().verificarPermiso("AA099");
             List<Rol> roles = dalRol.conseguirRoles();
             return roles;
         }
 
         public void eliminar(Rol rol)
         {
+            Sesion.Instancia().verificarPermiso("AA099");
             dalRol.desasociarDeTodos(rol);
             dalRol.eliminarRecursivamente(rol.Id);
+            new BLLBitacora().crearNuevaBitacora("Eliminacion de Rol", "Se elimino el rol " + rol.Codigo, Criticidad.Alta);
         }
 
         public void insertar()
@@ -53,14 +56,19 @@ namespace NuSmart.BLL
 
         public bool crearRol(Rol rol, Rol padre = null)
         {
+            new BLLBitacora().crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
+
+            Sesion.Instancia().verificarPermiso("AA099");
             return dalRol.crearRol(rol, padre);
 
         }
 
         public bool asociarAUsuario(Rol rol, Usuario usuario)
         {
+            Sesion.Instancia().verificarPermiso("AA099");
             if (esPosibleAsociarRol(rol, usuario.Roles))
             {
+                new BLLBitacora().crearNuevaBitacora("Asociacion de Rol", "Se asocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
                 return dalRol.asociarRolAUsuario(rol, usuario);
             }
             else
@@ -71,12 +79,15 @@ namespace NuSmart.BLL
 
         public bool desasociarDeUsuario(Rol rol, Usuario usuario)
         {
+            Sesion.Instancia().verificarPermiso("AA099");
             if (esPosibleDesociarRol(rol, usuario))
             {
+                new BLLBitacora().crearNuevaBitacora("Desasociacion de Rol", "Se desasocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
                 return dalRol.desasociarDeUsuario(rol, usuario);
+
             }
             else
-            {
+            {   
                 throw new Exception("No es posible desasociar el rol. Verifique que efectivamente no sea parte de una familia que lo posea");
             }
         }
@@ -84,26 +95,31 @@ namespace NuSmart.BLL
 
         public bool esPosibleAsociarRol(Rol rolBuscado, List<Rol> roles)
         {
-            bool resultado = true;
-            foreach(Rol rolHijo in roles){
+            return !contieneElRol(rolBuscado, roles);
+        }
+
+
+        public bool contieneElRol(Rol rolBuscado, List<Rol> roles)
+        {
+            bool resultado = false;
+            foreach (Rol rolHijo in roles)
+            {
                 if (rolHijo.Codigo == rolBuscado.Codigo)
                 {
-                    return false;
+                    return true;
                 }
-                if(rolHijo is Familia)
+                if (rolHijo is Familia)
                 {
-                       resultado = esPosibleAsociarRol(rolBuscado ,((Familia)rolHijo).Roles);
-                       if(resultado == false){
+                    resultado = contieneElRol(rolBuscado, ((Familia)rolHijo).Roles);
+                    if (resultado == true)
+                    {
                         return resultado;
                     }
                 }
             }
             return resultado;
+
         }
-
-
-
-
 
         public bool esPosibleDesociarRol(Rol rolBuscado, Usuario usuario)
         {
@@ -123,9 +139,6 @@ namespace NuSmart.BLL
             }
             return false;
         }
-
-
-
 
     }
 }

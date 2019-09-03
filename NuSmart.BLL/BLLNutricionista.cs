@@ -19,6 +19,7 @@ namespace NuSmart.BLL
 
         public Nutricionista conseguir(int idUsuario)
         {
+            Sesion.Instancia().verificarPermiso("GE110");
             return dalNutricionista.conseguir(idUsuario);
         }
         
@@ -50,6 +51,7 @@ namespace NuSmart.BLL
 
         public int ingresar(Nutricionista nutricionista)
         {
+            Sesion.Instancia().verificarPermiso("OP038");
             nutricionista.Dvh = 1234; //TODO: Calcular DVH
             dalNutricionista.ingresar(nutricionista);
             //TODO: Actualizar DVV

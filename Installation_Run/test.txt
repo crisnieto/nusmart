@@ -1,1 +1,1 @@
-Data Source=332-019-71286\SQL_UAI;Initial Catalog=nusmart;Integrated Security=True
+Data Source=DESKTOP-EJGFO76\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True 

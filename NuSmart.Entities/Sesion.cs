@@ -87,6 +87,7 @@ namespace NuSmart.BE
             return valido;
         }
 
+
         public void verificarPermiso(string codigo)
         {
             if (!validar(codigo))

@@ -46,12 +46,7 @@
             this.menu_gestion_bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_gestion_backup = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestiónDeRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_idioma = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionarIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asignarPermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_gestion_roles = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,8 +61,7 @@
             this.menu_dieta_ejercicio,
             this.menu_gestion_bitacora,
             this.menu_gestion_backup,
-            this.rolesToolStripMenuItem,
-            this.menu_idioma});
+            this.rolesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
@@ -130,8 +124,7 @@
             // menu_nutricionistas
             // 
             this.menu_nutricionistas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_gestion_nutricionistas,
-            this.asignarPermisosToolStripMenuItem});
+            this.menu_gestion_nutricionistas});
             this.menu_nutricionistas.Name = "menu_nutricionistas";
             this.menu_nutricionistas.Size = new System.Drawing.Size(92, 22);
             this.menu_nutricionistas.Text = "Nutricionistas";
@@ -187,51 +180,18 @@
             // rolesToolStripMenuItem
             // 
             this.rolesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónDeRolesToolStripMenuItem});
+            this.menu_gestion_roles});
             this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
             this.rolesToolStripMenuItem.Size = new System.Drawing.Size(47, 22);
             this.rolesToolStripMenuItem.Text = "Roles";
+            this.rolesToolStripMenuItem.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
             // 
-            // gestiónDeRolesToolStripMenuItem
+            // menu_gestion_roles
             // 
-            this.gestiónDeRolesToolStripMenuItem.Name = "gestiónDeRolesToolStripMenuItem";
-            this.gestiónDeRolesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.gestiónDeRolesToolStripMenuItem.Text = "Gestión de Roles";
-            this.gestiónDeRolesToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeRolesToolStripMenuItem_Click);
-            // 
-            // menu_idioma
-            // 
-            this.menu_idioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_cambiar_idioma,
-            this.gestionarIdiomasToolStripMenuItem,
-            this.gestionarEtiquetasToolStripMenuItem});
-            this.menu_idioma.Name = "menu_idioma";
-            this.menu_idioma.Size = new System.Drawing.Size(56, 22);
-            this.menu_idioma.Text = "Idioma";
-            // 
-            // menu_cambiar_idioma
-            // 
-            this.menu_cambiar_idioma.Name = "menu_cambiar_idioma";
-            this.menu_cambiar_idioma.Size = new System.Drawing.Size(175, 22);
-            this.menu_cambiar_idioma.Text = "Cambiar Idioma";
-            // 
-            // gestionarIdiomasToolStripMenuItem
-            // 
-            this.gestionarIdiomasToolStripMenuItem.Name = "gestionarIdiomasToolStripMenuItem";
-            this.gestionarIdiomasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.gestionarIdiomasToolStripMenuItem.Text = "Gestionar Idiomas";
-            // 
-            // gestionarEtiquetasToolStripMenuItem
-            // 
-            this.gestionarEtiquetasToolStripMenuItem.Name = "gestionarEtiquetasToolStripMenuItem";
-            this.gestionarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.gestionarEtiquetasToolStripMenuItem.Text = "Gestionar Etiquetas";
-            // 
-            // asignarPermisosToolStripMenuItem
-            // 
-            this.asignarPermisosToolStripMenuItem.Name = "asignarPermisosToolStripMenuItem";
-            this.asignarPermisosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.asignarPermisosToolStripMenuItem.Text = "Asignar Permisos";
+            this.menu_gestion_roles.Name = "menu_gestion_roles";
+            this.menu_gestion_roles.Size = new System.Drawing.Size(161, 22);
+            this.menu_gestion_roles.Text = "Gestión de Roles";
+            this.menu_gestion_roles.Click += new System.EventHandler(this.gestiónDeRolesToolStripMenuItem_Click);
             // 
             // Contenedor
             // 
@@ -273,11 +233,6 @@
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_bitacora;
         private System.Windows.Forms.ToolStripMenuItem menu_gestion_backup;
         private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestiónDeRolesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menu_idioma;
-        private System.Windows.Forms.ToolStripMenuItem menu_cambiar_idioma;
-        private System.Windows.Forms.ToolStripMenuItem gestionarIdiomasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionarEtiquetasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem asignarPermisosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_gestion_roles;
     }
 }
