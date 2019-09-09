@@ -38,3 +38,4 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Properties.Resou
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GUI.csproj.GenerateResource.Cache
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.exe
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.BackupManager.resources

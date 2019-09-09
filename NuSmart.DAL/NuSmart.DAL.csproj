@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALBackupManager.cs" />
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALComando.cs" />
     <Compile Include="DALLeyenda.cs" />

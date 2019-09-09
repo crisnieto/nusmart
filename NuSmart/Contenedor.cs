@@ -41,6 +41,7 @@ namespace NuSmart
             menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
             menu_gestion_roles.Enabled = Sesion.Instancia().validar("AA099");
             menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
+            menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)
@@ -110,6 +111,11 @@ namespace NuSmart
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menu_gestion_backup_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(BackupManager));
         }
     }
 }

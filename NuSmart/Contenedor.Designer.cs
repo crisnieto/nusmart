@@ -176,6 +176,7 @@
             this.menu_gestion_backup.Name = "menu_gestion_backup";
             this.menu_gestion_backup.Size = new System.Drawing.Size(58, 22);
             this.menu_gestion_backup.Text = "Backup";
+            this.menu_gestion_backup.Click += new System.EventHandler(this.menu_gestion_backup_Click);
             // 
             // rolesToolStripMenuItem
             // 
