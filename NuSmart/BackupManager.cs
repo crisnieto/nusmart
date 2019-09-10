@@ -21,37 +21,51 @@ namespace NuSmart
 
         private void backup_btn_crear_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "bak files (*.bak)|*.bak";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                Console.WriteLine(Path.GetFullPath(saveFileDialog1.FileName));
-                BLLBackupManager bllBackupManager = new BLLBackupManager();
+                saveFileDialog1.Filter = "bak files (*.bak)|*.bak";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.RestoreDirectory = true;
 
-                if (bllBackupManager.crearBackup(Path.GetFullPath(saveFileDialog1.FileName)) == 0)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("OK!");
-                };
+                    Console.WriteLine(Path.GetFullPath(saveFileDialog1.FileName));
+                    BLLBackupManager bllBackupManager = new BLLBackupManager();
+
+                    if (bllBackupManager.crearBackup(Path.GetFullPath(saveFileDialog1.FileName)) == 0)
+                    {
+                        MessageBox.Show("OK!");
+                    };
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Ocurrio un error");
             }
 
         }
 
         private void backup_btn_restaurar_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "bak files (*.bak)|*.bak";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                Console.WriteLine(Path.GetFullPath(openFileDialog1.FileName));
-                BLLBackupManager bllBackupManager = new BLLBackupManager();
-                if (bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName)) == 0)
+                openFileDialog1.Filter = "bak files (*.bak)|*.bak";
+                openFileDialog1.FilterIndex = 1;
+                openFileDialog1.RestoreDirectory = true;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("OK!");
-                    Application.Exit();
+                    Console.WriteLine(Path.GetFullPath(openFileDialog1.FileName));
+                    BLLBackupManager bllBackupManager = new BLLBackupManager();
+                    if (bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName)) == 0)
+                    {
+                        MessageBox.Show("OK!");
+                        Application.Exit();
+                    }
                 }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Ocurrio un error");
             }
         }
     }
