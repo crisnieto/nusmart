@@ -9,7 +9,7 @@ namespace NuSmart.BE
     public class Leyenda
     {
         int _id;
-        string _nombre;
+        string _nombreControl;
         string _texto;
 
         public int Id
@@ -25,16 +25,16 @@ namespace NuSmart.BE
             }
         }
 
-        public string Nombre
+        public string NombreControl
         {
             get
             {
-                return _nombre;
+                return _nombreControl;
             }
 
             set
             {
-                _nombre = value;
+                _nombreControl = value;
             }
         }
 

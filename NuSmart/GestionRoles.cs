@@ -249,6 +249,16 @@ namespace NuSmart
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            limpiarSelecciones();
+        }
+
+        private void GestionRoles_groupbox_roles_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

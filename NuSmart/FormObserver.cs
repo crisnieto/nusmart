@@ -33,7 +33,7 @@ namespace NuSmart
 
             foreach (Control control in this.Controls)
             {
-                control.Text = bllIdioma.conseguirLeyenda(control);                
+                bllIdioma.conseguirLeyenda(control);
             }
         }
 

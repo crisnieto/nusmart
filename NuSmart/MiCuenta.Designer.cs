@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.micuenta_txt_cambiar = new System.Windows.Forms.TextBox();
-            this.micuenta_lbl_nueva_password = new System.Windows.Forms.Label();
-            this.micuenta_btn_cambiar = new System.Windows.Forms.Button();
+            this.MiCuenta_label_nueva_password = new System.Windows.Forms.Label();
+            this.MiCuenta_button_cambiar_password = new System.Windows.Forms.Button();
             this.micuenta_txt_apellido = new System.Windows.Forms.TextBox();
             this.micuenta_txt_nombre = new System.Windows.Forms.TextBox();
             this.micuenta_txt_usuario = new System.Windows.Forms.TextBox();
-            this.micuenta_lbl_apellido = new System.Windows.Forms.Label();
-            this.micuenta_lbl_nombre = new System.Windows.Forms.Label();
-            this.micuenta_lbl_username = new System.Windows.Forms.Label();
+            this.MiCuenta_label_apellido = new System.Windows.Forms.Label();
+            this.MiCuenta_label_nombre = new System.Windows.Forms.Label();
+            this.MiCuenta_label_username = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // micuenta_txt_cambiar
@@ -49,26 +49,26 @@
             this.micuenta_txt_cambiar.TabIndex = 17;
             this.micuenta_txt_cambiar.UseSystemPasswordChar = true;
             // 
-            // micuenta_lbl_nueva_password
+            // MiCuenta_label_nueva_password
             // 
-            this.micuenta_lbl_nueva_password.AutoSize = true;
-            this.micuenta_lbl_nueva_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.micuenta_lbl_nueva_password.Location = new System.Drawing.Point(234, 49);
-            this.micuenta_lbl_nueva_password.Name = "micuenta_lbl_nueva_password";
-            this.micuenta_lbl_nueva_password.Size = new System.Drawing.Size(142, 20);
-            this.micuenta_lbl_nueva_password.TabIndex = 16;
-            this.micuenta_lbl_nueva_password.Text = "Nueva contraseña:";
+            this.MiCuenta_label_nueva_password.AutoSize = true;
+            this.MiCuenta_label_nueva_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiCuenta_label_nueva_password.Location = new System.Drawing.Point(234, 49);
+            this.MiCuenta_label_nueva_password.Name = "MiCuenta_label_nueva_password";
+            this.MiCuenta_label_nueva_password.Size = new System.Drawing.Size(142, 20);
+            this.MiCuenta_label_nueva_password.TabIndex = 16;
+            this.MiCuenta_label_nueva_password.Text = "Nueva contraseña:";
             // 
-            // micuenta_btn_cambiar
+            // MiCuenta_button_cambiar_password
             // 
-            this.micuenta_btn_cambiar.Location = new System.Drawing.Point(274, 143);
-            this.micuenta_btn_cambiar.Margin = new System.Windows.Forms.Padding(2);
-            this.micuenta_btn_cambiar.Name = "micuenta_btn_cambiar";
-            this.micuenta_btn_cambiar.Size = new System.Drawing.Size(190, 89);
-            this.micuenta_btn_cambiar.TabIndex = 15;
-            this.micuenta_btn_cambiar.Text = "Cambiar Contraseña";
-            this.micuenta_btn_cambiar.UseVisualStyleBackColor = true;
-            this.micuenta_btn_cambiar.Click += new System.EventHandler(this.micuenta_btn_cambiar_Click);
+            this.MiCuenta_button_cambiar_password.Location = new System.Drawing.Point(315, 116);
+            this.MiCuenta_button_cambiar_password.Margin = new System.Windows.Forms.Padding(2);
+            this.MiCuenta_button_cambiar_password.Name = "MiCuenta_button_cambiar_password";
+            this.MiCuenta_button_cambiar_password.Size = new System.Drawing.Size(190, 89);
+            this.MiCuenta_button_cambiar_password.TabIndex = 15;
+            this.MiCuenta_button_cambiar_password.Text = "Cambiar Contraseña";
+            this.MiCuenta_button_cambiar_password.UseVisualStyleBackColor = true;
+            this.MiCuenta_button_cambiar_password.Click += new System.EventHandler(this.micuenta_btn_cambiar_Click);
             // 
             // micuenta_txt_apellido
             // 
@@ -100,35 +100,35 @@
             this.micuenta_txt_usuario.Size = new System.Drawing.Size(160, 23);
             this.micuenta_txt_usuario.TabIndex = 12;
             // 
-            // micuenta_lbl_apellido
+            // MiCuenta_label_apellido
             // 
-            this.micuenta_lbl_apellido.AutoSize = true;
-            this.micuenta_lbl_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.micuenta_lbl_apellido.Location = new System.Drawing.Point(22, 246);
-            this.micuenta_lbl_apellido.Name = "micuenta_lbl_apellido";
-            this.micuenta_lbl_apellido.Size = new System.Drawing.Size(65, 20);
-            this.micuenta_lbl_apellido.TabIndex = 11;
-            this.micuenta_lbl_apellido.Text = "Apellido";
+            this.MiCuenta_label_apellido.AutoSize = true;
+            this.MiCuenta_label_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiCuenta_label_apellido.Location = new System.Drawing.Point(22, 246);
+            this.MiCuenta_label_apellido.Name = "MiCuenta_label_apellido";
+            this.MiCuenta_label_apellido.Size = new System.Drawing.Size(65, 20);
+            this.MiCuenta_label_apellido.TabIndex = 11;
+            this.MiCuenta_label_apellido.Text = "Apellido";
             // 
-            // micuenta_lbl_nombre
+            // MiCuenta_label_nombre
             // 
-            this.micuenta_lbl_nombre.AutoSize = true;
-            this.micuenta_lbl_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.micuenta_lbl_nombre.Location = new System.Drawing.Point(22, 143);
-            this.micuenta_lbl_nombre.Name = "micuenta_lbl_nombre";
-            this.micuenta_lbl_nombre.Size = new System.Drawing.Size(65, 20);
-            this.micuenta_lbl_nombre.TabIndex = 10;
-            this.micuenta_lbl_nombre.Text = "Nombre";
+            this.MiCuenta_label_nombre.AutoSize = true;
+            this.MiCuenta_label_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiCuenta_label_nombre.Location = new System.Drawing.Point(22, 143);
+            this.MiCuenta_label_nombre.Name = "MiCuenta_label_nombre";
+            this.MiCuenta_label_nombre.Size = new System.Drawing.Size(65, 20);
+            this.MiCuenta_label_nombre.TabIndex = 10;
+            this.MiCuenta_label_nombre.Text = "Nombre";
             // 
-            // micuenta_lbl_username
+            // MiCuenta_label_username
             // 
-            this.micuenta_lbl_username.AutoSize = true;
-            this.micuenta_lbl_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.micuenta_lbl_username.Location = new System.Drawing.Point(22, 49);
-            this.micuenta_lbl_username.Name = "micuenta_lbl_username";
-            this.micuenta_lbl_username.Size = new System.Drawing.Size(64, 20);
-            this.micuenta_lbl_username.TabIndex = 9;
-            this.micuenta_lbl_username.Text = "Usuario";
+            this.MiCuenta_label_username.AutoSize = true;
+            this.MiCuenta_label_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiCuenta_label_username.Location = new System.Drawing.Point(22, 49);
+            this.MiCuenta_label_username.Name = "MiCuenta_label_username";
+            this.MiCuenta_label_username.Size = new System.Drawing.Size(64, 20);
+            this.MiCuenta_label_username.TabIndex = 9;
+            this.MiCuenta_label_username.Text = "Usuario";
             // 
             // MiCuenta
             // 
@@ -137,14 +137,14 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(526, 356);
             this.Controls.Add(this.micuenta_txt_cambiar);
-            this.Controls.Add(this.micuenta_lbl_nueva_password);
-            this.Controls.Add(this.micuenta_btn_cambiar);
+            this.Controls.Add(this.MiCuenta_label_nueva_password);
+            this.Controls.Add(this.MiCuenta_button_cambiar_password);
             this.Controls.Add(this.micuenta_txt_apellido);
             this.Controls.Add(this.micuenta_txt_nombre);
             this.Controls.Add(this.micuenta_txt_usuario);
-            this.Controls.Add(this.micuenta_lbl_apellido);
-            this.Controls.Add(this.micuenta_lbl_nombre);
-            this.Controls.Add(this.micuenta_lbl_username);
+            this.Controls.Add(this.MiCuenta_label_apellido);
+            this.Controls.Add(this.MiCuenta_label_nombre);
+            this.Controls.Add(this.MiCuenta_label_username);
             this.Name = "MiCuenta";
             this.Text = "MiCuenta";
             this.Load += new System.EventHandler(this.MiCuenta_Load);
@@ -156,13 +156,13 @@
         #endregion
 
         private System.Windows.Forms.TextBox micuenta_txt_cambiar;
-        private System.Windows.Forms.Label micuenta_lbl_nueva_password;
-        private System.Windows.Forms.Button micuenta_btn_cambiar;
+        private System.Windows.Forms.Label MiCuenta_label_nueva_password;
+        private System.Windows.Forms.Button MiCuenta_button_cambiar_password;
         private System.Windows.Forms.TextBox micuenta_txt_apellido;
         private System.Windows.Forms.TextBox micuenta_txt_nombre;
         private System.Windows.Forms.TextBox micuenta_txt_usuario;
-        private System.Windows.Forms.Label micuenta_lbl_apellido;
-        private System.Windows.Forms.Label micuenta_lbl_nombre;
-        private System.Windows.Forms.Label micuenta_lbl_username;
+        private System.Windows.Forms.Label MiCuenta_label_apellido;
+        private System.Windows.Forms.Label MiCuenta_label_nombre;
+        private System.Windows.Forms.Label MiCuenta_label_username;
     }
 }

@@ -31,17 +31,17 @@ namespace NuSmart
         {
             //TODO: Validar el Rol del usuario para validar qué opciones se muestran
             reloadMainMenu(menuStrip1);
-            menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
-            menu_gestion_backup.Enabled = Sesion.Instancia().validar("OP46");
-            menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
-            menu_gestion_comidas.Enabled = Sesion.Instancia().validar("GE102");
-            menu_gestion_ejercicios.Enabled = Sesion.Instancia().validar("GE102");
-            menu_gestion_dietas.Enabled = Sesion.Instancia().validar("GE102");
-            menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
-            menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
-            menu_gestion_roles.Enabled = Sesion.Instancia().validar("AA099");
+            Contendor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
+            Contenedor_menu_backup.Enabled = Sesion.Instancia().validar("OP46");
+            Contenedor_menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
+            Contenedor_menu_gestion_alimentos.Enabled = Sesion.Instancia().validar("GE102");
+            Contenedor_menu_gestion_ejercicios.Enabled = Sesion.Instancia().validar("GE102");
+            Contenedor_menu_gestion_dietas.Enabled = Sesion.Instancia().validar("GE102");
+            Contenedor_menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
+            Contenedor_menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
+            Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
             menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
-            menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
+            Contendor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)
@@ -110,12 +110,22 @@ namespace NuSmart
 
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            crearFormulario(typeof(GestionRoles));
         }
 
         private void menu_gestion_backup_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(BackupManager));
+        }
+
+        private void menu_gestion_idioma_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionIdioma));
+        }
+
+        private void Contenedor_menu_gestion_etiquetas_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(GestionEtiqueta));
         }
     }
 }

@@ -39,3 +39,4 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GUI.csproj.Gener
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.exe
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.BackupManager.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionIdioma.resources

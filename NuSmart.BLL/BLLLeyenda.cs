@@ -28,9 +28,19 @@ namespace NuSmart.BLL
             return dalLeyenda.conseguirLeyendasPorNombre();
         }
 
-        public Leyenda conseguirLeyendaParaIdioma(string nombre, int idiomaId)
+        public void eliminarLeyenda(Leyenda leyenda)
         {
-            return dalLeyenda.conseguirLeyendaParaIdioma(nombre, idiomaId);
+            dalLeyenda.eliminarLeyenda(leyenda);
+        }
+
+        public void modificarLeyenda(Leyenda leyenda)
+        {
+            dalLeyenda.modificarLeyenda(leyenda);
+        }
+
+        public void crearLeyenda(Leyenda leyenda, Idioma idioma)
+        {
+            dalLeyenda.crearLeyenda(leyenda, idioma);
         }
 
     }

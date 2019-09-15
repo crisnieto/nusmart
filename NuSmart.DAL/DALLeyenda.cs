@@ -33,7 +33,7 @@ namespace NuSmart.DAL
             {
                 Leyenda leyenda = new Leyenda();
                 leyenda.Id = (int)dr["leyendaId"];
-                leyenda.Nombre = Convert.ToString(dr["nombreLeyenda"]);
+                leyenda.NombreControl = Convert.ToString(dr["nombreLeyenda"]);
                 leyenda.Texto = Convert.ToString(dr["texto"]);
                 listaLeyendas.Add(leyenda);
             }
@@ -65,10 +65,38 @@ namespace NuSmart.DAL
             if(dt.Rows.Count > 0)
             {
                 leyendaADevolver.Id = (int)dt.Rows[0]["leyendaID"];
-                leyendaADevolver.Nombre = (string)dt.Rows[0]["nombreLeyenda"];
+                leyendaADevolver.NombreControl = (string)dt.Rows[0]["nombreLeyenda"];
                 leyendaADevolver.Texto = (string)dt.Rows[0]["texto"];
             }
             return leyendaADevolver;
+        }
+
+        public bool eliminarLeyenda(Leyenda leyenda)
+        {
+            string textoComando = "DELETE FROM LEYENDA WHERE leyendaID = @LEYENDAID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@LEYENDAID", leyenda.Id));
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
+        }
+
+        public bool modificarLeyenda(Leyenda leyenda)
+        {
+            string textoComando = "UPDATE LEYENDA SET nombreLeyenda = @NOMBRE, texto = @TEXTO where leyendaID = @LEYENDAID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@NOMBRE", leyenda.NombreControl));
+            lista.Add(new SqlParameter("@TEXTO", leyenda.Texto));
+            lista.Add(new SqlParameter("@LEYENDAID", leyenda.Id));
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
+        }
+
+        public bool crearLeyenda(Leyenda leyenda, Idioma idioma)
+        {
+            string textoComando = "INSERT INTO LEYENDA (nombreLeyenda, texto, idiomaID) values (@NOMBRE, @TEXTO, @IDIOMAID)";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@NOMBRE", leyenda.NombreControl));
+            lista.Add(new SqlParameter("@TEXTO", leyenda.Texto));
+            lista.Add(new SqlParameter("@IDIOMAID", idioma.Id));
+            return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
         }
 
     }

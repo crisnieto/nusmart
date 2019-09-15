@@ -47,22 +47,26 @@ namespace NuSmart.BLL
             }
         }
 
-        public string conseguirLeyenda(Control control)
+        public void conseguirLeyenda(Control control)
         {
-            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.Nombre == control.Name);
+            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.NombreControl == control.Name);
             if (leyenda != null)
             {
-                return leyenda.Texto;
-            }
-            else
-            {
-                return control.Text;
+                control.Text =  leyenda.Texto;
+                if (control.HasChildren)
+                {
+                    foreach (Control controlHijo in control.Controls)
+                    {
+                        conseguirLeyenda(controlHijo);
+                    }
+                }
             }
         }
 
+
         public string conseguirLeyendaMenu(ToolStripMenuItem item)
         {
-            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.Nombre == item.Name);
+            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.NombreControl == item.Name);
             if (leyenda != null)
             {
                 return leyenda.Texto;
