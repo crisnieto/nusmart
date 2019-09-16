@@ -18,13 +18,15 @@ namespace NuSmart
 
         private void micuenta_btn_cambiar_Click(object sender, EventArgs e)
         {
-            if (new BLLUsuario().actualizarPassword(Sesion.Instancia().UsuarioActual, micuenta_txt_cambiar.Text) == 0)
+            try
             {
-                MessageBox.Show("Contraseña Actualizada Correctamente");
-            }
-            else
+                new BLLUsuario().actualizarPassword(Sesion.Instancia().UsuarioActual, micuenta_txt_cambiar.Text);
+                MessageBox.Show(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_cambio_password_correcto"));
+
+            } catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al actualizar");
+                MessageBox.Show(ex.Message);
+
             }
         }
 

@@ -35,9 +35,16 @@ namespace NuSmart.BLL
 
         public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario, DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
-            Sesion.Instancia().verificarPermiso("OP45");
-            DALBitacora dalBitacora = new DALBitacora();
-            return dalBitacora.conseguirBitacorasConUsuario(usuario, fechaInicio, fechaFin, criticidad);
+            try
+            {
+                Sesion.Instancia().verificarPermiso("OP45");
+                DALBitacora dalBitacora = new DALBitacora();
+                return dalBitacora.conseguirBitacorasConUsuario(usuario, fechaInicio, fechaFin, criticidad);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(NuSmartMessage.formatearMensaje("Bitacora_messagebox_busqueda_error"));
+            }
         }
 
 

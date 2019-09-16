@@ -12,15 +12,29 @@ namespace NuSmart.BLL
     {
         public int crearBackup(string path)
         {
-            Sesion.Instancia().verificarPermiso("AA099");
-            DALBackupManager dalBackupManager = new DALBackupManager();
-            return dalBackupManager.crearBackup(path);
+            try
+            {
+                Sesion.Instancia().verificarPermiso("AA099");
+                DALBackupManager dalBackupManager = new DALBackupManager();
+                return dalBackupManager.crearBackup(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("BackupManager_messagebox_backup_error"));
+            }
         }
         public int ejecutarRestore(string path)
         {
-            Sesion.Instancia().verificarPermiso("AA099");
-            DALBackupManager dalBackupManager = new DALBackupManager();
-            return dalBackupManager.ejecutarRestore(path);
+            try
+            {
+                Sesion.Instancia().verificarPermiso("AA099");
+                DALBackupManager dalBackupManager = new DALBackupManager();
+                return dalBackupManager.ejecutarRestore(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("BackupManager_messagebox_restore_error"));
+            }
         }
     }
 }

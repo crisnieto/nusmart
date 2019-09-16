@@ -25,8 +25,19 @@ namespace NuSmart
 
         private void GestionIdioma_Load(object sender, EventArgs e)
         {
-            idiomaBLL = new BLLIdioma();
-            actualizarGrilla();
+            try
+            {
+                idiomaBLL = new BLLIdioma();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.MultiSelect = false;
+                dataGridView1.ReadOnly = true;
+                actualizarGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -37,32 +48,58 @@ namespace NuSmart
 
         private void gestion_idioma_btn_guardar_Click(object sender, EventArgs e)
         {
-            Idioma idiomaAGuardar = new Idioma();
-            idiomaAGuardar.NombreIdioma = gestion_idioma_txt_idioma.Text;
-            idiomaAGuardar.DescripcionIdioma = gestion_idioma_txt_descripcion.Text;
-            idiomaBLL.guardar(idiomaAGuardar);
-            actualizarGrilla();
+            try
+            {
+                Idioma idiomaAGuardar = new Idioma();
+                idiomaAGuardar.NombreIdioma = gestion_idioma_txt_idioma.Text;
+                idiomaAGuardar.DescripcionIdioma = gestion_idioma_txt_descripcion.Text;
+                idiomaBLL.guardar(idiomaAGuardar);
+                actualizarGrilla();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void gestion_idioma_btn_modificar_Click(object sender, EventArgs e)
         {
-            idiomaSeleccionado.NombreIdioma = gestion_idioma_txt_idioma.Text;
-            idiomaSeleccionado.DescripcionIdioma = gestion_idioma_txt_idioma.Text;
-            idiomaBLL.modificar(idiomaSeleccionado);
-            actualizarGrilla();
-        }
+            try
+            {
+                idiomaSeleccionado.NombreIdioma = gestion_idioma_txt_idioma.Text;
+                idiomaSeleccionado.DescripcionIdioma = gestion_idioma_txt_descripcion.Text;
+                idiomaBLL.modificar(idiomaSeleccionado);
+                actualizarGrilla();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void gestion_idioma_btn_eliminar_Click(object sender, EventArgs e)
         {
-            idiomaBLL.eliminar(idiomaSeleccionado.Id);
-            actualizarGrilla();
+            try
+            {
+                idiomaBLL.eliminar(idiomaSeleccionado.Id);
+                actualizarGrilla();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            idiomaSeleccionado = (Idioma)dataGridView1.CurrentRow.DataBoundItem;
-            gestion_idioma_txt_descripcion.Text = idiomaSeleccionado.DescripcionIdioma;
-            gestion_idioma_txt_idioma.Text = idiomaSeleccionado.NombreIdioma;
+            try
+            {
+                idiomaSeleccionado = (Idioma)dataGridView1.CurrentRow.DataBoundItem;
+                gestion_idioma_txt_descripcion.Text = idiomaSeleccionado.DescripcionIdioma;
+                gestion_idioma_txt_idioma.Text = idiomaSeleccionado.NombreIdioma;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

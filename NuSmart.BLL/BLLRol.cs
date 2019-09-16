@@ -73,7 +73,7 @@ namespace NuSmart.BLL
             }
             else
             {
-                throw new Exception("No es posible asociar el rol. Verifique que efectivamente no sea parte de una familia que lo posea");
+                throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_error_asociacion"));
             }
         }
 
@@ -88,7 +88,7 @@ namespace NuSmart.BLL
             }
             else
             {   
-                throw new Exception("No es posible desasociar el rol. Verifique que efectivamente no sea parte de una familia que lo posea");
+                throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_error_desasociacion"));
             }
         }
 

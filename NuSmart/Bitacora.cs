@@ -65,7 +65,7 @@ namespace NuSmart
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error al ejecutar la consulta. Verifique la selección de usuario y la conexión");
+                MessageBox.Show(ex.Message);
                 Console.WriteLine(ex);
             }
         }

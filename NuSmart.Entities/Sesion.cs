@@ -92,7 +92,7 @@ namespace NuSmart.BE
         {
             if (!validar(codigo))
             {
-                throw new Exception("El usuario no posee permisos para realizar la accion");
+                throw new Exception(NuSmartMessage.formatearMensaje("Roles_messagebox_usuario_sin_permisos"));
             }
         }
 

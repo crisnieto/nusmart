@@ -12,7 +12,7 @@ using NuSmart.BE;
 
 namespace NuSmart
 {
-    public partial class GestionEtiqueta : Form
+    public partial class GestionEtiqueta : FormObserver
     {
         BLLIdioma bllIdioma;
         BLLLeyenda bllLeyenda;
@@ -34,10 +34,6 @@ namespace NuSmart
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
             dataGridView1.ReadOnly = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             recargarEtiquetas();
         }
 
@@ -49,6 +45,7 @@ namespace NuSmart
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             idiomaSeleccionado = (Idioma)comboBox1.SelectedItem;
+            recargarEtiquetas();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -80,6 +77,9 @@ namespace NuSmart
 
             bllLeyenda.eliminarLeyenda(leyendaSeleccionada);
             recargarEtiquetas();
+            bllIdioma.Notify();
+            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+            bllIdioma.Notify();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -88,6 +88,8 @@ namespace NuSmart
             leyendaSeleccionada.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
             bllLeyenda.modificarLeyenda(leyendaSeleccionada);
             recargarEtiquetas();
+            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+            bllIdioma.Notify();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,6 +99,8 @@ namespace NuSmart
             leyenda.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
             bllLeyenda.crearLeyenda(leyenda, idiomaSeleccionado);
             recargarEtiquetas();
+            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+            bllIdioma.Notify();
         }
     }
 }

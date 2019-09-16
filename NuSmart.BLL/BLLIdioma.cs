@@ -2,7 +2,7 @@
 using NuSmart.BE;
 using NuSmart.DAL;
 using System.Windows.Forms;
-
+using System;
 
 
 namespace NuSmart.BLL
@@ -95,7 +95,7 @@ namespace NuSmart.BLL
 
         public int modificar(Idioma idioma)
         {
-            return dalIdioma.modificar(idioma);
+            return dalIdioma.modificar(idioma);           
         }
 
     }

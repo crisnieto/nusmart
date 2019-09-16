@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionEtiqueta));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.GestionEtiqueta_textbox_nombre_control = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.GestionEtiqueta_textbox_texto_leyenda = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 25);
+            this.comboBox1.Location = new System.Drawing.Point(12, 24);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
@@ -69,16 +69,6 @@
             this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Seleccione Idioma";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(60, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 38);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // GestionEtiqueta_textbox_nombre_control
             // 
@@ -148,6 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(717, 496);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -156,7 +147,6 @@
             this.Controls.Add(this.GestionEtiqueta_textbox_texto_leyenda);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GestionEtiqueta_textbox_nombre_control);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
@@ -174,7 +164,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox GestionEtiqueta_textbox_nombre_control;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox GestionEtiqueta_textbox_texto_leyenda;

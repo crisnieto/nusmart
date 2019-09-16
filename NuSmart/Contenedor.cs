@@ -31,7 +31,7 @@ namespace NuSmart
         {
             //TODO: Validar el Rol del usuario para validar qué opciones se muestran
             reloadMainMenu(menuStrip1);
-            Contendor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
+            Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
             Contenedor_menu_backup.Enabled = Sesion.Instancia().validar("OP46");
             Contenedor_menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
             Contenedor_menu_gestion_alimentos.Enabled = Sesion.Instancia().validar("GE102");
@@ -41,7 +41,7 @@ namespace NuSmart
             Contenedor_menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
             menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
-            Contendor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
+            Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)
@@ -126,6 +126,11 @@ namespace NuSmart
         private void Contenedor_menu_gestion_etiquetas_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(GestionEtiqueta));
+        }
+
+        private void Cotenedor_menu_cambiar_idioma_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(Lenguaje));
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using NuSmart.BLL;
+using NuSmart.BE;
 
 namespace NuSmart
 {
@@ -34,13 +35,13 @@ namespace NuSmart
 
                     if (bllBackupManager.crearBackup(Path.GetFullPath(saveFileDialog1.FileName)) == 0)
                     {
-                        MessageBox.Show("OK!");
+                        MessageBox.Show(NuSmartMessage.formatearMensaje("BackupManager_messagebox_backup_creado"));
                     };
                 }
             }catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                MessageBox.Show("Ocurrio un error");
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -58,14 +59,14 @@ namespace NuSmart
                     BLLBackupManager bllBackupManager = new BLLBackupManager();
                     if (bllBackupManager.ejecutarRestore(Path.GetFullPath(openFileDialog1.FileName)) == 0)
                     {
-                        MessageBox.Show("OK!");
+                        MessageBox.Show(NuSmartMessage.formatearMensaje("BackupManager_messagebox_restore_creado"));
                         Application.Exit();
                     }
                 }
             }catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                MessageBox.Show("Ocurrio un error");
+                MessageBox.Show(ex.Message);
             }
         }
     }

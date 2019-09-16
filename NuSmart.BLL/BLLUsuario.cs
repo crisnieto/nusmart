@@ -50,7 +50,7 @@ namespace NuSmart.BLL
             catch (Exception exception)
             {
                 Console.Write(exception);
-                throw new Exception("No se pudo loguear correctamente");
+                throw new Exception(NuSmartMessage.formatearMensaje("Login_messagebox_error_login"));
             }
             try
             {
@@ -61,20 +61,19 @@ namespace NuSmart.BLL
                         usuarioConseguido.Roles = bllRol.conseguir(usuarioConseguido);
                         Sesion.Instancia().UsuarioActual = usuarioConseguido;
                         new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
-                        Console.WriteLine("Login exitoso!");
                     }
                     else
                     {
                         agregarIntento(usuarioConseguido);
                         new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Media);
-                        throw new Exception("No se pudo loguear correctamente");
+                        throw new Exception(NuSmartMessage.formatearMensaje("Login_messagebox_error_login"));
                     }
 
                 }
                 else
                 {
                     new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Alta);
-                    throw new Exception("El usuario se encuentra bloqueado, por favor contactarse con un Administrador");
+                    throw new Exception(NuSmartMessage.formatearMensaje("Login_messagebox_usuario_bloqueado"));
                 }
 
                 if (usuarioConseguido.Intentos > 0)
@@ -88,7 +87,7 @@ namespace NuSmart.BLL
             catch (Exception exception)
             {
                 Console.Write(exception);
-                throw new Exception(exception.Message);
+                throw new Exception(NuSmartMessage.formatearMensaje(exception.Message));
 
             }
         }
@@ -103,21 +102,27 @@ namespace NuSmart.BLL
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                throw new Exception("El usuario no fue encontrado");
+                throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_usuario_inexistente"));
             }
         }
 
         public int actualizarPassword(Usuario usuario, string password)
         {
-            Sesion.Instancia().verificarPermiso("GE110");
-            usuario.Password = new Seguridad().encriptar(password);
-            Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
-            usuario.Dvh = 1234; //TODO: Calcular DVH
-            dalUsuario.actualizarContraseña(usuario);
-            new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
-
-            //TODO: Actalizar DVV
-            return 0;
+            try
+            {
+                Sesion.Instancia().verificarPermiso("GE110");
+                usuario.Password = new Seguridad().encriptar(password);
+                Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
+                usuario.Dvh = 1234; //TODO: Calcular DVH
+                dalUsuario.actualizarContraseña(usuario);
+                new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
+                //TODO: Actalizar DVV
+                return 0;
+            }catch(Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"));
+            }
+         
         }
 
         public int crearUsuario(Usuario usuario, string password)
@@ -182,7 +187,7 @@ namespace NuSmart.BLL
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                throw new Exception("Nutricionista_messagebox_reiniciar_intentos_usuario_error");
             }
             
         }

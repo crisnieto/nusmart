@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NuSmart.BLL;
+using NuSmart.BE;
+
 
 namespace NuSmart
 {
@@ -86,7 +88,6 @@ namespace NuSmart
                 }
             }
         }
-
 
     }
 }

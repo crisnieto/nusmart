@@ -20,7 +20,7 @@ namespace NuSmart.DAL
 
         public List<Leyenda> conseguirTodosParaIdioma(int idiomaId)
         {
-            string consulta = "select * from leyenda where idiomaID = @IDIOMA";
+            string consulta = "select * from leyenda where idiomaID = @IDIOMA ORDER BY nombreControl asc";
 
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@IDIOMA", idiomaId));
@@ -33,7 +33,7 @@ namespace NuSmart.DAL
             {
                 Leyenda leyenda = new Leyenda();
                 leyenda.Id = (int)dr["leyendaId"];
-                leyenda.NombreControl = Convert.ToString(dr["nombreLeyenda"]);
+                leyenda.NombreControl = Convert.ToString(dr["nombreControl"]);
                 leyenda.Texto = Convert.ToString(dr["texto"]);
                 listaLeyendas.Add(leyenda);
             }
@@ -43,12 +43,12 @@ namespace NuSmart.DAL
 
         public List<string> conseguirLeyendasPorNombre()
         {
-            string textoComando = "SELECT DISTINCT nombreLeyenda from Leyenda";
+            string textoComando = "SELECT DISTINCT nombreControl from Leyenda";
             DataTable dt =sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
             List<string> listaNombres = new List<string>();
             foreach(DataRow dr in dt.Rows)
             {
-                listaNombres.Add((string)dr["nombreLeyenda"]);
+                listaNombres.Add((string)dr["nombreControl"]);
             }
 
             return listaNombres;
@@ -56,7 +56,7 @@ namespace NuSmart.DAL
 
         public Leyenda conseguirLeyendaParaIdioma(string nombre, int idiomaId)
         {
-            string textoComando = "SELECT * from Leyenda where nombreLeyenda = @NOMBRE and idiomaId = @IDIOMAID";
+            string textoComando = "SELECT * from Leyenda where nombreControl = @NOMBRE and idiomaId = @IDIOMAID";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@NOMBRE", nombre));
             lista.Add(new SqlParameter("@IDIOMAID", idiomaId));
@@ -65,7 +65,7 @@ namespace NuSmart.DAL
             if(dt.Rows.Count > 0)
             {
                 leyendaADevolver.Id = (int)dt.Rows[0]["leyendaID"];
-                leyendaADevolver.NombreControl = (string)dt.Rows[0]["nombreLeyenda"];
+                leyendaADevolver.NombreControl = (string)dt.Rows[0]["nombreControl"];
                 leyendaADevolver.Texto = (string)dt.Rows[0]["texto"];
             }
             return leyendaADevolver;
@@ -81,7 +81,7 @@ namespace NuSmart.DAL
 
         public bool modificarLeyenda(Leyenda leyenda)
         {
-            string textoComando = "UPDATE LEYENDA SET nombreLeyenda = @NOMBRE, texto = @TEXTO where leyendaID = @LEYENDAID";
+            string textoComando = "UPDATE LEYENDA SET nombreControl = @NOMBRE, texto = @TEXTO where leyendaID = @LEYENDAID";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@NOMBRE", leyenda.NombreControl));
             lista.Add(new SqlParameter("@TEXTO", leyenda.Texto));
@@ -91,7 +91,7 @@ namespace NuSmart.DAL
 
         public bool crearLeyenda(Leyenda leyenda, Idioma idioma)
         {
-            string textoComando = "INSERT INTO LEYENDA (nombreLeyenda, texto, idiomaID) values (@NOMBRE, @TEXTO, @IDIOMAID)";
+            string textoComando = "INSERT INTO LEYENDA (nombreControl, texto, idiomaID) values (@NOMBRE, @TEXTO, @IDIOMAID)";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@NOMBRE", leyenda.NombreControl));
             lista.Add(new SqlParameter("@TEXTO", leyenda.Texto));

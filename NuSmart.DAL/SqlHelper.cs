@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using NuSmart.BE;
 
 namespace NuSmart.DAL
 {
@@ -46,7 +47,14 @@ namespace NuSmart.DAL
 
         public int ejecutarComando(SqlCommand comando)
         {
-            return comando.ExecuteNonQuery();
+            try
+            {
+                return comando.ExecuteNonQuery();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new Exception(NuSmartMessage.formatearMensaje("Database_messagebox_error_conexion"));
+            }
         }
 
            

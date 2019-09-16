@@ -25,7 +25,6 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BLL.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.BE.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\bin\Release\NuSmart.DAL.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GUI.csprojResolveAssemblyReference.cache
-C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.AsignarPermisos.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Bitacora.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Contenedor.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.FormObserver.resources
@@ -40,3 +39,4 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.exe
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.BackupManager.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionIdioma.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionEtiqueta.resources

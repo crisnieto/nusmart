@@ -40,7 +40,15 @@ namespace NuSmart.BLL
 
         public void crearLeyenda(Leyenda leyenda, Idioma idioma)
         {
-            dalLeyenda.crearLeyenda(leyenda, idioma);
+            Leyenda leyendaConseguida = dalLeyenda.conseguirLeyendaParaIdioma(leyenda.NombreControl, idioma.Id);
+
+            if (leyendaConseguida.NombreControl == null)
+            {
+                dalLeyenda.crearLeyenda(leyenda, idioma);
+            }else
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("GestionLeyenda_messagebox_leyenda_existente"));
+            }
         }
 
     }

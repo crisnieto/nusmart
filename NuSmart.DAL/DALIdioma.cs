@@ -65,6 +65,12 @@ namespace NuSmart.DAL
 
         public int eliminar(int idiomaID)
         {
+            string textoComandoLeyenda = "DELETE FROM Leyenda WHERE idiomaId = @ID";
+            List<SqlParameter> listaLeyenda = new List<SqlParameter>();
+            listaLeyenda.Add(new SqlParameter("@ID", idiomaID));
+            sqlHelper.ejecutarNonQuery(textoComandoLeyenda, listaLeyenda);
+
+
             string textoComando = "DELETE FROM Idioma WHERE idiomaId = @ID";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@ID", idiomaID));

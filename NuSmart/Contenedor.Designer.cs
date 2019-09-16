@@ -43,11 +43,11 @@
             this.Contenedor_menu_gestion_alimentos = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_dietas = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_ejercicios = new System.Windows.Forms.ToolStripMenuItem();
-            this.Contendor_menu_gestion_bitacora = new System.Windows.Forms.ToolStripMenuItem();
+            this.Contenedor_menu_gestion_bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_backup = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_roles = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_idioma = new System.Windows.Forms.ToolStripMenuItem();
-            this.Cotenedor_menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
+            this.Contenedor_menu_cambiar_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_idioma = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_etiquetas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -62,7 +62,7 @@
             this.Contenedor_menu_pacientes,
             this.Contenedor_menu_nutricionistas,
             this.Contenedor_menu_dieta_ejercicio,
-            this.Contendor_menu_gestion_bitacora,
+            this.Contenedor_menu_gestion_bitacora,
             this.Contenedor_menu_backup,
             this.Contenedor_menu_roles,
             this.Contenedor_menu_idioma});
@@ -168,12 +168,12 @@
             this.Contenedor_menu_gestion_ejercicios.Size = new System.Drawing.Size(187, 22);
             this.Contenedor_menu_gestion_ejercicios.Text = "Gestión de Ejercicios";
             // 
-            // Contendor_menu_gestion_bitacora
+            // Contenedor_menu_gestion_bitacora
             // 
-            this.Contendor_menu_gestion_bitacora.Name = "Contendor_menu_gestion_bitacora";
-            this.Contendor_menu_gestion_bitacora.Size = new System.Drawing.Size(62, 22);
-            this.Contendor_menu_gestion_bitacora.Text = "Bitácora";
-            this.Contendor_menu_gestion_bitacora.Click += new System.EventHandler(this.menu_gestion_bitacora_Click);
+            this.Contenedor_menu_gestion_bitacora.Name = "Contenedor_menu_gestion_bitacora";
+            this.Contenedor_menu_gestion_bitacora.Size = new System.Drawing.Size(62, 22);
+            this.Contenedor_menu_gestion_bitacora.Text = "Bitácora";
+            this.Contenedor_menu_gestion_bitacora.Click += new System.EventHandler(this.menu_gestion_bitacora_Click);
             // 
             // Contenedor_menu_backup
             // 
@@ -192,18 +192,19 @@
             // Contenedor_menu_idioma
             // 
             this.Contenedor_menu_idioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Cotenedor_menu_cambiar_idioma,
+            this.Contenedor_menu_cambiar_idioma,
             this.Contenedor_menu_gestion_idioma,
             this.Contenedor_menu_gestion_etiquetas});
             this.Contenedor_menu_idioma.Name = "Contenedor_menu_idioma";
             this.Contenedor_menu_idioma.Size = new System.Drawing.Size(56, 22);
             this.Contenedor_menu_idioma.Text = "Idioma";
             // 
-            // Cotenedor_menu_cambiar_idioma
+            // Contenedor_menu_cambiar_idioma
             // 
-            this.Cotenedor_menu_cambiar_idioma.Name = "Cotenedor_menu_cambiar_idioma";
-            this.Cotenedor_menu_cambiar_idioma.Size = new System.Drawing.Size(175, 22);
-            this.Cotenedor_menu_cambiar_idioma.Text = "Cambiar Idioma";
+            this.Contenedor_menu_cambiar_idioma.Name = "Contenedor_menu_cambiar_idioma";
+            this.Contenedor_menu_cambiar_idioma.Size = new System.Drawing.Size(175, 22);
+            this.Contenedor_menu_cambiar_idioma.Text = "Cambiar Idioma";
+            this.Contenedor_menu_cambiar_idioma.Click += new System.EventHandler(this.Cotenedor_menu_cambiar_idioma_Click);
             // 
             // Contenedor_menu_gestion_idioma
             // 
@@ -256,11 +257,11 @@
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_alimentos;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_dietas;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_ejercicios;
-        private System.Windows.Forms.ToolStripMenuItem Contendor_menu_gestion_bitacora;
+        private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_bitacora;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_backup;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_roles;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_idioma;
-        private System.Windows.Forms.ToolStripMenuItem Cotenedor_menu_cambiar_idioma;
+        private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_cambiar_idioma;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_idioma;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_etiquetas;
     }
