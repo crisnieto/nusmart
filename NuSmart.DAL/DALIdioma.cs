@@ -17,7 +17,7 @@ namespace NuSmart.DAL
 
         public Idioma conseguir(int idIdioma)
         {
-            string textoComando = "SELECT * FROM IDIOMA WHERE idiomaID = @IDIOMA";
+            string textoComando = "SELECT * FROM IDIOMA WHERE idiomaID = @IDIOMA and eliminado = 0";
 
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@IDIOMA", idIdioma));
@@ -29,13 +29,14 @@ namespace NuSmart.DAL
             idiomaConseguido.NombreIdioma = Convert.ToString(idiomaDR["nombreIdioma"]);
             idiomaConseguido.DescripcionIdioma = Convert.ToString(idiomaDR["descripcionIdioma"]);
             idiomaConseguido.Id = (int)idiomaDR["idiomaID"];
+            idiomaConseguido.Eliminado = (bool)idiomaDR["eliminado"];
 
             return idiomaConseguido;
         }
         
         public List<Idioma> conseguirIdiomas()
         {
-            string textoComando = "SELECT idiomaID, nombreIdioma, descripcionIdioma FROM IDIOMA";
+            string textoComando = "SELECT idiomaID, nombreIdioma, descripcionIdioma, eliminado FROM IDIOMA where eliminado = 0";
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
 
@@ -47,6 +48,7 @@ namespace NuSmart.DAL
                 idioma.DescripcionIdioma = (string)dr["descripcionIdioma"];
                 idioma.NombreIdioma = (string)dr["nombreIdioma"];
                 idioma.Id = (int)dr["idiomaID"];
+                idioma.Eliminado = (bool)dr["eliminado"];
                 listaIdioma.Add(idioma);
             }
 
@@ -71,7 +73,7 @@ namespace NuSmart.DAL
             sqlHelper.ejecutarNonQuery(textoComandoLeyenda, listaLeyenda);
 
 
-            string textoComando = "DELETE FROM Idioma WHERE idiomaId = @ID";
+            string textoComando = "UPDATE Idioma SET eliminado = 1 WHERE idiomaId = @ID";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@ID", idiomaID));
             return sqlHelper.ejecutarNonQuery(textoComando, lista);
@@ -79,7 +81,7 @@ namespace NuSmart.DAL
 
         public int modificar(Idioma idioma)
         {
-            string textoComando = "UPDATE Idioma SET nombreIdioma = @NOMBRE, descripcionIdioma = @DESCRIPCION WHERE idiomaID = @ID";
+            string textoComando = "UPDATE Idioma SET nombreIdioma = @NOMBRE, descripcionIdioma = @DESCRIPCION WHERE idiomaID = @ID and eliminado = 0";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@NOMBRE", idioma.NombreIdioma));
             lista.Add(new SqlParameter("@DESCRIPCION", idioma.DescripcionIdioma));

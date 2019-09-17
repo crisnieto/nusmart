@@ -20,7 +20,7 @@ namespace NuSmart.DAL
 
         public List<Leyenda> conseguirTodosParaIdioma(int idiomaId)
         {
-            string consulta = "select * from leyenda where idiomaID = @IDIOMA ORDER BY nombreControl asc";
+            string consulta = "select * from leyenda where idiomaID = @IDIOMA and eliminado = 0 ORDER BY nombreControl asc";
 
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@IDIOMA", idiomaId));
@@ -35,6 +35,7 @@ namespace NuSmart.DAL
                 leyenda.Id = (int)dr["leyendaId"];
                 leyenda.NombreControl = Convert.ToString(dr["nombreControl"]);
                 leyenda.Texto = Convert.ToString(dr["texto"]);
+
                 listaLeyendas.Add(leyenda);
             }
 
@@ -56,7 +57,7 @@ namespace NuSmart.DAL
 
         public Leyenda conseguirLeyendaParaIdioma(string nombre, int idiomaId)
         {
-            string textoComando = "SELECT * from Leyenda where nombreControl = @NOMBRE and idiomaId = @IDIOMAID";
+            string textoComando = "SELECT * from Leyenda where nombreControl = @NOMBRE and idiomaId = @IDIOMAID and eliminado = 0";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@NOMBRE", nombre));
             lista.Add(new SqlParameter("@IDIOMAID", idiomaId));
@@ -73,7 +74,7 @@ namespace NuSmart.DAL
 
         public bool eliminarLeyenda(Leyenda leyenda)
         {
-            string textoComando = "DELETE FROM LEYENDA WHERE leyendaID = @LEYENDAID";
+            string textoComando = "UPDATE LEYENDA SET eliminado = 1 WHERE leyendaID = @LEYENDAID";
             List<SqlParameter> lista = new List<SqlParameter>();
             lista.Add(new SqlParameter("@LEYENDAID", leyenda.Id));
             return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));

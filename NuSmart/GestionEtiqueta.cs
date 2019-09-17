@@ -22,6 +22,7 @@ namespace NuSmart
         public GestionEtiqueta()
         {
             InitializeComponent();
+            setup();
             bllIdioma = new BLLIdioma();
             bllLeyenda = new BLLLeyenda();
 
@@ -74,33 +75,53 @@ namespace NuSmart
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            bllLeyenda.eliminarLeyenda(leyendaSeleccionada);
-            recargarEtiquetas();
-            bllIdioma.Notify();
-            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
-            bllIdioma.Notify();
+            try
+            {
+                bllLeyenda.eliminarLeyenda(leyendaSeleccionada);
+                recargarEtiquetas();
+                bllIdioma.Notify();
+                Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+                bllIdioma.Notify();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            leyendaSeleccionada.NombreControl = GestionEtiqueta_textbox_nombre_control.Text;
-            leyendaSeleccionada.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
-            bllLeyenda.modificarLeyenda(leyendaSeleccionada);
-            recargarEtiquetas();
-            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
-            bllIdioma.Notify();
+            try
+            {
+                leyendaSeleccionada.NombreControl = GestionEtiqueta_textbox_nombre_control.Text;
+                leyendaSeleccionada.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
+                bllLeyenda.modificarLeyenda(leyendaSeleccionada);
+                recargarEtiquetas();
+                Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+                bllIdioma.Notify();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Leyenda leyenda = new Leyenda();
-            leyenda.NombreControl = GestionEtiqueta_textbox_nombre_control.Text;
-            leyenda.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
-            bllLeyenda.crearLeyenda(leyenda, idiomaSeleccionado);
-            recargarEtiquetas();
-            Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
-            bllIdioma.Notify();
+            try
+            {
+                Leyenda leyenda = new Leyenda();
+                leyenda.NombreControl = GestionEtiqueta_textbox_nombre_control.Text;
+                leyenda.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;
+                bllLeyenda.crearLeyenda(leyenda, idiomaSeleccionado);
+                recargarEtiquetas();
+                Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+                bllIdioma.Notify();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+  
         }
     }
 }

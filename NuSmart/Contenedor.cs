@@ -40,7 +40,7 @@ namespace NuSmart
             Contenedor_menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
             Contenedor_menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
-            menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
+            Contenedor_menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
             Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
         }
 

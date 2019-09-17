@@ -22,5 +22,20 @@ namespace NuSmart.BE
                 return message;
             }
         }
+
+        public static string formatearMensaje(string message, Exception exception)
+        {
+            Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.NombreControl == message);
+
+            if (leyenda != null)
+            {
+                return leyenda.Texto + " : " + exception.Message;
+            }
+            else
+            {
+                return message + " : " + exception.Message;
+            }
+        }
+
     }
 }

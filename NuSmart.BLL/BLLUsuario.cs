@@ -19,9 +19,29 @@ namespace NuSmart.BLL
             dalUsuario = new DALUsuario();
         }
 
-        public int calcularDVH()
+        public int calcularDVH(Usuario usuario)
         {
-            return 0;
+            string concatenacion = usuario.Username + usuario.Password + Convert.ToString(usuario.Intentos) + Convert.ToString(usuario.Eliminado);
+            Seguridad seguridad = new Seguridad();
+            string md5 = seguridad.encriptar(concatenacion);
+
+
+            //En este punto, verifico cada uno de los caracteres del MD5 obtenido, y los transformo al numero de codigo ASCII
+            //multiplicado por su posicion en la cadena original
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(md5);
+
+            int DVH = 0;
+            int posicion = 0;
+
+            foreach (byte b in asciiBytes)
+            {
+                posicion += 1;
+                DVH = DVH + (int)b * posicion;
+            }
+
+            Console.WriteLine("DVH CONSEGUIDO = {0}", DVH);
+            return DVH;
+
         }
 
         /**
@@ -113,11 +133,10 @@ namespace NuSmart.BLL
                 Sesion.Instancia().verificarPermiso("GE110");
                 usuario.Password = new Seguridad().encriptar(password);
                 Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
-                usuario.Dvh = 1234; //TODO: Calcular DVH
+                usuario.Dvh = calcularDVH(usuario);
                 dalUsuario.actualizarContraseña(usuario);
                 new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
-                //TODO: Actalizar DVV
-                return 0;
+                return new DVVH().actualizarDVV("Usuario");
             }catch(Exception ex)
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"));
@@ -125,71 +144,39 @@ namespace NuSmart.BLL
          
         }
 
-        public int crearUsuario(Usuario usuario, string password)
+        public int crearUsuario(Usuario usuario)
         {
-            usuario.Password = new Seguridad().encriptar(password);
-            usuario.Dvh = 1234; //TODO: Calcular Integridad DVH
+            usuario.Password = new Seguridad().encriptar(usuario.Password);
+            usuario.Dvh = calcularDVH(usuario);
             dalUsuario.ingresar(usuario);
-            //TODO: Actualizar DVV
-            return 0;
+            return new DVVH().actualizarDVV("Usuario");
         }
 
-        public bool EliminarUsuario(int id)
+        public int eliminarUsuario(Usuario usuario)
         {
-            return false;
-        }
-
-        public int encriptarDatos(Usuario usuario)
-        {
-            return 0;
-        }
-
-        public int logout()
-        {
-            return 0;
-        }
-
-        public int validarUsuarioIngresado(Usuario user)
-        {
-            return 0;
-        }
-
-        public int calcularDVH(Usuario user)
-        {
-            string concatenacion = user.Username + user.Password;
-            Seguridad seguridad = new Seguridad();
-            string md5 = seguridad.encriptar(concatenacion);
-
-
-            //En este punto, verifico cada uno de los caracteres del MD5 obtenido, y los transformo al numero de codigo ASCII
-            //multiplicado por su posicion en la cadena original
-            byte[] asciiBytes = Encoding.ASCII.GetBytes(md5);
-
-            int DVH = 0;
-            int posicion = 0;
-
-            foreach (byte b in asciiBytes)
-            {
-                posicion += 1;
-                DVH = DVH + (int)b * posicion;
+            if(usuario.Username != "test"){
+                usuario.Eliminado = true;
+                usuario.Dvh = calcularDVH(usuario);
+                dalUsuario.eliminar(usuario);
+                return new DVVH().actualizarDVV("Usuario");
             }
-
-            Console.WriteLine("DVH CONSEGUIDO = {0}", DVH);
-            return DVH;
+            return 0;
         }
 
         public bool reiniciarIntentos(Usuario usuario) {
             try
             {
                 usuario.Intentos = 0;
-                //TODO: Calcular DVH cuando se cambia un atributo
-                return dalUsuario.desbloquear(usuario);
-            }catch(Exception e)
+                usuario.Dvh = calcularDVH(usuario);
+                dalUsuario.desbloquear(usuario);
+                new DVVH().actualizarDVV("Usuario");
+                return true;
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 throw new Exception("Nutricionista_messagebox_reiniciar_intentos_usuario_error");
             }
-            
         }
 
 
@@ -198,7 +185,11 @@ namespace NuSmart.BLL
             //TODO: Hacer algo mas elegante aca...
             if(usuario.Username != "test")
             {
-              return dalUsuario.agregarIntento(usuario);
+                usuario.Intentos += 1;
+                usuario.Dvh = calcularDVH(usuario);
+                dalUsuario.agregarIntento(usuario);
+                new DVVH().actualizarDVV("Usuario");
+                return true;
             }
             return false;
         }
@@ -206,6 +197,11 @@ namespace NuSmart.BLL
         public List<Usuario> conseguirUsuarios()
         {
             return dalUsuario.conseguirTodos();
+        }
+
+        public bool existe(Usuario usuario)
+        {
+            return dalUsuario.existe(usuario);
         }
     }
 }

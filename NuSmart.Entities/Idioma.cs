@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace NuSmart.BE
         string _descripcionIdioma;
         string _nombreIdioma;
         private List<Leyenda> leyendas = new List<Leyenda>();
-
+        bool _eliminado;
         
         public int Id
         {
@@ -64,6 +65,20 @@ namespace NuSmart.BE
             set
             {
                 leyendas = value;
+            }
+        }
+
+        [Browsable(false)]
+        public bool Eliminado
+        {
+            get
+            {
+                return _eliminado;
+            }
+
+            set
+            {
+                _eliminado = value;
             }
         }
 

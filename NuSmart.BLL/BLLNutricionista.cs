@@ -10,11 +10,13 @@ namespace NuSmart.BLL
 {
     public class BLLNutricionista
     {
+        BLLUsuario bllUsuario;
         DALNutricionista dalNutricionista;
 
         public BLLNutricionista()
         {
             dalNutricionista = new DALNutricionista();
+            bllUsuario = new BLLUsuario();
         }
 
         public Nutricionista conseguir(int idUsuario)
@@ -22,11 +24,16 @@ namespace NuSmart.BLL
             Sesion.Instancia().verificarPermiso("GE110");
             return dalNutricionista.conseguir(idUsuario);
         }
+
+        public List<Nutricionista> conseguirTodos()
+        {
+            return dalNutricionista.conseguirTodos();
+        }
         
 
         public int calcularDVH(Nutricionista nutricionista)
         {
-            string concatenacion = Convert.ToString(nutricionista.Dni) + nutricionista.Especializacion + nutricionista.Matricula + nutricionista.Apellido + Convert.ToString(nutricionista.Usuario.Id) + nutricionista.Sexo;
+            string concatenacion = Convert.ToString(nutricionista.Dni) + nutricionista.Especializacion + nutricionista.Matricula + nutricionista.Apellido + Convert.ToString(nutricionista.Usuario.Id) + nutricionista.Nombre + nutricionista.Sexo + Convert.ToString(nutricionista.Eliminado);
             Seguridad seguridad = new Seguridad();
             string md5 = seguridad.encriptar(concatenacion);
 
@@ -49,13 +56,53 @@ namespace NuSmart.BLL
 
         }
 
-        public int ingresar(Nutricionista nutricionista)
+        public bool ingresar(Nutricionista nutricionista)
         {
             Sesion.Instancia().verificarPermiso("OP038");
-            nutricionista.Dvh = 1234; //TODO: Calcular DVH
-            dalNutricionista.ingresar(nutricionista);
-            //TODO: Actualizar DVV
-            return 0;
+
+            if (!(bllUsuario.existe(nutricionista.Usuario)) && !(existe(nutricionista))){
+                bllUsuario.crearUsuario(nutricionista.Usuario);
+                nutricionista.Usuario = bllUsuario.conseguir(nutricionista.Usuario.Username);
+                nutricionista.Dvh = calcularDVH(nutricionista);
+                dalNutricionista.ingresar(nutricionista);
+                new DVVH().actualizarDVV("Nutricionista");
+                return true;
+            }
+            else
+            {
+                throw new Exception("Ya existe el Usuario / Nutricionista. Verifique los datos.");
+            }
+        }
+
+        public int modificar(Nutricionista nutricionista)
+        {
+            nutricionista.Dvh = calcularDVH(nutricionista);
+            dalNutricionista.modificar(nutricionista);
+            return new DVVH().actualizarDVV("Nutricionista");
+        }
+
+        public bool existe(Nutricionista nutricionista)
+        {
+            return dalNutricionista.existe(nutricionista);
+        }
+
+        public bool eliminar(Nutricionista nutricionista)
+        {
+            try
+            {
+                nutricionista.Eliminado = true;
+                nutricionista.Dvh = calcularDVH(nutricionista);
+                dalNutricionista.eliminar(nutricionista);
+                new DVVH().actualizarDVV("Nutricionista");
+
+
+                bllUsuario.eliminarUsuario(nutricionista.Usuario);
+                return true;
+            }catch(Exception e)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Error al eliminar los usuarios", e));
+            }
         }
     }
+
 }

@@ -34,7 +34,7 @@
             this.Contenedor_menu_gestion_micuenta = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_cerrar_sesion = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_turnos = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_gestion_turnos = new System.Windows.Forms.ToolStripMenuItem();
+            this.Contenedor_menu_gestion_turnos = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_pacientes = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_pacientes = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_nutricionistas = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,16 +100,16 @@
             // Contenedor_menu_turnos
             // 
             this.Contenedor_menu_turnos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_gestion_turnos});
+            this.Contenedor_menu_gestion_turnos});
             this.Contenedor_menu_turnos.Name = "Contenedor_menu_turnos";
             this.Contenedor_menu_turnos.Size = new System.Drawing.Size(56, 22);
             this.Contenedor_menu_turnos.Text = "Turnos";
             // 
-            // menu_gestion_turnos
+            // Contenedor_menu_gestion_turnos
             // 
-            this.menu_gestion_turnos.Name = "menu_gestion_turnos";
-            this.menu_gestion_turnos.Size = new System.Drawing.Size(167, 22);
-            this.menu_gestion_turnos.Text = "Gestion de turnos";
+            this.Contenedor_menu_gestion_turnos.Name = "Contenedor_menu_gestion_turnos";
+            this.Contenedor_menu_gestion_turnos.Size = new System.Drawing.Size(167, 22);
+            this.Contenedor_menu_gestion_turnos.Text = "Gestion de turnos";
             // 
             // Contenedor_menu_pacientes
             // 
@@ -230,7 +230,7 @@
             this.IsMdiContainer = true;
             this.Name = "Contenedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Contenedor";
+            this.Text = "NuSmart";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Contenedor_FormClosed);
             this.Load += new System.EventHandler(this.Contenedor_Load);
@@ -248,7 +248,7 @@
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_micuenta;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_cerrar_sesion;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_turnos;
-        private System.Windows.Forms.ToolStripMenuItem menu_gestion_turnos;
+        private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_turnos;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_pacientes;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_pacientes;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_nutricionistas;

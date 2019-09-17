@@ -18,6 +18,7 @@ namespace NuSmart
         public BackupManager()
         {
             InitializeComponent();
+            setup();
         }
 
         private void backup_btn_crear_Click(object sender, EventArgs e)

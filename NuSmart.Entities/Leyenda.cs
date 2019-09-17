@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace NuSmart.BE
         int _id;
         string _nombreControl;
         string _texto;
+        bool _eliminado;
 
         public int Id
         {
@@ -48,6 +50,20 @@ namespace NuSmart.BE
             set
             {
                 _texto = value;
+            }
+        }
+
+        [Browsable(false)]
+        public bool Eliminado
+        {
+            get
+            {
+                return _eliminado;
+            }
+
+            set
+            {
+                _eliminado = value;
             }
         }
     }

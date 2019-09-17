@@ -21,6 +21,7 @@ namespace NuSmart
         public GestionIdioma()
         {
             InitializeComponent();
+            setup();
         }
 
         private void GestionIdioma_Load(object sender, EventArgs e)

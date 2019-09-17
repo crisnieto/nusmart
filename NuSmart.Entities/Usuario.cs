@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace NuSmart.BE
         string _username;
         List<Rol> roles;
         int _intentos;
+        bool _eliminado;
 
         public int Id
         {
@@ -90,6 +92,20 @@ namespace NuSmart.BE
             set
             {
                 _intentos = value;
+            }
+        }
+
+        [Browsable(false)]
+        public bool Eliminado
+        {
+            get
+            {
+                return _eliminado;
+            }
+
+            set
+            {
+                _eliminado = value;
             }
         }
 

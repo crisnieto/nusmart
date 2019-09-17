@@ -15,7 +15,17 @@ namespace NuSmart
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //TODO: Implementar Verificación DVVH
+            DVVH dvvh = new DVVH();
+
+            try
+            {
+                dvvh.verificarIntegridad();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Application.Exit();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
