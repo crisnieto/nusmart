@@ -30,16 +30,19 @@ namespace NuSmart.BLL
 
         public void eliminarLeyenda(Leyenda leyenda)
         {
+            Sesion.Instancia().verificarPermiso("OP86");
             dalLeyenda.eliminarLeyenda(leyenda);
         }
 
         public void modificarLeyenda(Leyenda leyenda)
         {
+            Sesion.Instancia().verificarPermiso("OP87");
             dalLeyenda.modificarLeyenda(leyenda);
         }
 
         public void crearLeyenda(Leyenda leyenda, Idioma idioma)
         {
+            Sesion.Instancia().verificarPermiso("OP85");
             Leyenda leyendaConseguida = dalLeyenda.conseguirLeyendaParaIdioma(leyenda.NombreControl, idioma.Id);
 
             if (leyendaConseguida.NombreControl == null)

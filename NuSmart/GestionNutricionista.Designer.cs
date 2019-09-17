@@ -28,6 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionNutricionista));
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.Nutricionista_button_borrar = new System.Windows.Forms.Button();
+            this.Nutricionista_button_modificar = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Nutricionista_label_usuario_nueva_password = new System.Windows.Forms.Label();
+            this.nutricionista_txt_password_restablecer = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Nutricionista_label_usuario_reestablecer_password = new System.Windows.Forms.Label();
+            this.Nutricionista_button_reestablecer_password = new System.Windows.Forms.Button();
             this.Nutricionista_label_usuario_desbloquear = new System.Windows.Forms.Label();
             this.Nutricionista_button_desbloquear_password = new System.Windows.Forms.Button();
             this.Nutricionista_button_crear = new System.Windows.Forms.Button();
@@ -47,21 +58,113 @@
             this.Nutricionista_label_nombre = new System.Windows.Forms.Label();
             this.Nutricionista_label_password = new System.Windows.Forms.Label();
             this.Nutricionista_label_usuario = new System.Windows.Forms.Label();
-            this.Nutricionista_label_usuario_reestablecer_password = new System.Windows.Forms.Label();
-            this.Nutricionista_button_reestablecer_password = new System.Windows.Forms.Button();
-            this.nutricionista_txt_password_restablecer = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Nutricionista_label_usuario_nueva_password = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.Nutricionista_button_modificar = new System.Windows.Forms.Button();
-            this.Nutricionista_button_borrar = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(144, 172);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(192, 21);
+            this.comboBox3.TabIndex = 47;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // Nutricionista_button_borrar
+            // 
+            this.Nutricionista_button_borrar.Location = new System.Drawing.Point(145, 197);
+            this.Nutricionista_button_borrar.Margin = new System.Windows.Forms.Padding(2);
+            this.Nutricionista_button_borrar.Name = "Nutricionista_button_borrar";
+            this.Nutricionista_button_borrar.Size = new System.Drawing.Size(90, 56);
+            this.Nutricionista_button_borrar.TabIndex = 46;
+            this.Nutricionista_button_borrar.Text = "Borrar Usuario Seleccionado";
+            this.Nutricionista_button_borrar.UseVisualStyleBackColor = true;
+            this.Nutricionista_button_borrar.Click += new System.EventHandler(this.nutricionista_btn_borrar_Click);
+            // 
+            // Nutricionista_button_modificar
+            // 
+            this.Nutricionista_button_modificar.Location = new System.Drawing.Point(250, 198);
+            this.Nutricionista_button_modificar.Margin = new System.Windows.Forms.Padding(2);
+            this.Nutricionista_button_modificar.Name = "Nutricionista_button_modificar";
+            this.Nutricionista_button_modificar.Size = new System.Drawing.Size(86, 55);
+            this.Nutricionista_button_modificar.TabIndex = 45;
+            this.Nutricionista_button_modificar.Text = "Modificar Nutricionista";
+            this.Nutricionista_button_modificar.UseVisualStyleBackColor = true;
+            this.Nutricionista_button_modificar.Click += new System.EventHandler(this.nutricionista_btn_modificar_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(420, 142);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(188, 21);
+            this.comboBox2.TabIndex = 44;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(421, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(188, 21);
+            this.comboBox1.TabIndex = 43;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Nutricionista_label_usuario_nueva_password
+            // 
+            this.Nutricionista_label_usuario_nueva_password.AutoSize = true;
+            this.Nutricionista_label_usuario_nueva_password.BackColor = System.Drawing.SystemColors.Control;
+            this.Nutricionista_label_usuario_nueva_password.Location = new System.Drawing.Point(418, 169);
+            this.Nutricionista_label_usuario_nueva_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Nutricionista_label_usuario_nueva_password.Name = "Nutricionista_label_usuario_nueva_password";
+            this.Nutricionista_label_usuario_nueva_password.Size = new System.Drawing.Size(95, 13);
+            this.Nutricionista_label_usuario_nueva_password.TabIndex = 42;
+            this.Nutricionista_label_usuario_nueva_password.Text = "Nueva contraseña";
+            this.Nutricionista_label_usuario_nueva_password.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // nutricionista_txt_password_restablecer
+            // 
+            this.nutricionista_txt_password_restablecer.Location = new System.Drawing.Point(421, 184);
+            this.nutricionista_txt_password_restablecer.Margin = new System.Windows.Forms.Padding(2);
+            this.nutricionista_txt_password_restablecer.Name = "nutricionista_txt_password_restablecer";
+            this.nutricionista_txt_password_restablecer.PasswordChar = '*';
+            this.nutricionista_txt_password_restablecer.Size = new System.Drawing.Size(190, 20);
+            this.nutricionista_txt_password_restablecer.TabIndex = 41;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(418, 169);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 40;
+            // 
+            // Nutricionista_label_usuario_reestablecer_password
+            // 
+            this.Nutricionista_label_usuario_reestablecer_password.AutoSize = true;
+            this.Nutricionista_label_usuario_reestablecer_password.BackColor = System.Drawing.SystemColors.Control;
+            this.Nutricionista_label_usuario_reestablecer_password.Location = new System.Drawing.Point(418, 126);
+            this.Nutricionista_label_usuario_reestablecer_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Nutricionista_label_usuario_reestablecer_password.Name = "Nutricionista_label_usuario_reestablecer_password";
+            this.Nutricionista_label_usuario_reestablecer_password.Size = new System.Drawing.Size(169, 13);
+            this.Nutricionista_label_usuario_reestablecer_password.TabIndex = 38;
+            this.Nutricionista_label_usuario_reestablecer_password.Text = "Usuario a reestablecer contraseña";
+            this.Nutricionista_label_usuario_reestablecer_password.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // Nutricionista_button_reestablecer_password
+            // 
+            this.Nutricionista_button_reestablecer_password.Location = new System.Drawing.Point(420, 215);
+            this.Nutricionista_button_reestablecer_password.Name = "Nutricionista_button_reestablecer_password";
+            this.Nutricionista_button_reestablecer_password.Size = new System.Drawing.Size(189, 34);
+            this.Nutricionista_button_reestablecer_password.TabIndex = 37;
+            this.Nutricionista_button_reestablecer_password.Text = "Reestablecer";
+            this.Nutricionista_button_reestablecer_password.UseVisualStyleBackColor = true;
+            this.Nutricionista_button_reestablecer_password.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Nutricionista_label_usuario_desbloquear
             // 
             this.Nutricionista_label_usuario_desbloquear.AutoSize = true;
+            this.Nutricionista_label_usuario_desbloquear.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_usuario_desbloquear.Location = new System.Drawing.Point(418, 9);
             this.Nutricionista_label_usuario_desbloquear.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_usuario_desbloquear.Name = "Nutricionista_label_usuario_desbloquear";
@@ -163,6 +266,7 @@
             // Nutricionista_label_sexo
             // 
             this.Nutricionista_label_sexo.AutoSize = true;
+            this.Nutricionista_label_sexo.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_sexo.Location = new System.Drawing.Point(259, 117);
             this.Nutricionista_label_sexo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_sexo.Name = "Nutricionista_label_sexo";
@@ -173,6 +277,7 @@
             // Nutricionista_label_especializacion
             // 
             this.Nutricionista_label_especializacion.AutoSize = true;
+            this.Nutricionista_label_especializacion.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_especializacion.Location = new System.Drawing.Point(259, 61);
             this.Nutricionista_label_especializacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_especializacion.Name = "Nutricionista_label_especializacion";
@@ -183,6 +288,7 @@
             // Nutricionista_label_dni
             // 
             this.Nutricionista_label_dni.AutoSize = true;
+            this.Nutricionista_label_dni.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_dni.Location = new System.Drawing.Point(260, 8);
             this.Nutricionista_label_dni.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_dni.Name = "Nutricionista_label_dni";
@@ -193,6 +299,7 @@
             // Nutricionista_label_matricula
             // 
             this.Nutricionista_label_matricula.AutoSize = true;
+            this.Nutricionista_label_matricula.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_matricula.Location = new System.Drawing.Point(142, 117);
             this.Nutricionista_label_matricula.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_matricula.Name = "Nutricionista_label_matricula";
@@ -203,6 +310,7 @@
             // Nutricionista_label_apellido
             // 
             this.Nutricionista_label_apellido.AutoSize = true;
+            this.Nutricionista_label_apellido.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_apellido.Location = new System.Drawing.Point(142, 61);
             this.Nutricionista_label_apellido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_apellido.Name = "Nutricionista_label_apellido";
@@ -213,6 +321,7 @@
             // Nutricionista_label_nombre
             // 
             this.Nutricionista_label_nombre.AutoSize = true;
+            this.Nutricionista_label_nombre.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_nombre.Location = new System.Drawing.Point(142, 8);
             this.Nutricionista_label_nombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_nombre.Name = "Nutricionista_label_nombre";
@@ -223,6 +332,7 @@
             // Nutricionista_label_password
             // 
             this.Nutricionista_label_password.AutoSize = true;
+            this.Nutricionista_label_password.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_password.Location = new System.Drawing.Point(20, 53);
             this.Nutricionista_label_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_password.Name = "Nutricionista_label_password";
@@ -233,6 +343,7 @@
             // Nutricionista_label_usuario
             // 
             this.Nutricionista_label_usuario.AutoSize = true;
+            this.Nutricionista_label_usuario.BackColor = System.Drawing.SystemColors.Control;
             this.Nutricionista_label_usuario.Location = new System.Drawing.Point(20, 8);
             this.Nutricionista_label_usuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Nutricionista_label_usuario.Name = "Nutricionista_label_usuario";
@@ -240,110 +351,12 @@
             this.Nutricionista_label_usuario.TabIndex = 17;
             this.Nutricionista_label_usuario.Text = "Usuario";
             // 
-            // Nutricionista_label_usuario_reestablecer_password
-            // 
-            this.Nutricionista_label_usuario_reestablecer_password.AutoSize = true;
-            this.Nutricionista_label_usuario_reestablecer_password.Location = new System.Drawing.Point(418, 126);
-            this.Nutricionista_label_usuario_reestablecer_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Nutricionista_label_usuario_reestablecer_password.Name = "Nutricionista_label_usuario_reestablecer_password";
-            this.Nutricionista_label_usuario_reestablecer_password.Size = new System.Drawing.Size(169, 13);
-            this.Nutricionista_label_usuario_reestablecer_password.TabIndex = 38;
-            this.Nutricionista_label_usuario_reestablecer_password.Text = "Usuario a reestablecer contraseña";
-            this.Nutricionista_label_usuario_reestablecer_password.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // Nutricionista_button_reestablecer_password
-            // 
-            this.Nutricionista_button_reestablecer_password.Location = new System.Drawing.Point(420, 215);
-            this.Nutricionista_button_reestablecer_password.Name = "Nutricionista_button_reestablecer_password";
-            this.Nutricionista_button_reestablecer_password.Size = new System.Drawing.Size(189, 34);
-            this.Nutricionista_button_reestablecer_password.TabIndex = 37;
-            this.Nutricionista_button_reestablecer_password.Text = "Reestablecer";
-            this.Nutricionista_button_reestablecer_password.UseVisualStyleBackColor = true;
-            this.Nutricionista_button_reestablecer_password.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // nutricionista_txt_password_restablecer
-            // 
-            this.nutricionista_txt_password_restablecer.Location = new System.Drawing.Point(421, 184);
-            this.nutricionista_txt_password_restablecer.Margin = new System.Windows.Forms.Padding(2);
-            this.nutricionista_txt_password_restablecer.Name = "nutricionista_txt_password_restablecer";
-            this.nutricionista_txt_password_restablecer.PasswordChar = '*';
-            this.nutricionista_txt_password_restablecer.Size = new System.Drawing.Size(190, 20);
-            this.nutricionista_txt_password_restablecer.TabIndex = 41;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(418, 169);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 40;
-            // 
-            // Nutricionista_label_usuario_nueva_password
-            // 
-            this.Nutricionista_label_usuario_nueva_password.AutoSize = true;
-            this.Nutricionista_label_usuario_nueva_password.Location = new System.Drawing.Point(418, 169);
-            this.Nutricionista_label_usuario_nueva_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Nutricionista_label_usuario_nueva_password.Name = "Nutricionista_label_usuario_nueva_password";
-            this.Nutricionista_label_usuario_nueva_password.Size = new System.Drawing.Size(95, 13);
-            this.Nutricionista_label_usuario_nueva_password.TabIndex = 42;
-            this.Nutricionista_label_usuario_nueva_password.Text = "Nueva contraseña";
-            this.Nutricionista_label_usuario_nueva_password.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(421, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 21);
-            this.comboBox1.TabIndex = 43;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(420, 142);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(188, 21);
-            this.comboBox2.TabIndex = 44;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // Nutricionista_button_modificar
-            // 
-            this.Nutricionista_button_modificar.Location = new System.Drawing.Point(250, 198);
-            this.Nutricionista_button_modificar.Margin = new System.Windows.Forms.Padding(2);
-            this.Nutricionista_button_modificar.Name = "Nutricionista_button_modificar";
-            this.Nutricionista_button_modificar.Size = new System.Drawing.Size(86, 55);
-            this.Nutricionista_button_modificar.TabIndex = 45;
-            this.Nutricionista_button_modificar.Text = "Modificar Nutricionista";
-            this.Nutricionista_button_modificar.UseVisualStyleBackColor = true;
-            this.Nutricionista_button_modificar.Click += new System.EventHandler(this.nutricionista_btn_modificar_Click);
-            // 
-            // Nutricionista_button_borrar
-            // 
-            this.Nutricionista_button_borrar.Location = new System.Drawing.Point(145, 197);
-            this.Nutricionista_button_borrar.Margin = new System.Windows.Forms.Padding(2);
-            this.Nutricionista_button_borrar.Name = "Nutricionista_button_borrar";
-            this.Nutricionista_button_borrar.Size = new System.Drawing.Size(90, 56);
-            this.Nutricionista_button_borrar.TabIndex = 46;
-            this.Nutricionista_button_borrar.Text = "Borrar Usuario Seleccionado";
-            this.Nutricionista_button_borrar.UseVisualStyleBackColor = true;
-            this.Nutricionista_button_borrar.Click += new System.EventHandler(this.nutricionista_btn_borrar_Click);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(144, 172);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(192, 21);
-            this.comboBox3.TabIndex = 47;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-            // 
             // GestionNutricionista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(621, 270);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.Nutricionista_button_borrar);

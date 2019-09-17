@@ -42,6 +42,8 @@ namespace NuSmart
             Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
             Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
+            Contenedor_menu_gestion_idioma.Enabled = Sesion.Instancia().validar("OP83");
+            Contenedor_menu_gestion_etiquetas.Enabled = Sesion.Instancia().validar("OP84");
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)

@@ -139,7 +139,7 @@ namespace NuSmart
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrio un error en la consulta");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -156,7 +156,7 @@ namespace NuSmart
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrio un error en la consulta");
+                MessageBox.Show(ex.Message);
             }
         }
 

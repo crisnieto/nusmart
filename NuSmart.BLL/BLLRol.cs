@@ -56,10 +56,15 @@ namespace NuSmart.BLL
 
         public bool crearRol(Rol rol, Rol padre = null)
         {
-            new BLLBitacora().crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
-
-            Sesion.Instancia().verificarPermiso("AA099");
-            return dalRol.crearRol(rol, padre);
+            try
+            {
+                new BLLBitacora().crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
+                Sesion.Instancia().verificarPermiso("AA099");
+                return dalRol.crearRol(rol, padre);
+            }catch(Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_error_creacion", ex));
+            }
 
         }
 

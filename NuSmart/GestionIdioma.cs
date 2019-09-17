@@ -28,6 +28,7 @@ namespace NuSmart
         {
             try
             {
+                Sesion.Instancia().verificarPermiso("OP83");
                 idiomaBLL = new BLLIdioma();
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

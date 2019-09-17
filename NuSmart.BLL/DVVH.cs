@@ -33,6 +33,7 @@ namespace NuSmart.BLL
                 if (bllUsuario.calcularDVH(usuario) != usuario.Dvh)
                 {
                     Console.WriteLine(usuario.Username);
+                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Usuario", Criticidad.Alta);
                     lanzarErrorDeVerificacion();
                 }
             }
@@ -42,6 +43,7 @@ namespace NuSmart.BLL
                 if (bllNutricionista.calcularDVH(nutricionista) != nutricionista.Dvh)
                 {
                     Console.WriteLine(nutricionista.Id);
+                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Nutricionista", Criticidad.Alta);
                     lanzarErrorDeVerificacion();
                 }
             }

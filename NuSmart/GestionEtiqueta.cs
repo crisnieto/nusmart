@@ -40,7 +40,14 @@ namespace NuSmart
 
         private void recargarEtiquetas()
         {
-            dataGridView1.DataSource = bllLeyenda.conseguirLeyendasParaIdioma(idiomaSeleccionado.Id);
+            try
+            {
+                Sesion.Instancia().verificarPermiso("OP84");
+                dataGridView1.DataSource = bllLeyenda.conseguirLeyendasParaIdioma(idiomaSeleccionado.Id);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,6 +116,7 @@ namespace NuSmart
         {
             try
             {
+
                 Leyenda leyenda = new Leyenda();
                 leyenda.NombreControl = GestionEtiqueta_textbox_nombre_control.Text;
                 leyenda.Texto = GestionEtiqueta_textbox_texto_leyenda.Text;

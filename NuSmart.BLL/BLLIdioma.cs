@@ -85,16 +85,19 @@ namespace NuSmart.BLL
 
         public int guardar(Idioma idioma)
         {
+            Sesion.Instancia().verificarPermiso("OP80");
             return dalIdioma.guardar(idioma);
         }
 
         public int eliminar(int idiomaId)
         {
+            Sesion.Instancia().verificarPermiso("OP82");
             return dalIdioma.eliminar(idiomaId);
         }
 
         public int modificar(Idioma idioma)
         {
+            Sesion.Instancia().verificarPermiso("OP81");
             return dalIdioma.modificar(idioma);           
         }
 

@@ -52,7 +52,7 @@ namespace NuSmart
             {
                 bllUsuario.reiniciarIntentos(usuarioADesbloquear);
                 recargar();
-                MessageBox.Show("Usuario desbloqueado correctamente!");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_desbloqueado"));
             }
             catch (Exception ex)
             {
@@ -77,7 +77,7 @@ namespace NuSmart
                 //Consigo el usuario insertado en la BD para continuar, con su correspondiente ID
                 if (bllNutricionista.ingresar(nutricionista))
                 {
-                    MessageBox.Show("Nutricionista creado correctamente");
+                    MessageBox.Show(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_creado"));
                     recargar();
                 };
             }
@@ -115,7 +115,7 @@ namespace NuSmart
                 string password = nutricionista_txt_password_restablecer.Text;
                 bllUsuario.actualizarPassword(usuarioACambiarPassword, password);
                 recargar();
-                MessageBox.Show("Contraseña reestablecida correctamente!");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_reestablecer_password"));
             }
             catch (Exception ex)
             {

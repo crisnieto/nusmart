@@ -139,7 +139,7 @@ namespace NuSmart.BLL
                 return new DVVH().actualizarDVV("Usuario");
             }catch(Exception ex)
             {
-                throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"));
+                throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"), ex);
             }
          
         }
@@ -175,7 +175,7 @@ namespace NuSmart.BLL
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                throw new Exception("Nutricionista_messagebox_reiniciar_intentos_usuario_error");
+                throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_reiniciar_intentos_usuario_error", e));
             }
         }
 
