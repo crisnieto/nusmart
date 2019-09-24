@@ -111,7 +111,7 @@ namespace NuSmart.BE
 
         public override string ToString()
         {
-            return this.Username;
+            return this.Username != null ? this.Username : "";
         }
     }
 }

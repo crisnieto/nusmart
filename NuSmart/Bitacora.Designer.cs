@@ -34,10 +34,10 @@
             this.bitacora_datepicker_hasta = new System.Windows.Forms.DateTimePicker();
             this.bitacora_datepicker_desde = new System.Windows.Forms.DateTimePicker();
             this.Bitacora_label_criticidad = new System.Windows.Forms.Label();
-            this.bitacora_radio_alta = new System.Windows.Forms.RadioButton();
-            this.bitacora_radio_media = new System.Windows.Forms.RadioButton();
-            this.bitacora_radio_baja = new System.Windows.Forms.RadioButton();
-            this.Bitacora_radiobutton_todas = new System.Windows.Forms.RadioButton();
+            this.Bitacora_radiobutton_criticidad_alta = new System.Windows.Forms.RadioButton();
+            this.Bitacora_radiobutton_criticidad_media = new System.Windows.Forms.RadioButton();
+            this.Bitacora_radiobutton_criticidad_baja = new System.Windows.Forms.RadioButton();
+            this.Bitacora_radiobutton_criticidad_todas = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Bitacora_label_usuarios = new System.Windows.Forms.Label();
             this.Bitacora_button_buscar = new System.Windows.Forms.Button();
@@ -89,64 +89,64 @@
             this.Bitacora_label_criticidad.TabIndex = 13;
             this.Bitacora_label_criticidad.Text = "Criticidad";
             // 
-            // bitacora_radio_alta
+            // Bitacora_radiobutton_criticidad_alta
             // 
-            this.bitacora_radio_alta.AutoSize = true;
-            this.bitacora_radio_alta.Location = new System.Drawing.Point(167, 99);
-            this.bitacora_radio_alta.Name = "bitacora_radio_alta";
-            this.bitacora_radio_alta.Size = new System.Drawing.Size(43, 17);
-            this.bitacora_radio_alta.TabIndex = 12;
-            this.bitacora_radio_alta.Text = "Alta";
-            this.bitacora_radio_alta.UseVisualStyleBackColor = true;
+            this.Bitacora_radiobutton_criticidad_alta.AutoSize = true;
+            this.Bitacora_radiobutton_criticidad_alta.Location = new System.Drawing.Point(167, 99);
+            this.Bitacora_radiobutton_criticidad_alta.Name = "Bitacora_radiobutton_criticidad_alta";
+            this.Bitacora_radiobutton_criticidad_alta.Size = new System.Drawing.Size(43, 17);
+            this.Bitacora_radiobutton_criticidad_alta.TabIndex = 12;
+            this.Bitacora_radiobutton_criticidad_alta.Text = "Alta";
+            this.Bitacora_radiobutton_criticidad_alta.UseVisualStyleBackColor = true;
             // 
-            // bitacora_radio_media
+            // Bitacora_radiobutton_criticidad_media
             // 
-            this.bitacora_radio_media.AutoSize = true;
-            this.bitacora_radio_media.Location = new System.Drawing.Point(167, 76);
-            this.bitacora_radio_media.Name = "bitacora_radio_media";
-            this.bitacora_radio_media.Size = new System.Drawing.Size(54, 17);
-            this.bitacora_radio_media.TabIndex = 11;
-            this.bitacora_radio_media.Text = "Media";
-            this.bitacora_radio_media.UseVisualStyleBackColor = true;
+            this.Bitacora_radiobutton_criticidad_media.AutoSize = true;
+            this.Bitacora_radiobutton_criticidad_media.Location = new System.Drawing.Point(167, 76);
+            this.Bitacora_radiobutton_criticidad_media.Name = "Bitacora_radiobutton_criticidad_media";
+            this.Bitacora_radiobutton_criticidad_media.Size = new System.Drawing.Size(54, 17);
+            this.Bitacora_radiobutton_criticidad_media.TabIndex = 11;
+            this.Bitacora_radiobutton_criticidad_media.Text = "Media";
+            this.Bitacora_radiobutton_criticidad_media.UseVisualStyleBackColor = true;
             // 
-            // bitacora_radio_baja
+            // Bitacora_radiobutton_criticidad_baja
             // 
-            this.bitacora_radio_baja.AutoSize = true;
-            this.bitacora_radio_baja.Location = new System.Drawing.Point(167, 53);
-            this.bitacora_radio_baja.Name = "bitacora_radio_baja";
-            this.bitacora_radio_baja.Size = new System.Drawing.Size(46, 17);
-            this.bitacora_radio_baja.TabIndex = 10;
-            this.bitacora_radio_baja.Text = "Baja";
-            this.bitacora_radio_baja.UseVisualStyleBackColor = true;
+            this.Bitacora_radiobutton_criticidad_baja.AutoSize = true;
+            this.Bitacora_radiobutton_criticidad_baja.Location = new System.Drawing.Point(167, 53);
+            this.Bitacora_radiobutton_criticidad_baja.Name = "Bitacora_radiobutton_criticidad_baja";
+            this.Bitacora_radiobutton_criticidad_baja.Size = new System.Drawing.Size(46, 17);
+            this.Bitacora_radiobutton_criticidad_baja.TabIndex = 10;
+            this.Bitacora_radiobutton_criticidad_baja.Text = "Baja";
+            this.Bitacora_radiobutton_criticidad_baja.UseVisualStyleBackColor = true;
             // 
-            // Bitacora_radiobutton_todas
+            // Bitacora_radiobutton_criticidad_todas
             // 
-            this.Bitacora_radiobutton_todas.AutoSize = true;
-            this.Bitacora_radiobutton_todas.Checked = true;
-            this.Bitacora_radiobutton_todas.Location = new System.Drawing.Point(167, 30);
-            this.Bitacora_radiobutton_todas.Name = "Bitacora_radiobutton_todas";
-            this.Bitacora_radiobutton_todas.Size = new System.Drawing.Size(55, 17);
-            this.Bitacora_radiobutton_todas.TabIndex = 9;
-            this.Bitacora_radiobutton_todas.TabStop = true;
-            this.Bitacora_radiobutton_todas.Text = "Todas";
-            this.Bitacora_radiobutton_todas.UseVisualStyleBackColor = true;
+            this.Bitacora_radiobutton_criticidad_todas.AutoSize = true;
+            this.Bitacora_radiobutton_criticidad_todas.Checked = true;
+            this.Bitacora_radiobutton_criticidad_todas.Location = new System.Drawing.Point(167, 30);
+            this.Bitacora_radiobutton_criticidad_todas.Name = "Bitacora_radiobutton_criticidad_todas";
+            this.Bitacora_radiobutton_criticidad_todas.Size = new System.Drawing.Size(55, 17);
+            this.Bitacora_radiobutton_criticidad_todas.TabIndex = 9;
+            this.Bitacora_radiobutton_criticidad_todas.TabStop = true;
+            this.Bitacora_radiobutton_criticidad_todas.Text = "Todas";
+            this.Bitacora_radiobutton_criticidad_todas.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 144);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 144);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(598, 171);
+            this.dataGridView1.Size = new System.Drawing.Size(587, 171);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Bitacora_label_usuarios
             // 
             this.Bitacora_label_usuarios.AutoSize = true;
-            this.Bitacora_label_usuarios.Location = new System.Drawing.Point(2, 15);
+            this.Bitacora_label_usuarios.Location = new System.Drawing.Point(8, 15);
             this.Bitacora_label_usuarios.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Bitacora_label_usuarios.Name = "Bitacora_label_usuarios";
             this.Bitacora_label_usuarios.Size = new System.Drawing.Size(43, 13);
@@ -167,7 +167,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(4, 30);
+            this.listBox1.Location = new System.Drawing.Point(11, 30);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(117, 82);
@@ -184,17 +184,17 @@
             this.Controls.Add(this.bitacora_datepicker_hasta);
             this.Controls.Add(this.bitacora_datepicker_desde);
             this.Controls.Add(this.Bitacora_label_criticidad);
-            this.Controls.Add(this.bitacora_radio_alta);
-            this.Controls.Add(this.bitacora_radio_media);
-            this.Controls.Add(this.bitacora_radio_baja);
-            this.Controls.Add(this.Bitacora_radiobutton_todas);
+            this.Controls.Add(this.Bitacora_radiobutton_criticidad_alta);
+            this.Controls.Add(this.Bitacora_radiobutton_criticidad_media);
+            this.Controls.Add(this.Bitacora_radiobutton_criticidad_baja);
+            this.Controls.Add(this.Bitacora_radiobutton_criticidad_todas);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Bitacora_label_usuarios);
             this.Controls.Add(this.Bitacora_button_buscar);
             this.Controls.Add(this.listBox1);
             this.Name = "Bitacora";
-            this.Text = "Bitacora";
             this.Load += new System.EventHandler(this.Bitacora_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Bitacora_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,10 +207,10 @@
         private System.Windows.Forms.Label Bitacora_label_usuarios;
         private System.Windows.Forms.Button Bitacora_button_buscar;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.RadioButton Bitacora_radiobutton_todas;
-        private System.Windows.Forms.RadioButton bitacora_radio_baja;
-        private System.Windows.Forms.RadioButton bitacora_radio_media;
-        private System.Windows.Forms.RadioButton bitacora_radio_alta;
+        private System.Windows.Forms.RadioButton Bitacora_radiobutton_criticidad_todas;
+        private System.Windows.Forms.RadioButton Bitacora_radiobutton_criticidad_baja;
+        private System.Windows.Forms.RadioButton Bitacora_radiobutton_criticidad_media;
+        private System.Windows.Forms.RadioButton Bitacora_radiobutton_criticidad_alta;
         private System.Windows.Forms.Label Bitacora_label_criticidad;
         private System.Windows.Forms.DateTimePicker bitacora_datepicker_desde;
         private System.Windows.Forms.DateTimePicker bitacora_datepicker_hasta;

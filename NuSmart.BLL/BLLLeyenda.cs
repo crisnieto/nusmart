@@ -18,28 +18,42 @@ namespace NuSmart.BLL
             dalLeyenda = new DALLeyenda();
         }
 
+
+        /// <summary>
+        /// conseguirLeyendasParaIdioma se encarga de obtener todas las leyendas para un idioma determinado
+        /// </summary>
+        /// <param name="idiomaId"></param>
+        /// <returns></returns>
         public List<Leyenda> conseguirLeyendasParaIdioma(int idiomaId)
         {
             return dalLeyenda.conseguirTodosParaIdioma(idiomaId);
         }
 
-        public List<string> conseguirLeyendasPorNombre()
-        {
-            return dalLeyenda.conseguirLeyendasPorNombre();
-        }
-
+        /// <summary>
+        /// eliminarLeyenda se encarga de solicitar a la DAL la eliminacion de una leyenda
+        /// </summary>
+        /// <param name="leyenda"></param>
         public void eliminarLeyenda(Leyenda leyenda)
         {
             Sesion.Instancia().verificarPermiso("OP86");
             dalLeyenda.eliminarLeyenda(leyenda);
         }
 
+        /// <summary>
+        /// modificarLeyenda se encarga de solicitar a la DAL la modificacion de una leyenda
+        /// </summary>
+        /// <param name="leyenda"></param>
         public void modificarLeyenda(Leyenda leyenda)
         {
             Sesion.Instancia().verificarPermiso("OP87");
             dalLeyenda.modificarLeyenda(leyenda);
         }
 
+        /// <summary>
+        /// crearLeyenda se encarga de solicitar la creacion de una nueva leyenda para un idioma
+        /// </summary>
+        /// <param name="leyenda"></param>
+        /// <param name="idioma"></param>
         public void crearLeyenda(Leyenda leyenda, Idioma idioma)
         {
             Sesion.Instancia().verificarPermiso("OP85");

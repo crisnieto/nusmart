@@ -58,9 +58,16 @@ namespace NuSmart
         {
             try
             {
-                Usuario usuario = (Usuario)listBox1.SelectedItem;
-                dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
-                dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+                if(listBox1.SelectedItem != null)
+                {
+                    Usuario usuario = (Usuario)listBox1.SelectedItem;
+                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
+                    dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+                }else
+                {
+                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasSinUsuario(bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
+                    dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+                }
                 return;
             }
             catch (Exception ex)
@@ -72,13 +79,13 @@ namespace NuSmart
 
         private string conseguirFiltroCriticidad()
         {
-            if (bitacora_radio_alta.Checked)
+            if (Bitacora_radiobutton_criticidad_alta.Checked)
             {
                 return "Alta";
-            }else if (bitacora_radio_media.Checked)
+            }else if (Bitacora_radiobutton_criticidad_media.Checked)
             {
                 return "Media";
-            }else if (bitacora_radio_baja.Checked)
+            }else if (Bitacora_radiobutton_criticidad_baja.Checked)
             {
                 return "Baja";
             }
@@ -89,5 +96,11 @@ namespace NuSmart
         {
 
         }
+
+        private void Bitacora_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBox1.ClearSelected();
+        }
+
     }
 }

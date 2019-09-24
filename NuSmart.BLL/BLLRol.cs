@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NuSmart.BE;
 using NuSmart.DAL;
-using System.Data;
 
 namespace NuSmart.BLL
 {
@@ -19,12 +15,21 @@ namespace NuSmart.BLL
             dalRol = new DALRol();
         }
 
+        /// <summary>
+        /// Consigue la lista de Roles de un usuario
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public List<Rol> conseguir(Usuario usuario)
         {
             List<Rol> roles = dalRol.conseguirRolesDeUsuario(usuario);
             return roles;
         }
 
+        /// <summary>
+        /// Consigue la lista de Roles global
+        /// </summary>
+        /// <returns></returns>
         public List<Rol> conseguir()
         {
             Sesion.Instancia().verificarPermiso("AA099");
@@ -32,6 +37,11 @@ namespace NuSmart.BLL
             return roles;
         }
 
+        /// <summary>
+        /// Se encarga de solicitar la eliminacion de un rol a la base de datos y de eliminar todos sus hijos.
+        /// Tambien desasocia el rol previamente de todos los usuarios.
+        /// </summary>
+        /// <param name="rol"></param>
         public void eliminar(Rol rol)
         {
             Sesion.Instancia().verificarPermiso("AA099");
@@ -45,6 +55,7 @@ namespace NuSmart.BLL
 
         }
 
+
         public bool validarCodigoDeRol(string codigo)
         {
             if (codigo.Length > 0)
@@ -54,6 +65,12 @@ namespace NuSmart.BLL
             return false;
         }
 
+        /// <summary>
+        /// Se encarga de crear un rol nuevo en la base de datos. Puede tambien tener un padre con lo que se trataria de asociar un nuevo permiso a una familia.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="padre"></param>
+        /// <returns></returns>
         public bool crearRol(Rol rol, Rol padre = null)
         {
             try
@@ -68,12 +85,19 @@ namespace NuSmart.BLL
 
         }
 
+        /// <summary>
+        /// Se encarga de asociar un Rol a un usuario en particular.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool asociarAUsuario(Rol rol, Usuario usuario)
         {
             Sesion.Instancia().verificarPermiso("AA099");
             if (esPosibleAsociarRol(rol, usuario.Roles))
             {
                 new BLLBitacora().crearNuevaBitacora("Asociacion de Rol", "Se asocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
+                
                 return dalRol.asociarRolAUsuario(rol, usuario);
             }
             else
@@ -82,6 +106,12 @@ namespace NuSmart.BLL
             }
         }
 
+        /// <summary>
+        /// Se encarga de eliminar la asociacion de un usuario con un rol particular.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool desasociarDeUsuario(Rol rol, Usuario usuario)
         {
             Sesion.Instancia().verificarPermiso("AA099");
@@ -98,12 +128,24 @@ namespace NuSmart.BLL
         }
 
 
+        /// <summary>
+        /// Verifica si ya el rol ya existe en una lista de roles previa.
+        /// </summary>
+        /// <param name="rolBuscado"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         public bool esPosibleAsociarRol(Rol rolBuscado, List<Rol> roles)
         {
             return !contieneElRol(rolBuscado, roles);
         }
 
 
+        /// <summary>
+        /// Busca recursivamente si ya existe el rol en la lista de roles previamente recibida.
+        /// </summary>
+        /// <param name="rolBuscado"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
         public bool contieneElRol(Rol rolBuscado, List<Rol> roles)
         {
             bool resultado = false;
@@ -126,6 +168,13 @@ namespace NuSmart.BLL
 
         }
 
+        /// <summary>
+        /// Valida que no se pueda desasociar un usuario a si mismo roles.
+        /// A su vez, busca recursivamente para validar si el rol que se quiere desasociar se encuentra en la lista de roles del usuario.
+        /// </summary>
+        /// <param name="rolBuscado"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool esPosibleDesociarRol(Rol rolBuscado, Usuario usuario)
         {
             if (usuario.Id == Sesion.Instancia().UsuarioActual.Id)

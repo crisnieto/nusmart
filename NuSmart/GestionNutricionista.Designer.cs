@@ -185,7 +185,7 @@
             // 
             // Nutricionista_button_crear
             // 
-            this.Nutricionista_button_crear.Location = new System.Drawing.Point(23, 91);
+            this.Nutricionista_button_crear.Location = new System.Drawing.Point(23, 198);
             this.Nutricionista_button_crear.Margin = new System.Windows.Forms.Padding(2);
             this.Nutricionista_button_crear.Name = "Nutricionista_button_crear";
             this.Nutricionista_button_crear.Size = new System.Drawing.Size(73, 52);

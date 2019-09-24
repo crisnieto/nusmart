@@ -152,6 +152,7 @@ namespace NuSmart
                 permiso.Descripcion = roles_txt_descripcion_rol.Text;
                 bllRol.crearRol(permiso, rolSeleccionado);
                 popularTreeView(treeView1, bllRol.conseguir());
+                popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
                 limpiarSelecciones();
             }
             catch (Exception ex)
@@ -198,6 +199,10 @@ namespace NuSmart
                 usuarioSeleccionado.Roles = roles;
                 popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
                 limpiarSelecciones();
+                if(Sesion.Instancia().UsuarioActual.Username == usuarioSeleccionado.Username)
+                {
+                    MessageBox.Show(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_logout_aplicar_permiso_usuario_actual"));
+                }
             }
             catch (Exception ex)
             {

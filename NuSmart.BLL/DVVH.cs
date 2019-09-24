@@ -16,6 +16,13 @@ namespace NuSmart.BLL
                "Nutricionista",
             };
 
+        /// <summary>
+        /// verificarIntegridad se encarga de realizar la validacion de integridad tanto de digitos verificador vertical como horizontal.
+        /// Primero se valida los digitos verificadores verticales para las tablas registradas
+        /// Luego se valida los digitos verificadores horizontales para cada registro de las tablas interesadas.
+        /// En caso de que exista un error de integridad, se debera lanzar una Exception.
+        /// </summary>
+        /// <returns></returns>
         public bool verificarIntegridad()
         {
             //Primero debo obtener todas las tablas que tienen DVH y DVV
@@ -33,7 +40,7 @@ namespace NuSmart.BLL
                 if (bllUsuario.calcularDVH(usuario) != usuario.Dvh)
                 {
                     Console.WriteLine(usuario.Username);
-                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Usuario", Criticidad.Alta);
+                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Usuario con ID: " + usuario.Id, Criticidad.Alta);
                     lanzarErrorDeVerificacion();
                 }
             }
@@ -43,13 +50,18 @@ namespace NuSmart.BLL
                 if (bllNutricionista.calcularDVH(nutricionista) != nutricionista.Dvh)
                 {
                     Console.WriteLine(nutricionista.Id);
-                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Nutricionista", Criticidad.Alta);
+                    new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Nutricionista con ID: " + nutricionista.Id, Criticidad.Alta);
                     lanzarErrorDeVerificacion();
                 }
             }
             return true;
         }
 
+        /// <summary>
+        /// Se encarga de sumar la lista de cada DVH obtenido para una tabla y devolver dicha sumatoria.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public int calcularDVV(List<int> i)
         {
             //Aca sumo cada uno de los DVH obtenidos para obtener el DVV calculado.
@@ -61,12 +73,22 @@ namespace NuSmart.BLL
             return dvvCalculado;
         }
 
+        /// <summary>
+        /// actualizarDVV se encarga de actualizar la tabla DVV ante cambios
+        /// </summary>
+        /// <param name="tabla"></param>
+        /// <returns></returns>
         public int actualizarDVV(string tabla)
         {
             DAL.DVVH dalDVVH = new DAL.DVVH();
             return dalDVVH.actualizarDVV(tabla);
         }
 
+        /// <summary>
+        /// compararCalculadoConObtenido se encarga simplemente de validar que el parametro calculado sea igual al obtenido, y en caso contrario lanzar error.
+        /// </summary>
+        /// <param name="calculado"></param>
+        /// <param name="obtenido"></param>
         public void compararCalculadoConObtenido(int calculado, int obtenido)
         {
 
@@ -80,9 +102,13 @@ namespace NuSmart.BLL
             }
         }
 
+
+        /// <summary>
+        /// lanzarErrorDeVerificacion es responsable de hacer un throw de una excepcion y es llamado cuando existe un error de integridad
+        /// </summary>
         public void lanzarErrorDeVerificacion()
         {
-            throw new Exception("Existe un error de integridad, cerrando aplicación.");
+            throw new Exception(NuSmartMessage.formatearMensaje("DVVH_messagebox_error_integridad"));
         }
     }
 }

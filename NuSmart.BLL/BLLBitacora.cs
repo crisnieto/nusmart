@@ -13,6 +13,14 @@ namespace NuSmart.BLL
         {
             return 0;
         }
+
+        /// <summary>
+        /// crearNuevaBitacora es el encargado de registrar una nueva Bitacora u actividad en la base de datos a fin de tener un registro de actividad.
+        /// </summary>
+        /// <param name="actividad"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="criticidad"></param>
+        /// <returns></returns>
         public int crearNuevaBitacora(string actividad, string descripcion, Criticidad criticidad)
         {
             Bitacora bitacora = new Bitacora();
@@ -26,6 +34,10 @@ namespace NuSmart.BLL
             return dalBitacora.guardarBitacora(bitacora);
         }
 
+        /// <summary>
+        /// conseguirUsuarios se encarga de obtener todos los usuarios donde se ha registrado alguna actividad en algun momento.
+        /// </summary>
+        /// <returns></returns>
         public List<Usuario> conseguirUsuarios()
         {
             Sesion.Instancia().verificarPermiso("OP45");
@@ -33,6 +45,15 @@ namespace NuSmart.BLL
             return dalBitacora.conseguirUsuarios();
         }
 
+        /// <summary>
+        /// conseguirBitacorasConUsuario se encarga de obtener todas las actividades (Lista de entidad Bitacora)
+        /// registradas para un usuario en particular
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaFin"></param>
+        /// <param name="criticidad"></param>
+        /// <returns></returns>
         public List<Bitacora> conseguirBitacorasConUsuario(Usuario usuario, DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
             try
@@ -48,14 +69,27 @@ namespace NuSmart.BLL
         }
 
 
-        public bool guardarBitacora()
+        /// <summary>
+        /// conseguirBitacoras Se encarga de obtener absolutamente todas las bitacoras sin filtrar por usuario.
+        /// </summary>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaFin"></param>
+        /// <param name="criticidad"></param>
+        /// <returns></returns>
+        public List<Bitacora> conseguirBitacorasSinUsuario(DateTime fechaInicio, DateTime fechaFin, string criticidad = null)
         {
-            return true;
-        }
+            try
+            {
+                Sesion.Instancia().verificarPermiso("OP45");
+                DALBitacora dalBitacora = new DALBitacora();
+                return dalBitacora.conseguirBitacorasSinUsuario(fechaInicio, fechaFin, criticidad);
 
-        public int seleccionarPorTipo()
-        {
-            return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new Exception(NuSmartMessage.formatearMensaje("Bitacora_messagebox_busqueda_error"));
+            }
         }
     }
 }

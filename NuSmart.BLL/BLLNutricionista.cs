@@ -19,18 +19,37 @@ namespace NuSmart.BLL
             bllUsuario = new BLLUsuario();
         }
 
+        /// <summary>
+        /// conseguir se encarga de solicitar a la DAL la obtencion de un nutricionista en particular de la base de datos.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
         public Nutricionista conseguir(int idUsuario)
         {
             Sesion.Instancia().verificarPermiso("GE110");
             return dalNutricionista.conseguir(idUsuario);
         }
 
+
+        /// <summary>
+        /// conseguirTodos solicita a la DAL que retorne la lista de toods los Nutricionistas que existen en la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public List<Nutricionista> conseguirTodos()
         {
             return dalNutricionista.conseguirTodos();
         }
         
 
+        /// <summary>
+        /// calcularDVH se encarga de calcular el digito verificador horizontal en base a una entidad Nutricionista.
+        /// Para el calculo de DVH se realiza una concatenacion de los atributos del nutricionista, a su vez convirtiendo cada atributo que no sea string a tipo string
+        /// Una vez realizada la concatenacion, es responsabilidad de la entidad Seguridad en retornar la encriptacion de dicha concatenacion.
+        /// Una vez hecho eso, y obtenido el String de la concatenacion, por cada caracter, se obtiene el codigo ASCII que lo representa (int)
+        /// y se suma cada codigo ASCII. El resultado es el Digito Verificador Horizontal
+        /// </summary>
+        /// <param name="nutricionista"></param>
+        /// <returns></returns>
         public int calcularDVH(Nutricionista nutricionista)
         {
             string concatenacion = Convert.ToString(nutricionista.Dni) + nutricionista.Especializacion + nutricionista.Matricula + nutricionista.Apellido + Convert.ToString(nutricionista.Usuario.Id) + nutricionista.Nombre + nutricionista.Sexo + Convert.ToString(nutricionista.Eliminado);
@@ -56,6 +75,13 @@ namespace NuSmart.BLL
 
         }
 
+        /// <summary>
+        /// ingresar se encarga de solicitar a la DAL el guardado del nutricionista.
+        /// Primero se verifca que tanto el usuario como el nutricionista no existan.
+        /// Luego, se procede a crear el usuario y el nutricionista asociado.
+        /// </summary>
+        /// <param name="nutricionista"></param>
+        /// <returns></returns>
         public bool ingresar(Nutricionista nutricionista)
         {
             Sesion.Instancia().verificarPermiso("OP038");
@@ -70,10 +96,16 @@ namespace NuSmart.BLL
             }
             else
             {
-                throw new Exception("Ya existe el Usuario / Nutricionista. Verifique los datos.");
+                throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_usuario_ya_existe"));
             }
         }
 
+
+        /// <summary>
+        /// modificar se encarga de solicitar a la DAL la modificacion del nutricionista entrante por parametro.
+        /// </summary>
+        /// <param name="nutricionista"></param>
+        /// <returns></returns>
         public int modificar(Nutricionista nutricionista)
         {
             nutricionista.Dvh = calcularDVH(nutricionista);
@@ -81,26 +113,43 @@ namespace NuSmart.BLL
             return new DVVH().actualizarDVV("Nutricionista");
         }
 
+
+        /// <summary>
+        /// existe se encarga de realizar una solicitud a la DAL para verificar si existe o no un Nutricionista en base de datos.
+        /// </summary>
+        /// <param name="nutricionista"></param>
+        /// <returns></returns>
         public bool existe(Nutricionista nutricionista)
         {
             return dalNutricionista.existe(nutricionista);
         }
 
+
+        /// <summary>
+        /// Eliminar se encarga de 
+        /// </summary>
+        /// <param name="nutricionista"></param>
+        /// <returns></returns>
         public bool eliminar(Nutricionista nutricionista)
         {
             try
             {
-                nutricionista.Eliminado = true;
-                nutricionista.Dvh = calcularDVH(nutricionista);
-                dalNutricionista.eliminar(nutricionista);
-                new DVVH().actualizarDVV("Nutricionista");
+                if(Sesion.Instancia().UsuarioActual.Username != nutricionista.Usuario.Username)
+                {
+                    nutricionista.Eliminado = true;
+                    nutricionista.Dvh = calcularDVH(nutricionista);
+                    dalNutricionista.eliminar(nutricionista);
+                    new DVVH().actualizarDVV("Nutricionista");
+                    bllUsuario.eliminarUsuario(nutricionista.Usuario);
+                }else
+                {
+                    throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_error_borrado_actual"));
+                }
 
-
-                bllUsuario.eliminarUsuario(nutricionista.Usuario);
                 return true;
             }catch(Exception e)
             {
-                throw new Exception(NuSmartMessage.formatearMensaje("Error al eliminar los usuarios", e));
+                throw new Exception(NuSmartMessage.formatearMensaje(e.Message));
             }
         }
     }

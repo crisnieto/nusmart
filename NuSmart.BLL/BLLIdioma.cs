@@ -17,6 +17,11 @@ namespace NuSmart.BLL
             dalIdioma = new DALIdioma();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idiomaId"></param>
+        /// <returns></returns>
         public Idioma establecerIdioma(int idiomaId)
         {
             BLLLeyenda bllLeyenda = new BLLLeyenda();
@@ -28,12 +33,20 @@ namespace NuSmart.BLL
             return idioma;
         }
 
+        /// <summary>
+        /// Attach agrega entidades que cumplan con la interfaz IObserver (FormObservers en este caso) a la lista de Observers de la Sesion
+        /// </summary>
+        /// <param name="observer"></param>
         public void Attach(IObserver observer)
         {
             Sesion.Instancia().Observers.Add(observer);
 
         }
 
+        /// <summary>
+        /// Detach remueve entidades de la lista de observers de la sesion 
+        /// </summary>
+        /// <param name="observer"></param>
         public void Detach(IObserver observer)
         {
             Sesion.Instancia().Observers.Remove(observer);
@@ -47,6 +60,11 @@ namespace NuSmart.BLL
             }
         }
 
+        /// <summary>
+        /// conseguirLeyenda se encarga de retornar el texto de la leyenda traducida en base al idioma cargado actual en la Sesion.
+        /// Si no se tiene una leyenda para ese control, se deja el atributo Text del control como se encuentra por default.
+        /// </summary>
+        /// <param name="control"></param>
         public void conseguirLeyenda(Control control)
         {
             Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.NombreControl == control.Name);
@@ -64,6 +82,12 @@ namespace NuSmart.BLL
         }
 
 
+        /// <summary>
+        /// conseguirLeyendaMenu se encarga de conseguir y actualizar los textos de los controles relativos a los Menu en base
+        /// al idioma cargado en la Sesion.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public string conseguirLeyendaMenu(ToolStripMenuItem item)
         {
             Leyenda leyenda = Sesion.Instancia().IdiomaActual.Leyendas.Find(i => i.NombreControl == item.Name);
@@ -78,23 +102,42 @@ namespace NuSmart.BLL
         }
 
 
+        /// <summary>
+        /// conseguirIdioma obtiene todos los idiomas disponibles
+        /// </summary>
+        /// <returns></returns>
         public List<Idioma> conseguirIdiomas()
         {
             return dalIdioma.conseguirIdiomas();
         }
 
+        /// <summary>
+        /// guardar se encarga de enviar a guardar a la DAL el idioma a guardar
+        /// </summary>
+        /// <param name="idioma"></param>
+        /// <returns></returns>
         public int guardar(Idioma idioma)
         {
             Sesion.Instancia().verificarPermiso("OP80");
             return dalIdioma.guardar(idioma);
         }
 
+        /// <summary>
+        /// eliminar se encarga de enviar para eliminar a la DAL un idioma
+        /// </summary>
+        /// <param name="idiomaId"></param>
+        /// <returns></returns>
         public int eliminar(int idiomaId)
         {
             Sesion.Instancia().verificarPermiso("OP82");
             return dalIdioma.eliminar(idiomaId);
         }
 
+        /// <summary>
+        /// modificar se encarga de solicitar a la DAL la modificacion de un idioma recibido por parametro.
+        /// </summary>
+        /// <param name="idioma"></param>
+        /// <returns></returns>
         public int modificar(Idioma idioma)
         {
             Sesion.Instancia().verificarPermiso("OP81");

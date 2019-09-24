@@ -10,29 +10,44 @@ namespace NuSmart.BLL
 {
     public class BLLBackupManager
     {
+        /// <summary>
+        /// crearBackup se encarga de la creacion y guardado de un archivo .bak
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public int crearBackup(string path)
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("AA099");
+                Sesion.Instancia().verificarPermiso("OP90");
                 DALBackupManager dalBackupManager = new DALBackupManager();
-                return dalBackupManager.crearBackup(path);
+                int resultado =dalBackupManager.crearBackup(path);
+                new BLLBitacora().crearNuevaBitacora("Creacion de Backup", "Backup de la base de datos creada", Criticidad.Alta);
+                return resultado;
             }
             catch (Exception ex)
             {
+                new BLLBitacora().crearNuevaBitacora("Creacion de Backup", "Error en la creacion de Backup", Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("BackupManager_messagebox_backup_error"));
             }
         }
+
+        /// <summary>
+        /// ejecutarRestore se encarga de efectuar un restore de la base de datos en base a un .bak recibido como parametro
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public int ejecutarRestore(string path)
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("AA099");
+                Sesion.Instancia().verificarPermiso("OP91");
                 DALBackupManager dalBackupManager = new DALBackupManager();
                 return dalBackupManager.ejecutarRestore(path);
             }
             catch (Exception ex)
             {
+                new BLLBitacora().crearNuevaBitacora("Creacion de Backup", "Error en la creacion de Backup", Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("BackupManager_messagebox_restore_error"));
             }
         }

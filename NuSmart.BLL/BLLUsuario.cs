@@ -19,6 +19,15 @@ namespace NuSmart.BLL
             dalUsuario = new DALUsuario();
         }
 
+        /// <summary>
+        /// calcularDVH se encarga de calcular el digito verificador horizontal en base a una entidad Usuario.
+        /// Para el calculo de DVH se realiza una concatenacion de los atributos del nutricionista, a su vez convirtiendo cada atributo que no sea string a tipo string
+        /// Una vez realizada la concatenacion, es responsabilidad de la entidad Seguridad en retornar la encriptacion de dicha concatenacion.
+        /// Una vez hecho eso, y obtenido el String de la concatenacion, por cada caracter, se obtiene el codigo ASCII que lo representa (int)
+        /// y se suma cada codigo ASCII. El resultado es el Digito Verificador Horizontal
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public int calcularDVH(Usuario usuario)
         {
             string concatenacion = usuario.Username + usuario.Password + Convert.ToString(usuario.Intentos) + Convert.ToString(usuario.Eliminado);
@@ -44,18 +53,21 @@ namespace NuSmart.BLL
 
         }
 
-        /**
-         * conseguirUsuarioLogIn
-         * 1. Se busca el usuario en la base de datos
-         * 2. Se pasa a verificar si se encuentra bloqueado por exceso de intentos
-         * 3. Se valida que efectivamente el usuario conseguido de la base de datos y el ingresado, son iguales, a traves de la capa de seguridad
-         * 4. Se valida si tiene reintentos pero no este bloqueado, y se resetea a 0 en caso de que los tenga
-         * 
-         * 
-         * 1.1 Si no se encuentra el usuario, se catchea la excepcion y se muestra un error generico indicando que no se pudo loguear
-         * 2.1 Si se encuentra bloqueado, se muestra un mensaje indicando que el usuario se encuentra bloqueado
-         * 3.1 Si no se valida correctamente con la clase de seguridad, se informa con un mensaje de error generico indicando que no se pudo loguear 
-         */
+
+        /// <summary>
+        /// 1. Se busca el usuario en la base de datos
+        /// 2. Se pasa a verificar si se encuentra bloqueado por exceso de intentos
+        /// 3. Se valida que efectivamente el usuario conseguido de la base de datos y el ingresado, son iguales, a traves de la capa de seguridad
+        /// 4. Se valida si tiene reintentos pero no este bloqueado, y se resetea a 0 en caso de que los tenga
+        /// 
+        /// 
+        /// 1.1 Si no se encuentra el usuario, se catchea la excepcion y se muestra un error generico indicando que no se pudo loguear
+        /// 2.1 Si se encuentra bloqueado, se muestra un mensaje indicando que el usuario se encuentra bloqueado
+        /// 3.1 Si no se valida correctamente con la clase de seguridad, se informa con un mensaje de error generico indicando que no se pudo loguear
+
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public Usuario conseguirUsuarioLogIn(Usuario usuario)
         {
             Seguridad seguridad = new Seguridad();
@@ -112,7 +124,11 @@ namespace NuSmart.BLL
             }
         }
 
-
+        /// <summary>
+        /// conseguir solicita a la DAL obtener un usuario especifico de la base de datos.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public Usuario conseguir(string usuario)
         {
             try
@@ -126,6 +142,14 @@ namespace NuSmart.BLL
             }
         }
 
+
+        /// <summary>
+        /// actualizarPassword se encarga de encriptar la nueva password recibida por parametro
+        /// y solicitar a la DAL asociarla a un usuario especifico.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public int actualizarPassword(Usuario usuario, string password)
         {
             try
@@ -144,6 +168,11 @@ namespace NuSmart.BLL
          
         }
 
+        /// <summary>
+        /// crearUsuario se encarga de solicitar a la DAL la creacion de un nuevo usuario. Encriptando la password de la entidad usuario recibida previamente.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public int crearUsuario(Usuario usuario)
         {
             usuario.Password = new Seguridad().encriptar(usuario.Password);
@@ -152,6 +181,11 @@ namespace NuSmart.BLL
             return new DVVH().actualizarDVV("Usuario");
         }
 
+        /// <summary>
+        /// eliminarUsuario se encarga de solicitar a la DAL la eliminacion de un usuario especifico. 
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public int eliminarUsuario(Usuario usuario)
         {
             if(usuario.Username != "test"){
@@ -163,6 +197,11 @@ namespace NuSmart.BLL
             return 0;
         }
 
+        /// <summary>
+        /// reiniciarIntetos se encarga de establecer la cantidad de intentos de un usuario especifico en 0.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool reiniciarIntentos(Usuario usuario) {
             try
             {
@@ -180,6 +219,11 @@ namespace NuSmart.BLL
         }
 
 
+        /// <summary>
+        /// agregarIntento se encarga de sumar un intento de login erroneo al Usuario recibido por parametro.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool agregarIntento(Usuario usuario)
         {
             //TODO: Hacer algo mas elegante aca...
@@ -194,11 +238,20 @@ namespace NuSmart.BLL
             return false;
         }
 
+        /// <summary>
+        /// conseguirUsuarios se encarga de solicitar a la DAL la lista de todos los usuarios existentes en Base de Datos
+        /// </summary>
+        /// <returns></returns>
         public List<Usuario> conseguirUsuarios()
         {
             return dalUsuario.conseguirTodos();
         }
 
+        /// <summary>
+        /// existe se encarga de validar si ya existe un usuario especifico o no.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool existe(Usuario usuario)
         {
             return dalUsuario.existe(usuario);
