@@ -35,9 +35,10 @@ namespace NuSmart.BLL
             }
             BLLUsuario bllUsuario = new BLLUsuario();
             BLLNutricionista bllNutricionista = new BLLNutricionista();
-            foreach (Usuario usuario in bllUsuario.conseguirUsuarios())
+            foreach (Usuario usuario in bllUsuario.conseguirUsuariosValidacion())
             {
-                if (bllUsuario.calcularDVH(usuario) != usuario.Dvh)
+                int calculado = bllUsuario.calcularDVH(usuario);
+                if (calculado != usuario.Dvh)
                 {
                     Console.WriteLine(usuario.Username);
                     new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Usuario con ID: " + usuario.Id, Criticidad.Alta);
@@ -47,7 +48,9 @@ namespace NuSmart.BLL
 
             foreach (Nutricionista nutricionista in bllNutricionista.conseguirTodos())
             {
-                if (bllNutricionista.calcularDVH(nutricionista) != nutricionista.Dvh)
+                int calculado = bllNutricionista.calcularDVH(nutricionista);
+
+                if (calculado != nutricionista.Dvh)
                 {
                     Console.WriteLine(nutricionista.Id);
                     new BLLBitacora().crearNuevaBitacora("Calculo de DVVH", "Se detecto un error de calculo de DVH para la entidad Nutricionista con ID: " + nutricionista.Id, Criticidad.Alta);

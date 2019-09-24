@@ -1,2 +1,1 @@
 Data Source=DESKTOP-EJGFO76\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True 
-Data Source=DESKTOP-EJGFO76\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True 

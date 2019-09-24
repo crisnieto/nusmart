@@ -82,6 +82,28 @@ namespace NuSmart.DAL
             return listaUsuarios;
         }
 
+        public List<Usuario> conseguirTodosValidacion()
+        {
+            string textoComando = "SELECT usuarioiD, username, password, intentos, DVH, eliminado FROM USUARIO";
+
+            DataTable usuarioDt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            foreach (DataRow dr in usuarioDt.Rows)
+            {
+                Usuario usuarioConseguido = new Usuario();
+                usuarioConseguido.Id = (int)(dr["usuarioID"]);
+                usuarioConseguido.Username = Convert.ToString(dr["username"]);
+                usuarioConseguido.Password = Convert.ToString(dr["password"]);
+                usuarioConseguido.Dvh = Convert.ToInt32(dr["DVH"]);
+                usuarioConseguido.Intentos = Convert.ToInt32(dr["intentos"]);
+                usuarioConseguido.Eliminado = Convert.ToBoolean(dr["eliminado"]);
+                listaUsuarios.Add(usuarioConseguido);
+            }
+            return listaUsuarios;
+        }
+
+
         public int eliminar(Usuario usuario)
         {
             string textoComando = "update USUARIO set eliminado = @ELIMINADO, DVH = @DVH where usuarioID = @USUARIOID";

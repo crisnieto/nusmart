@@ -154,22 +154,37 @@ namespace NuSmart
 
         private void nutricionista_btn_modificar_Click(object sender, EventArgs e)
         {
-            nutricionistaSeleccionado.Nombre = nutricionista_txt_nombre.Text;
-            nutricionistaSeleccionado.Apellido = nutricionista_txt_apellido.Text;
-            nutricionistaSeleccionado.Matricula = nutricionista_txt_matricula.Text;
-            nutricionistaSeleccionado.Especializacion = nutricionista_txt_especializacion.Text;
-            nutricionistaSeleccionado.Dni = Convert.ToInt32(nutricionista_txt_dni.Text);
-            nutricionistaSeleccionado.Sexo = nutricionista_txt_sexo.Text;
+            try
+            {
+                nutricionistaSeleccionado.Nombre = nutricionista_txt_nombre.Text;
+                nutricionistaSeleccionado.Apellido = nutricionista_txt_apellido.Text;
+                nutricionistaSeleccionado.Matricula = nutricionista_txt_matricula.Text;
+                nutricionistaSeleccionado.Especializacion = nutricionista_txt_especializacion.Text;
+                nutricionistaSeleccionado.Dni = Convert.ToInt32(nutricionista_txt_dni.Text);
+                nutricionistaSeleccionado.Sexo = nutricionista_txt_sexo.Text;
 
-            bllNutricionista.modificar(nutricionistaSeleccionado);
-            recargar();
+                bllNutricionista.modificar(nutricionistaSeleccionado);
+                recargar();
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void nutricionista_btn_borrar_Click(object sender, EventArgs e)
         {
-            nutricionistaSeleccionado = bllNutricionista.conseguir(usuarioSeleccionado.Id);
-            bllNutricionista.eliminar(nutricionistaSeleccionado);
-            recargar();
+            try
+            {
+                nutricionistaSeleccionado = bllNutricionista.conseguir(usuarioSeleccionado.Id);
+                nutricionistaSeleccionado.Usuario = usuarioSeleccionado;
+                bllNutricionista.eliminar(nutricionistaSeleccionado);
+                recargar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

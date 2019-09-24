@@ -16,6 +16,7 @@ namespace NuSmart.BLL
         public BLLIdioma()
         {
             dalIdioma = new DALIdioma();
+            bllBitacora = new BLLBitacora();
         }
 
         /// <summary>
@@ -26,7 +27,6 @@ namespace NuSmart.BLL
         public void establecerIdioma(int idiomaId)
         {
             BLLLeyenda bllLeyenda = new BLLLeyenda();
-            BLLBitacora bllBitacora = new BLLBitacora();
 
             Idioma idioma = dalIdioma.conseguir(idiomaId);
             idioma.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(idioma.Id);

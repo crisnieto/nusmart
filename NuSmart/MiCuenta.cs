@@ -20,7 +20,7 @@ namespace NuSmart
         {
             try
             {
-                new BLLUsuario().actualizarPassword(Sesion.Instancia().UsuarioActual, micuenta_txt_cambiar.Text);
+                new BLLUsuario().actualizarPassword(micuenta_txt_cambiar.Text);
                 MessageBox.Show(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_cambio_password_correcto"));
 
             } catch (Exception ex)

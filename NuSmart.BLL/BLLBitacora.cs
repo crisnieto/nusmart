@@ -16,7 +16,7 @@ namespace NuSmart.BLL
         /// <param name="descripcion"></param>
         /// <param name="criticidad"></param>
         /// <returns></returns>
-        public int crearNuevaBitacora(string actividad, string descripcion, Criticidad criticidad)
+        public void crearNuevaBitacora(string actividad, string descripcion, Criticidad criticidad)
         {
             try
             {
@@ -28,14 +28,13 @@ namespace NuSmart.BLL
 
                 bitacora.TipoCriticidad = criticidad.Value;
                 DALBitacora dalBitacora = new DALBitacora();
-                return dalBitacora.guardarBitacora(bitacora);
+                dalBitacora.guardarBitacora(bitacora);
             }catch(Exception ex)
             {
                 //Si se falla en el guardado de Bitacora, no deberia ser un error que sea un Throw hacia las capas superiores.
                 //Deberia continuar funcionando el programa.
                 Console.WriteLine(ex.Message);
             }
-            return 0;
         }
 
         /// <summary>

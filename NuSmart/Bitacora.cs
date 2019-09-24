@@ -25,9 +25,14 @@ namespace NuSmart
             try
             {
                 bllBitacora = new BLLBitacora();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.MultiSelect = false;
+                dataGridView1.ReadOnly = true;
                 usuariosConBitacoras = bllBitacora.conseguirUsuarios();
                 mostrarUsuariosConBitacoras();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
             }
@@ -70,7 +75,8 @@ namespace NuSmart
                     Usuario usuario = (Usuario)listBox1.SelectedItem;
                     dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
                     dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-                }else
+                }
+                else
                 {
                     dataGridView1.DataSource = bllBitacora.conseguirBitacorasSinUsuario(bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
                     dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";

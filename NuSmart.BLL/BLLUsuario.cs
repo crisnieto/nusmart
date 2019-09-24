@@ -147,7 +147,7 @@ namespace NuSmart.BLL
 
 
         /// <summary>
-        /// actualizarPassword se encarga de encriptar la nueva password recibida por parametro
+        /// actualizarPassword se encarga de encriptar la nueva password recibida por parametro a un Usuario Particular
         /// y solicitar a la DAL asociarla a un usuario especifico.
         /// </summary>
         /// <param name="usuario"></param>
@@ -155,17 +155,23 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int actualizarPassword(Usuario usuario, string password)
         {
-            Sesion.Instancia().verificarPermiso("GE110");
-
+            Sesion.Instancia().verificarPermiso("OP100");
             try
             {
-                usuario.Password = new Seguridad().encriptar(password);
-                Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
-                usuario.Dvh = calcularDVH(usuario);
-                dalUsuario.actualizarContraseña(usuario);
-                bllBitacora.crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
-                return new DVVH().actualizarDVV("Usuario");
-            }catch(Exception ex)
+                if(password.Length > 0)
+                {
+                    usuario.Password = new Seguridad().encriptar(password);
+                    Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
+                    usuario.Dvh = calcularDVH(usuario);
+                    dalUsuario.actualizarContraseña(usuario);
+                    bllBitacora.crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
+                    return new DVVH().actualizarDVV("Usuario");
+                }else
+                {
+                    throw new Exception();
+                }
+            }
+            catch(Exception ex)
             {
                 bllBitacora.crearNuevaBitacora("Cambio de Password", "Ocurrio un error en el cambio de Password " + ex.Message, Criticidad.Media);
 
@@ -173,6 +179,42 @@ namespace NuSmart.BLL
             }
          
         }
+
+
+        /// <summary>
+        /// Se encarga de actualizar la password al actual usuario.
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public int actualizarPassword(string password)
+        {
+            Sesion.Instancia().verificarPermiso("GE110");
+
+            try
+            {
+                if (password.Length > 0)
+                {
+                    Sesion.Instancia().UsuarioActual.Password = new Seguridad().encriptar(password);
+                    Console.WriteLine("Nueva contraseña encriptada: " + Sesion.Instancia().UsuarioActual.Password);
+                    Sesion.Instancia().UsuarioActual.Dvh = calcularDVH(Sesion.Instancia().UsuarioActual);
+                    dalUsuario.actualizarContraseña(Sesion.Instancia().UsuarioActual);
+                    bllBitacora.crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + Sesion.Instancia().UsuarioActual.Username, Criticidad.Media);
+                    return new DVVH().actualizarDVV("Usuario");
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Cambio de Password", "Ocurrio un error en el cambio de Password " + ex.Message, Criticidad.Media);
+
+                throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"), ex);
+            }
+
+        }
+
 
         /// <summary>
         /// crearUsuario se encarga de solicitar a la DAL la creacion de un nuevo usuario. Encriptando la password de la entidad usuario recibida previamente.
@@ -262,6 +304,16 @@ namespace NuSmart.BLL
         {
             return dalUsuario.conseguirTodos();
         }
+
+        /// <summary>
+        /// conseguirUsuarios se encarga de solicitar a la DAL la lista de todos los usuarios existentes en Base de Datos. Incluye a los eliminados para realizar el calculo.
+        /// </summary>
+        /// <returns></returns>
+        public List<Usuario> conseguirUsuariosValidacion()
+        {
+            return dalUsuario.conseguirTodosValidacion();
+        }
+
 
         /// <summary>
         /// existe se encarga de validar si ya existe un usuario especifico o no.

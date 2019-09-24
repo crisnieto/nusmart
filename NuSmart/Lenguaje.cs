@@ -71,9 +71,17 @@ namespace NuSmart
 
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!flagCargando) { 
-                bllIdioma.establecerIdioma(((Idioma)listBox1.SelectedItem).Id);
-                validarNavegación();
+            try
+            {
+                if (!flagCargando)
+                {
+                    bllIdioma.establecerIdioma(((Idioma)listBox1.SelectedItem).Id);
+                    validarNavegación();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 

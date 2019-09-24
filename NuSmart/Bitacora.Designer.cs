@@ -139,7 +139,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(587, 171);
+            this.dataGridView1.Size = new System.Drawing.Size(957, 343);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -155,7 +155,7 @@
             // 
             // Bitacora_button_buscar
             // 
-            this.Bitacora_button_buscar.Location = new System.Drawing.Point(498, 30);
+            this.Bitacora_button_buscar.Location = new System.Drawing.Point(868, 30);
             this.Bitacora_button_buscar.Margin = new System.Windows.Forms.Padding(2);
             this.Bitacora_button_buscar.Name = "Bitacora_button_buscar";
             this.Bitacora_button_buscar.Size = new System.Drawing.Size(100, 93);
@@ -178,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(605, 331);
+            this.ClientSize = new System.Drawing.Size(979, 498);
             this.Controls.Add(this.Bitacora_label_hasta);
             this.Controls.Add(this.Bitacora_label_desde);
             this.Controls.Add(this.bitacora_datepicker_hasta);

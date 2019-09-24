@@ -17,7 +17,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int crearBackup(string path)
         {
-            Sesion.Instancia().verificarPermiso("OP90");
+            Sesion.Instancia().verificarPermiso("OP090");
 
             try
             {
@@ -40,7 +40,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int ejecutarRestore(string path)
         {
-            Sesion.Instancia().verificarPermiso("OP91");
+            Sesion.Instancia().verificarPermiso("OP091");
 
             try
             {
