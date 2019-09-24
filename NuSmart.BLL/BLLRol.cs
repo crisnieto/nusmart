@@ -9,10 +9,12 @@ namespace NuSmart.BLL
     {
 
         DALRol dalRol;
+        BLLBitacora bllBitacora;
 
         public BLLRol()
         {
             dalRol = new DALRol();
+            bllBitacora = new BLLBitacora();
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace NuSmart.BLL
             Sesion.Instancia().verificarPermiso("AA099");
             dalRol.desasociarDeTodos(rol);
             dalRol.eliminarRecursivamente(rol.Id);
-            new BLLBitacora().crearNuevaBitacora("Eliminacion de Rol", "Se elimino el rol " + rol.Codigo, Criticidad.Alta);
+            bllBitacora.crearNuevaBitacora("Eliminacion de Rol", "Se elimino el rol " + rol.Codigo, Criticidad.Alta);
         }
 
         public void insertar()
@@ -75,7 +77,7 @@ namespace NuSmart.BLL
         {
             try
             {
-                new BLLBitacora().crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
+                bllBitacora.crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
                 Sesion.Instancia().verificarPermiso("AA099");
                 return dalRol.crearRol(rol, padre);
             }catch(Exception ex)
@@ -96,12 +98,14 @@ namespace NuSmart.BLL
             Sesion.Instancia().verificarPermiso("AA099");
             if (esPosibleAsociarRol(rol, usuario.Roles))
             {
-                new BLLBitacora().crearNuevaBitacora("Asociacion de Rol", "Se asocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
+                bllBitacora.crearNuevaBitacora("Asociacion de Rol", "Se asocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
                 
                 return dalRol.asociarRolAUsuario(rol, usuario);
             }
             else
             {
+                new BLLBitacora().crearNuevaBitacora("Asociacion de Rol", "Error al asociar el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Baja);
+
                 throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_error_asociacion"));
             }
         }
@@ -117,12 +121,14 @@ namespace NuSmart.BLL
             Sesion.Instancia().verificarPermiso("AA099");
             if (esPosibleDesociarRol(rol, usuario))
             {
-                new BLLBitacora().crearNuevaBitacora("Desasociacion de Rol", "Se desasocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
+                bllBitacora.crearNuevaBitacora("Desasociacion de Rol", "Se desasocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
                 return dalRol.desasociarDeUsuario(rol, usuario);
 
             }
             else
-            {   
+            {
+                bllBitacora.crearNuevaBitacora("Desasociacion de Rol", "Error al desasociar el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
+
                 throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_error_desasociacion"));
             }
         }

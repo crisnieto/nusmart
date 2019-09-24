@@ -18,6 +18,12 @@ namespace NuSmart.DAL
             sqlHelper = new SqlHelper();
         }
 
+        /// <summary>
+        /// Consigue los roles de usuario interactuando con la base de datos por cada rol encontrado, se agrega a la lista de roles y se efectua una busqueda recursiva.
+        /// En dicha busqueda recursiva se seguiran buscando Roles (familias y permisos) para ser agregados al arbol (lista de roles).
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public List<Rol> conseguirRolesDeUsuario(Usuario usuario)
         {
             List<Rol> listaRoles = new List<Rol>();
@@ -36,6 +42,14 @@ namespace NuSmart.DAL
 
         }
 
+
+        /// <summary>
+        /// Se encarga de interactuar con la base de datos para obtener todos los roles del sistema.
+        /// Obtiene por una parte todas las familias del primer nivel y efectua la busqueda recursiva para obtener
+        /// todos los hijos y armar el arbol.
+        /// Por ultimo obtiene todos los permisos huerfanos.
+        /// </summary>
+        /// <returns></returns>
         public List<Rol> conseguirRoles()
         {
             List<Rol> listaRoles = new List<Rol>();
@@ -55,6 +69,10 @@ namespace NuSmart.DAL
 
         }
 
+        /// <summary>
+        /// Se encarga de consultar a la base de datos los permisos huerfanos, es decir, aquellos que no tiene una Familia.
+        /// </summary>
+        /// <returns></returns>
         public List<Rol> conseguirPermisosSinPadre()
         {
             List<Rol> permisos = new List<Rol>();
@@ -76,6 +94,14 @@ namespace NuSmart.DAL
             return permisos;
         }
 
+        /// <summary>
+        /// Efectua una busqueda recursiva contra la base de datos por cada permiso recibido.
+        /// Si es familia, se agrega a la lista de Roles y se llama a si mismo para continuar con la busqueda recursiva.
+        /// Si es patente, solo se agrega a la lista de Roles
+        /// </summary>
+        /// <param name="permisoId"></param>
+        /// <param name="familiaSuperior"></param>
+        /// <returns></returns>
         private Rol buscarRecursivamente(int permisoId, Rol familiaSuperior = null)
         {
             string textoComando = "select A.IdPadrePermiso, A.IdHijoPermiso, P.codigo, P.descripcion, C.codigoPadre, C.descripcionPadre " +
@@ -140,9 +166,10 @@ namespace NuSmart.DAL
             }
         }
 
-        /**
-         * Consigo las familias del primer nivel 
-         */
+        /// <summary>
+        /// Se encarga de conseguir las familias del primer nivel.
+        /// </summary>
+        /// <returns></returns>
         public List<Familia> conseguirFamilias()
         {
             string textoComando = "select distinct A.IdPadrePermiso, B.codigo, B.descripcion from Permiso_Jerarquia A JOIN Permiso B ON (A.IdPadrePermiso = B.permisoID) WHERE A.IdPadrePermiso NOT IN (select IdHijoPermiso from Permiso_Jerarquia)";
@@ -162,6 +189,11 @@ namespace NuSmart.DAL
             return listaFamilia;
         }
 
+        /// <summary>
+        /// Se encarga de devolver el resultado de ejecutar una query para validar si ya existe un codigo de rol.
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         public bool validarCodigoDeRol(string codigo)
         {
             //Verifico que no existan duplicados de Código
@@ -171,6 +203,11 @@ namespace NuSmart.DAL
             return sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0].Rows.Count == 0;
         }
 
+        /// <summary>
+        /// Se encarga de eliminarRecursivamente contra la base de datos un Rol.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public int eliminarRecursivamente(int id)
         {
             
@@ -197,6 +234,11 @@ namespace NuSmart.DAL
         }
 
 
+        /// <summary>
+        /// Conseguir rol interactua con la base de datos y devuelve un Rol buscado en base al codigo.
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         public Rol conseguirRol(string codigo)
         {
             string textoComando = "select PermisoId, Codigo, Descripcion from Permiso where codigo = @CODIGO";
@@ -213,6 +255,12 @@ namespace NuSmart.DAL
             return permiso;
         }
 
+        /// <summary>
+        /// crearRol se encarga de interactuar con la base de datos y guardar el Rol recibido en la base de datos.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="padre"></param>
+        /// <returns></returns>
         public bool crearRol(Rol rol, Rol padre = null)
         {
             string textoComando = "insert into PERMISO (codigo, descripcion) VALUES (@CODIGO, @DESCRIPCION)";
@@ -234,6 +282,12 @@ namespace NuSmart.DAL
             return resultado;
         }
 
+        /// <summary>
+        /// asociarRolAUsuario se encarga de interactuar con la base de datos para guardar la asociacion entre un usuario y el rol recibido.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool asociarRolAUsuario(Rol rol, Usuario usuario)
         {
             String textoComando = "insert into JoinUsuarioPermiso (usuarioID, permisoID) VALUES (@USUARIOID, @PERMISOID)";
@@ -244,6 +298,12 @@ namespace NuSmart.DAL
         }
 
 
+        /// <summary>
+        /// desasociarDeUsuario se encarga de interactuar con la base de datos para eliminar la asociacion entre un usuario y el rol recibido.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public bool desasociarDeUsuario(Rol rol, Usuario usuario)
         {
             String textoComando = "delete from JoinUsuarioPermiso where usuarioID = @USUARIOID and permisoId = @PERMISOID";
@@ -253,6 +313,12 @@ namespace NuSmart.DAL
             return Convert.ToBoolean(sqlHelper.ejecutarNonQuery(textoComando, lista));
         }
 
+
+        /// <summary>
+        /// desasociarDeTodos se encarga de realizar la desasosiacion de un Rol para todos los usuarios que tengan el Rol.
+        /// </summary>
+        /// <param name="rol"></param>
+        /// <returns></returns>
         public bool desasociarDeTodos(Rol rol)
         {
             String textoComando = "delete from JoinUsuarioPermiso where permisoId = @PERMISOID";

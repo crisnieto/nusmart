@@ -17,9 +17,10 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int crearBackup(string path)
         {
+            Sesion.Instancia().verificarPermiso("OP90");
+
             try
             {
-                Sesion.Instancia().verificarPermiso("OP90");
                 DALBackupManager dalBackupManager = new DALBackupManager();
                 int resultado =dalBackupManager.crearBackup(path);
                 new BLLBitacora().crearNuevaBitacora("Creacion de Backup", "Backup de la base de datos creada", Criticidad.Alta);
@@ -39,15 +40,16 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int ejecutarRestore(string path)
         {
+            Sesion.Instancia().verificarPermiso("OP91");
+
             try
             {
-                Sesion.Instancia().verificarPermiso("OP91");
                 DALBackupManager dalBackupManager = new DALBackupManager();
                 return dalBackupManager.ejecutarRestore(path);
             }
             catch (Exception ex)
             {
-                new BLLBitacora().crearNuevaBitacora("Creacion de Backup", "Error en la creacion de Backup", Criticidad.Alta);
+                new BLLBitacora().crearNuevaBitacora("Creacion de Restore", "Error en la creacion de Backup", Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("BackupManager_messagebox_restore_error"));
             }
         }

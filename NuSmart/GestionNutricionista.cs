@@ -34,8 +34,13 @@ namespace NuSmart
 
         private void GestionNutricionista_Load(object sender, EventArgs e)
         {
-            recargar();
-            loading = false;
+            try {
+                recargar();
+                loading = false;
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void recargar()
@@ -109,7 +114,6 @@ namespace NuSmart
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
             try
             {
                 string password = nutricionista_txt_password_restablecer.Text;

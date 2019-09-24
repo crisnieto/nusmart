@@ -70,5 +70,10 @@ namespace NuSmart
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BackupManager_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

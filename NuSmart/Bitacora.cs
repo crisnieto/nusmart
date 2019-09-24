@@ -21,9 +21,16 @@ namespace NuSmart
 
         private void Bitacora_Load(object sender, EventArgs e)
         {
-            bllBitacora = new BLLBitacora();
-            usuariosConBitacoras = bllBitacora.conseguirUsuarios();
-            mostrarUsuariosConBitacoras();
+            Sesion.Instancia().verificarPermiso("OP45");
+            try
+            {
+                bllBitacora = new BLLBitacora();
+                usuariosConBitacoras = bllBitacora.conseguirUsuarios();
+                mostrarUsuariosConBitacoras();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -12,11 +12,13 @@ namespace NuSmart.BLL
     {
         public BLLRol bllRol;
         public DALUsuario dalUsuario;
+        BLLBitacora bllBitacora;
 
         public BLLUsuario()
         {
             bllRol = new BLLRol();
             dalUsuario = new DALUsuario();
+            bllBitacora = new BLLBitacora();
         }
 
         /// <summary>
@@ -92,19 +94,19 @@ namespace NuSmart.BLL
                     {
                         usuarioConseguido.Roles = bllRol.conseguir(usuarioConseguido);
                         Sesion.Instancia().UsuarioActual = usuarioConseguido;
-                        new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
+                        bllBitacora.crearNuevaBitacora("Login de Usuario", "Se detecto un evento de ingreso", Criticidad.Media);
                     }
                     else
                     {
                         agregarIntento(usuarioConseguido);
-                        new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Media);
+                        bllBitacora.crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Media);
                         throw new Exception(NuSmartMessage.formatearMensaje("Login_messagebox_error_login"));
                     }
 
                 }
                 else
                 {
-                    new BLLBitacora().crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Alta);
+                    bllBitacora.crearNuevaBitacora("Login de Usuario", "Se detecto un login incorrecto", Criticidad.Alta);
                     throw new Exception(NuSmartMessage.formatearMensaje("Login_messagebox_usuario_bloqueado"));
                 }
 
@@ -116,10 +118,11 @@ namespace NuSmart.BLL
                 return usuarioConseguido;
 
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                Console.Write(exception);
-                throw new Exception(NuSmartMessage.formatearMensaje(exception.Message));
+                Console.Write(ex);
+                bllBitacora.crearNuevaBitacora("Login de Usuario", "Ocurrio un error en el login de usuario " + ex.Message, Criticidad.Media);
+                throw new Exception(NuSmartMessage.formatearMensaje(ex.Message));
 
             }
         }
@@ -152,17 +155,20 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int actualizarPassword(Usuario usuario, string password)
         {
+            Sesion.Instancia().verificarPermiso("GE110");
+
             try
             {
-                Sesion.Instancia().verificarPermiso("GE110");
                 usuario.Password = new Seguridad().encriptar(password);
                 Console.WriteLine("Nueva contraseña encriptada: " + usuario.Password);
                 usuario.Dvh = calcularDVH(usuario);
                 dalUsuario.actualizarContraseña(usuario);
-                new BLLBitacora().crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
+                bllBitacora.crearNuevaBitacora("Cambio de Password", "Se cambio la password del usuario " + usuario.Username, Criticidad.Media);
                 return new DVVH().actualizarDVV("Usuario");
             }catch(Exception ex)
             {
+                bllBitacora.crearNuevaBitacora("Cambio de Password", "Ocurrio un error en el cambio de Password " + ex.Message, Criticidad.Media);
+
                 throw new Exception(NuSmartMessage.formatearMensaje("MiCuenta_messagebox_error_cambio_password"), ex);
             }
          
@@ -188,13 +194,23 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int eliminarUsuario(Usuario usuario)
         {
-            if(usuario.Username != "test"){
-                usuario.Eliminado = true;
-                usuario.Dvh = calcularDVH(usuario);
-                dalUsuario.eliminar(usuario);
-                return new DVVH().actualizarDVV("Usuario");
+            try { 
+                if(usuario.Username != "test"){
+                    usuario.Eliminado = true;
+                    usuario.Dvh = calcularDVH(usuario);
+                    dalUsuario.eliminar(usuario);
+                    int resultado = new DVVH().actualizarDVV("Usuario");
+                    bllBitacora.crearNuevaBitacora("Eliminacion de Usuario", "Se elimino correctamente el usuario " + usuario.Username, Criticidad.Media);
+                    return resultado;
+
+                }
+                return 0;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Eliminacion de Usuario", "Ocurrio un error al eliminar un usuario " + ex.Message, Criticidad.Media);
+
+                throw ex;
             }
-            return 0;
         }
 
         /// <summary>

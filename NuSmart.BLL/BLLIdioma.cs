@@ -11,6 +11,7 @@ namespace NuSmart.BLL
     {
 
         DALIdioma dalIdioma;
+        BLLBitacora bllBitacora;
 
         public BLLIdioma()
         {
@@ -22,15 +23,14 @@ namespace NuSmart.BLL
         /// </summary>
         /// <param name="idiomaId"></param>
         /// <returns></returns>
-        public Idioma establecerIdioma(int idiomaId)
+        public void establecerIdioma(int idiomaId)
         {
             BLLLeyenda bllLeyenda = new BLLLeyenda();
+            BLLBitacora bllBitacora = new BLLBitacora();
 
-            //Va a buscar en la BD e instancia el singleton Idioma. Referencio el singleton a la variable idioma
-            //para hacerlo mas semantico
             Idioma idioma = dalIdioma.conseguir(idiomaId);
             idioma.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(idioma.Id);
-            return idioma;
+            Sesion.Instancia().IdiomaActual = idioma;
         }
 
         /// <summary>
@@ -52,6 +52,11 @@ namespace NuSmart.BLL
             Sesion.Instancia().Observers.Remove(observer);
         }
 
+
+        /// <summary>
+        /// Se encarga de llamar a la implementacion del metodo Actualizar de cada Observer. El metodo Actualizar debe
+        /// implementar el recargado de idioma para todos los controles que posea.
+        /// </summary>
         public void Notify()
         {
             foreach (BE.IObserver observer in Sesion.Instancia().Observers)
@@ -119,7 +124,18 @@ namespace NuSmart.BLL
         public int guardar(Idioma idioma)
         {
             Sesion.Instancia().verificarPermiso("OP80");
-            return dalIdioma.guardar(idioma);
+
+            try
+            {
+                int resultado = dalIdioma.guardar(idioma);
+                bllBitacora.crearNuevaBitacora("Creacion de Idioma", "Nuevo Idioma Creado " + idioma.NombreIdioma, Criticidad.Media);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Creacion de Idioma", "Error en la creacion de idioma: " + ex.Message, Criticidad.Alta);
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
@@ -130,7 +146,18 @@ namespace NuSmart.BLL
         public int eliminar(int idiomaId)
         {
             Sesion.Instancia().verificarPermiso("OP82");
-            return dalIdioma.eliminar(idiomaId);
+
+            try
+            {
+                int resultado = dalIdioma.eliminar(idiomaId);
+                new BLLBitacora().crearNuevaBitacora("Eliminacion de Idioma", "Idioma eliminado " + idiomaId.ToString(), Criticidad.Media);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                new BLLBitacora().crearNuevaBitacora("Eliminacion de Idioma", "Error en la eliminacion de idioma: " + ex.Message, Criticidad.Alta);
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
@@ -141,7 +168,18 @@ namespace NuSmart.BLL
         public int modificar(Idioma idioma)
         {
             Sesion.Instancia().verificarPermiso("OP81");
-            return dalIdioma.modificar(idioma);           
+
+            try
+            {
+                int resultado = dalIdioma.modificar(idioma);
+                new BLLBitacora().crearNuevaBitacora("Modificacion de Idioma", "Idioma modificado " + idioma.NombreIdioma.ToString(), Criticidad.Media);
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                new BLLBitacora().crearNuevaBitacora("Modificacion de Idioma", "Error en la modificacion de idioma: " + ex.Message, Criticidad.Alta);
+                throw new Exception(ex.Message);
+            }
         }
 
     }

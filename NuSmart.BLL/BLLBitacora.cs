@@ -9,11 +9,6 @@ namespace NuSmart.BLL
     public class BLLBitacora
     {
 
-        public int borrarAntiguo()
-        {
-            return 0;
-        }
-
         /// <summary>
         /// crearNuevaBitacora es el encargado de registrar una nueva Bitacora u actividad en la base de datos a fin de tener un registro de actividad.
         /// </summary>
@@ -23,15 +18,24 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int crearNuevaBitacora(string actividad, string descripcion, Criticidad criticidad)
         {
-            Bitacora bitacora = new Bitacora();
-            bitacora.Actividad = actividad;
-            bitacora.Descripción = descripcion;
-            bitacora.Fecha = DateTime.Now;    
-            bitacora.Usuario = Sesion.Instancia().UsuarioActual;
-            
-            bitacora.TipoCriticidad = criticidad.Value;
-            DALBitacora dalBitacora = new DALBitacora();
-            return dalBitacora.guardarBitacora(bitacora);
+            try
+            {
+                Bitacora bitacora = new Bitacora();
+                bitacora.Actividad = actividad;
+                bitacora.Descripción = descripcion;
+                bitacora.Fecha = DateTime.Now;
+                bitacora.Usuario = Sesion.Instancia().UsuarioActual;
+
+                bitacora.TipoCriticidad = criticidad.Value;
+                DALBitacora dalBitacora = new DALBitacora();
+                return dalBitacora.guardarBitacora(bitacora);
+            }catch(Exception ex)
+            {
+                //Si se falla en el guardado de Bitacora, no deberia ser un error que sea un Throw hacia las capas superiores.
+                //Deberia continuar funcionando el programa.
+                Console.WriteLine(ex.Message);
+            }
+            return 0;
         }
 
         /// <summary>

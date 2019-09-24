@@ -30,19 +30,24 @@ namespace NuSmart
 
         private void GestionEtiqueta_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = bllIdioma.conseguirIdiomas();
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.ReadOnly = true;
-            recargarEtiquetas();
+            try
+            {
+                comboBox1.DataSource = bllIdioma.conseguirIdiomas();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView1.MultiSelect = false;
+                dataGridView1.ReadOnly = true;
+                recargarEtiquetas();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje(ex.Message));
+            }
         }
 
         private void recargarEtiquetas()
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("OP84");
                 dataGridView1.DataSource = bllLeyenda.conseguirLeyendasParaIdioma(idiomaSeleccionado.Id);
             }catch(Exception ex)
             {
@@ -114,6 +119,7 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             try
             {
 

@@ -12,10 +12,12 @@ namespace NuSmart.BLL
     {
 
         DALLeyenda dalLeyenda;
+        BLLBitacora bllBitacora;
 
         public BLLLeyenda()
         {
             dalLeyenda = new DALLeyenda();
+            bllBitacora = new BLLBitacora();
         }
 
 
@@ -26,7 +28,14 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public List<Leyenda> conseguirLeyendasParaIdioma(int idiomaId)
         {
-            return dalLeyenda.conseguirTodosParaIdioma(idiomaId);
+            try
+            {
+                return dalLeyenda.conseguirTodosParaIdioma(idiomaId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -36,7 +45,16 @@ namespace NuSmart.BLL
         public void eliminarLeyenda(Leyenda leyenda)
         {
             Sesion.Instancia().verificarPermiso("OP86");
-            dalLeyenda.eliminarLeyenda(leyenda);
+            try
+            {
+                dalLeyenda.eliminarLeyenda(leyenda);
+                bllBitacora.crearNuevaBitacora("Eliminacion de Leyenda", "Se elimino la leyenda para el control " + leyenda.NombreControl + " con ID " + leyenda.Id, Criticidad.Media);
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Eliminacion de Leyenda", "Error en la eliminacion de leyenda: " + ex.Message, Criticidad.Alta);
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -46,7 +64,17 @@ namespace NuSmart.BLL
         public void modificarLeyenda(Leyenda leyenda)
         {
             Sesion.Instancia().verificarPermiso("OP87");
-            dalLeyenda.modificarLeyenda(leyenda);
+            try
+            {
+                dalLeyenda.modificarLeyenda(leyenda);
+                bllBitacora.crearNuevaBitacora("Modificacion de Leyenda", "Se modifico la leyenda para el control " + leyenda.NombreControl + " con ID " + leyenda.Id, Criticidad.Media);
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Modificacion de leyenda", "Error en la modificacion de leyenda: " + ex.Message, Criticidad.Alta);
+                throw ex;
+
+            }
         }
 
         /// <summary>
@@ -56,15 +84,25 @@ namespace NuSmart.BLL
         /// <param name="idioma"></param>
         public void crearLeyenda(Leyenda leyenda, Idioma idioma)
         {
-            Sesion.Instancia().verificarPermiso("OP85");
-            Leyenda leyendaConseguida = dalLeyenda.conseguirLeyendaParaIdioma(leyenda.NombreControl, idioma.Id);
+            try
+            {
+                Sesion.Instancia().verificarPermiso("OP85");
+                Leyenda leyendaConseguida = dalLeyenda.conseguirLeyendaParaIdioma(leyenda.NombreControl, idioma.Id);
 
-            if (leyendaConseguida.NombreControl == null)
+                if (leyendaConseguida.NombreControl == null)
+                {
+                    dalLeyenda.crearLeyenda(leyenda, idioma);
+                    bllBitacora.crearNuevaBitacora("Creacion de Leyenda", "Creacion de leyenda para el control " + leyenda.NombreControl + " con Idioma: " + idioma.NombreIdioma  , Criticidad.Alta);
+
+                }
+                else
+                {
+                    throw new Exception(NuSmartMessage.formatearMensaje("GestionLeyenda_messagebox_leyenda_existente"));
+                }
+            }catch(Exception ex)
             {
-                dalLeyenda.crearLeyenda(leyenda, idioma);
-            }else
-            {
-                throw new Exception(NuSmartMessage.formatearMensaje("GestionLeyenda_messagebox_leyenda_existente"));
+                bllBitacora.crearNuevaBitacora("Creacion de Leyenda", "Error en la creacion de leyenda: " + ex.Message, Criticidad.Alta);
+                throw ex;
             }
         }
 

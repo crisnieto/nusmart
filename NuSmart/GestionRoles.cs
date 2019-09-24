@@ -25,8 +25,13 @@ namespace NuSmart
 
         private void GestionRoles_Load(object sender, EventArgs e)
         {
+            try { 
             popularTreeView(treeView1, bllRol.conseguir());
             obtenerUsuarios();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void popularTreeView(TreeView treeview, List<Rol> roles)

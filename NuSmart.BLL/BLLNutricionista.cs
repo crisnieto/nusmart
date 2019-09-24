@@ -12,11 +12,13 @@ namespace NuSmart.BLL
     {
         BLLUsuario bllUsuario;
         DALNutricionista dalNutricionista;
+        BLLBitacora bllBitacora;
 
         public BLLNutricionista()
         {
             dalNutricionista = new DALNutricionista();
             bllUsuario = new BLLUsuario();
+            bllBitacora = new BLLBitacora();
         }
 
         /// <summary>
@@ -86,17 +88,27 @@ namespace NuSmart.BLL
         {
             Sesion.Instancia().verificarPermiso("OP038");
 
-            if (!(bllUsuario.existe(nutricionista.Usuario)) && !(existe(nutricionista))){
-                bllUsuario.crearUsuario(nutricionista.Usuario);
-                nutricionista.Usuario = bllUsuario.conseguir(nutricionista.Usuario.Username);
-                nutricionista.Dvh = calcularDVH(nutricionista);
-                dalNutricionista.ingresar(nutricionista);
-                new DVVH().actualizarDVV("Nutricionista");
-                return true;
-            }
-            else
+            try
             {
-                throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_usuario_ya_existe"));
+                if (!(bllUsuario.existe(nutricionista.Usuario)) && !(existe(nutricionista)))
+                {
+                    bllUsuario.crearUsuario(nutricionista.Usuario);
+                    nutricionista.Usuario = bllUsuario.conseguir(nutricionista.Usuario.Username);
+                    nutricionista.Dvh = calcularDVH(nutricionista);
+                    dalNutricionista.ingresar(nutricionista);
+                    new DVVH().actualizarDVV("Nutricionista");
+                    bllBitacora.crearNuevaBitacora("Creacion de Nutricionista", "Se creo el nutricionista con usuario: " + nutricionista.Usuario.Username, Criticidad.Media);
+                    return true;
+                }
+                else
+                {
+                    throw new Exception(NuSmartMessage.formatearMensaje("Nutricionista_messagebox_usuario_ya_existe"));
+                }
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Creacion de Nutricionista", "Error en la creacion de Nutricionista: " + ex.Message, Criticidad.Alta);
+                throw ex;
             }
         }
 
@@ -108,9 +120,20 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int modificar(Nutricionista nutricionista)
         {
-            nutricionista.Dvh = calcularDVH(nutricionista);
-            dalNutricionista.modificar(nutricionista);
-            return new DVVH().actualizarDVV("Nutricionista");
+            Sesion.Instancia().verificarPermiso("OP040");
+            try
+            {
+                nutricionista.Dvh = calcularDVH(nutricionista);
+                dalNutricionista.modificar(nutricionista);
+                int result = new DVVH().actualizarDVV("Nutricionista");
+                bllBitacora.crearNuevaBitacora("Modificacion de Nutricionista", "Se modifico el Nutricionista con ID: " + nutricionista.Id, Criticidad.Alta);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Modificacion de Nutricionista", "Error en la modificacion de Nutricionista: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje(ex.Message));
+            }
         }
 
 
@@ -132,6 +155,8 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public bool eliminar(Nutricionista nutricionista)
         {
+            Sesion.Instancia().verificarPermiso("OP039");
+
             try
             {
                 if(Sesion.Instancia().UsuarioActual.Username != nutricionista.Usuario.Username)
@@ -149,6 +174,8 @@ namespace NuSmart.BLL
                 return true;
             }catch(Exception e)
             {
+                bllBitacora.crearNuevaBitacora("Eliminacion de Nutricionista", "Error en la eliminacion de Nutricionista: " + e.Message, Criticidad.Alta);
+
                 throw new Exception(NuSmartMessage.formatearMensaje(e.Message));
             }
         }

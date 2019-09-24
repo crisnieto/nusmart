@@ -28,7 +28,6 @@ namespace NuSmart
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("OP83");
                 idiomaBLL = new BLLIdioma();
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -66,6 +65,7 @@ namespace NuSmart
 
         private void gestion_idioma_btn_modificar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 idiomaSeleccionado.NombreIdioma = gestion_idioma_txt_idioma.Text;
@@ -80,6 +80,7 @@ namespace NuSmart
 
         private void gestion_idioma_btn_eliminar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 idiomaBLL.eliminar(idiomaSeleccionado.Id);

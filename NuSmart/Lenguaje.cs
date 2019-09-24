@@ -55,10 +55,12 @@ namespace NuSmart
 
         private void Lenguaje_Load(object sender, EventArgs e)
         {
-            BLLIdioma bllIdioma = new BLLIdioma();
-            listBox1.DataSource = bllIdioma.conseguirIdiomas();
-            listBox1.SelectedIndex = -1;
-            flagCargando = false;
+           
+                BLLIdioma bllIdioma = new BLLIdioma();
+                listBox1.DataSource = bllIdioma.conseguirIdiomas();
+                listBox1.SelectedIndex = -1;
+                flagCargando = false;
+            
         }
 
         private void Lenguaje_FormClosed(object sender, FormClosedEventArgs e)
@@ -70,7 +72,7 @@ namespace NuSmart
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!flagCargando) { 
-                Sesion.Instancia().IdiomaActual = bllIdioma.establecerIdioma(((Idioma)listBox1.SelectedItem).Id);
+                bllIdioma.establecerIdioma(((Idioma)listBox1.SelectedItem).Id);
                 validarNavegación();
             }
         }

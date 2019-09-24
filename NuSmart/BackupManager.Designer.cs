@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BackupManager));
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.BackupManager_label_titulo = new System.Windows.Forms.Label();
             this.BackupManager_button_restaurar = new System.Windows.Forms.Button();
             this.BackupManager_button_crear_backup = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // BackupManager_label_titulo
             // 
@@ -71,10 +75,6 @@
             this.BackupManager_button_crear_backup.UseVisualStyleBackColor = true;
             this.BackupManager_button_crear_backup.Click += new System.EventHandler(this.backup_btn_crear_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // BackupManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,6 +86,7 @@
             this.Controls.Add(this.BackupManager_button_crear_backup);
             this.Name = "BackupManager";
             this.Text = "BackupManager";
+            this.Load += new System.EventHandler(this.BackupManager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
