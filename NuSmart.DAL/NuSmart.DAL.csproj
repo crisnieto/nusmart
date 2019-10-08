@@ -52,9 +52,12 @@
     <Compile Include="DALBackupManager.cs" />
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALComando.cs" />
+    <Compile Include="DALHorario.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALNutricionista.cs" />
+    <Compile Include="DALPaciente.cs" />
     <Compile Include="DALRol.cs" />
+    <Compile Include="DALTurno.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="DALIdioma.cs" />
     <Compile Include="DVVH.cs" />

@@ -134,5 +134,19 @@ namespace NuSmart
         {
             crearFormulario(typeof(Lenguaje));
         }
+
+        private void Contenedor_menu_gestion_pacientes_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(Pacientes));
+        }
+
+        private void Contenedor_menu_turnos_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Contenedor_menu_gestion_turnos_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(MisTurnos));
+        }
     }
 }

@@ -52,10 +52,13 @@
     <Compile Include="BLLBackupManager.cs" />
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLFamilia.cs" />
+    <Compile Include="BLLHorario.cs" />
     <Compile Include="BLLIdioma.cs" />
     <Compile Include="BLLLeyenda.cs" />
     <Compile Include="BLLNutricionista.cs" />
+    <Compile Include="BLLPaciente.cs" />
     <Compile Include="BLLRol.cs" />
+    <Compile Include="BLLTurno.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="DVVH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

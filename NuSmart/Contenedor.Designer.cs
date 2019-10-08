@@ -104,12 +104,14 @@
             this.Contenedor_menu_turnos.Name = "Contenedor_menu_turnos";
             this.Contenedor_menu_turnos.Size = new System.Drawing.Size(56, 22);
             this.Contenedor_menu_turnos.Text = "Turnos";
+            this.Contenedor_menu_turnos.Click += new System.EventHandler(this.Contenedor_menu_turnos_Click);
             // 
             // Contenedor_menu_gestion_turnos
             // 
             this.Contenedor_menu_gestion_turnos.Name = "Contenedor_menu_gestion_turnos";
             this.Contenedor_menu_gestion_turnos.Size = new System.Drawing.Size(167, 22);
             this.Contenedor_menu_gestion_turnos.Text = "Gestion de turnos";
+            this.Contenedor_menu_gestion_turnos.Click += new System.EventHandler(this.Contenedor_menu_gestion_turnos_Click);
             // 
             // Contenedor_menu_pacientes
             // 
@@ -124,6 +126,7 @@
             this.Contenedor_menu_gestion_pacientes.Name = "Contenedor_menu_gestion_pacientes";
             this.Contenedor_menu_gestion_pacientes.Size = new System.Drawing.Size(183, 22);
             this.Contenedor_menu_gestion_pacientes.Text = "Gestión de Pacientes";
+            this.Contenedor_menu_gestion_pacientes.Click += new System.EventHandler(this.Contenedor_menu_gestion_pacientes_Click);
             // 
             // Contenedor_menu_nutricionistas
             // 

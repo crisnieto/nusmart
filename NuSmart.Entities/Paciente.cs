@@ -1,29 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    public class Nutricionista
+    public class Paciente
     {
-        int _id;
-        string _nombre;
-        string _apellido;
-        string _matricula;
-        int _dni;
-        string _especializacion;
-        Usuario usuario;
-        string _sexo;
-        int _dvh;
-        bool _eliminado;
-
-        public Nutricionista()
-        {
-            usuario = new Usuario();
-        }
+        private int _id;
+        private string _email;
+        private int _telefono;
+        private string _nombre;
+        private string _apellido;
+        private int _dni;
+        private string _sexo;
+        private string _habitos;
+        private bool _eliminado;
 
         public int Id
         {
@@ -35,6 +28,32 @@ namespace NuSmart.BE
             set
             {
                 _id = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+
+            set
+            {
+                _email = value;
+            }
+        }
+
+        public int Telefono
+        {
+            get
+            {
+                return _telefono;
+            }
+
+            set
+            {
+                _telefono = value;
             }
         }
 
@@ -64,19 +83,6 @@ namespace NuSmart.BE
             }
         }
 
-        public string Matricula
-        {
-            get
-            {
-                return _matricula;
-            }
-
-            set
-            {
-                _matricula = value;
-            }
-        }
-
         public int Dni
         {
             get
@@ -87,32 +93,6 @@ namespace NuSmart.BE
             set
             {
                 _dni = value;
-            }
-        }
-
-        public string Especializacion
-        {
-            get
-            {
-                return _especializacion;
-            }
-
-            set
-            {
-                _especializacion = value;
-            }
-        }
-
-        public Usuario Usuario
-        {
-            get
-            {
-                return usuario;
-            }
-
-            set
-            {
-                usuario = value;
             }
         }
 
@@ -129,20 +109,19 @@ namespace NuSmart.BE
             }
         }
 
-        public int Dvh
+        public string Habitos
         {
             get
             {
-                return _dvh;
+                return _habitos;
             }
 
             set
             {
-                _dvh = value;
+                _habitos = value;
             }
         }
 
-        [Browsable(false)]
         public bool Eliminado
         {
             get
@@ -154,11 +133,6 @@ namespace NuSmart.BE
             {
                 _eliminado = value;
             }
-        }
-
-        public override string ToString()
-        {
-            return this.Nombre + " " + this.Apellido;
         }
     }
 }

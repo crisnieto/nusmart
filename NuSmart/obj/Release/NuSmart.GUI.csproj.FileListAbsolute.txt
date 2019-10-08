@@ -40,3 +40,4 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.pdb
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.BackupManager.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionIdioma.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionEtiqueta.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Pacientes.resources
