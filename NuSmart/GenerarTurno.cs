@@ -32,11 +32,14 @@ namespace NuSmart
         private void GenerarTurno_Load(object sender, EventArgs e)
         {
             label3.Text = paciente.Nombre + " " + paciente.Apellido;
+            preferencia = "manana";
+            buscarSugerencias();
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             fechaSeleccionada = monthCalendar1.SelectionRange.Start;
+            buscarSugerencias();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,20 +49,35 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Turno turnoSeleccionado = (Turno)comboBox1.SelectedItem;
-            turnoSeleccionado.Motivo = GenerarTurno_textbox_motivoConsulta.Text;
-            bllTurno.registrarTurno(turnoSeleccionado);
-            comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
+            try
+            {
+                Turno turnoSeleccionado = (Turno)comboBox1.SelectedItem;
+                turnoSeleccionado.Motivo = GenerarTurno_textbox_motivoConsulta.Text;
+                bllTurno.registrarTurno(turnoSeleccionado);
+                comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error con el turno seleccionado");
+            }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             preferencia = "manana";
+            buscarSugerencias();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             preferencia = "tarde";
+            buscarSugerencias();
+        }
+
+        private void buscarSugerencias()
+        {
+            comboBox1.SelectedIndex = -1;
+            comboBox1.DataSource = null;
+            comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
         }
     }
 }

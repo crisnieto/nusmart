@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pacientes));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.paciente_btn_turno = new System.Windows.Forms.Button();
             this.Pacientes_textbox_buscar = new System.Windows.Forms.TextBox();
@@ -209,6 +210,7 @@
             this.button3.TabIndex = 18;
             this.button3.Text = "Modificar Seleccionado";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -216,8 +218,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(84, 43);
             this.button4.TabIndex = 19;
-            this.button4.Text = "Eliminar";
+            this.button4.Text = "Eliminar Seleccionado";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -248,6 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(752, 504);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.monthCalendar1);

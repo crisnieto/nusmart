@@ -41,3 +41,6 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.BackupManager.re
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionIdioma.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GestionEtiqueta.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Pacientes.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GenerarTurno.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Mediciones.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.MisTurnos.resources

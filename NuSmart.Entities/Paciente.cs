@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace NuSmart.BE
         private bool _eliminado;
         private DateTime _fechaNacimiento;
 
+        [Browsable(false)]
         public int Id
         {
             get
@@ -123,6 +125,7 @@ namespace NuSmart.BE
             }
         }
 
+        [Browsable(false)]
         public bool Eliminado
         {
             get

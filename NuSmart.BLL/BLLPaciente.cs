@@ -30,6 +30,7 @@ namespace NuSmart.BLL
 
         public void eliminar(Paciente paciente)
         {
+            paciente.Eliminado = true;
             dalPaciente.eliminar(paciente);
         }
 

@@ -53,16 +53,24 @@ namespace NuSmart
         private void button2_Click(object sender, EventArgs e)
         {
             Paciente paciente = new Paciente();
-            paciente.Nombre = Pacientes_textbox_nombre.Text;
-            paciente.Apellido = Pacientes_textbox_apellido.Text;
-            paciente.Dni = Convert.ToInt32(Pacientes_textbox_dni.Text);
-            paciente.Email = Pacientes_textbox_email.Text;
-            paciente.Sexo = Pacientes_combobox_sexo.SelectedItem.ToString();
-            paciente.Telefono = Convert.ToInt32(Pacientes_textbox_telefono.Text);
-            paciente.FechaNacimiento = monthCalendar1.SelectionRange.Start;
 
-            bllPaciente.agregar(paciente);
-            obtenerTodos();
+            try
+            {
+                paciente.Nombre = Pacientes_textbox_nombre.Text;
+                paciente.Apellido = Pacientes_textbox_apellido.Text;
+                paciente.Dni = Convert.ToInt32(Pacientes_textbox_dni.Text);
+                paciente.Email = Pacientes_textbox_email.Text;
+                paciente.Sexo = Pacientes_combobox_sexo.SelectedItem.ToString();
+                paciente.Telefono = Convert.ToInt32(Pacientes_textbox_telefono.Text);
+                paciente.FechaNacimiento = monthCalendar1.SelectionRange.Start;
+                bllPaciente.agregar(paciente);
+                obtenerTodos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los datos ingresados");
+                  
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -89,6 +97,20 @@ namespace NuSmart
         {
             pacientes = bllPaciente.obtenerTodos();
             dataGridView1.DataSource = pacientes;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Paciente paciente = (Paciente)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+            bllPaciente.modificar(paciente);
+            obtenerTodos();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Paciente paciente = (Paciente)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+            bllPaciente.eliminar(paciente);
+            obtenerTodos();
         }
     }
 }

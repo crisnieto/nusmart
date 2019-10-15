@@ -53,8 +53,16 @@ namespace NuSmart
         private Medicion obtenerMedicion()
         {
             Medicion medicion = new Medicion();
-            medicion.Peso = Convert.ToDouble(Mediciones_textbox_peso.Text);
-            medicion.Altura = Convert.ToDouble(Mediciones_textbox_altura.Text);
+            try
+            {
+                medicion.Peso = Convert.ToDouble(Mediciones_textbox_peso.Text);
+                medicion.Altura = Convert.ToDouble(Mediciones_textbox_altura.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los valores introducidos");
+            }
+
             try
             {
                 medicion.Cintura = Convert.ToDouble(Mediciones_textbox_cintura.Text);

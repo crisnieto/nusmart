@@ -19,6 +19,12 @@ namespace NuSmart.BLL
         public List<Turno> obtenerTurnosPosibles(Paciente paciente ,DateTime fecha, String preferencia)
         {
             List<Turno> turnos = new List<Turno>();
+
+            if(fecha.DayOfWeek == DayOfWeek.Saturday || fecha.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return turnos;
+            }
+
             Nutricionista nutricionista = new BLLNutricionista().conseguir(Sesion.Instancia().UsuarioActual.Id);
 
             List<Horario> horariosConseguidos = new BLLHorario().obtenerHorariosDisponibles(nutricionista, fecha, preferencia);

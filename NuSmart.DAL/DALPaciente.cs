@@ -50,7 +50,7 @@ namespace NuSmart.DAL
 
         public void modificar(Paciente paciente)
         {
-            string textoComando = "UPDATE PACIENTE SET nombre = @NOMBRE, apellido = @APELLIDO, email = @EMAIL, telefono = @TELEFONO, dni = @DNI, sexo = @SEXO, habitos = @HABITOS)";
+            string textoComando = "UPDATE PACIENTE SET nombre = @NOMBRE, apellido = @APELLIDO, email = @EMAIL, telefono = @TELEFONO, dni = @DNI, sexo = @SEXO WHERE PACIENTEID = @PACIENTEID";
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@NOMBRE", paciente.Nombre));
@@ -59,7 +59,7 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@EMAIL", paciente.Email));
             lista.Add(new SqlParameter("@TELEFONO", paciente.Telefono));
             lista.Add(new SqlParameter("@SEXO", paciente.Sexo));
-            lista.Add(new SqlParameter("@HABITOS", paciente.Habitos));
+            lista.Add(new SqlParameter("@PACIENTEID", paciente.Id));
 
             sqlHelper.ejecutarNonQuery(textoComando, lista);
 
