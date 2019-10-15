@@ -46,7 +46,9 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            bllTurno.registrarTurno((Turno)comboBox1.SelectedItem);
+            Turno turnoSeleccionado = (Turno)comboBox1.SelectedItem;
+            turnoSeleccionado.Motivo = GenerarTurno_textbox_motivoConsulta.Text;
+            bllTurno.registrarTurno(turnoSeleccionado);
             comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
         }
 

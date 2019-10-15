@@ -46,6 +46,5 @@ namespace NuSmart.BLL
 
             return dalTurno.obtenerTurnos(fecha, nutricionista);
         }
-
     }
 }

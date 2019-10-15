@@ -109,6 +109,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mediciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mediciones.Designer.cs">
+      <DependentUpon>Mediciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mediciones.resx">
+      <DependentUpon>Mediciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiCuenta.resx">
       <DependentUpon>MiCuenta.cs</DependentUpon>

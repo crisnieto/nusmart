@@ -17,6 +17,7 @@ namespace NuSmart.BE
         private string _sexo;
         private string _habitos;
         private bool _eliminado;
+        private DateTime _fechaNacimiento;
 
         public int Id
         {
@@ -133,6 +134,32 @@ namespace NuSmart.BE
             {
                 _eliminado = value;
             }
+        }
+
+        public DateTime FechaNacimiento
+        {
+            get
+            {
+                return _fechaNacimiento;
+            }
+
+            set
+            {
+                _fechaNacimiento = value;
+            }
+        }
+
+        public int Edad()
+        {
+            var hoy = DateTime.Today;
+            int edad = hoy.Year - FechaNacimiento.Year;
+            if (FechaNacimiento.Date > hoy.AddYears(-edad)) edad--;
+            return edad;
+        }
+
+        public override string ToString()
+        {
+            return this.Nombre + " " + this.Apellido;
         }
     }
 }

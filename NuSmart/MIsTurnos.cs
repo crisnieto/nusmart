@@ -16,6 +16,7 @@ namespace NuSmart
     {
         BLLTurno bllTurnos;
         BLLNutricionista bllNutricionista;
+        Turno turnoSeleccionado;
 
         public MisTurnos()
         {
@@ -35,6 +36,18 @@ namespace NuSmart
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
+            medicionesForm.MdiParent = this.ParentForm;
+            medicionesForm.Show();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            turnoSeleccionado = (Turno)listBox1.SelectedItem;   
         }
     }
 }

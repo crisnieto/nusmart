@@ -20,7 +20,7 @@ namespace NuSmart.DAL
 
         public void agregar(Paciente paciente)
         {
-            string textoComando = "INSERT INTO PACIENTE (nombre, apellido, email, telefono, dni, sexo, habitos) values (@NOMBRE, @APELLIDO, @EMAIL, @TELEFONO, @DNI, @SEXO, @HABITOS)";
+            string textoComando = "INSERT INTO PACIENTE (nombre, apellido, email, telefono, dni, sexo, fechaNacimiento) values (@NOMBRE, @APELLIDO, @EMAIL, @TELEFONO, @DNI, @SEXO, @NACIMIENTO)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
@@ -30,7 +30,7 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@EMAIL", paciente.Email));
             lista.Add(new SqlParameter("@TELEFONO", paciente.Telefono));
             lista.Add(new SqlParameter("@SEXO", paciente.Sexo));
-            lista.Add(new SqlParameter("@HABITOS", paciente.Habitos));
+            lista.Add(new SqlParameter("@NACIMIENTO", paciente.FechaNacimiento));
 
 
             sqlHelper.ejecutarNonQuery(textoComando, lista);
@@ -50,7 +50,7 @@ namespace NuSmart.DAL
 
         public void modificar(Paciente paciente)
         {
-            string textoComando = "UPDATE PACIENTE SET nombre = @NOMBRE, apellido = @APELLIDO, email = @EMAIL, telefono = @TELEFONO, dni = @DNI, sexo = @SEXO, habitos = @HABITOS0)";
+            string textoComando = "UPDATE PACIENTE SET nombre = @NOMBRE, apellido = @APELLIDO, email = @EMAIL, telefono = @TELEFONO, dni = @DNI, sexo = @SEXO, habitos = @HABITOS)";
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@NOMBRE", paciente.Nombre));
@@ -83,7 +83,7 @@ namespace NuSmart.DAL
                 paciente.Id = (int)row["pacienteId"];
                 paciente.Telefono = (int)row["telefono"];
                 paciente.Sexo = (string)row["sexo"];
-
+                paciente.FechaNacimiento = (DateTime)row["fechaNacimiento"];
                 listaPacientes.Add(paciente);
             }
             return listaPacientes;
@@ -99,7 +99,7 @@ namespace NuSmart.DAL
 
             lista.Add(new SqlParameter("@DNI", dni));
 
-            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
 
 
             if(dt.Rows.Count > 0)
@@ -109,9 +109,10 @@ namespace NuSmart.DAL
                 paciente.Dni = (int)dt.Rows[0]["dni"];
                 paciente.Eliminado = (bool)dt.Rows[0]["eliminado"];
                 paciente.Email = (string)dt.Rows[0]["email"];
-                paciente.Id = (int)dt.Rows[0]["id"];
+                paciente.Id = (int)dt.Rows[0]["pacienteID"];
                 paciente.Telefono = (int)dt.Rows[0]["telefono"];
                 paciente.Sexo = (string)dt.Rows[0]["sexo"];
+                paciente.FechaNacimiento = (DateTime)dt.Rows[0]["fechaNacimiento"];
             }
             return paciente;
         }

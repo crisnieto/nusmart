@@ -20,13 +20,14 @@ namespace NuSmart.DAL
 
         public void registrarTurno(Turno turno)
         {
-            string textoComando = "insert into TURNO (fecha, pacienteID, nutricionistaID, horarioID) values (@FECHA, @PACIENTEID, @NUTRICIONISTAID, @HORARIOID)";
+            string textoComando = "insert into TURNO (fecha, pacienteID, nutricionistaID, horarioID, motivo) values (@FECHA, @PACIENTEID, @NUTRICIONISTAID, @HORARIOID, @MOTIVO)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@FECHA", turno.Fecha));
             lista.Add(new SqlParameter("@HORARIOID", turno.Horario.Id));
             lista.Add(new SqlParameter("@PACIENTEID", turno.Paciente.Id));
+            lista.Add(new SqlParameter("@MOTIVO", turno.Motivo));
             lista.Add(new SqlParameter("@NUTRICIONISTAID", turno.Nutricionista.Id));
 
             sqlHelper.ejecutarNonQuery(textoComando, lista);
@@ -46,15 +47,23 @@ namespace NuSmart.DAL
             foreach(DataRow dr in dt.Rows)
             {
                 Turno turno = new Turno();
-                turno.Id = (int)dr["id"];
+                turno.Id = (int)dr["turnoid"];
                 turno.Nutricionista = nutricionista;
                 turno.Fecha = (DateTime)dr["fecha"];
+                if(!(dr["motivo"] is DBNull))
+                {
+                    turno.Motivo = (string)dr["motivo"];
+                }
                 turno.Horario = new Horario();
                 turno.Horario.Id = (int)dr["horarioid"];
                 turno.Horario.Tiempo = DateTime.Today + (TimeSpan)dr["tiempo"];
                 turno.Paciente = new Paciente();
                 turno.Paciente.Nombre = (string)dr["nombre"];
                 turno.Paciente.Apellido = (string)dr["apellido"];
+                turno.Paciente.Sexo = (string)dr["sexo"];
+                turno.Paciente.Id = (int)dr["pacienteID"];
+                turno.Paciente.FechaNacimiento = (DateTime)dr["fechaNacimiento"];
+                
                 turnos.Add(turno);
             }
 

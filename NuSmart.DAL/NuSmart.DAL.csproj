@@ -54,6 +54,7 @@
     <Compile Include="DALComando.cs" />
     <Compile Include="DALHorario.cs" />
     <Compile Include="DALLeyenda.cs" />
+    <Compile Include="DALMedicion.cs" />
     <Compile Include="DALNutricionista.cs" />
     <Compile Include="DALPaciente.cs" />
     <Compile Include="DALRol.cs" />

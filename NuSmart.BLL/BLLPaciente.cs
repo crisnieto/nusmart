@@ -42,5 +42,6 @@ namespace NuSmart.BLL
         {
             return dalPaciente.obtener(dni);
         }
+
     }
 }

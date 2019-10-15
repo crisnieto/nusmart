@@ -13,6 +13,8 @@ namespace NuSmart.BE
         Paciente paciente;
         Horario horario;
         DateTime fecha;
+        Medicion medicion;
+        string motivo;
 
         public Nutricionista Nutricionista
         {
@@ -76,6 +78,32 @@ namespace NuSmart.BE
             set
             {
                 id = value;
+            }
+        }
+
+        public Medicion Medicion
+        {
+            get
+            {
+                return medicion;
+            }
+
+            set
+            {
+                medicion = value;
+            }
+        }
+
+        public string Motivo
+        {
+            get
+            {
+                return motivo;
+            }
+
+            set
+            {
+                motivo = value;
             }
         }
 
