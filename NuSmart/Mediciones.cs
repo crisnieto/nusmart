@@ -85,6 +85,11 @@ namespace NuSmart
         {
             turno.Medicion = obtenerMedicion();
             bllMedicion.guardarMedicionDeTurno(turno);
+
+            AgregarDieta dietaForm = new AgregarDieta(turno);
+            dietaForm.MdiParent = this.ParentForm;
+            dietaForm.Show();
+
         }
     }
 }

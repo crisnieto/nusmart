@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarDieta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarDieta.Designer.cs">
+      <DependentUpon>AgregarDieta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alimentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alimentos.Designer.cs">
+      <DependentUpon>Alimentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="BackupManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,12 @@
     <Compile Include="MisTurnos.Designer.cs">
       <DependentUpon>MisTurnos.cs</DependentUpon>
     </Compile>
+    <Compile Include="NuevaDieta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevaDieta.Designer.cs">
+      <DependentUpon>NuevaDieta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pacientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +153,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgregarDieta.resx">
+      <DependentUpon>AgregarDieta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alimentos.resx">
+      <DependentUpon>Alimentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BackupManager.resx">
       <DependentUpon>BackupManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MisTurnos.resx">
       <DependentUpon>MisTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NuevaDieta.resx">
+      <DependentUpon>NuevaDieta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pacientes.resx">
       <DependentUpon>Pacientes.cs</DependentUpon>

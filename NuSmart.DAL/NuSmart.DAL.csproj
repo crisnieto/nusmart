@@ -49,14 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALAlimento.cs" />
     <Compile Include="DALBackupManager.cs" />
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALComando.cs" />
+    <Compile Include="DALDiaAlimenticio.cs" />
+    <Compile Include="DALDieta.cs" />
     <Compile Include="DALHorario.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALMedicion.cs" />
     <Compile Include="DALNutricionista.cs" />
     <Compile Include="DALPaciente.cs" />
+    <Compile Include="DALPlato.cs" />
     <Compile Include="DALRol.cs" />
     <Compile Include="DALTurno.cs" />
     <Compile Include="DALUsuario.cs" />

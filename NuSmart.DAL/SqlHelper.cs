@@ -43,9 +43,7 @@ namespace NuSmart.DAL
             }
         }
 
-
-
-        public int ejecutarComando(SqlCommand comando)
+        private int ejecutarComando(SqlCommand comando)
         {
             try
             {
@@ -72,35 +70,35 @@ namespace NuSmart.DAL
             return 0;
         }
 
-        public int ejecutarTransaccion(Dictionary<string, List<SqlParameter>> listaComandoYParametros)
+
+
+        public int ejecutarEscalar(string textoComando, List<SqlParameter> lista = null)
         {
             SqlConnection conexion = conseguirStringConexion();
-            List<SqlCommand> comandos = new List<SqlCommand>();
-            SqlTransaction transaccion = null;
+            SqlCommand comando = nuevoComando(textoComando, conexion);
+            if (lista != null)
+            {
+                agregarParametro(comando, lista);
+            }
+            abrirConexion(conexion);
+            int id = ejecutarComandoEscalar(comando);
+            cerrarConexion(conexion);
+            return id;
+        }
+
+        private int ejecutarComandoEscalar(SqlCommand comando)
+        {
             try
             {
-                abrirConexion(conexion);
-                transaccion = conexion.BeginTransaction();
-                foreach (KeyValuePair<string, List<SqlParameter>> entry in listaComandoYParametros)
-                {
-                    SqlCommand comando = nuevoComando(entry.Key, conexion);
-                    comando.Transaction = transaccion;
-                    agregarParametro(comando, entry.Value);
-                    ejecutarComando(comando);   
-                }
-                transaccion.Commit();
+                return (int)comando.ExecuteScalar();
             }
             catch (Exception ex)
             {
-                transaccion.Rollback();
-                return 1;
+                Console.WriteLine(ex);
+                throw new Exception(NuSmartMessage.formatearMensaje("Database_messagebox_error_conexion"));
             }
-            finally
-            {
-                cerrarConexion(conexion);
-            }
-            return 0;
         }
+
 
         public DataSet ejecutarSelect(SqlCommand comando)
         {
