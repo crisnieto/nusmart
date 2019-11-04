@@ -19,9 +19,9 @@ namespace NuSmart.DAL
         }
 
 
-        public void guardar(Dieta dieta)
+        public int guardar(Dieta dieta)
         {
-            string textoComando = "INSERT INTO DIETA (LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESGENERADAAUTOMATICAMENTE) VALUES (@LUNES, @MARTES, @MIERCOLES, @JUEVES, @VIERNES, @SABADO, @DOMINGO, @ESAUTOMATICA)";
+            string textoComando = "INSERT INTO DIETA (LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESGENERADAAUTOMATICAMENTE) Output Inserted.dietaID VALUES (@LUNES, @MARTES, @MIERCOLES, @JUEVES, @VIERNES, @SABADO, @DOMINGO, @ESAUTOMATICA)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
@@ -34,13 +34,13 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@DOMINGO", dieta.Domingo.Id));
             lista.Add(new SqlParameter("@ESAUTOMATICA", dieta.EsAutomatica));
 
-            sqlHelper.ejecutarNonQuery(textoComando, lista);
+            return sqlHelper.ejecutarEscalar(textoComando, lista);
 
         }
 
         public List<Dieta> conseguirDietas()
         {
-            string textoComando = "SELECT * FROM DIETA";
+            string textoComando = "SELECT * FROM DIETA WHERE esGeneradaAutomaticamente = 0";
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
 
@@ -64,6 +64,35 @@ namespace NuSmart.DAL
                 listaDietas.Add(dieta);
             }
             return listaDietas;
+        }
+
+        public Dieta conseguirDieta(int dietaID)
+        {
+            string textoComando = "SELECT * FROM DIETA WHERE dietaID = @ID";
+
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@ID", dietaID));
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+
+            Dieta dieta = null;
+
+            if(dt.Rows.Count > 0)
+            {
+                DataRow dr = dt.Rows[0];
+                dieta = new Dieta();
+                dieta.Id = (int)dr["dietaID"];
+                dieta.Nombre = dr["nombre"].ToString();
+                dieta.EsAutomatica = (bool)dr["esGeneradaAutomaticamente"];
+                dieta.Lunes.Id = (int)dr["lunes"];
+                dieta.Martes.Id = (int)dr["martes"];
+                dieta.Miercoles.Id = (int)dr["miercoles"];
+                dieta.Jueves.Id = (int)dr["jueves"];
+                dieta.Viernes.Id = (int)dr["viernes"];
+                dieta.Sabado.Id = (int)dr["sabado"];
+                dieta.Domingo.Id = (int)dr["domingo"];
+            }
+            return dieta;
         }
     }
 }

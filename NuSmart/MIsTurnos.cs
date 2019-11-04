@@ -40,9 +40,20 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
-            medicionesForm.MdiParent = this.ParentForm;
-            medicionesForm.Show();
+            if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+            {
+                TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
+                tratamientoActual.MdiParent = this.ParentForm;
+                tratamientoActual.Show();
+            }
+            else
+            {
+                Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
+                medicionesForm.MdiParent = this.ParentForm;
+                medicionesForm.Show();
+            }
+
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

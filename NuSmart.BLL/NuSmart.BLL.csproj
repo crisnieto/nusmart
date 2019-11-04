@@ -62,6 +62,7 @@
     <Compile Include="BLLPaciente.cs" />
     <Compile Include="BLLPlato.cs" />
     <Compile Include="BLLRol.cs" />
+    <Compile Include="BLLTratamiento.cs" />
     <Compile Include="BLLTurno.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="DVVH.cs" />

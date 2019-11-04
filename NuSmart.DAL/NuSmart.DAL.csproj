@@ -62,6 +62,7 @@
     <Compile Include="DALPaciente.cs" />
     <Compile Include="DALPlato.cs" />
     <Compile Include="DALRol.cs" />
+    <Compile Include="DALTratamiento.cs" />
     <Compile Include="DALTurno.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="DALIdioma.cs" />

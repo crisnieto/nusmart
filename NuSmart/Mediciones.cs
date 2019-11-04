@@ -16,10 +16,12 @@ namespace NuSmart
     {
         Turno turno;
         BLLMedicion bllMedicion;
+        BLLTratamiento bllTratamiento;
         public Mediciones(Turno turno)
         {
             this.turno = turno;
             bllMedicion = new BLLMedicion();
+            bllTratamiento = new BLLTratamiento();
             InitializeComponent();
         }
 
@@ -86,10 +88,19 @@ namespace NuSmart
             turno.Medicion = obtenerMedicion();
             bllMedicion.guardarMedicionDeTurno(turno);
 
-            AgregarDieta dietaForm = new AgregarDieta(turno);
-            dietaForm.MdiParent = this.ParentForm;
-            dietaForm.Show();
-
+            if(new BLLTratamiento().existeTratamientoActivo(turno.Paciente))
+            {
+                TratamientoActual tratamientoActual = new TratamientoActual(turno);
+                tratamientoActual.MdiParent = this.ParentForm;
+                tratamientoActual.Show();
+                this.Close();
+            }
+            else{
+                AgregarDieta dietaForm = new AgregarDieta(turno);
+                dietaForm.MdiParent = this.ParentForm;
+                dietaForm.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -36,8 +36,6 @@ namespace NuSmart.BE
             _viernes.Nombre = "Viernes";
             _sabado.Nombre = "Sabado";
             _domingo.Nombre = "Domingo";
-
-
         }
 
         public string Nombre

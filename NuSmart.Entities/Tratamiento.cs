@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    class Tratamiento
+    public class Tratamiento
     {
         int id;
+        Dieta dieta;
         DateTime fechaInicio;
-        DateTime fechaFinalizado;
+        Nullable<DateTime> fechaFinalizado;
+        Paciente paciente;
 
         public int Id
         {
@@ -38,7 +40,7 @@ namespace NuSmart.BE
             }
         }
 
-        public DateTime FechaFinalizado
+        public Nullable<DateTime> FechaFinalizado
         {
             get
             {
@@ -48,6 +50,32 @@ namespace NuSmart.BE
             set
             {
                 fechaFinalizado = value;
+            }
+        }
+
+        public Dieta Dieta
+        {
+            get
+            {
+                return dieta;
+            }
+
+            set
+            {
+                dieta = value;
+            }
+        }
+
+        public Paciente Paciente
+        {
+            get
+            {
+                return paciente;
+            }
+
+            set
+            {
+                paciente = value;
             }
         }
     }

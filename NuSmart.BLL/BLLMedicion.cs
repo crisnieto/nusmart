@@ -22,6 +22,23 @@ namespace NuSmart.BLL
             return dalMedicion.conseguirMediciones(paciente);
         }
 
+        public Medicion conseguirUltimaMedicion(Paciente paciente)
+        {
+            Medicion ultimaMedicion = null;
+            foreach(Medicion medicion in conseguirMediciones(paciente))
+            {
+                if(ultimaMedicion == null)
+                {
+                    ultimaMedicion = medicion;
+                }
+                if(DateTime.Compare(medicion.Fecha, ultimaMedicion.Fecha) > 0)
+                {
+                    ultimaMedicion = medicion;
+                }
+            }
+            return ultimaMedicion;
+        }
+
 
         public BMI calcularBMI(double peso, double altura)
         {

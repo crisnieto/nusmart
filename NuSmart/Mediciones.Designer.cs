@@ -62,7 +62,7 @@
             // 
             this.Mediciones_label_paciente.AutoSize = true;
             this.Mediciones_label_paciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mediciones_label_paciente.Location = new System.Drawing.Point(59, 9);
+            this.Mediciones_label_paciente.Location = new System.Drawing.Point(14, 9);
             this.Mediciones_label_paciente.Name = "Mediciones_label_paciente";
             this.Mediciones_label_paciente.Size = new System.Drawing.Size(174, 16);
             this.Mediciones_label_paciente.TabIndex = 0;
@@ -244,11 +244,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(500, 286);
+            this.button3.Location = new System.Drawing.Point(551, 286);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 58);
+            this.button3.Size = new System.Drawing.Size(86, 58);
             this.button3.TabIndex = 23;
-            this.button3.Text = "Guardar y continuar a Planificacion";
+            this.button3.Text = "Guardar Mediciones";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
