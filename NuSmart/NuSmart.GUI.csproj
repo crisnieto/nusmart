@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -153,6 +154,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GraficoProyeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraficoProyeccion.Designer.cs">
+      <DependentUpon>GraficoProyeccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="TratamientoActual.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +229,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GraficoProyeccion.resx">
+      <DependentUpon>GraficoProyeccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TratamientoActual.resx">
       <DependentUpon>TratamientoActual.cs</DependentUpon>
     </EmbeddedResource>

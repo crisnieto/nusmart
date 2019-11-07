@@ -61,6 +61,7 @@
     <Compile Include="BLLNutricionista.cs" />
     <Compile Include="BLLPaciente.cs" />
     <Compile Include="BLLPlato.cs" />
+    <Compile Include="BLLProyeccion.cs" />
     <Compile Include="BLLRol.cs" />
     <Compile Include="BLLTratamiento.cs" />
     <Compile Include="BLLTurno.cs" />
