@@ -161,7 +161,7 @@ namespace NuSmart
 
         private void Contenedor_menu_gestion_ejercicios_Click(object sender, EventArgs e)
         {
-            crearFormulario(typeof(GraficoProyeccion));
+            crearFormulario(typeof(Ejercicios));
         }
     }
 }

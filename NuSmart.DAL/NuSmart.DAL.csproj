@@ -54,7 +54,9 @@
     <Compile Include="DALBitacora.cs" />
     <Compile Include="DALComando.cs" />
     <Compile Include="DALDiaAlimenticio.cs" />
+    <Compile Include="DALDiaEjercicio.cs" />
     <Compile Include="DALDieta.cs" />
+    <Compile Include="DALEjercicio.cs" />
     <Compile Include="DALHorario.cs" />
     <Compile Include="DALLeyenda.cs" />
     <Compile Include="DALMedicion.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="DALPaciente.cs" />
     <Compile Include="DALPlato.cs" />
     <Compile Include="DALRol.cs" />
+    <Compile Include="DALRutina.cs" />
     <Compile Include="DALTratamiento.cs" />
     <Compile Include="DALTurno.cs" />
     <Compile Include="DALUsuario.cs" />

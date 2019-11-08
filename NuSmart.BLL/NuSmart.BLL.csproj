@@ -53,7 +53,9 @@
     <Compile Include="BLLBackupManager.cs" />
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLDiaAlimenticio.cs" />
+    <Compile Include="BLLDiaEjercicio.cs" />
     <Compile Include="BLLDieta.cs" />
+    <Compile Include="BLLEjercicio.cs" />
     <Compile Include="BLLFamilia.cs" />
     <Compile Include="BLLHorario.cs" />
     <Compile Include="BLLIdioma.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="BLLPlato.cs" />
     <Compile Include="BLLProyeccion.cs" />
     <Compile Include="BLLRol.cs" />
+    <Compile Include="BLLRutina.cs" />
     <Compile Include="BLLTratamiento.cs" />
     <Compile Include="BLLTurno.cs" />
     <Compile Include="BLLUsuario.cs" />

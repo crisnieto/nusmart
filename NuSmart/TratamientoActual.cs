@@ -81,5 +81,17 @@ namespace NuSmart
             AgregarDieta_textbox_cantidad_calorias_dia.Text = bllDieta.calcularCaloriasDia(diaActual).ToString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GraficoProyeccion graficoProyeccion = new GraficoProyeccion();
+            graficoProyeccion.MdiParent = this.ParentForm;
+            graficoProyeccion.Show();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

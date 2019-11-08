@@ -71,7 +71,9 @@
     <Compile Include="ComidaDieta.cs" />
     <Compile Include="Criticidad.cs" />
     <Compile Include="DiaAlimenticio.cs" />
+    <Compile Include="DiaEjercicio.cs" />
     <Compile Include="Dieta.cs" />
+    <Compile Include="Ejercicio.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Fase.cs" />
     <Compile Include="Horario.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Proyeccion.cs" />
     <Compile Include="PuntoProyeccion.cs" />
     <Compile Include="Rol.cs" />
+    <Compile Include="Rutina.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="Tratamiento.cs" />
     <Compile Include="Turno.cs" />
