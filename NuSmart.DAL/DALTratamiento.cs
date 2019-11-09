@@ -55,7 +55,8 @@ namespace NuSmart.DAL
                 tratamiento.Dieta.Id = (int)dr["dietaID"];
                 if(!(dr["rutinaID"] is DBNull))
                 {
-                    //TODO: Agregar ID de Rutina
+                    tratamiento.Rutina = new Rutina();
+                    tratamiento.Rutina.Id = (int)dr["rutinaID"];
                 }
                 tratamiento.Id = (int)dr["tratamientoID"];
                 tratamientos.Add(tratamiento);

@@ -11,10 +11,12 @@ namespace NuSmart.BLL
     public class BLLTratamiento
     {
         DALTratamiento dalTratamiento;
+        BLLRutina bllRutina;
 
         public BLLTratamiento()
         {
             dalTratamiento = new DALTratamiento();
+            bllRutina = new BLLRutina();
         }
 
         public void guardar(Tratamiento tratamiento)
@@ -39,6 +41,11 @@ namespace NuSmart.BLL
                     tratamientoActivo.Paciente = paciente;
                     break;
                 }
+            }
+            if (tratamientoActivo.Rutina != null)
+            {
+                Rutina rutinaObtenida = bllRutina.obtener(tratamientoActivo.Rutina.Id);
+                tratamientoActivo.Rutina = rutinaObtenida;
             }
             return tratamientoActivo;
         }

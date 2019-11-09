@@ -10,7 +10,7 @@ namespace NuSmart.BLL
     public class BLLProyeccion
     {
 
-        public Proyeccion calcularProyeccion(double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
+        public Proyeccion calcularProyeccion(DateTime fechaInicio, double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
         {
             double masaGrasa = porcentajeGrasaActual * pesoActual / 100;
 

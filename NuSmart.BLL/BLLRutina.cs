@@ -25,16 +25,21 @@ namespace NuSmart.BLL
             List<Rutina> rutinas = dalRutina.obtenerTodos();
             foreach (Rutina rutina in rutinas)
             {
-                rutina.DiaEjercicioLunes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioLunes.Id);
-                rutina.DiaEjercicioMartes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioMartes.Id);
-                rutina.DiaEjercicioMiercoles = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioMiercoles.Id);
-                rutina.DiaEjercicioJueves = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioJueves.Id);
-                rutina.DiaEjercicioViernes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioViernes.Id);
-                rutina.DiaEjercicioSabado = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioSabado.Id);
-                rutina.DiaEjercicioDomingo = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioDomingo.Id);
+                obtenerDiasEjercicioDeRutina(rutina);
             }
 
             return rutinas;
+        }
+
+        public void obtenerDiasEjercicioDeRutina(Rutina rutina)
+        {
+            rutina.DiaEjercicioLunes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioLunes.Id);
+            rutina.DiaEjercicioMartes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioMartes.Id);
+            rutina.DiaEjercicioMiercoles = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioMiercoles.Id);
+            rutina.DiaEjercicioJueves = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioJueves.Id);
+            rutina.DiaEjercicioViernes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioViernes.Id);
+            rutina.DiaEjercicioSabado = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioSabado.Id);
+            rutina.DiaEjercicioDomingo = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioDomingo.Id);
         }
 
         public void agregar(Rutina rutina)
@@ -59,6 +64,18 @@ namespace NuSmart.BLL
                 rutina.DiaEjercicioViernes.Calorias +
                 rutina.DiaEjercicioSabado.Calorias +
                 rutina.DiaEjercicioDomingo.Calorias;
+        }
+
+        public Rutina obtener(int id)
+        {
+            Rutina rutina = dalRutina.obtener(id);
+
+            if(rutina != null)
+            {
+                obtenerDiasEjercicioDeRutina(rutina);
+            }
+
+            return rutina;
         }
     }
 }

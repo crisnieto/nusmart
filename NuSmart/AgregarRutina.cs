@@ -19,12 +19,14 @@ namespace NuSmart
         BLLTratamiento bllTratamiento;
         Rutina rutinaActual;
         Tratamiento tratamientoActual;
+        TratamientoActual tratamientoForm;
 
-        public AgregarRutina(Tratamiento tratamiento)
+        public AgregarRutina(Tratamiento tratamiento, TratamientoActual tratamientoForm)
         {
             tratamientoActual = tratamiento;
             bllRutina = new BLLRutina();
             bllTratamiento = new BLLTratamiento();
+            this.tratamientoForm = tratamientoForm;
             InitializeComponent();
         }
 
@@ -125,6 +127,9 @@ namespace NuSmart
         {
             tratamientoActual.Rutina = rutinaActual;
             bllTratamiento.agregarRutina(tratamientoActual);
+
+            tratamientoForm.actualizarRutina();
+
             MessageBox.Show("OK");
         }
     }

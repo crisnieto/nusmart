@@ -61,5 +61,33 @@ namespace NuSmart.DAL
             sqlHelper.ejecutarDataAdapter(textoComando, lista);
         }
 
+        public Rutina obtener(int id)
+        {
+            string textoComando = "SELECT * FROM RUTINA WHERE rutinaId = @ID";
+
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@ID", id));
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+            
+
+            if(dt.Rows.Count > 0)
+            {
+                DataRow dr = dt.Rows[0];
+                Rutina rutina = new Rutina();
+                rutina.Id = (int)dr["rutinaID"];
+                rutina.DiaEjercicioLunes.Id = (int)dr["idDiaEjercicioLunes"];
+                rutina.DiaEjercicioMartes.Id = (int)dr["idDiaEjercicioMartes"];
+                rutina.DiaEjercicioMiercoles.Id = (int)dr["idDiaEjercicioMiercoles"];
+                rutina.DiaEjercicioJueves.Id = (int)dr["idDiaEjercicioJueves"];
+                rutina.DiaEjercicioViernes.Id = (int)dr["idDiaEjercicioViernes"];
+                rutina.DiaEjercicioSabado.Id = (int)dr["idDiaEjercicioSabado"];
+                rutina.DiaEjercicioDomingo.Id = (int)dr["idDiaEjercicioDomingo"];
+                rutina.Nombre = (string)dr["nombre"];
+
+                return rutina;
+            }
+            return null;
+        }
     }
 }

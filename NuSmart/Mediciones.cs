@@ -40,11 +40,16 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Medicion medicionActual = obtenerMedicion();
-            BMI bmi = bllMedicion.calcularBMI(medicionActual.Peso, medicionActual.Altura);
-            Mediciones_lbl_valorBmiObtenido.Text = bmi.Indice.ToString();
-            Mediciones_lbl_estadoBmiObtenido.Text = bmi.Categoria;
-
+            try
+            {
+                Medicion medicionActual = obtenerMedicion();
+                bllMedicion.calcularBMI(medicionActual);
+                Mediciones_lbl_valorBmiObtenido.Text = medicionActual.Bmi.ToString();
+                Mediciones_lbl_estadoBmiObtenido.Text = medicionActual.CategoriaBmi;
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error: Verifique los valores introducidos");
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -55,52 +60,61 @@ namespace NuSmart
         private Medicion obtenerMedicion()
         {
             Medicion medicion = new Medicion();
-            try
-            {
-                medicion.Peso = Convert.ToDouble(Mediciones_textbox_peso.Text);
-                medicion.Altura = Convert.ToDouble(Mediciones_textbox_altura.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Verifique los valores introducidos");
-            }
-
-            try
-            {
-                medicion.Cintura = Convert.ToDouble(Mediciones_textbox_cintura.Text);
-                medicion.Cadera = Convert.ToDouble(Mediciones_textbox_cadera.Text);
-            }catch(Exception ex)
-            {
-
-            }
+       
+            medicion.Peso = Convert.ToDouble(Mediciones_textbox_peso.Text);
+            medicion.Altura = Convert.ToDouble(Mediciones_textbox_altura.Text);
+           
+            medicion.Cintura = Convert.ToDouble(Mediciones_textbox_cintura.Text);
+            medicion.Cadera = Convert.ToDouble(Mediciones_textbox_cadera.Text);
+           
             return medicion;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Medicion medicionActual = obtenerMedicion();
+            try
+            {
+                Medicion medicionActual = obtenerMedicion();
 
-            Mediciones_lbl_estadoBfpObtenido.Text = bllMedicion.calcularBFP(medicionActual.Peso, medicionActual.Altura, turno.Paciente.Edad() , turno.Paciente.Sexo);
+                bllMedicion.calcularBFP(medicionActual, turno.Paciente.Edad(), turno.Paciente.Sexo);
+                Mediciones_lbl_estadoBfpObtenido.Text = medicionActual.CategoriaBfp;
+                Mediciones_lbl_valorBfpObtenido.Text = medicionActual.Bfp.ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error: Verifique los valores introducidos");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            turno.Medicion = obtenerMedicion();
-            bllMedicion.guardarMedicionDeTurno(turno);
-
-            if(new BLLTratamiento().existeTratamientoActivo(turno.Paciente))
+            try
             {
-                TratamientoActual tratamientoActual = new TratamientoActual(turno);
-                tratamientoActual.MdiParent = this.ParentForm;
-                tratamientoActual.Show();
-                this.Close();
+                turno.Medicion = obtenerMedicion();
+                bllMedicion.calcularBMI(turno.Medicion);
+                bllMedicion.calcularBFP(turno.Medicion, turno.Paciente.Edad(), turno.Paciente.Sexo);
+
+                bllMedicion.guardarMedicionDeTurno(turno);
+                if (new BLLTratamiento().existeTratamientoActivo(turno.Paciente))
+                {
+                    TratamientoActual tratamientoActual = new TratamientoActual(turno);
+                    tratamientoActual.MdiParent = this.ParentForm;
+                    tratamientoActual.Show();
+                    this.Close();
+                }
+                else
+                {
+                    AgregarDieta dietaForm = new AgregarDieta(turno);
+                    dietaForm.MdiParent = this.ParentForm;
+                    dietaForm.Show();
+                    this.Close();
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error: Verifique los valores introducidos");
             }
-            else{
-                AgregarDieta dietaForm = new AgregarDieta(turno);
-                dietaForm.MdiParent = this.ParentForm;
-                dietaForm.Show();
-                this.Close();
-            }
+
+           
         }
     }
 }

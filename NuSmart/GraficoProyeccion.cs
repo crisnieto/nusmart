@@ -16,8 +16,12 @@ namespace NuSmart
     public partial class GraficoProyeccion : Form
     {
         Series serieActual;
-        public GraficoProyeccion()
+        Tratamiento tratamiento;
+        Medicion medicion;
+        public GraficoProyeccion(Tratamiento tratamiento, Medicion medicion)
         {
+            this.tratamiento = tratamiento;
+            this.medicion = medicion;
             InitializeComponent();
         }
 
@@ -28,7 +32,7 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Proyeccion proyeccion = new BLLProyeccion().calcularProyeccion(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text));
+            Proyeccion proyeccion = new BLLProyeccion().calcularProyeccion(DateTime.Today, Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text));
             llenarGrafico(proyeccion);
         }
 

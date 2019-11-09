@@ -17,8 +17,10 @@ namespace NuSmart
         Turno turno;
         BLLMedicion bllMedicion;
         BLLDieta bllDieta;
+        BLLRutina bllRutina;
         BLLTratamiento bllTratamiento;
         Dieta dietaActual;
+        Medicion ultimaMedicion;
         DiaAlimenticio diaActual;
         Tratamiento tratamientoActivo;
         public TratamientoActual(Turno turno)
@@ -27,12 +29,13 @@ namespace NuSmart
             InitializeComponent();
             bllMedicion = new BLLMedicion();
             bllTratamiento = new BLLTratamiento();
+            bllRutina = new BLLRutina();
             bllDieta = new BLLDieta();
         }
 
         private void TratamientoActual_Load(object sender, EventArgs e)
         {
-            Medicion ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
+            ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
             List<Medicion> dataSourceMedicion = new List<Medicion>();
             dataSourceMedicion.Add(ultimaMedicion);
             dataGridView1.DataSource = dataSourceMedicion;
@@ -50,6 +53,8 @@ namespace NuSmart
             TratamientoActual_listbox_dias.Items.Add(dietaActual.Sabado);
             TratamientoActual_listbox_dias.Items.Add(dietaActual.Domingo);
 
+            actualizarRutina();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -62,6 +67,41 @@ namespace NuSmart
         private void button5_Click(object sender, EventArgs e)
         {
             
+        }
+
+        public void actualizarRutina()
+        {
+            if (tratamientoActivo.Rutina != null) { 
+                Ejercicios_textbox_lunes.Text = tratamientoActivo.Rutina.DiaEjercicioLunes.Ejercicio.Nombre;
+                Ejercicios_textbox_lunes_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioLunes.Duracion.ToString();
+                Ejercicios_textbox_lunes_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioLunes.Calorias.ToString();
+
+                Ejercicios_textbox_martes.Text = tratamientoActivo.Rutina.DiaEjercicioMartes.Ejercicio.Nombre;
+                Ejercicios_textbox_martes_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioMartes.Duracion.ToString();
+                Ejercicios_textbox_martes_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioMartes.Calorias.ToString();
+
+                Ejercicios_textbox_miercoles.Text = tratamientoActivo.Rutina.DiaEjercicioMiercoles.Ejercicio.Nombre;
+                Ejercicios_textbox_miercoles_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioMiercoles.Duracion.ToString();
+                Ejercicios_textbox_miercoles_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioMiercoles.Calorias.ToString();
+
+                Ejercicios_textbox_jueves.Text = tratamientoActivo.Rutina.DiaEjercicioJueves.Ejercicio.Nombre;
+                Ejercicios_textbox_jueves_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioJueves.Duracion.ToString();
+                Ejercicios_textbox_jueves_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioJueves.Calorias.ToString();
+
+                Ejercicios_textbox_viernes.Text = tratamientoActivo.Rutina.DiaEjercicioViernes.Ejercicio.Nombre;
+                Ejercicios_textbox_viernes_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioViernes.Duracion.ToString();
+                Ejercicios_textbox_viernes_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioViernes.Calorias.ToString();
+
+                Ejercicios_textbox_sabado.Text = tratamientoActivo.Rutina.DiaEjercicioSabado.Ejercicio.Nombre;
+                Ejercicios_textbox_sabado_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioSabado.Duracion.ToString();
+                Ejercicios_textbox_sabado_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioSabado.Calorias.ToString();
+
+                Ejercicios_textbox_domingo.Text = tratamientoActivo.Rutina.DiaEjercicioDomingo.Ejercicio.Nombre;
+                Ejercicios_textbox_domingo_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioDomingo.Duracion.ToString();
+                Ejercicios_textbox_domingo_calorias.Text = tratamientoActivo.Rutina.DiaEjercicioDomingo.Calorias.ToString();
+
+                Ejercicios_textbox_calorias.Text = bllRutina.calcularCaloriasQuemadas(tratamientoActivo.Rutina).ToString();
+            }
         }
 
         private void TratamientoActual_listbox_dias_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,7 +124,7 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GraficoProyeccion graficoProyeccion = new GraficoProyeccion();
+            GraficoProyeccion graficoProyeccion = new GraficoProyeccion(tratamientoActivo, ultimaMedicion);
             graficoProyeccion.MdiParent = this.ParentForm;
             graficoProyeccion.Show();
 
@@ -92,7 +132,7 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AgregarRutina agregarRutina = new AgregarRutina(tratamientoActivo);
+            AgregarRutina agregarRutina = new AgregarRutina(tratamientoActivo, this);
             agregarRutina.MdiParent = this.ParentForm;
             agregarRutina.Show();
         }

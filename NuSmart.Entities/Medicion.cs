@@ -12,6 +12,10 @@ namespace NuSmart.BE
         double peso;
         double cintura;
         double cadera;
+        double bmi;
+        string categoriaBmi;
+        double bfp;
+        string categoriaBfp;
         DateTime fecha;
 
         public double Altura
@@ -76,6 +80,58 @@ namespace NuSmart.BE
             set
             {
                 fecha = value;
+            }
+        }
+
+        public double Bmi
+        {
+            get
+            {
+                return bmi;
+            }
+
+            set
+            {
+                bmi = value;
+            }
+        }
+
+        public string CategoriaBmi
+        {
+            get
+            {
+                return categoriaBmi;
+            }
+
+            set
+            {
+                categoriaBmi = value;
+            }
+        }
+
+        public double Bfp
+        {
+            get
+            {
+                return bfp;
+            }
+
+            set
+            {
+                bfp = value;
+            }
+        }
+
+        public string CategoriaBfp
+        {
+            get
+            {
+                return categoriaBfp;
+            }
+
+            set
+            {
+                categoriaBfp = value;
             }
         }
     }

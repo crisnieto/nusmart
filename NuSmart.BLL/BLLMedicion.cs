@@ -40,20 +40,18 @@ namespace NuSmart.BLL
         }
 
 
-        public BMI calcularBMI(double peso, double altura)
+        public void calcularBMI(Medicion medicion)
         {
-            BMI bmi = new BMI();
 
-            bmi.Indice = Math.Round((peso / (altura * altura)), 1);
+            medicion.Bmi = Math.Round((medicion.Peso / (medicion.Altura * medicion.Altura)), 1);
 
-            bmi.Categoria = calcularCategoriaBMI(bmi.Indice);
+            medicion.CategoriaBmi = calcularCategoriaBMI(medicion.Bmi);
 
-            return bmi;
         }
 
-        public string calcularBFP(double peso, double altura, int edad, string sexo)
+        public void calcularBFP(Medicion medicion, int edad, string sexo)
         {
-            BMI bmi = calcularBMI(peso, altura);
+            calcularBMI(medicion);
             double porcentaje;
 
             int multiplicadorSexo = sexo == "M" ? 1 : 0;
@@ -61,11 +59,11 @@ namespace NuSmart.BLL
 
             if (edad >= 18)
             {
-                porcentaje = 1.20 * bmi.Indice + (0.23 * edad) - (10.8 * multiplicadorSexo) - 5.4 ;
+                porcentaje = 1.20 * medicion.Bmi + (0.23 * edad) - (10.8 * multiplicadorSexo) - 5.4 ;
             }
             else
             {
-                porcentaje = (1.51 * bmi.Indice) - (0.70 * edad) - (3.6 * multiplicadorSexo) + 1.4;
+                porcentaje = (1.51 * medicion.Bmi) - (0.70 * edad) - (3.6 * multiplicadorSexo) + 1.4;
 
             }
 
@@ -73,33 +71,33 @@ namespace NuSmart.BLL
             {
                 if(porcentaje < 18 )
                 {
-                    return "Atletico";
+                    medicion.CategoriaBfp = "Atletico";
                 }
                 else if(porcentaje >= 18 && porcentaje < 25)
                 {
-                    return "Parmetros Sanos";
+                    medicion.CategoriaBfp = "Parmetros Sanos";
                 }
                 else if(porcentaje >= 25)
                 {
-                    return "Excedido en Grasa Corporal";
+                    medicion.CategoriaBfp = "Excedido en Grasa Corporal";
                 }
             }else if (sexo == "F")
             {
               
                 if (porcentaje < 25)
                 {
-                    return "Atletico";
+                    medicion.CategoriaBfp = "Atletico";
                 }
                 else if (porcentaje >= 25 && porcentaje < 32)
                 {
-                    return "Parmetros Sanos";
+                    medicion.CategoriaBfp = "Parmetros Sanos";
                 }
                 else if (porcentaje >= 32)
                 {
-                    return "Excedido en Grasa Corporal";
+                    medicion.CategoriaBfp ="Excedido en Grasa Corporal";
                 }
             }
-            return null;
+            medicion.Bfp = porcentaje;
         }
 
         public string calcularCategoriaBMI(double indiceBMI)

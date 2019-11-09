@@ -55,6 +55,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Mediciones_lbl_estadoBmiObtenido = new System.Windows.Forms.Label();
             this.Mediciones_lbl_estadoBfpObtenido = new System.Windows.Forms.Label();
+            this.Mediciones_lbl_valorBfpObtenido = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -244,7 +246,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(551, 286);
+            this.button3.Location = new System.Drawing.Point(551, 198);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 58);
             this.button3.TabIndex = 23;
@@ -264,7 +266,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(351, 295);
+            this.label1.Location = new System.Drawing.Point(352, 322);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 25;
@@ -283,10 +285,28 @@
             // 
             this.Mediciones_lbl_estadoBfpObtenido.AutoSize = true;
             this.Mediciones_lbl_estadoBfpObtenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mediciones_lbl_estadoBfpObtenido.Location = new System.Drawing.Point(353, 309);
+            this.Mediciones_lbl_estadoBfpObtenido.Location = new System.Drawing.Point(401, 322);
             this.Mediciones_lbl_estadoBfpObtenido.Name = "Mediciones_lbl_estadoBfpObtenido";
             this.Mediciones_lbl_estadoBfpObtenido.Size = new System.Drawing.Size(0, 13);
             this.Mediciones_lbl_estadoBfpObtenido.TabIndex = 27;
+            // 
+            // Mediciones_lbl_valorBfpObtenido
+            // 
+            this.Mediciones_lbl_valorBfpObtenido.AutoSize = true;
+            this.Mediciones_lbl_valorBfpObtenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mediciones_lbl_valorBfpObtenido.Location = new System.Drawing.Point(392, 295);
+            this.Mediciones_lbl_valorBfpObtenido.Name = "Mediciones_lbl_valorBfpObtenido";
+            this.Mediciones_lbl_valorBfpObtenido.Size = new System.Drawing.Size(0, 13);
+            this.Mediciones_lbl_valorBfpObtenido.TabIndex = 29;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(352, 295);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 13);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Valor:";
             // 
             // Mediciones
             // 
@@ -294,6 +314,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(649, 533);
+            this.Controls.Add(this.Mediciones_lbl_valorBfpObtenido);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.Mediciones_lbl_estadoBfpObtenido);
             this.Controls.Add(this.Mediciones_lbl_estadoBmiObtenido);
             this.Controls.Add(this.label1);
@@ -357,5 +379,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Mediciones_lbl_estadoBmiObtenido;
         private System.Windows.Forms.Label Mediciones_lbl_estadoBfpObtenido;
+        private System.Windows.Forms.Label Mediciones_lbl_valorBfpObtenido;
+        private System.Windows.Forms.Label label14;
     }
 }
