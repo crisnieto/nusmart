@@ -36,7 +36,7 @@
             this.Ejercicios_textbox_viernes = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_sabado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Ejercicios_textbox_rutinaNombre = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_nombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.Ejercicios_radiobutton_jueves = new System.Windows.Forms.RadioButton();
             this.Ejercicios_radiobutton_viernes = new System.Windows.Forms.RadioButton();
             this.Ejercicios_radiobutton_sabado = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.Ejercicios_radiobutton_domingo = new System.Windows.Forms.RadioButton();
             this.Ejercicios_textbox_domingo = new System.Windows.Forms.TextBox();
             this.Ejercicios_numericupdown_martes = new System.Windows.Forms.NumericUpDown();
             this.Ejercicios_numericupdown_jueves = new System.Windows.Forms.NumericUpDown();
@@ -77,8 +77,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(15, 98);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(280, 147);
+            this.dataGridView1.Size = new System.Drawing.Size(280, 254);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // Ejercicios_textbox_lunes
             // 
@@ -132,12 +134,12 @@
             this.label4.TabIndex = 42;
             this.label4.Text = "Nombre de Rutina";
             // 
-            // textBox3
+            // Ejercicios_textbox_rutinaNombre
             // 
-            this.textBox3.Location = new System.Drawing.Point(604, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(140, 20);
-            this.textBox3.TabIndex = 43;
+            this.Ejercicios_textbox_rutinaNombre.Location = new System.Drawing.Point(604, 38);
+            this.Ejercicios_textbox_rutinaNombre.Name = "Ejercicios_textbox_rutinaNombre";
+            this.Ejercicios_textbox_rutinaNombre.Size = new System.Drawing.Size(140, 20);
+            this.Ejercicios_textbox_rutinaNombre.TabIndex = 43;
             // 
             // Ejercicios_textbox_nombre
             // 
@@ -205,6 +207,7 @@
             this.Ejercicios_radiobutton_martes.TabStop = true;
             this.Ejercicios_radiobutton_martes.Text = "Martes";
             this.Ejercicios_radiobutton_martes.UseVisualStyleBackColor = true;
+            this.Ejercicios_radiobutton_martes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_martes_CheckedChanged);
             // 
             // Ejercicios_radiobutton_miercoles
             // 
@@ -250,16 +253,16 @@
             this.Ejercicios_radiobutton_sabado.Text = "Sabado";
             this.Ejercicios_radiobutton_sabado.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // Ejercicios_radiobutton_domingo
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(361, 309);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(67, 17);
-            this.radioButton7.TabIndex = 56;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Domingo";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.Ejercicios_radiobutton_domingo.AutoSize = true;
+            this.Ejercicios_radiobutton_domingo.Location = new System.Drawing.Point(361, 309);
+            this.Ejercicios_radiobutton_domingo.Name = "Ejercicios_radiobutton_domingo";
+            this.Ejercicios_radiobutton_domingo.Size = new System.Drawing.Size(67, 17);
+            this.Ejercicios_radiobutton_domingo.TabIndex = 56;
+            this.Ejercicios_radiobutton_domingo.TabStop = true;
+            this.Ejercicios_radiobutton_domingo.Text = "Domingo";
+            this.Ejercicios_radiobutton_domingo.UseVisualStyleBackColor = true;
             // 
             // Ejercicios_textbox_domingo
             // 
@@ -271,6 +274,11 @@
             // Ejercicios_numericupdown_martes
             // 
             this.Ejercicios_numericupdown_martes.Location = new System.Drawing.Point(502, 88);
+            this.Ejercicios_numericupdown_martes.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_martes.Name = "Ejercicios_numericupdown_martes";
             this.Ejercicios_numericupdown_martes.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_martes.TabIndex = 59;
@@ -278,6 +286,11 @@
             // Ejercicios_numericupdown_jueves
             // 
             this.Ejercicios_numericupdown_jueves.Location = new System.Drawing.Point(502, 186);
+            this.Ejercicios_numericupdown_jueves.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_jueves.Name = "Ejercicios_numericupdown_jueves";
             this.Ejercicios_numericupdown_jueves.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_jueves.TabIndex = 61;
@@ -285,6 +298,11 @@
             // Ejercicios_numericupdown_miercoles
             // 
             this.Ejercicios_numericupdown_miercoles.Location = new System.Drawing.Point(502, 136);
+            this.Ejercicios_numericupdown_miercoles.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_miercoles.Name = "Ejercicios_numericupdown_miercoles";
             this.Ejercicios_numericupdown_miercoles.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_miercoles.TabIndex = 60;
@@ -292,6 +310,11 @@
             // Ejercicios_numericupdown_sabado
             // 
             this.Ejercicios_numericupdown_sabado.Location = new System.Drawing.Point(502, 284);
+            this.Ejercicios_numericupdown_sabado.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_sabado.Name = "Ejercicios_numericupdown_sabado";
             this.Ejercicios_numericupdown_sabado.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_sabado.TabIndex = 63;
@@ -299,6 +322,11 @@
             // Ejercicios_numericupdown_viernes
             // 
             this.Ejercicios_numericupdown_viernes.Location = new System.Drawing.Point(502, 234);
+            this.Ejercicios_numericupdown_viernes.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_viernes.Name = "Ejercicios_numericupdown_viernes";
             this.Ejercicios_numericupdown_viernes.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_viernes.TabIndex = 62;
@@ -306,6 +334,11 @@
             // Ejercicios_numericupdown_domingo
             // 
             this.Ejercicios_numericupdown_domingo.Location = new System.Drawing.Point(502, 332);
+            this.Ejercicios_numericupdown_domingo.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_domingo.Name = "Ejercicios_numericupdown_domingo";
             this.Ejercicios_numericupdown_domingo.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_domingo.TabIndex = 64;
@@ -327,6 +360,7 @@
             this.button3.TabIndex = 65;
             this.button3.Text = "Limpiar Seleccion";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox1
             // 
@@ -335,10 +369,16 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(141, 21);
             this.comboBox1.TabIndex = 67;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Ejercicios_numericupdown_lunes
             // 
             this.Ejercicios_numericupdown_lunes.Location = new System.Drawing.Point(502, 38);
+            this.Ejercicios_numericupdown_lunes.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_lunes.Name = "Ejercicios_numericupdown_lunes";
             this.Ejercicios_numericupdown_lunes.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_lunes.TabIndex = 68;
@@ -346,6 +386,11 @@
             // Ejercicios_numericupdown_calorias
             // 
             this.Ejercicios_numericupdown_calorias.Location = new System.Drawing.Point(156, 38);
+            this.Ejercicios_numericupdown_calorias.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.Ejercicios_numericupdown_calorias.Name = "Ejercicios_numericupdown_calorias";
             this.Ejercicios_numericupdown_calorias.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_calorias.TabIndex = 69;
@@ -368,7 +413,7 @@
             this.Controls.Add(this.Ejercicios_numericupdown_miercoles);
             this.Controls.Add(this.Ejercicios_numericupdown_martes);
             this.Controls.Add(this.Ejercicios_textbox_domingo);
-            this.Controls.Add(this.radioButton7);
+            this.Controls.Add(this.Ejercicios_radiobutton_domingo);
             this.Controls.Add(this.Ejercicios_radiobutton_sabado);
             this.Controls.Add(this.Ejercicios_radiobutton_viernes);
             this.Controls.Add(this.Ejercicios_radiobutton_jueves);
@@ -380,7 +425,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Ejercicios_textbox_nombre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.Ejercicios_textbox_rutinaNombre);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Ejercicios_textbox_sabado);
             this.Controls.Add(this.Ejercicios_textbox_lunes);
@@ -415,7 +460,7 @@
         private System.Windows.Forms.TextBox Ejercicios_textbox_viernes;
         private System.Windows.Forms.TextBox Ejercicios_textbox_sabado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Ejercicios_textbox_rutinaNombre;
         private System.Windows.Forms.TextBox Ejercicios_textbox_nombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
@@ -427,7 +472,7 @@
         private System.Windows.Forms.RadioButton Ejercicios_radiobutton_jueves;
         private System.Windows.Forms.RadioButton Ejercicios_radiobutton_viernes;
         private System.Windows.Forms.RadioButton Ejercicios_radiobutton_sabado;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_domingo;
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_martes;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_jueves;

@@ -61,12 +61,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return calorias;
+                return duracion * ejercicio.CaloriasQuemadas / 60;
             }
 
             set
             {
-                 calorias = duracion * ejercicio.CaloriasQuemadas / 60;
+                calorias = value;
             }
         }
     }

@@ -20,6 +20,7 @@ namespace NuSmart
         BLLTratamiento bllTratamiento;
         Dieta dietaActual;
         DiaAlimenticio diaActual;
+        Tratamiento tratamientoActivo;
         public TratamientoActual(Turno turno)
         {
             this.turno = turno;
@@ -36,7 +37,7 @@ namespace NuSmart
             dataSourceMedicion.Add(ultimaMedicion);
             dataGridView1.DataSource = dataSourceMedicion;
 
-            Tratamiento tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
+            tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
 
             dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
             TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
@@ -91,7 +92,9 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            AgregarRutina agregarRutina = new AgregarRutina(tratamientoActivo);
+            agregarRutina.MdiParent = this.ParentForm;
+            agregarRutina.Show();
         }
     }
 }

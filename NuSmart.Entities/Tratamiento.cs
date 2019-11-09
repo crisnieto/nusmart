@@ -13,6 +13,7 @@ namespace NuSmart.BE
         DateTime fechaInicio;
         Nullable<DateTime> fechaFinalizado;
         Paciente paciente;
+        Rutina rutina;
 
         public int Id
         {
@@ -76,6 +77,19 @@ namespace NuSmart.BE
             set
             {
                 paciente = value;
+            }
+        }
+
+        public Rutina Rutina
+        {
+            get
+            {
+                return rutina;
+            }
+
+            set
+            {
+                rutina = value;
             }
         }
     }

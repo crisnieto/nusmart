@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+
 
 namespace NuSmart.BE
 {
@@ -12,6 +14,7 @@ namespace NuSmart.BE
         string nombre;
         int caloriasQuemadas;
 
+        [Browsable(false)]
         public int Id
         {
             get
@@ -50,6 +53,11 @@ namespace NuSmart.BE
             {
                 caloriasQuemadas = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return nombre;
         }
     }
 }

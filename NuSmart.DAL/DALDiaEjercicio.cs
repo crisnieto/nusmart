@@ -18,16 +18,16 @@ namespace NuSmart.DAL
             sqlHelper = new SqlHelper();
         }
 
-        public void agregar(DiaEjercicio dia)
+        public int agregar(DiaEjercicio dia)
         {
-            string textoComando = "INSERT INTO DIAEJERCICIO (ejercicioID, duracion) VALUES (@EJERCICIO, @DURACION)";
+            string textoComando = "INSERT INTO DIAEJERCICIO (ejercicioID, duracionDia) OUTPUT INSERTED.DIAEJERCICIOID VALUES (@EJERCICIO, @DURACION)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@EJERCICIO", dia.Ejercicio.Id));
             lista.Add(new SqlParameter("@DURACION", dia.Duracion));
 
-            sqlHelper.ejecutarNonQuery(textoComando, lista);
+            return sqlHelper.ejecutarEscalar(textoComando, lista);
         }
 
         public DiaEjercicio obtener(int id)
@@ -42,7 +42,7 @@ namespace NuSmart.DAL
             DiaEjercicio dia = new DiaEjercicio(); 
             foreach(DataRow dr in dt.Rows)
             {
-                dia.Duracion = (int)dr["duracion"];
+                dia.Duracion = (int)dr["duracionDia"];
                 dia.Id = (int)dr["diaEjercicioID"];
                 dia.Ejercicio.Id = (int)dr["ejercicioID"];
             }

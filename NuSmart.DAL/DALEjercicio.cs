@@ -31,6 +31,27 @@ namespace NuSmart.DAL
 
         }
 
+        public Ejercicio obtener(int id)
+        {
+            string textoComando = "SELECT * FROM EJERCICIO WHERE EJERCICIOID = @ID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+
+            lista.Add(new SqlParameter("@ID", id));
+
+
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+
+            Ejercicio ejercicio = new Ejercicio();
+            foreach (DataRow dr in dt.Rows)
+            {
+                ejercicio.Nombre = (string)dr["nombre"];
+                ejercicio.Id = (int)dr["ejercicioID"];
+                ejercicio.CaloriasQuemadas = (int)dr["caloriasQuemadasHora"];
+            }
+
+            return ejercicio;
+        }
+
         public List<Ejercicio> obtenerTodos()
         {
             string textoComando = "SELECT * FROM EJERCICIO";

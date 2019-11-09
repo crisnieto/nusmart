@@ -10,20 +10,24 @@ namespace NuSmart.BLL
 {
     public class BLLDiaEjercicio
     {
+        BLLEjercicio bllEjercicio;
         DALDiaEjercicio dalDiaEjercicio;
 
         public BLLDiaEjercicio()
         {
             dalDiaEjercicio = new DALDiaEjercicio();
+            bllEjercicio = new BLLEjercicio();
         }
 
-        public void agregar(DiaEjercicio diaEjercicio)
+        public int agregar(DiaEjercicio diaEjercicio)
         {
-            dalDiaEjercicio.agregar(diaEjercicio);
+            return dalDiaEjercicio.agregar(diaEjercicio);
         }
 
         public DiaEjercicio obtenerDiaEjercicio(int idDiaEjercicio) {
-           return dalDiaEjercicio.obtener(idDiaEjercicio);
+            DiaEjercicio dia = dalDiaEjercicio.obtener(idDiaEjercicio);
+            dia.Ejercicio = bllEjercicio.obtener(dia.Ejercicio.Id);
+            return dia;
         }
     }
 }

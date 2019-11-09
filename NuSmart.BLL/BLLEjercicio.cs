@@ -26,5 +26,10 @@ namespace NuSmart.BLL
         {
             return dalEjercicio.obtenerTodos();
         }
+
+        public Ejercicio obtener(int id)
+        {
+            return dalEjercicio.obtener(id);
+        }
     }
 }

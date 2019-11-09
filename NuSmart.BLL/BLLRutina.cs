@@ -39,7 +39,26 @@ namespace NuSmart.BLL
 
         public void agregar(Rutina rutina)
         {
+            rutina.DiaEjercicioLunes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioLunes);
+            rutina.DiaEjercicioMartes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMartes);
+            rutina.DiaEjercicioMiercoles.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMiercoles);
+            rutina.DiaEjercicioJueves.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioJueves);
+            rutina.DiaEjercicioViernes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioViernes);
+            rutina.DiaEjercicioSabado.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioSabado);
+            rutina.DiaEjercicioDomingo.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioDomingo);
+            
             dalRutina.agregar(rutina);
+        }
+
+        public int calcularCaloriasQuemadas(Rutina rutina)
+        {
+            return rutina.DiaEjercicioLunes.Calorias +
+                rutina.DiaEjercicioMartes.Calorias +
+                rutina.DiaEjercicioMiercoles.Calorias +
+                rutina.DiaEjercicioJueves.Calorias +
+                rutina.DiaEjercicioViernes.Calorias +
+                rutina.DiaEjercicioSabado.Calorias +
+                rutina.DiaEjercicioDomingo.Calorias;
         }
     }
 }

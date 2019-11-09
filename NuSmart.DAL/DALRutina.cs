@@ -29,6 +29,7 @@ namespace NuSmart.DAL
             foreach(DataRow dr in dt.Rows)
             {
                 Rutina rutina = new Rutina();
+                rutina.Id = (int)dr["rutinaID"];
                 rutina.DiaEjercicioLunes.Id = (int)dr["idDiaEjercicioLunes"];
                 rutina.DiaEjercicioMartes.Id = (int)dr["idDiaEjercicioMartes"];
                 rutina.DiaEjercicioMiercoles.Id = (int)dr["idDiaEjercicioMiercoles"];

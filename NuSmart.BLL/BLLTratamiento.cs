@@ -48,5 +48,10 @@ namespace NuSmart.BLL
             return obtenerTratamientoActivo(paciente) != null;
         }
 
+        public void agregarRutina(Tratamiento tratamiento)
+        {
+
+            dalTratamiento.agregarRutina(tratamiento);
+        }
     }
 }
