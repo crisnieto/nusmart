@@ -42,7 +42,7 @@ namespace NuSmart.BLL
                     break;
                 }
             }
-            if (tratamientoActivo.Rutina != null)
+            if (tratamientoActivo != null && tratamientoActivo.Rutina != null)
             {
                 Rutina rutinaObtenida = bllRutina.obtener(tratamientoActivo.Rutina.Id);
                 tratamientoActivo.Rutina = rutinaObtenida;

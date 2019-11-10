@@ -21,6 +21,7 @@ namespace NuSmart
         BLLTratamiento bllTratamiento;
         Dieta dietaActual;
         Medicion ultimaMedicion;
+        Medicion primeraMedicion;
         DiaAlimenticio diaActual;
         Tratamiento tratamientoActivo;
         public TratamientoActual(Turno turno)
@@ -35,13 +36,18 @@ namespace NuSmart
 
         private void TratamientoActual_Load(object sender, EventArgs e)
         {
-            ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
-            List<Medicion> dataSourceMedicion = new List<Medicion>();
-            dataSourceMedicion.Add(ultimaMedicion);
-            dataGridView1.DataSource = dataSourceMedicion;
-
             tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
+            primeraMedicion = bllMedicion.obtenerPrimeraMedicionTratamiento(tratamientoActivo);
+            
+            ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
+            List<Medicion> dataSourceUltimaMedicion = new List<Medicion>();
+            dataSourceUltimaMedicion.Add(ultimaMedicion);
+            dataGridView1.DataSource = dataSourceUltimaMedicion;
 
+            List<Medicion> dataSourcePrimeraMedicion = new List<Medicion>();
+            dataSourcePrimeraMedicion.Add(primeraMedicion);
+            dataGridView2.DataSource = dataSourcePrimeraMedicion;
+            
             dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
             TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
 

@@ -58,7 +58,15 @@ namespace NuSmart
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            turnoSeleccionado = (Turno)listBox1.SelectedItem;   
+            if(listBox1.Items.Count > 0)
+            {
+                MisTurnos_button_iniciar.Enabled = true;
+                turnoSeleccionado = (Turno)listBox1.SelectedItem;
+            }else
+            {
+                turnoSeleccionado = null;
+                MisTurnos_button_iniciar.Enabled = false;
+            }
         }
     }
 }

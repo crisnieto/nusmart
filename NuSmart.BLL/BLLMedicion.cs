@@ -39,6 +39,20 @@ namespace NuSmart.BLL
             return ultimaMedicion;
         }
 
+        public Medicion obtenerPrimeraMedicionTratamiento(Tratamiento tratamiento)
+        {
+            Medicion primeraMedicion = null;
+            foreach (Medicion medicion in conseguirMediciones(tratamiento.Paciente))
+            {
+                if (DateTime.Compare(medicion.Fecha.Date, tratamiento.FechaInicio.Date) == 0)
+                {
+                    primeraMedicion = medicion;
+                    break;
+                }
+            }
+            return primeraMedicion;
+        }
+
 
         public void calcularBMI(Medicion medicion)
         {

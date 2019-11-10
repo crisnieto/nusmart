@@ -177,7 +177,7 @@ namespace NuSmart
                     dietaActual.Id = bllDieta.guardar(dietaActual);
                 }
                 Tratamiento tratamiento = new Tratamiento();
-                tratamiento.FechaInicio = DateTime.Today;
+                tratamiento.FechaInicio = turnoActual.Fecha;
                 tratamiento.Dieta = dietaActual;
                 tratamiento.Paciente = turnoActual.Paciente;
                 bllTratamiento.guardar(tratamiento);
