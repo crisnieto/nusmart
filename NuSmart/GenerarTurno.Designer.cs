@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarTurno));
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Generar = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.GenerarTurno_label_titulo = new System.Windows.Forms.Label();
+            this.GenerarTurno_label_dia = new System.Windows.Forms.Label();
+            this.GenerarTurno_label_manana = new System.Windows.Forms.RadioButton();
+            this.GenerarTurno_label_tarde = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.GenerarTurno_label_crear_turno = new System.Windows.Forms.Button();
+            this.GenerarTurno_label_motivo = new System.Windows.Forms.Label();
             this.GenerarTurno_textbox_motivoConsulta = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -48,48 +48,48 @@
             this.monthCalendar1.TabIndex = 0;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
-            // label1
+            // GenerarTurno_label_titulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Turno sugerido para el Paciente";
+            this.GenerarTurno_label_titulo.AutoSize = true;
+            this.GenerarTurno_label_titulo.Location = new System.Drawing.Point(15, 9);
+            this.GenerarTurno_label_titulo.Name = "GenerarTurno_label_titulo";
+            this.GenerarTurno_label_titulo.Size = new System.Drawing.Size(158, 13);
+            this.GenerarTurno_label_titulo.TabIndex = 1;
+            this.GenerarTurno_label_titulo.Text = "Turno sugerido para el Paciente";
             // 
-            // label2
+            // GenerarTurno_label_dia
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Seleccione Dia Preferencial";
+            this.GenerarTurno_label_dia.AutoSize = true;
+            this.GenerarTurno_label_dia.Location = new System.Drawing.Point(15, 70);
+            this.GenerarTurno_label_dia.Name = "GenerarTurno_label_dia";
+            this.GenerarTurno_label_dia.Size = new System.Drawing.Size(138, 13);
+            this.GenerarTurno_label_dia.TabIndex = 2;
+            this.GenerarTurno_label_dia.Text = "Seleccione Dia Preferencial";
             // 
-            // Generar
+            // GenerarTurno_label_manana
             // 
-            this.Generar.AutoSize = true;
-            this.Generar.Checked = true;
-            this.Generar.Location = new System.Drawing.Point(67, 266);
-            this.Generar.Name = "Generar";
-            this.Generar.Size = new System.Drawing.Size(64, 17);
-            this.Generar.TabIndex = 3;
-            this.Generar.TabStop = true;
-            this.Generar.Text = "Manana";
-            this.Generar.UseVisualStyleBackColor = true;
-            this.Generar.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.GenerarTurno_label_manana.AutoSize = true;
+            this.GenerarTurno_label_manana.Checked = true;
+            this.GenerarTurno_label_manana.Location = new System.Drawing.Point(67, 266);
+            this.GenerarTurno_label_manana.Name = "GenerarTurno_label_manana";
+            this.GenerarTurno_label_manana.Size = new System.Drawing.Size(64, 17);
+            this.GenerarTurno_label_manana.TabIndex = 3;
+            this.GenerarTurno_label_manana.TabStop = true;
+            this.GenerarTurno_label_manana.Text = "Manana";
+            this.GenerarTurno_label_manana.UseVisualStyleBackColor = true;
+            this.GenerarTurno_label_manana.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // GenerarTurno_label_tarde
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(137, 266);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(53, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Tarde";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.GenerarTurno_label_tarde.AutoSize = true;
+            this.GenerarTurno_label_tarde.Location = new System.Drawing.Point(137, 266);
+            this.GenerarTurno_label_tarde.Name = "GenerarTurno_label_tarde";
+            this.GenerarTurno_label_tarde.Size = new System.Drawing.Size(53, 17);
+            this.GenerarTurno_label_tarde.TabIndex = 4;
+            this.GenerarTurno_label_tarde.TabStop = true;
+            this.GenerarTurno_label_tarde.Text = "Tarde";
+            this.GenerarTurno_label_tarde.UseVisualStyleBackColor = true;
+            this.GenerarTurno_label_tarde.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // label3
             // 
@@ -109,24 +109,24 @@
             this.comboBox1.Size = new System.Drawing.Size(178, 21);
             this.comboBox1.TabIndex = 7;
             // 
-            // button2
+            // GenerarTurno_label_crear_turno
             // 
-            this.button2.Location = new System.Drawing.Point(295, 141);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 37);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Crear Turno";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.GenerarTurno_label_crear_turno.Location = new System.Drawing.Point(295, 141);
+            this.GenerarTurno_label_crear_turno.Name = "GenerarTurno_label_crear_turno";
+            this.GenerarTurno_label_crear_turno.Size = new System.Drawing.Size(178, 37);
+            this.GenerarTurno_label_crear_turno.TabIndex = 8;
+            this.GenerarTurno_label_crear_turno.Text = "Crear Turno";
+            this.GenerarTurno_label_crear_turno.UseVisualStyleBackColor = true;
+            this.GenerarTurno_label_crear_turno.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label4
+            // GenerarTurno_label_motivo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(292, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Motivo de Consulta";
+            this.GenerarTurno_label_motivo.AutoSize = true;
+            this.GenerarTurno_label_motivo.Location = new System.Drawing.Point(292, 9);
+            this.GenerarTurno_label_motivo.Name = "GenerarTurno_label_motivo";
+            this.GenerarTurno_label_motivo.Size = new System.Drawing.Size(98, 13);
+            this.GenerarTurno_label_motivo.TabIndex = 9;
+            this.GenerarTurno_label_motivo.Text = "Motivo de Consulta";
             // 
             // GenerarTurno_textbox_motivoConsulta
             // 
@@ -142,14 +142,14 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(487, 330);
             this.Controls.Add(this.GenerarTurno_textbox_motivoConsulta);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.GenerarTurno_label_motivo);
+            this.Controls.Add(this.GenerarTurno_label_crear_turno);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.Generar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.GenerarTurno_label_tarde);
+            this.Controls.Add(this.GenerarTurno_label_manana);
+            this.Controls.Add(this.GenerarTurno_label_dia);
+            this.Controls.Add(this.GenerarTurno_label_titulo);
             this.Controls.Add(this.monthCalendar1);
             this.Name = "GenerarTurno";
             this.Text = "GenerarTurno";
@@ -162,14 +162,14 @@
         #endregion
 
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton Generar;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label GenerarTurno_label_titulo;
+        private System.Windows.Forms.Label GenerarTurno_label_dia;
+        private System.Windows.Forms.RadioButton GenerarTurno_label_manana;
+        private System.Windows.Forms.RadioButton GenerarTurno_label_tarde;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button GenerarTurno_label_crear_turno;
+        private System.Windows.Forms.Label GenerarTurno_label_motivo;
         private System.Windows.Forms.TextBox GenerarTurno_textbox_motivoConsulta;
     }
 }

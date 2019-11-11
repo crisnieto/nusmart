@@ -23,8 +23,7 @@ namespace NuSmart.DAL
         {
             List<Horario> horarios = new List<Horario>();
 
-            string textoComando = "SELECT id, tiempo FROM HORARIO full JOIN Turno on(turno.horarioID = Horario.id) where(coalesce(nutricionistaId, '') != @NUTRICIONISTAID or coalesce(turno.fecha, '') != @FECHA)";
-
+            string textoComando = "SELECT distinct(id), tiempo FROM HORARIO full JOIN Turno on(turno.horarioID = Horario.id) where horario.id not in (select horarioID from Turno where (coalesce(nutricionistaId, '') = @NUTRICIONISTAID and coalesce(turno.fecha, '') = @FECHA))";
             if (preferencia.Equals("manana"))
             {
                 textoComando += " AND tiempo < '13:00'";

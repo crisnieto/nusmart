@@ -93,7 +93,7 @@ namespace NuSmart.DAL
         {
 
             string textoComando = "SELECT * FROM PACIENTE WHERE dni = @DNI AND eliminado = 0";
-            Paciente paciente = new Paciente();
+            Paciente paciente = null;
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
@@ -104,6 +104,7 @@ namespace NuSmart.DAL
 
             if(dt.Rows.Count > 0)
             {
+                paciente = new Paciente();
                 paciente.Nombre = (string)dt.Rows[0]["nombre"];
                 paciente.Apellido = (string)dt.Rows[0]["apellido"];
                 paciente.Dni = (int)dt.Rows[0]["dni"];

@@ -16,7 +16,6 @@ namespace NuSmart.BE
         private string _apellido;
         private int _dni;
         private string _sexo;
-        private string _habitos;
         private bool _eliminado;
         private DateTime _fechaNacimiento;
 
@@ -109,19 +108,6 @@ namespace NuSmart.BE
             set
             {
                 _sexo = value;
-            }
-        }
-
-        public string Habitos
-        {
-            get
-            {
-                return _habitos;
-            }
-
-            set
-            {
-                _habitos = value;
             }
         }
 

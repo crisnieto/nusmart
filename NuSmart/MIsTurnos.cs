@@ -40,17 +40,23 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+            if (listBox1.SelectedItems.Count > 0 && turnoSeleccionado != null)
             {
-                TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
-                tratamientoActual.MdiParent = this.ParentForm;
-                tratamientoActual.Show();
-            }
-            else
+                if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+                {
+                    TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
+                    tratamientoActual.MdiParent = this.ParentForm;
+                    tratamientoActual.Show();
+                }
+                else
+                {
+                    Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
+                    medicionesForm.MdiParent = this.ParentForm;
+                    medicionesForm.Show();
+                }
+            }else
             {
-                Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
-                medicionesForm.MdiParent = this.ParentForm;
-                medicionesForm.Show();
+                MessageBox.Show("Seleccione un Turno");
             }
 
 
@@ -65,7 +71,6 @@ namespace NuSmart
             }else
             {
                 turnoSeleccionado = null;
-                MisTurnos_button_iniciar.Enabled = false;
             }
         }
     }

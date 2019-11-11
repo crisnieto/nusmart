@@ -57,6 +57,7 @@ namespace NuSmart
                 comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
             }catch(Exception ex)
             {
+                MessageBox.Show("AgregarTurno_messagebox_errorTurno");
                 MessageBox.Show("Ocurrio un error con el turno seleccionado");
             }
         }
