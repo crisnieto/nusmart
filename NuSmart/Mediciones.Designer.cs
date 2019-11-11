@@ -30,33 +30,33 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mediciones));
             this.Mediciones_label_paciente = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Mediciones_label_titulo = new System.Windows.Forms.Label();
+            this.Mediciones_label_motivo = new System.Windows.Forms.Label();
             this.Mediciones_textbox_motivoConsulta = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Mediciones_label_mediciones = new System.Windows.Forms.Label();
             this.Mediciones_textbox_peso = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Mediciones_label_peso = new System.Windows.Forms.Label();
             this.Mediciones_textbox_altura = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.Mediciones_label_altura = new System.Windows.Forms.Label();
             this.Mediciones_textbox_edad = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Mediciones_label_edad = new System.Windows.Forms.Label();
+            this.Mediciones_button_calcular_bmi = new System.Windows.Forms.Button();
+            this.Mediciones_button_calcular_bfp = new System.Windows.Forms.Button();
             this.Mediciones_textbox_cintura = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Mediciones_label_cintura = new System.Windows.Forms.Label();
             this.Mediciones_textbox_cadera = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.Mediciones_label_cadera = new System.Windows.Forms.Label();
+            this.Mediciones_label_valor_bmi = new System.Windows.Forms.Label();
+            this.Mediciones_label_estado_bmi = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Mediciones_label_ultimas_mediciones = new System.Windows.Forms.Label();
+            this.Mediciones_button_guardar_mediciones = new System.Windows.Forms.Button();
             this.Mediciones_lbl_valorBmiObtenido = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Mediciones_label_estado_bfp = new System.Windows.Forms.Label();
             this.Mediciones_lbl_estadoBmiObtenido = new System.Windows.Forms.Label();
             this.Mediciones_lbl_estadoBfpObtenido = new System.Windows.Forms.Label();
             this.Mediciones_lbl_valorBfpObtenido = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.Mediciones_label_valor_bfp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,24 +70,24 @@
             this.Mediciones_label_paciente.TabIndex = 0;
             this.Mediciones_label_paciente.Text = "Mediciones_label_paciente";
             // 
-            // label2
+            // Mediciones_label_titulo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(259, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Informacion Basica del Tratamiento";
+            this.Mediciones_label_titulo.AutoSize = true;
+            this.Mediciones_label_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mediciones_label_titulo.Location = new System.Drawing.Point(12, 57);
+            this.Mediciones_label_titulo.Name = "Mediciones_label_titulo";
+            this.Mediciones_label_titulo.Size = new System.Drawing.Size(259, 20);
+            this.Mediciones_label_titulo.TabIndex = 1;
+            this.Mediciones_label_titulo.Text = "Informacion Basica del Tratamiento";
             // 
-            // label3
+            // Mediciones_label_motivo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Motivo de Consulta";
+            this.Mediciones_label_motivo.AutoSize = true;
+            this.Mediciones_label_motivo.Location = new System.Drawing.Point(13, 92);
+            this.Mediciones_label_motivo.Name = "Mediciones_label_motivo";
+            this.Mediciones_label_motivo.Size = new System.Drawing.Size(98, 13);
+            this.Mediciones_label_motivo.TabIndex = 2;
+            this.Mediciones_label_motivo.Text = "Motivo de Consulta";
             // 
             // Mediciones_textbox_motivoConsulta
             // 
@@ -97,135 +97,135 @@
             this.Mediciones_textbox_motivoConsulta.Size = new System.Drawing.Size(290, 20);
             this.Mediciones_textbox_motivoConsulta.TabIndex = 3;
             // 
-            // label5
+            // Mediciones_label_mediciones
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 177);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 20);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Mediciones";
+            this.Mediciones_label_mediciones.AutoSize = true;
+            this.Mediciones_label_mediciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mediciones_label_mediciones.Location = new System.Drawing.Point(12, 177);
+            this.Mediciones_label_mediciones.Name = "Mediciones_label_mediciones";
+            this.Mediciones_label_mediciones.Size = new System.Drawing.Size(89, 20);
+            this.Mediciones_label_mediciones.TabIndex = 6;
+            this.Mediciones_label_mediciones.Text = "Mediciones";
             // 
             // Mediciones_textbox_peso
             // 
-            this.Mediciones_textbox_peso.Location = new System.Drawing.Point(50, 207);
+            this.Mediciones_textbox_peso.Location = new System.Drawing.Point(60, 211);
             this.Mediciones_textbox_peso.Name = "Mediciones_textbox_peso";
             this.Mediciones_textbox_peso.Size = new System.Drawing.Size(51, 20);
             this.Mediciones_textbox_peso.TabIndex = 8;
             this.Mediciones_textbox_peso.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // label6
+            // Mediciones_label_peso
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Peso";
+            this.Mediciones_label_peso.AutoSize = true;
+            this.Mediciones_label_peso.Location = new System.Drawing.Point(17, 214);
+            this.Mediciones_label_peso.Name = "Mediciones_label_peso";
+            this.Mediciones_label_peso.Size = new System.Drawing.Size(31, 13);
+            this.Mediciones_label_peso.TabIndex = 7;
+            this.Mediciones_label_peso.Text = "Peso";
             // 
             // Mediciones_textbox_altura
             // 
-            this.Mediciones_textbox_altura.Location = new System.Drawing.Point(50, 233);
+            this.Mediciones_textbox_altura.Location = new System.Drawing.Point(60, 233);
             this.Mediciones_textbox_altura.Name = "Mediciones_textbox_altura";
             this.Mediciones_textbox_altura.Size = new System.Drawing.Size(51, 20);
             this.Mediciones_textbox_altura.TabIndex = 10;
             // 
-            // label7
+            // Mediciones_label_altura
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 236);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Altura";
+            this.Mediciones_label_altura.AutoSize = true;
+            this.Mediciones_label_altura.Location = new System.Drawing.Point(14, 236);
+            this.Mediciones_label_altura.Name = "Mediciones_label_altura";
+            this.Mediciones_label_altura.Size = new System.Drawing.Size(34, 13);
+            this.Mediciones_label_altura.TabIndex = 9;
+            this.Mediciones_label_altura.Text = "Altura";
             // 
             // Mediciones_textbox_edad
             // 
             this.Mediciones_textbox_edad.Enabled = false;
-            this.Mediciones_textbox_edad.Location = new System.Drawing.Point(150, 233);
+            this.Mediciones_textbox_edad.Location = new System.Drawing.Point(156, 233);
             this.Mediciones_textbox_edad.Name = "Mediciones_textbox_edad";
             this.Mediciones_textbox_edad.Size = new System.Drawing.Size(47, 20);
             this.Mediciones_textbox_edad.TabIndex = 12;
             // 
-            // label8
+            // Mediciones_label_edad
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(114, 236);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Edad";
+            this.Mediciones_label_edad.AutoSize = true;
+            this.Mediciones_label_edad.Location = new System.Drawing.Point(120, 236);
+            this.Mediciones_label_edad.Name = "Mediciones_label_edad";
+            this.Mediciones_label_edad.Size = new System.Drawing.Size(32, 13);
+            this.Mediciones_label_edad.TabIndex = 11;
+            this.Mediciones_label_edad.Text = "Edad";
             // 
-            // button1
+            // Mediciones_button_calcular_bmi
             // 
-            this.button1.Location = new System.Drawing.Point(16, 286);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 58);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Calcular BMI";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Mediciones_button_calcular_bmi.Location = new System.Drawing.Point(16, 286);
+            this.Mediciones_button_calcular_bmi.Name = "Mediciones_button_calcular_bmi";
+            this.Mediciones_button_calcular_bmi.Size = new System.Drawing.Size(100, 58);
+            this.Mediciones_button_calcular_bmi.TabIndex = 13;
+            this.Mediciones_button_calcular_bmi.Text = "Calcular BMI";
+            this.Mediciones_button_calcular_bmi.UseVisualStyleBackColor = true;
+            this.Mediciones_button_calcular_bmi.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // Mediciones_button_calcular_bfp
             // 
-            this.button2.Location = new System.Drawing.Point(245, 286);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 58);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Calcular BFP";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Mediciones_button_calcular_bfp.Location = new System.Drawing.Point(306, 286);
+            this.Mediciones_button_calcular_bfp.Name = "Mediciones_button_calcular_bfp";
+            this.Mediciones_button_calcular_bfp.Size = new System.Drawing.Size(100, 58);
+            this.Mediciones_button_calcular_bfp.TabIndex = 14;
+            this.Mediciones_button_calcular_bfp.Text = "Calcular BFP";
+            this.Mediciones_button_calcular_bfp.UseVisualStyleBackColor = true;
+            this.Mediciones_button_calcular_bfp.Click += new System.EventHandler(this.button2_Click);
             // 
             // Mediciones_textbox_cintura
             // 
-            this.Mediciones_textbox_cintura.Location = new System.Drawing.Point(355, 237);
+            this.Mediciones_textbox_cintura.Location = new System.Drawing.Point(416, 246);
             this.Mediciones_textbox_cintura.Name = "Mediciones_textbox_cintura";
             this.Mediciones_textbox_cintura.Size = new System.Drawing.Size(60, 20);
             this.Mediciones_textbox_cintura.TabIndex = 18;
             // 
-            // label9
+            // Mediciones_label_cintura
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(243, 240);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Perimetro de Cintura";
+            this.Mediciones_label_cintura.AutoSize = true;
+            this.Mediciones_label_cintura.Location = new System.Drawing.Point(304, 249);
+            this.Mediciones_label_cintura.Name = "Mediciones_label_cintura";
+            this.Mediciones_label_cintura.Size = new System.Drawing.Size(102, 13);
+            this.Mediciones_label_cintura.TabIndex = 17;
+            this.Mediciones_label_cintura.Text = "Perimetro de Cintura";
             // 
             // Mediciones_textbox_cadera
             // 
-            this.Mediciones_textbox_cadera.Location = new System.Drawing.Point(354, 198);
+            this.Mediciones_textbox_cadera.Location = new System.Drawing.Point(415, 207);
             this.Mediciones_textbox_cadera.Name = "Mediciones_textbox_cadera";
             this.Mediciones_textbox_cadera.Size = new System.Drawing.Size(61, 20);
             this.Mediciones_textbox_cadera.TabIndex = 16;
             // 
-            // label10
+            // Mediciones_label_cadera
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(243, 201);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Perimetro de Cadera";
+            this.Mediciones_label_cadera.AutoSize = true;
+            this.Mediciones_label_cadera.Location = new System.Drawing.Point(304, 210);
+            this.Mediciones_label_cadera.Name = "Mediciones_label_cadera";
+            this.Mediciones_label_cadera.Size = new System.Drawing.Size(103, 13);
+            this.Mediciones_label_cadera.TabIndex = 15;
+            this.Mediciones_label_cadera.Text = "Perimetro de Cadera";
             // 
-            // label11
+            // Mediciones_label_valor_bmi
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(131, 295);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 13);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Valor:";
+            this.Mediciones_label_valor_bmi.AutoSize = true;
+            this.Mediciones_label_valor_bmi.Location = new System.Drawing.Point(131, 295);
+            this.Mediciones_label_valor_bmi.Name = "Mediciones_label_valor_bmi";
+            this.Mediciones_label_valor_bmi.Size = new System.Drawing.Size(34, 13);
+            this.Mediciones_label_valor_bmi.TabIndex = 19;
+            this.Mediciones_label_valor_bmi.Text = "Valor:";
             // 
-            // label12
+            // Mediciones_label_estado_bmi
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(122, 322);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 13);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Estado:";
+            this.Mediciones_label_estado_bmi.AutoSize = true;
+            this.Mediciones_label_estado_bmi.Location = new System.Drawing.Point(122, 322);
+            this.Mediciones_label_estado_bmi.Name = "Mediciones_label_estado_bmi";
+            this.Mediciones_label_estado_bmi.Size = new System.Drawing.Size(43, 13);
+            this.Mediciones_label_estado_bmi.TabIndex = 20;
+            this.Mediciones_label_estado_bmi.Text = "Estado:";
             // 
             // dataGridView1
             // 
@@ -235,24 +235,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(625, 150);
             this.dataGridView1.TabIndex = 21;
             // 
-            // label13
+            // Mediciones_label_ultimas_mediciones
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 355);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(101, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "Ultimas Mediciones:";
+            this.Mediciones_label_ultimas_mediciones.AutoSize = true;
+            this.Mediciones_label_ultimas_mediciones.Location = new System.Drawing.Point(14, 355);
+            this.Mediciones_label_ultimas_mediciones.Name = "Mediciones_label_ultimas_mediciones";
+            this.Mediciones_label_ultimas_mediciones.Size = new System.Drawing.Size(101, 13);
+            this.Mediciones_label_ultimas_mediciones.TabIndex = 22;
+            this.Mediciones_label_ultimas_mediciones.Text = "Ultimas Mediciones:";
             // 
-            // button3
+            // Mediciones_button_guardar_mediciones
             // 
-            this.button3.Location = new System.Drawing.Point(551, 198);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 58);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Guardar Mediciones";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Mediciones_button_guardar_mediciones.Location = new System.Drawing.Point(552, 198);
+            this.Mediciones_button_guardar_mediciones.Name = "Mediciones_button_guardar_mediciones";
+            this.Mediciones_button_guardar_mediciones.Size = new System.Drawing.Size(85, 59);
+            this.Mediciones_button_guardar_mediciones.TabIndex = 23;
+            this.Mediciones_button_guardar_mediciones.Text = "Guardar Mediciones";
+            this.Mediciones_button_guardar_mediciones.UseVisualStyleBackColor = true;
+            this.Mediciones_button_guardar_mediciones.Click += new System.EventHandler(this.button3_Click);
             // 
             // Mediciones_lbl_valorBmiObtenido
             // 
@@ -263,14 +263,14 @@
             this.Mediciones_lbl_valorBmiObtenido.Size = new System.Drawing.Size(0, 13);
             this.Mediciones_lbl_valorBmiObtenido.TabIndex = 24;
             // 
-            // label1
+            // Mediciones_label_estado_bfp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(352, 322);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Estado:";
+            this.Mediciones_label_estado_bfp.AutoSize = true;
+            this.Mediciones_label_estado_bfp.Location = new System.Drawing.Point(413, 322);
+            this.Mediciones_label_estado_bfp.Name = "Mediciones_label_estado_bfp";
+            this.Mediciones_label_estado_bfp.Size = new System.Drawing.Size(43, 13);
+            this.Mediciones_label_estado_bfp.TabIndex = 25;
+            this.Mediciones_label_estado_bfp.Text = "Estado:";
             // 
             // Mediciones_lbl_estadoBmiObtenido
             // 
@@ -285,7 +285,7 @@
             // 
             this.Mediciones_lbl_estadoBfpObtenido.AutoSize = true;
             this.Mediciones_lbl_estadoBfpObtenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mediciones_lbl_estadoBfpObtenido.Location = new System.Drawing.Point(401, 322);
+            this.Mediciones_lbl_estadoBfpObtenido.Location = new System.Drawing.Point(462, 322);
             this.Mediciones_lbl_estadoBfpObtenido.Name = "Mediciones_lbl_estadoBfpObtenido";
             this.Mediciones_lbl_estadoBfpObtenido.Size = new System.Drawing.Size(0, 13);
             this.Mediciones_lbl_estadoBfpObtenido.TabIndex = 27;
@@ -294,19 +294,19 @@
             // 
             this.Mediciones_lbl_valorBfpObtenido.AutoSize = true;
             this.Mediciones_lbl_valorBfpObtenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mediciones_lbl_valorBfpObtenido.Location = new System.Drawing.Point(392, 295);
+            this.Mediciones_lbl_valorBfpObtenido.Location = new System.Drawing.Point(453, 295);
             this.Mediciones_lbl_valorBfpObtenido.Name = "Mediciones_lbl_valorBfpObtenido";
             this.Mediciones_lbl_valorBfpObtenido.Size = new System.Drawing.Size(0, 13);
             this.Mediciones_lbl_valorBfpObtenido.TabIndex = 29;
             // 
-            // label14
+            // Mediciones_label_valor_bfp
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(352, 295);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(34, 13);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Valor:";
+            this.Mediciones_label_valor_bfp.AutoSize = true;
+            this.Mediciones_label_valor_bfp.Location = new System.Drawing.Point(413, 295);
+            this.Mediciones_label_valor_bfp.Name = "Mediciones_label_valor_bfp";
+            this.Mediciones_label_valor_bfp.Size = new System.Drawing.Size(34, 13);
+            this.Mediciones_label_valor_bfp.TabIndex = 28;
+            this.Mediciones_label_valor_bfp.Text = "Valor:";
             // 
             // Mediciones
             // 
@@ -315,35 +315,34 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(649, 533);
             this.Controls.Add(this.Mediciones_lbl_valorBfpObtenido);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.Mediciones_label_valor_bfp);
             this.Controls.Add(this.Mediciones_lbl_estadoBfpObtenido);
             this.Controls.Add(this.Mediciones_lbl_estadoBmiObtenido);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Mediciones_label_estado_bfp);
             this.Controls.Add(this.Mediciones_lbl_valorBmiObtenido);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.Mediciones_button_guardar_mediciones);
+            this.Controls.Add(this.Mediciones_label_ultimas_mediciones);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.Mediciones_label_estado_bmi);
+            this.Controls.Add(this.Mediciones_label_valor_bmi);
             this.Controls.Add(this.Mediciones_textbox_cintura);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.Mediciones_label_cintura);
             this.Controls.Add(this.Mediciones_textbox_cadera);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Mediciones_label_cadera);
+            this.Controls.Add(this.Mediciones_button_calcular_bfp);
+            this.Controls.Add(this.Mediciones_button_calcular_bmi);
             this.Controls.Add(this.Mediciones_textbox_edad);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Mediciones_label_edad);
             this.Controls.Add(this.Mediciones_textbox_altura);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Mediciones_label_altura);
             this.Controls.Add(this.Mediciones_textbox_peso);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Mediciones_label_peso);
+            this.Controls.Add(this.Mediciones_label_mediciones);
             this.Controls.Add(this.Mediciones_textbox_motivoConsulta);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Mediciones_label_motivo);
+            this.Controls.Add(this.Mediciones_label_titulo);
             this.Controls.Add(this.Mediciones_label_paciente);
             this.Name = "Mediciones";
-            this.Text = "Mediciones";
             this.Load += new System.EventHandler(this.Mediciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -354,32 +353,32 @@
         #endregion
 
         private System.Windows.Forms.Label Mediciones_label_paciente;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Mediciones_label_titulo;
+        private System.Windows.Forms.Label Mediciones_label_motivo;
         private System.Windows.Forms.TextBox Mediciones_textbox_motivoConsulta;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Mediciones_label_mediciones;
         private System.Windows.Forms.TextBox Mediciones_textbox_peso;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Mediciones_label_peso;
         private System.Windows.Forms.TextBox Mediciones_textbox_altura;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Mediciones_label_altura;
         private System.Windows.Forms.TextBox Mediciones_textbox_edad;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label Mediciones_label_edad;
+        private System.Windows.Forms.Button Mediciones_button_calcular_bmi;
+        private System.Windows.Forms.Button Mediciones_button_calcular_bfp;
         private System.Windows.Forms.TextBox Mediciones_textbox_cintura;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Mediciones_label_cintura;
         private System.Windows.Forms.TextBox Mediciones_textbox_cadera;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label Mediciones_label_cadera;
+        private System.Windows.Forms.Label Mediciones_label_valor_bmi;
+        private System.Windows.Forms.Label Mediciones_label_estado_bmi;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label Mediciones_label_ultimas_mediciones;
+        private System.Windows.Forms.Button Mediciones_button_guardar_mediciones;
         private System.Windows.Forms.Label Mediciones_lbl_valorBmiObtenido;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Mediciones_label_estado_bfp;
         private System.Windows.Forms.Label Mediciones_lbl_estadoBmiObtenido;
         private System.Windows.Forms.Label Mediciones_lbl_estadoBfpObtenido;
         private System.Windows.Forms.Label Mediciones_lbl_valorBfpObtenido;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label Mediciones_label_valor_bfp;
     }
 }

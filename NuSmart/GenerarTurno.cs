@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class GenerarTurno : Form
+    public partial class GenerarTurno : FormObserver
     {
         Paciente paciente;
         DateTime fechaSeleccionada;
@@ -25,15 +25,23 @@ namespace NuSmart
             this.bllTurno = new BLLTurno();
             this.preferencia = "manana";
             InitializeComponent();
+            setup();
             monthCalendar1.SetDate(DateTime.Now);
 
         }
 
         private void GenerarTurno_Load(object sender, EventArgs e)
         {
-            label3.Text = paciente.Nombre + " " + paciente.Apellido;
-            preferencia = "manana";
-            buscarSugerencias();
+            try
+            {
+                label3.Text = paciente.Nombre + " " + paciente.Apellido;
+                preferencia = "manana";
+                buscarSugerencias();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+            }
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -57,8 +65,7 @@ namespace NuSmart
                 comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
             }catch(Exception ex)
             {
-                MessageBox.Show("AgregarTurno_messagebox_errorTurno");
-                MessageBox.Show("Ocurrio un error con el turno seleccionado");
+                MessageBox.Show("GenerarTurno_messagebox_errorTurno");
             }
         }
 
@@ -76,9 +83,15 @@ namespace NuSmart
 
         private void buscarSugerencias()
         {
-            comboBox1.SelectedIndex = -1;
-            comboBox1.DataSource = null;
-            comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
+            try
+            {
+                comboBox1.SelectedIndex = -1;
+                comboBox1.DataSource = null;
+                comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

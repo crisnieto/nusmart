@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MisTurnos));
-            this.label1 = new System.Windows.Forms.Label();
+            this.MisTurnos_label_nutricionista = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label2 = new System.Windows.Forms.Label();
+            this.MisTurnos_label_titulo = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.MisTurnos_button_iniciar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // MisTurnos_label_nutricionista
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.MisTurnos_label_nutricionista.AutoSize = true;
+            this.MisTurnos_label_nutricionista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MisTurnos_label_nutricionista.Location = new System.Drawing.Point(12, 9);
+            this.MisTurnos_label_nutricionista.Name = "MisTurnos_label_nutricionista";
+            this.MisTurnos_label_nutricionista.Size = new System.Drawing.Size(51, 20);
+            this.MisTurnos_label_nutricionista.TabIndex = 0;
+            this.MisTurnos_label_nutricionista.Text = "label1";
             // 
             // monthCalendar1
             // 
@@ -53,14 +53,14 @@
             this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
-            // label2
+            // MisTurnos_label_titulo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(282, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mis turnos:";
+            this.MisTurnos_label_titulo.AutoSize = true;
+            this.MisTurnos_label_titulo.Location = new System.Drawing.Point(282, 38);
+            this.MisTurnos_label_titulo.Name = "MisTurnos_label_titulo";
+            this.MisTurnos_label_titulo.Size = new System.Drawing.Size(58, 13);
+            this.MisTurnos_label_titulo.TabIndex = 2;
+            this.MisTurnos_label_titulo.Text = "Mis turnos:";
             // 
             // listBox1
             // 
@@ -90,9 +90,9 @@
             this.ClientSize = new System.Drawing.Size(560, 258);
             this.Controls.Add(this.MisTurnos_button_iniciar);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.MisTurnos_label_titulo);
             this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.MisTurnos_label_nutricionista);
             this.Name = "MisTurnos";
             this.Text = "MIsTurnos";
             this.Load += new System.EventHandler(this.MIsTurnos_Load);
@@ -103,9 +103,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label MisTurnos_label_nutricionista;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label MisTurnos_label_titulo;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button MisTurnos_button_iniciar;
     }

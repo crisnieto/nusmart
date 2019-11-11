@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class Mediciones : Form
+    public partial class Mediciones : FormObserver
     {
         Turno turno;
         BLLMedicion bllMedicion;
@@ -23,14 +23,22 @@ namespace NuSmart
             bllMedicion = new BLLMedicion();
             bllTratamiento = new BLLTratamiento();
             InitializeComponent();
+            setup();
         }
 
         private void Mediciones_Load(object sender, EventArgs e)
         {
-            Mediciones_label_paciente.Text = turno.Paciente.ToString();
-            Mediciones_textbox_edad.Text = turno.Paciente.Edad().ToString();
-            Mediciones_textbox_motivoConsulta.Text = turno.Motivo;
-            conseguirMedicionesAnteriores();
+            try
+            {
+                Mediciones_label_paciente.Text = turno.Paciente.ToString();
+                Mediciones_textbox_edad.Text = turno.Paciente.Edad().ToString();
+                Mediciones_textbox_motivoConsulta.Text = turno.Motivo;
+                conseguirMedicionesAnteriores();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void conseguirMedicionesAnteriores()
@@ -48,7 +56,7 @@ namespace NuSmart
                 Mediciones_lbl_estadoBmiObtenido.Text = medicionActual.CategoriaBmi;
             }catch(Exception ex)
             {
-                MessageBox.Show("Error: Verifique los valores introducidos");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
             }
         }
 
@@ -66,12 +74,17 @@ namespace NuSmart
            
             medicion.Cintura = Convert.ToDouble(Mediciones_textbox_cintura.Text);
             medicion.Cadera = Convert.ToDouble(Mediciones_textbox_cadera.Text);
-           
+
+            if(!(medicion.Peso > 0 && medicion.Altura > 0 && medicion.Cintura >= 0 && medicion.Cadera >= 0))
+            {
+                throw new Exception();
+            }
+
             return medicion;
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {          
             try
             {
                 Medicion medicionActual = obtenerMedicion();
@@ -81,7 +94,7 @@ namespace NuSmart
                 Mediciones_lbl_valorBfpObtenido.Text = medicionActual.Bfp.ToString();
             }catch(Exception ex)
             {
-                MessageBox.Show("Error: Verifique los valores introducidos");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
             }
         }
 
@@ -111,10 +124,10 @@ namespace NuSmart
 
             }catch(Exception ex)
             {
-                MessageBox.Show("Error: Verifique los valores introducidos");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
             }
 
-           
+
         }
     }
 }

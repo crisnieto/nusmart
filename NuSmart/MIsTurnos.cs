@@ -12,7 +12,7 @@ using NuSmart.BE;
 
 namespace NuSmart
 {
-    public partial class MisTurnos : Form
+    public partial class MisTurnos : FormObserver
     {
         BLLTurno bllTurnos;
         BLLNutricionista bllNutricionista;
@@ -22,41 +22,60 @@ namespace NuSmart
         {
             bllTurnos = new BLLTurno();
             bllNutricionista = new BLLNutricionista();
-
             InitializeComponent();
+            setup();
         }
 
         private void MIsTurnos_Load(object sender, EventArgs e)
         {
-            monthCalendar1.SetDate(DateTime.Now);
-            label1.Text = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.Id).ToString();
-            listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+            try
+            {
+                monthCalendar1.SetDate(DateTime.Now);
+                MisTurnos_label_nutricionista.Text = bllNutricionista.conseguir(Sesion.Instancia().UsuarioActual.Id).ToString();
+                listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+            }
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+            try
+            {
+                listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count > 0 && turnoSeleccionado != null)
+            try
             {
-                if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+                if (listBox1.SelectedItems.Count > 0 && turnoSeleccionado != null)
                 {
-                    TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
-                    tratamientoActual.MdiParent = this.ParentForm;
-                    tratamientoActual.Show();
+                    if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+                    {
+                        TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
+                        tratamientoActual.MdiParent = this.ParentForm;
+                        tratamientoActual.Show();
+                    }
+                    else
+                    {
+                        Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
+                        medicionesForm.MdiParent = this.ParentForm;
+                        medicionesForm.Show();
+                    }
                 }
                 else
                 {
-                    Mediciones medicionesForm = new Mediciones(turnoSeleccionado);
-                    medicionesForm.MdiParent = this.ParentForm;
-                    medicionesForm.Show();
+                    MessageBox.Show(NuSmartMessage.formatearMensaje("MisTurnos_messagebox_seleccione_turno"));
                 }
-            }else
+            }catch(Exception ex)
             {
-                MessageBox.Show("Seleccione un Turno");
+                MessageBox.Show(ex.Message);
             }
 
 
@@ -64,13 +83,20 @@ namespace NuSmart
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.Items.Count > 0)
+            try
             {
-                MisTurnos_button_iniciar.Enabled = true;
-                turnoSeleccionado = (Turno)listBox1.SelectedItem;
-            }else
+                if (listBox1.Items.Count > 0)
+                {
+                    MisTurnos_button_iniciar.Enabled = true;
+                    turnoSeleccionado = (Turno)listBox1.SelectedItem;
+                }
+                else
+                {
+                    turnoSeleccionado = null;
+                }
+            }catch(Exception ex)
             {
-                turnoSeleccionado = null;
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -11,15 +11,23 @@ namespace NuSmart.BLL
     public class BLLMedicion
     {
         DALMedicion dalMedicion;
+        BLLBitacora bllBitacora;
 
         public BLLMedicion()
         {
             dalMedicion = new DALMedicion();
+            bllBitacora = new BLLBitacora();
         }
 
         public List<Medicion> conseguirMediciones(Paciente paciente)
         {
-            return dalMedicion.conseguirMediciones(paciente);
+            try {
+                return dalMedicion.conseguirMediciones(paciente);
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda Mediciones", "Ocurrio un error en la busqueda de mediciones: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda"));
+            }
         }
 
         public Medicion conseguirUltimaMedicion(Paciente paciente)
@@ -56,85 +64,104 @@ namespace NuSmart.BLL
 
         public void calcularBMI(Medicion medicion)
         {
+            try
+            {
+                medicion.Bmi = Math.Round((medicion.Peso / (medicion.Altura * medicion.Altura)), 1);
+                medicion.CategoriaBmi = calcularCategoriaBMI(medicion.Bmi);
+                bllBitacora.crearNuevaBitacora("Calculo BMI", "Calculo de BMI realizado por el usuario id: " + Sesion.Instancia().UsuarioActual.Id, Criticidad.Alta);
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Calculo BMI", "Ocurrio un error en el calculo: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Mediciones_error_calculo_bmi"));
+            }
 
-            medicion.Bmi = Math.Round((medicion.Peso / (medicion.Altura * medicion.Altura)), 1);
-
-            medicion.CategoriaBmi = calcularCategoriaBMI(medicion.Bmi);
 
         }
 
         public void calcularBFP(Medicion medicion, int edad, string sexo)
         {
-            calcularBMI(medicion);
-            double porcentaje;
-
-            int multiplicadorSexo = sexo == "M" ? 1 : 0;
-
-
-            if (edad >= 18)
+            try
             {
-                porcentaje = 1.20 * medicion.Bmi + (0.23 * edad) - (10.8 * multiplicadorSexo) - 5.4 ;
+                calcularBMI(medicion);
+                double porcentaje;
+
+                int multiplicadorSexo = sexo == "M" ? 1 : 0;
+
+
+                if (edad >= 18)
+                {
+                    porcentaje = 1.20 * medicion.Bmi + (0.23 * edad) - (10.8 * multiplicadorSexo) - 5.4;
+                }
+                else
+                {
+                    porcentaje = (1.51 * medicion.Bmi) - (0.70 * edad) - (3.6 * multiplicadorSexo) + 1.4;
+
+                }
+
+                if (sexo == "M")
+                {
+                    if (porcentaje < 18)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Atletico");
+                    }
+                    else if (porcentaje >= 18 && porcentaje < 25)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Sano");
+                    }
+                    else if (porcentaje >= 25)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Grasa_Excedida");
+                    }
+                }
+                else if (sexo == "F")
+                {
+
+                    if (porcentaje < 25)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Atletico");
+                    }
+                    else if (porcentaje >= 25 && porcentaje < 32)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Sano");
+                    }
+                    else if (porcentaje >= 32)
+                    {
+                        medicion.CategoriaBfp = NuSmartMessage.formatearMensaje("Mediciones_BFP_Grasa_Excedida");
+                    }
+                }
+                medicion.Bfp = porcentaje;
+                bllBitacora.crearNuevaBitacora("Calculo BMI", "Calculo de BFP realizado por el usuario id: " + Sesion.Instancia().UsuarioActual.Id, Criticidad.Alta);
             }
-            else
+            catch (Exception ex)
             {
-                porcentaje = (1.51 * medicion.Bmi) - (0.70 * edad) - (3.6 * multiplicadorSexo) + 1.4;
-
+                bllBitacora.crearNuevaBitacora("Calculo BFP", "Ocurrio un error en el calculo: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Mediciones_error_calculo_bfp"));
             }
 
-            if (sexo == "M")
-            {
-                if(porcentaje < 18 )
-                {
-                    medicion.CategoriaBfp = "Atletico";
-                }
-                else if(porcentaje >= 18 && porcentaje < 25)
-                {
-                    medicion.CategoriaBfp = "Parmetros Sanos";
-                }
-                else if(porcentaje >= 25)
-                {
-                    medicion.CategoriaBfp = "Excedido en Grasa Corporal";
-                }
-            }else if (sexo == "F")
-            {
-              
-                if (porcentaje < 25)
-                {
-                    medicion.CategoriaBfp = "Atletico";
-                }
-                else if (porcentaje >= 25 && porcentaje < 32)
-                {
-                    medicion.CategoriaBfp = "Parmetros Sanos";
-                }
-                else if (porcentaje >= 32)
-                {
-                    medicion.CategoriaBfp ="Excedido en Grasa Corporal";
-                }
-            }
-            medicion.Bfp = porcentaje;
         }
 
         public string calcularCategoriaBMI(double indiceBMI)
         {
             if (esBajoDePeso(indiceBMI))
             {
-                return "Bajo de Peso";
+                return NuSmartMessage.formatearMensaje("Mediciones_BMI_Bajo");
             }
             else if(esSano(indiceBMI)){
-                return "Sano";
+                return NuSmartMessage.formatearMensaje("Mediciones_BMI_Sano");
             }
             else if (esSobrepeso(indiceBMI))
             {
-                return "Sobrepeso";
+                return NuSmartMessage.formatearMensaje("Mediciones_BMI_Sobrepeso");
             }
             else if (esObeso(indiceBMI))
             {
-                return "Obesidad";
+                return NuSmartMessage.formatearMensaje("Mediciones_BMI_Obesidad");
             }
             else if (esExtremadamenteObeso(indiceBMI)){
-                return "Extremadamente Obeso";
+                return NuSmartMessage.formatearMensaje("Mediciones_BMI_ExtremoObeso");
             }
-            return null;
+            return "";
         }
 
         public bool esBajoDePeso(double indice)

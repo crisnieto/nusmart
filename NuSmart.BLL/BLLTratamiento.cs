@@ -12,11 +12,13 @@ namespace NuSmart.BLL
     {
         DALTratamiento dalTratamiento;
         BLLRutina bllRutina;
+        BLLBitacora bllBitacora;
 
         public BLLTratamiento()
         {
             dalTratamiento = new DALTratamiento();
             bllRutina = new BLLRutina();
+            bllBitacora = new BLLBitacora();
         }
 
         public void guardar(Tratamiento tratamiento)
@@ -52,7 +54,14 @@ namespace NuSmart.BLL
 
         public bool existeTratamientoActivo(Paciente paciente)
         {
-            return obtenerTratamientoActivo(paciente) != null;
+            try
+            {
+                return obtenerTratamientoActivo(paciente) != null;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda de Tratamiento", "Ocurrio un error buscando tratamiento: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Tratamiento_error_buscar_activo"));
+            }
         }
 
         public void agregarRutina(Tratamiento tratamiento)
