@@ -125,6 +125,7 @@ namespace NuSmart
             }catch(Exception ex)
             {
                 MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
+                MessageBox.Show(ex.Message);
             }
 
 

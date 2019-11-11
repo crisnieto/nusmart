@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TratamientoActual));
-            this.label1 = new System.Windows.Forms.Label();
-            this.TratamientoActual_button_nuevaMedicion = new System.Windows.Forms.Button();
+            this.TratamientoActual_label_resumen = new System.Windows.Forms.Label();
+            this.TratamientoActual_button_nueva_medicion = new System.Windows.Forms.Button();
             this.TratamientoActual_button_proyecciones = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.TratamientoActual_label_dieta_actual = new System.Windows.Forms.Label();
             this.TratamientoActual_listbox_dias = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_desayuno = new System.Windows.Forms.Label();
             this.agregarDieta_textbox_desayuno = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_colacion = new System.Windows.Forms.Label();
             this.agregarDieta_textbox_colacion = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_almuerzo = new System.Windows.Forms.Label();
             this.agregarDieta_textbox_almuerzo = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_merienda = new System.Windows.Forms.Label();
             this.agregarDieta_textbox_merienda = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_cena = new System.Windows.Forms.Label();
             this.agregarDieta_textbox_cena = new System.Windows.Forms.TextBox();
-            this.TratamientoActual_button_manejarEjercicios = new System.Windows.Forms.Button();
+            this.TratamientoActual_button_manejar_ejercicios = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
+            this.TratamientoActual_label_ultima_medicion = new System.Windows.Forms.Label();
             this.TratamientoActual_lbl_dietaActual = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.AgregarDieta_label_calorias_totales = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_calorias_dia = new System.Windows.Forms.Label();
+            this.AgregarDieta_button_finalizar = new System.Windows.Forms.Button();
             this.AgregarDieta_textbox_cantidad_calorias_totales = new System.Windows.Forms.Label();
             this.AgregarDieta_textbox_cantidad_calorias_dia = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_domingo = new System.Windows.Forms.TextBox();
@@ -60,14 +60,14 @@
             this.Ejercicios_textbox_miercoles = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_jueves = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_viernes = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_lunes = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_martes = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_miercoles = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_jueves = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_viernes = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_sabado = new System.Windows.Forms.Label();
+            this.AgregarDieta_dia_domingo = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_rutina_actual = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_lunes_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_martes_duracion = new System.Windows.Forms.TextBox();
@@ -76,41 +76,41 @@
             this.Ejercicios_textbox_viernes_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_sabado_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_domingo_duracion = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.Tratamiento_label_calorias_totales_quemadas = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_calorias = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_duracion = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_lunes_calorias = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.AgregarDieta_label_calorias = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_martes_calorias = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_miercoles_calorias = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_jueves_calorias = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_viernes_calorias = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_sabado_calorias = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_domingo_calorias = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.TratamientoActual_label_primera_medicion = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // TratamientoActual_label_resumen
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Resumen del Paciente";
+            this.TratamientoActual_label_resumen.AutoSize = true;
+            this.TratamientoActual_label_resumen.Location = new System.Drawing.Point(13, 9);
+            this.TratamientoActual_label_resumen.Name = "TratamientoActual_label_resumen";
+            this.TratamientoActual_label_resumen.Size = new System.Drawing.Size(114, 13);
+            this.TratamientoActual_label_resumen.TabIndex = 0;
+            this.TratamientoActual_label_resumen.Text = "Resumen del Paciente";
             // 
-            // TratamientoActual_button_nuevaMedicion
+            // TratamientoActual_button_nueva_medicion
             // 
-            this.TratamientoActual_button_nuevaMedicion.Location = new System.Drawing.Point(15, 196);
-            this.TratamientoActual_button_nuevaMedicion.Name = "TratamientoActual_button_nuevaMedicion";
-            this.TratamientoActual_button_nuevaMedicion.Size = new System.Drawing.Size(110, 37);
-            this.TratamientoActual_button_nuevaMedicion.TabIndex = 6;
-            this.TratamientoActual_button_nuevaMedicion.Text = "Nueva Medicion";
-            this.TratamientoActual_button_nuevaMedicion.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_nuevaMedicion.Click += new System.EventHandler(this.button3_Click);
+            this.TratamientoActual_button_nueva_medicion.Location = new System.Drawing.Point(15, 196);
+            this.TratamientoActual_button_nueva_medicion.Name = "TratamientoActual_button_nueva_medicion";
+            this.TratamientoActual_button_nueva_medicion.Size = new System.Drawing.Size(110, 37);
+            this.TratamientoActual_button_nueva_medicion.TabIndex = 6;
+            this.TratamientoActual_button_nueva_medicion.Text = "Nueva Medicion";
+            this.TratamientoActual_button_nueva_medicion.UseVisualStyleBackColor = true;
+            this.TratamientoActual_button_nueva_medicion.Click += new System.EventHandler(this.button3_Click);
             // 
             // TratamientoActual_button_proyecciones
             // 
@@ -122,14 +122,14 @@
             this.TratamientoActual_button_proyecciones.UseVisualStyleBackColor = true;
             this.TratamientoActual_button_proyecciones.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
+            // TratamientoActual_label_dieta_actual
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 236);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Dieta Actual";
+            this.TratamientoActual_label_dieta_actual.AutoSize = true;
+            this.TratamientoActual_label_dieta_actual.Location = new System.Drawing.Point(13, 236);
+            this.TratamientoActual_label_dieta_actual.Name = "TratamientoActual_label_dieta_actual";
+            this.TratamientoActual_label_dieta_actual.Size = new System.Drawing.Size(65, 13);
+            this.TratamientoActual_label_dieta_actual.TabIndex = 7;
+            this.TratamientoActual_label_dieta_actual.Text = "Dieta Actual";
             // 
             // TratamientoActual_listbox_dias
             // 
@@ -140,14 +140,14 @@
             this.TratamientoActual_listbox_dias.TabIndex = 16;
             this.TratamientoActual_listbox_dias.SelectedIndexChanged += new System.EventHandler(this.TratamientoActual_listbox_dias_SelectedIndexChanged);
             // 
-            // label6
+            // AgregarDieta_label_desayuno
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(135, 252);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Desayuno";
+            this.AgregarDieta_label_desayuno.AutoSize = true;
+            this.AgregarDieta_label_desayuno.Location = new System.Drawing.Point(135, 252);
+            this.AgregarDieta_label_desayuno.Name = "AgregarDieta_label_desayuno";
+            this.AgregarDieta_label_desayuno.Size = new System.Drawing.Size(55, 13);
+            this.AgregarDieta_label_desayuno.TabIndex = 17;
+            this.AgregarDieta_label_desayuno.Text = "Desayuno";
             // 
             // agregarDieta_textbox_desayuno
             // 
@@ -156,14 +156,14 @@
             this.agregarDieta_textbox_desayuno.Size = new System.Drawing.Size(135, 20);
             this.agregarDieta_textbox_desayuno.TabIndex = 18;
             // 
-            // label7
+            // AgregarDieta_label_colacion
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(135, 291);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Colacion";
+            this.AgregarDieta_label_colacion.AutoSize = true;
+            this.AgregarDieta_label_colacion.Location = new System.Drawing.Point(135, 291);
+            this.AgregarDieta_label_colacion.Name = "AgregarDieta_label_colacion";
+            this.AgregarDieta_label_colacion.Size = new System.Drawing.Size(48, 13);
+            this.AgregarDieta_label_colacion.TabIndex = 19;
+            this.AgregarDieta_label_colacion.Text = "Colacion";
             // 
             // agregarDieta_textbox_colacion
             // 
@@ -172,14 +172,14 @@
             this.agregarDieta_textbox_colacion.Size = new System.Drawing.Size(135, 20);
             this.agregarDieta_textbox_colacion.TabIndex = 20;
             // 
-            // label8
+            // AgregarDieta_label_almuerzo
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(135, 330);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Almuerzo";
+            this.AgregarDieta_label_almuerzo.AutoSize = true;
+            this.AgregarDieta_label_almuerzo.Location = new System.Drawing.Point(135, 330);
+            this.AgregarDieta_label_almuerzo.Name = "AgregarDieta_label_almuerzo";
+            this.AgregarDieta_label_almuerzo.Size = new System.Drawing.Size(50, 13);
+            this.AgregarDieta_label_almuerzo.TabIndex = 21;
+            this.AgregarDieta_label_almuerzo.Text = "Almuerzo";
             // 
             // agregarDieta_textbox_almuerzo
             // 
@@ -188,14 +188,14 @@
             this.agregarDieta_textbox_almuerzo.Size = new System.Drawing.Size(135, 20);
             this.agregarDieta_textbox_almuerzo.TabIndex = 22;
             // 
-            // label9
+            // AgregarDieta_label_merienda
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(135, 369);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 13);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Merienda";
+            this.AgregarDieta_label_merienda.AutoSize = true;
+            this.AgregarDieta_label_merienda.Location = new System.Drawing.Point(135, 369);
+            this.AgregarDieta_label_merienda.Name = "AgregarDieta_label_merienda";
+            this.AgregarDieta_label_merienda.Size = new System.Drawing.Size(51, 13);
+            this.AgregarDieta_label_merienda.TabIndex = 23;
+            this.AgregarDieta_label_merienda.Text = "Merienda";
             // 
             // agregarDieta_textbox_merienda
             // 
@@ -204,14 +204,14 @@
             this.agregarDieta_textbox_merienda.Size = new System.Drawing.Size(135, 20);
             this.agregarDieta_textbox_merienda.TabIndex = 24;
             // 
-            // label10
+            // AgregarDieta_label_cena
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(135, 408);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Cena";
+            this.AgregarDieta_label_cena.AutoSize = true;
+            this.AgregarDieta_label_cena.Location = new System.Drawing.Point(135, 408);
+            this.AgregarDieta_label_cena.Name = "AgregarDieta_label_cena";
+            this.AgregarDieta_label_cena.Size = new System.Drawing.Size(32, 13);
+            this.AgregarDieta_label_cena.TabIndex = 25;
+            this.AgregarDieta_label_cena.Text = "Cena";
             // 
             // agregarDieta_textbox_cena
             // 
@@ -220,15 +220,15 @@
             this.agregarDieta_textbox_cena.Size = new System.Drawing.Size(135, 20);
             this.agregarDieta_textbox_cena.TabIndex = 26;
             // 
-            // TratamientoActual_button_manejarEjercicios
+            // TratamientoActual_button_manejar_ejercicios
             // 
-            this.TratamientoActual_button_manejarEjercicios.Location = new System.Drawing.Point(311, 196);
-            this.TratamientoActual_button_manejarEjercicios.Name = "TratamientoActual_button_manejarEjercicios";
-            this.TratamientoActual_button_manejarEjercicios.Size = new System.Drawing.Size(110, 37);
-            this.TratamientoActual_button_manejarEjercicios.TabIndex = 27;
-            this.TratamientoActual_button_manejarEjercicios.Text = "Manejar Ejercicios";
-            this.TratamientoActual_button_manejarEjercicios.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_manejarEjercicios.Click += new System.EventHandler(this.button2_Click);
+            this.TratamientoActual_button_manejar_ejercicios.Location = new System.Drawing.Point(311, 196);
+            this.TratamientoActual_button_manejar_ejercicios.Name = "TratamientoActual_button_manejar_ejercicios";
+            this.TratamientoActual_button_manejar_ejercicios.Size = new System.Drawing.Size(110, 37);
+            this.TratamientoActual_button_manejar_ejercicios.TabIndex = 27;
+            this.TratamientoActual_button_manejar_ejercicios.Text = "Manejar Ejercicios";
+            this.TratamientoActual_button_manejar_ejercicios.UseVisualStyleBackColor = true;
+            this.TratamientoActual_button_manejar_ejercicios.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
@@ -238,14 +238,14 @@
             this.dataGridView1.Size = new System.Drawing.Size(407, 67);
             this.dataGridView1.TabIndex = 28;
             // 
-            // label2
+            // TratamientoActual_label_ultima_medicion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(278, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Ultima Medicion del Paciente";
+            this.TratamientoActual_label_ultima_medicion.AutoSize = true;
+            this.TratamientoActual_label_ultima_medicion.Location = new System.Drawing.Point(278, 23);
+            this.TratamientoActual_label_ultima_medicion.Name = "TratamientoActual_label_ultima_medicion";
+            this.TratamientoActual_label_ultima_medicion.Size = new System.Drawing.Size(144, 13);
+            this.TratamientoActual_label_ultima_medicion.TabIndex = 29;
+            this.TratamientoActual_label_ultima_medicion.Text = "Ultima Medicion del Paciente";
             // 
             // TratamientoActual_lbl_dietaActual
             // 
@@ -256,33 +256,33 @@
             this.TratamientoActual_lbl_dietaActual.TabIndex = 30;
             this.TratamientoActual_lbl_dietaActual.Text = "label3";
             // 
-            // label4
+            // AgregarDieta_label_calorias_totales
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(288, 252);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Calorias Totales:";
+            this.AgregarDieta_label_calorias_totales.AutoSize = true;
+            this.AgregarDieta_label_calorias_totales.Location = new System.Drawing.Point(288, 252);
+            this.AgregarDieta_label_calorias_totales.Name = "AgregarDieta_label_calorias_totales";
+            this.AgregarDieta_label_calorias_totales.Size = new System.Drawing.Size(85, 13);
+            this.AgregarDieta_label_calorias_totales.TabIndex = 31;
+            this.AgregarDieta_label_calorias_totales.Text = "Calorias Totales:";
             // 
-            // label11
+            // AgregarDieta_label_calorias_dia
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(288, 275);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Calorias del Dia:";
+            this.AgregarDieta_label_calorias_dia.AutoSize = true;
+            this.AgregarDieta_label_calorias_dia.Location = new System.Drawing.Point(288, 275);
+            this.AgregarDieta_label_calorias_dia.Name = "AgregarDieta_label_calorias_dia";
+            this.AgregarDieta_label_calorias_dia.Size = new System.Drawing.Size(83, 13);
+            this.AgregarDieta_label_calorias_dia.TabIndex = 32;
+            this.AgregarDieta_label_calorias_dia.Text = "Calorias del Dia:";
             // 
-            // button5
+            // AgregarDieta_button_finalizar
             // 
-            this.button5.Location = new System.Drawing.Point(291, 385);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 59);
-            this.button5.TabIndex = 34;
-            this.button5.Text = "Finalizar Tratamiento";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.AgregarDieta_button_finalizar.Location = new System.Drawing.Point(291, 385);
+            this.AgregarDieta_button_finalizar.Name = "AgregarDieta_button_finalizar";
+            this.AgregarDieta_button_finalizar.Size = new System.Drawing.Size(132, 59);
+            this.AgregarDieta_button_finalizar.TabIndex = 34;
+            this.AgregarDieta_button_finalizar.Text = "Finalizar Tratamiento";
+            this.AgregarDieta_button_finalizar.UseVisualStyleBackColor = true;
+            this.AgregarDieta_button_finalizar.Click += new System.EventHandler(this.button5_Click);
             // 
             // AgregarDieta_textbox_cantidad_calorias_totales
             // 
@@ -351,77 +351,77 @@
             this.Ejercicios_textbox_viernes.Size = new System.Drawing.Size(109, 20);
             this.Ejercicios_textbox_viernes.TabIndex = 100;
             // 
-            // label3
+            // AgregarDieta_dia_lunes
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 494);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Lunes";
+            this.AgregarDieta_dia_lunes.AutoSize = true;
+            this.AgregarDieta_dia_lunes.Location = new System.Drawing.Point(15, 494);
+            this.AgregarDieta_dia_lunes.Name = "AgregarDieta_dia_lunes";
+            this.AgregarDieta_dia_lunes.Size = new System.Drawing.Size(36, 13);
+            this.AgregarDieta_dia_lunes.TabIndex = 110;
+            this.AgregarDieta_dia_lunes.Text = "Lunes";
             // 
-            // label12
+            // AgregarDieta_dia_martes
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 520);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 13);
-            this.label12.TabIndex = 111;
-            this.label12.Text = "Martes";
+            this.AgregarDieta_dia_martes.AutoSize = true;
+            this.AgregarDieta_dia_martes.Location = new System.Drawing.Point(15, 520);
+            this.AgregarDieta_dia_martes.Name = "AgregarDieta_dia_martes";
+            this.AgregarDieta_dia_martes.Size = new System.Drawing.Size(39, 13);
+            this.AgregarDieta_dia_martes.TabIndex = 111;
+            this.AgregarDieta_dia_martes.Text = "Martes";
             // 
-            // label13
+            // AgregarDieta_dia_miercoles
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 546);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 112;
-            this.label13.Text = "Miercoles";
+            this.AgregarDieta_dia_miercoles.AutoSize = true;
+            this.AgregarDieta_dia_miercoles.Location = new System.Drawing.Point(15, 546);
+            this.AgregarDieta_dia_miercoles.Name = "AgregarDieta_dia_miercoles";
+            this.AgregarDieta_dia_miercoles.Size = new System.Drawing.Size(52, 13);
+            this.AgregarDieta_dia_miercoles.TabIndex = 112;
+            this.AgregarDieta_dia_miercoles.Text = "Miercoles";
             // 
-            // label14
+            // AgregarDieta_dia_jueves
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 572);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 113;
-            this.label14.Text = "Jueves";
+            this.AgregarDieta_dia_jueves.AutoSize = true;
+            this.AgregarDieta_dia_jueves.Location = new System.Drawing.Point(15, 572);
+            this.AgregarDieta_dia_jueves.Name = "AgregarDieta_dia_jueves";
+            this.AgregarDieta_dia_jueves.Size = new System.Drawing.Size(41, 13);
+            this.AgregarDieta_dia_jueves.TabIndex = 113;
+            this.AgregarDieta_dia_jueves.Text = "Jueves";
             // 
-            // label15
+            // AgregarDieta_dia_viernes
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(15, 598);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 13);
-            this.label15.TabIndex = 114;
-            this.label15.Text = "Viernes";
+            this.AgregarDieta_dia_viernes.AutoSize = true;
+            this.AgregarDieta_dia_viernes.Location = new System.Drawing.Point(15, 598);
+            this.AgregarDieta_dia_viernes.Name = "AgregarDieta_dia_viernes";
+            this.AgregarDieta_dia_viernes.Size = new System.Drawing.Size(42, 13);
+            this.AgregarDieta_dia_viernes.TabIndex = 114;
+            this.AgregarDieta_dia_viernes.Text = "Viernes";
             // 
-            // label16
+            // AgregarDieta_dia_sabado
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 624);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 13);
-            this.label16.TabIndex = 115;
-            this.label16.Text = "Sabado";
+            this.AgregarDieta_dia_sabado.AutoSize = true;
+            this.AgregarDieta_dia_sabado.Location = new System.Drawing.Point(15, 624);
+            this.AgregarDieta_dia_sabado.Name = "AgregarDieta_dia_sabado";
+            this.AgregarDieta_dia_sabado.Size = new System.Drawing.Size(44, 13);
+            this.AgregarDieta_dia_sabado.TabIndex = 115;
+            this.AgregarDieta_dia_sabado.Text = "Sabado";
             // 
-            // label17
+            // AgregarDieta_dia_domingo
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(15, 650);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 13);
-            this.label17.TabIndex = 116;
-            this.label17.Text = "Domingo";
+            this.AgregarDieta_dia_domingo.AutoSize = true;
+            this.AgregarDieta_dia_domingo.Location = new System.Drawing.Point(15, 650);
+            this.AgregarDieta_dia_domingo.Name = "AgregarDieta_dia_domingo";
+            this.AgregarDieta_dia_domingo.Size = new System.Drawing.Size(49, 13);
+            this.AgregarDieta_dia_domingo.TabIndex = 116;
+            this.AgregarDieta_dia_domingo.Text = "Domingo";
             // 
-            // label18
+            // AgregarDieta_label_rutina_actual
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(14, 454);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(74, 13);
-            this.label18.TabIndex = 117;
-            this.label18.Text = "Rutina Actual:";
+            this.AgregarDieta_label_rutina_actual.AutoSize = true;
+            this.AgregarDieta_label_rutina_actual.Location = new System.Drawing.Point(14, 454);
+            this.AgregarDieta_label_rutina_actual.Name = "AgregarDieta_label_rutina_actual";
+            this.AgregarDieta_label_rutina_actual.Size = new System.Drawing.Size(74, 13);
+            this.AgregarDieta_label_rutina_actual.TabIndex = 117;
+            this.AgregarDieta_label_rutina_actual.Text = "Rutina Actual:";
             // 
             // label19
             // 
@@ -481,14 +481,14 @@
             this.Ejercicios_textbox_domingo_duracion.Size = new System.Drawing.Size(52, 20);
             this.Ejercicios_textbox_domingo_duracion.TabIndex = 125;
             // 
-            // label20
+            // Tratamiento_label_calorias_totales_quemadas
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(316, 467);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(81, 13);
-            this.label20.TabIndex = 126;
-            this.label20.Text = "Calorias totales:";
+            this.Tratamiento_label_calorias_totales_quemadas.AutoSize = true;
+            this.Tratamiento_label_calorias_totales_quemadas.Location = new System.Drawing.Point(316, 467);
+            this.Tratamiento_label_calorias_totales_quemadas.Name = "Tratamiento_label_calorias_totales_quemadas";
+            this.Tratamiento_label_calorias_totales_quemadas.Size = new System.Drawing.Size(81, 13);
+            this.Tratamiento_label_calorias_totales_quemadas.TabIndex = 126;
+            this.Tratamiento_label_calorias_totales_quemadas.Text = "Calorias totales:";
             // 
             // Ejercicios_textbox_calorias
             // 
@@ -497,14 +497,14 @@
             this.Ejercicios_textbox_calorias.Size = new System.Drawing.Size(105, 20);
             this.Ejercicios_textbox_calorias.TabIndex = 127;
             // 
-            // label21
+            // AgregarDieta_label_duracion
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(194, 467);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(50, 13);
-            this.label21.TabIndex = 128;
-            this.label21.Text = "Duracion";
+            this.AgregarDieta_label_duracion.AutoSize = true;
+            this.AgregarDieta_label_duracion.Location = new System.Drawing.Point(194, 467);
+            this.AgregarDieta_label_duracion.Name = "AgregarDieta_label_duracion";
+            this.AgregarDieta_label_duracion.Size = new System.Drawing.Size(50, 13);
+            this.AgregarDieta_label_duracion.TabIndex = 128;
+            this.AgregarDieta_label_duracion.Text = "Duracion";
             // 
             // Ejercicios_textbox_lunes_calorias
             // 
@@ -513,14 +513,14 @@
             this.Ejercicios_textbox_lunes_calorias.Size = new System.Drawing.Size(52, 20);
             this.Ejercicios_textbox_lunes_calorias.TabIndex = 129;
             // 
-            // label22
+            // AgregarDieta_label_calorias
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(252, 467);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 13);
-            this.label22.TabIndex = 130;
-            this.label22.Text = "Calorias";
+            this.AgregarDieta_label_calorias.AutoSize = true;
+            this.AgregarDieta_label_calorias.Location = new System.Drawing.Point(252, 467);
+            this.AgregarDieta_label_calorias.Name = "AgregarDieta_label_calorias";
+            this.AgregarDieta_label_calorias.Size = new System.Drawing.Size(44, 13);
+            this.AgregarDieta_label_calorias.TabIndex = 130;
+            this.AgregarDieta_label_calorias.Text = "Calorias";
             // 
             // Ejercicios_textbox_martes_calorias
             // 
@@ -564,14 +564,14 @@
             this.Ejercicios_textbox_domingo_calorias.Size = new System.Drawing.Size(52, 20);
             this.Ejercicios_textbox_domingo_calorias.TabIndex = 136;
             // 
-            // label23
+            // TratamientoActual_label_primera_medicion
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(238, 109);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(183, 13);
-            this.label23.TabIndex = 138;
-            this.label23.Text = "Primera medicion al iniciar tratamiento";
+            this.TratamientoActual_label_primera_medicion.AutoSize = true;
+            this.TratamientoActual_label_primera_medicion.Location = new System.Drawing.Point(238, 109);
+            this.TratamientoActual_label_primera_medicion.Name = "TratamientoActual_label_primera_medicion";
+            this.TratamientoActual_label_primera_medicion.Size = new System.Drawing.Size(183, 13);
+            this.TratamientoActual_label_primera_medicion.TabIndex = 138;
+            this.TratamientoActual_label_primera_medicion.Text = "Primera medicion al iniciar tratamiento";
             // 
             // dataGridView2
             // 
@@ -587,7 +587,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(434, 675);
-            this.Controls.Add(this.label23);
+            this.Controls.Add(this.TratamientoActual_label_primera_medicion);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.Ejercicios_textbox_domingo_calorias);
             this.Controls.Add(this.Ejercicios_textbox_sabado_calorias);
@@ -595,11 +595,11 @@
             this.Controls.Add(this.Ejercicios_textbox_jueves_calorias);
             this.Controls.Add(this.Ejercicios_textbox_miercoles_calorias);
             this.Controls.Add(this.Ejercicios_textbox_martes_calorias);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.AgregarDieta_label_calorias);
             this.Controls.Add(this.Ejercicios_textbox_lunes_calorias);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.AgregarDieta_label_duracion);
             this.Controls.Add(this.Ejercicios_textbox_calorias);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.Tratamiento_label_calorias_totales_quemadas);
             this.Controls.Add(this.Ejercicios_textbox_domingo_duracion);
             this.Controls.Add(this.Ejercicios_textbox_sabado_duracion);
             this.Controls.Add(this.Ejercicios_textbox_viernes_duracion);
@@ -608,14 +608,14 @@
             this.Controls.Add(this.Ejercicios_textbox_martes_duracion);
             this.Controls.Add(this.Ejercicios_textbox_lunes_duracion);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.AgregarDieta_label_rutina_actual);
+            this.Controls.Add(this.AgregarDieta_dia_domingo);
+            this.Controls.Add(this.AgregarDieta_dia_sabado);
+            this.Controls.Add(this.AgregarDieta_dia_viernes);
+            this.Controls.Add(this.AgregarDieta_dia_jueves);
+            this.Controls.Add(this.AgregarDieta_dia_miercoles);
+            this.Controls.Add(this.AgregarDieta_dia_martes);
+            this.Controls.Add(this.AgregarDieta_dia_lunes);
             this.Controls.Add(this.Ejercicios_textbox_domingo);
             this.Controls.Add(this.Ejercicios_textbox_sabado);
             this.Controls.Add(this.Ejercicios_textbox_lunes);
@@ -625,28 +625,28 @@
             this.Controls.Add(this.Ejercicios_textbox_viernes);
             this.Controls.Add(this.AgregarDieta_textbox_cantidad_calorias_dia);
             this.Controls.Add(this.AgregarDieta_textbox_cantidad_calorias_totales);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.AgregarDieta_button_finalizar);
+            this.Controls.Add(this.AgregarDieta_label_calorias_dia);
+            this.Controls.Add(this.AgregarDieta_label_calorias_totales);
             this.Controls.Add(this.TratamientoActual_lbl_dietaActual);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TratamientoActual_label_ultima_medicion);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.TratamientoActual_button_manejarEjercicios);
+            this.Controls.Add(this.TratamientoActual_button_manejar_ejercicios);
             this.Controls.Add(this.TratamientoActual_listbox_dias);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.AgregarDieta_label_desayuno);
             this.Controls.Add(this.agregarDieta_textbox_desayuno);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.AgregarDieta_label_colacion);
             this.Controls.Add(this.agregarDieta_textbox_colacion);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.AgregarDieta_label_almuerzo);
             this.Controls.Add(this.agregarDieta_textbox_almuerzo);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.AgregarDieta_label_merienda);
             this.Controls.Add(this.agregarDieta_textbox_merienda);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.AgregarDieta_label_cena);
             this.Controls.Add(this.agregarDieta_textbox_cena);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.TratamientoActual_button_nuevaMedicion);
+            this.Controls.Add(this.TratamientoActual_label_dieta_actual);
+            this.Controls.Add(this.TratamientoActual_button_nueva_medicion);
             this.Controls.Add(this.TratamientoActual_button_proyecciones);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TratamientoActual_label_resumen);
             this.Name = "TratamientoActual";
             this.Text = "TratamientoActual";
             this.Load += new System.EventHandler(this.TratamientoActual_Load);
@@ -659,28 +659,28 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button TratamientoActual_button_nuevaMedicion;
+        private System.Windows.Forms.Label TratamientoActual_label_resumen;
+        private System.Windows.Forms.Button TratamientoActual_button_nueva_medicion;
         private System.Windows.Forms.Button TratamientoActual_button_proyecciones;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label TratamientoActual_label_dieta_actual;
         private System.Windows.Forms.ListBox TratamientoActual_listbox_dias;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label AgregarDieta_label_desayuno;
         private System.Windows.Forms.TextBox agregarDieta_textbox_desayuno;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label AgregarDieta_label_colacion;
         private System.Windows.Forms.TextBox agregarDieta_textbox_colacion;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label AgregarDieta_label_almuerzo;
         private System.Windows.Forms.TextBox agregarDieta_textbox_almuerzo;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label AgregarDieta_label_merienda;
         private System.Windows.Forms.TextBox agregarDieta_textbox_merienda;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label AgregarDieta_label_cena;
         private System.Windows.Forms.TextBox agregarDieta_textbox_cena;
-        private System.Windows.Forms.Button TratamientoActual_button_manejarEjercicios;
+        private System.Windows.Forms.Button TratamientoActual_button_manejar_ejercicios;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label TratamientoActual_label_ultima_medicion;
         private System.Windows.Forms.Label TratamientoActual_lbl_dietaActual;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label AgregarDieta_label_calorias_totales;
+        private System.Windows.Forms.Label AgregarDieta_label_calorias_dia;
+        private System.Windows.Forms.Button AgregarDieta_button_finalizar;
         private System.Windows.Forms.Label AgregarDieta_textbox_cantidad_calorias_totales;
         private System.Windows.Forms.Label AgregarDieta_textbox_cantidad_calorias_dia;
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo;
@@ -690,14 +690,14 @@
         private System.Windows.Forms.TextBox Ejercicios_textbox_miercoles;
         private System.Windows.Forms.TextBox Ejercicios_textbox_jueves;
         private System.Windows.Forms.TextBox Ejercicios_textbox_viernes;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label AgregarDieta_dia_lunes;
+        private System.Windows.Forms.Label AgregarDieta_dia_martes;
+        private System.Windows.Forms.Label AgregarDieta_dia_miercoles;
+        private System.Windows.Forms.Label AgregarDieta_dia_jueves;
+        private System.Windows.Forms.Label AgregarDieta_dia_viernes;
+        private System.Windows.Forms.Label AgregarDieta_dia_sabado;
+        private System.Windows.Forms.Label AgregarDieta_dia_domingo;
+        private System.Windows.Forms.Label AgregarDieta_label_rutina_actual;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox Ejercicios_textbox_lunes_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_martes_duracion;
@@ -706,18 +706,18 @@
         private System.Windows.Forms.TextBox Ejercicios_textbox_viernes_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_sabado_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo_duracion;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label Tratamiento_label_calorias_totales_quemadas;
         private System.Windows.Forms.TextBox Ejercicios_textbox_calorias;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label AgregarDieta_label_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_lunes_calorias;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label AgregarDieta_label_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_martes_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_miercoles_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_jueves_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_viernes_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_sabado_calorias;
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo_calorias;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label TratamientoActual_label_primera_medicion;
         private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

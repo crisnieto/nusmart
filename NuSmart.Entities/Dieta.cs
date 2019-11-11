@@ -29,13 +29,13 @@ namespace NuSmart.BE
             _sabado = new DiaAlimenticio();
             _domingo = new DiaAlimenticio();
 
-            _lunes.Nombre = "Lunes";
-            _martes.Nombre = "Martes";
-            _miercoles.Nombre = "Miercoles";
-            _jueves.Nombre = "Jueves";
-            _viernes.Nombre = "Viernes";
-            _sabado.Nombre = "Sabado";
-            _domingo.Nombre = "Domingo";
+            _lunes.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_lunes");
+            _martes.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_martes");
+            _miercoles.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_miercoles");
+            _jueves.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_jueves");
+            _viernes.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_viernes");
+            _sabado.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_sabado");
+            _domingo.Nombre = NuSmartMessage.formatearMensaje("AgregarDieta_dia_domingo");
         }
 
         public string Nombre

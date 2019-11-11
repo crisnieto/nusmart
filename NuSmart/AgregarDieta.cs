@@ -6,7 +6,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class AgregarDieta : Form
+    public partial class AgregarDieta : FormObserver
     {
         BLLDieta bllDieta;
         BLLPlato bllPlato;
@@ -25,14 +25,22 @@ namespace NuSmart
             bllPlato = new BLLPlato();
             bllTratamiento = new BLLTratamiento();
             InitializeComponent();
+            setup();
         }
 
         private void AgregarDieta_Load(object sender, EventArgs e)
         {
-            cargando = true;
-            dietas = new BindingList<Dieta>(bllDieta.conseguirDietas());
-            listBox1.DataSource = dietas;
-            cargando = false;
+            try
+            {
+                cargando = true;
+                dietas = new BindingList<Dieta>(bllDieta.conseguirDietas());
+                listBox1.DataSource = dietas;
+                cargando = false;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,10 +189,25 @@ namespace NuSmart
                 tratamiento.Dieta = dietaActual;
                 tratamiento.Paciente = turnoActual.Paciente;
                 bllTratamiento.guardar(tratamiento);
+
+                TratamientoActual tratamientoActual = new TratamientoActual(turnoActual);
+                tratamientoActual.MdiParent = this.ParentForm;
+                tratamientoActual.Show();
+                this.Close();
             }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

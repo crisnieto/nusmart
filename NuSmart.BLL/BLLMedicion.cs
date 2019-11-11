@@ -191,7 +191,16 @@ namespace NuSmart.BLL
 
         public void guardarMedicionDeTurno(Turno turno)
         {
-            dalMedicion.guardarMedicionDeTurno(turno);
+            try
+            {
+                dalMedicion.guardarMedicionDeTurno(turno);
+                bllBitacora.crearNuevaBitacora("Guardar Medicion", "Se guardo una nueva medicion para el turno con ID: " + turno.Id, Criticidad.Media);
+            }
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Guardar Medicion", "Ocurrio un error al guardar una medicion: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Mediciones_error_guardar_medicion"));
+            }
         }
 
     }

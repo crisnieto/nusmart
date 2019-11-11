@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class TratamientoActual : Form
+    public partial class TratamientoActual : FormObserver
     {
         Turno turno;
         BLLMedicion bllMedicion;
@@ -28,6 +28,7 @@ namespace NuSmart
         {
             this.turno = turno;
             InitializeComponent();
+            setup();
             bllMedicion = new BLLMedicion();
             bllTratamiento = new BLLTratamiento();
             bllRutina = new BLLRutina();
