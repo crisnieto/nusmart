@@ -37,31 +37,37 @@ namespace NuSmart
 
         private void TratamientoActual_Load(object sender, EventArgs e)
         {
-            tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
-            primeraMedicion = bllMedicion.obtenerPrimeraMedicionTratamiento(tratamientoActivo);
+            try
+            {
+                tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
+                primeraMedicion = bllMedicion.obtenerPrimeraMedicionTratamiento(tratamientoActivo);
+
+                ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
+                List<Medicion> dataSourceUltimaMedicion = new List<Medicion>();
+                dataSourceUltimaMedicion.Add(ultimaMedicion);
+                dataGridView1.DataSource = dataSourceUltimaMedicion;
+
+                List<Medicion> dataSourcePrimeraMedicion = new List<Medicion>();
+                dataSourcePrimeraMedicion.Add(primeraMedicion);
+                dataGridView2.DataSource = dataSourcePrimeraMedicion;
+
+                dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
+                TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
+
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Lunes);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Martes);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Miercoles);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Jueves);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Viernes);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Sabado);
+                TratamientoActual_listbox_dias.Items.Add(dietaActual.Domingo);
+
+                actualizarRutina();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             
-            ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
-            List<Medicion> dataSourceUltimaMedicion = new List<Medicion>();
-            dataSourceUltimaMedicion.Add(ultimaMedicion);
-            dataGridView1.DataSource = dataSourceUltimaMedicion;
-
-            List<Medicion> dataSourcePrimeraMedicion = new List<Medicion>();
-            dataSourcePrimeraMedicion.Add(primeraMedicion);
-            dataGridView2.DataSource = dataSourcePrimeraMedicion;
-            
-            dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
-            TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
-
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Lunes);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Martes);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Miercoles);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Jueves);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Viernes);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Sabado);
-            TratamientoActual_listbox_dias.Items.Add(dietaActual.Domingo);
-
-            actualizarRutina();
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -73,11 +79,21 @@ namespace NuSmart
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                tratamientoActivo.FechaFinalizado = turno.Fecha;
+                bllTratamiento.finalizarTratamiento(tratamientoActivo);
+                this.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void actualizarRutina()
         {
+            try
+            {
             if (tratamientoActivo.Rutina != null) { 
                 Ejercicios_textbox_lunes.Text = tratamientoActivo.Rutina.DiaEjercicioLunes.Ejercicio.Nombre;
                 Ejercicios_textbox_lunes_duracion.Text = tratamientoActivo.Rutina.DiaEjercicioLunes.Duracion.ToString();
@@ -109,24 +125,42 @@ namespace NuSmart
 
                 Ejercicios_textbox_calorias.Text = bllRutina.calcularCaloriasQuemadas(tratamientoActivo.Rutina).ToString();
             }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void TratamientoActual_listbox_dias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DiaAlimenticio dia = (DiaAlimenticio)TratamientoActual_listbox_dias.SelectedItem;
-            agregarDieta_textbox_desayuno.Text = dia.Desayuno.Nombre;
-            agregarDieta_textbox_colacion.Text = dia.Colacion.Nombre;
-            agregarDieta_textbox_almuerzo.Text = dia.Almuerzo.Nombre;
-            agregarDieta_textbox_merienda.Text = dia.Merienda.Nombre;
-            agregarDieta_textbox_cena.Text = dia.Cena.Nombre;
-            diaActual = dia;
+            try
+            {
+                DiaAlimenticio dia = (DiaAlimenticio)TratamientoActual_listbox_dias.SelectedItem;
+                agregarDieta_textbox_desayuno.Text = dia.Desayuno.Nombre;
+                agregarDieta_textbox_colacion.Text = dia.Colacion.Nombre;
+                agregarDieta_textbox_almuerzo.Text = dia.Almuerzo.Nombre;
+                agregarDieta_textbox_merienda.Text = dia.Merienda.Nombre;
+                agregarDieta_textbox_cena.Text = dia.Cena.Nombre;
+                diaActual = dia;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             actualizarCaloriasMostradas();
+
         }
 
         private void actualizarCaloriasMostradas()
         {
-            AgregarDieta_textbox_cantidad_calorias_totales.Text = bllDieta.calcularCalorias(dietaActual).ToString();
-            AgregarDieta_textbox_cantidad_calorias_dia.Text = bllDieta.calcularCaloriasDia(diaActual).ToString();
+            try
+            {
+                AgregarDieta_textbox_cantidad_calorias_totales.Text = bllDieta.calcularCalorias(dietaActual).ToString();
+                AgregarDieta_textbox_cantidad_calorias_dia.Text = bllDieta.calcularCaloriasDia(diaActual).ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

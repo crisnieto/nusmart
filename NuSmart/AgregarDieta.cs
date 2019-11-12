@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using NuSmart.BE;
 using NuSmart.BLL;
 
@@ -45,114 +46,150 @@ namespace NuSmart
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
-            dietaActual = (Dieta)listBox1.SelectedItem;
-            listBox2.Items.Add(dietaActual.Lunes);
-            listBox2.Items.Add(dietaActual.Martes);
-            listBox2.Items.Add(dietaActual.Miercoles);
-            listBox2.Items.Add(dietaActual.Jueves);
-            listBox2.Items.Add(dietaActual.Viernes);
-            listBox2.Items.Add(dietaActual.Sabado);
-            listBox2.Items.Add(dietaActual.Domingo);
-            listBox2.SelectedIndex = 0;
-            actualizarCaloriasMostradas();
-            if (!dietaActual.EsAutomatica)
+            try
             {
-                AgregarDieta_radiobutton_desayuno.Enabled = AgregarDieta_radiobutton_colacion.Enabled = AgregarDieta_radiobutton_almuerzo.Enabled = AgregarDieta_radiobutton_merienda.Enabled = AgregarDieta_radiobutton_cena.Enabled = false;
-            }else
+                listBox2.Items.Clear();
+                dietaActual = (Dieta)listBox1.SelectedItem;
+                listBox2.Items.Add(dietaActual.Lunes);
+                listBox2.Items.Add(dietaActual.Martes);
+                listBox2.Items.Add(dietaActual.Miercoles);
+                listBox2.Items.Add(dietaActual.Jueves);
+                listBox2.Items.Add(dietaActual.Viernes);
+                listBox2.Items.Add(dietaActual.Sabado);
+                listBox2.Items.Add(dietaActual.Domingo);
+                listBox2.SelectedIndex = 0;
+                actualizarCaloriasMostradas();
+                if (!dietaActual.EsAutomatica)
+                {
+                    AgregarDieta_radiobutton_desayuno.Enabled = AgregarDieta_radiobutton_colacion.Enabled = AgregarDieta_radiobutton_almuerzo.Enabled = AgregarDieta_radiobutton_merienda.Enabled = AgregarDieta_radiobutton_cena.Enabled = false;
+                }
+                else
+                {
+                    AgregarDieta_radiobutton_desayuno.Enabled = AgregarDieta_radiobutton_colacion.Enabled = AgregarDieta_radiobutton_almuerzo.Enabled = AgregarDieta_radiobutton_merienda.Enabled = AgregarDieta_radiobutton_cena.Enabled = true;
+                }
+            }catch(Exception ex)
             {
-                AgregarDieta_radiobutton_desayuno.Enabled = AgregarDieta_radiobutton_colacion.Enabled = AgregarDieta_radiobutton_almuerzo.Enabled = AgregarDieta_radiobutton_merienda.Enabled = AgregarDieta_radiobutton_cena.Enabled = true;
+                MessageBox.Show(ex.Message);
             }
+
         }
 
         private void actualizarCaloriasMostradas()
         {
-            AgregarDieta_textbox_cantidad_calorias_totales.Text = bllDieta.calcularCalorias(dietaActual).ToString();
-            AgregarDieta_textbox_cantidad_calorias_dia.Text = bllDieta.calcularCaloriasDia(diaActual).ToString();
+            try
+            {
+                AgregarDieta_textbox_cantidad_calorias_totales.Text = bllDieta.calcularCalorias(dietaActual).ToString();
+                AgregarDieta_textbox_cantidad_calorias_dia.Text = bllDieta.calcularCaloriasDia(diaActual).ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DiaAlimenticio dia = (DiaAlimenticio)listBox2.SelectedItem;
-            agregarDieta_textbox_desayuno.Text = dia.Desayuno.Nombre;
-            agregarDieta_textbox_colacion.Text = dia.Colacion.Nombre;
-            agregarDieta_textbox_almuerzo.Text = dia.Almuerzo.Nombre;
-            agregarDieta_textbox_merienda.Text = dia.Merienda.Nombre;
-            agregarDieta_textbox_cena.Text = dia.Cena.Nombre;
-            diaActual = dia;
-            actualizarCaloriasMostradas();
+            try
+            {
+                DiaAlimenticio dia = (DiaAlimenticio)listBox2.SelectedItem;
+                agregarDieta_textbox_desayuno.Text = dia.Desayuno.Nombre;
+                agregarDieta_textbox_colacion.Text = dia.Colacion.Nombre;
+                agregarDieta_textbox_almuerzo.Text = dia.Almuerzo.Nombre;
+                agregarDieta_textbox_merienda.Text = dia.Merienda.Nombre;
+                agregarDieta_textbox_cena.Text = dia.Cena.Nombre;
+                diaActual = dia;
+                actualizarCaloriasMostradas();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dietas.Add(bllDieta.obtenerDietaAutomatica(estrategiaActual));
-            listBox1.DataSource = dietas;
+            try
+            {
+                dietas.Add(bllDieta.obtenerDietaAutomatica(estrategiaActual));
+                listBox1.DataSource = dietas;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            cargando = true;
-            dataGridView1.DataSource = bllPlato.obtenerTodos("esDesayuno");
-            cargando = false;
+            obtenerPlatos("esDesayuno");
         }
 
         private void AgregarDieta_radiobutton_colacion_CheckedChanged(object sender, EventArgs e)
         {
-            cargando = true;
-            dataGridView1.DataSource = bllPlato.obtenerTodos("esColacion");
-            cargando = false;
+            obtenerPlatos("esColacion");
         }
 
         private void AgregarDieta_radiobutton_almuerzo_CheckedChanged(object sender, EventArgs e)
         {
-            cargando = true;
-            dataGridView1.DataSource = bllPlato.obtenerTodos("esPlatoPrincipal");
-            cargando = false;
+            obtenerPlatos("esPlatoPrincipal");
         }
 
         private void AgregarDieta_radiobutton_merienda_CheckedChanged(object sender, EventArgs e)
         {
-            cargando = true;
-            dataGridView1.DataSource = bllPlato.obtenerTodos("esMerienda");
-            cargando = false;
+            obtenerPlatos("esMerienda");
         }
 
         private void AgregarDieta_radiobutton_cena_CheckedChanged(object sender, EventArgs e)
         {
-            cargando = true;
-            dataGridView1.DataSource = bllPlato.obtenerTodos("esPlatoPrincipal");
-            cargando = false;
+            obtenerPlatos("esPlatoPrincipal");
         }
+
+        private void obtenerPlatos(string tipo)
+        {
+            try
+            {
+                cargando = true;
+                dataGridView1.DataSource = bllPlato.obtenerTodos(tipo);
+                cargando = false;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (!cargando && dietaActual != null && diaActual != null && dietaActual.EsAutomatica)
+            try
             {
-                Plato platoSeleccionado = (Plato)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                if (AgregarDieta_radiobutton_desayuno.Checked)
+                if (!cargando && dietaActual != null && diaActual != null && dietaActual.EsAutomatica)
                 {
-                    diaActual.Desayuno = platoSeleccionado;
-                    agregarDieta_textbox_desayuno.Text = platoSeleccionado.Nombre;
-                }else if (AgregarDieta_radiobutton_colacion.Checked)
-                {
-                    diaActual.Colacion = platoSeleccionado;
-                    agregarDieta_textbox_colacion.Text = platoSeleccionado.Nombre;
+                    Plato platoSeleccionado = (Plato)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                    if (AgregarDieta_radiobutton_desayuno.Checked)
+                    {
+                        diaActual.Desayuno = platoSeleccionado;
+                        agregarDieta_textbox_desayuno.Text = platoSeleccionado.Nombre;
+                    }else if (AgregarDieta_radiobutton_colacion.Checked)
+                    {
+                        diaActual.Colacion = platoSeleccionado;
+                        agregarDieta_textbox_colacion.Text = platoSeleccionado.Nombre;
+                    }
+                    else if (AgregarDieta_radiobutton_almuerzo.Checked)
+                    {
+                        diaActual.Almuerzo = platoSeleccionado;
+                        agregarDieta_textbox_almuerzo.Text = platoSeleccionado.Nombre;
+                    }
+                    else if (AgregarDieta_radiobutton_merienda.Checked)
+                    {
+                        diaActual.Merienda = platoSeleccionado;
+                        agregarDieta_textbox_merienda.Text = platoSeleccionado.Nombre;
+                    }
+                    else if (AgregarDieta_radiobutton_cena.Checked)
+                    {
+                        diaActual.Cena = platoSeleccionado;
+                        agregarDieta_textbox_cena.Text = platoSeleccionado.Nombre;
+                    }
                 }
-                else if (AgregarDieta_radiobutton_almuerzo.Checked)
-                {
-                    diaActual.Almuerzo = platoSeleccionado;
-                    agregarDieta_textbox_almuerzo.Text = platoSeleccionado.Nombre;
-                }
-                else if (AgregarDieta_radiobutton_merienda.Checked)
-                {
-                    diaActual.Merienda = platoSeleccionado;
-                    agregarDieta_textbox_merienda.Text = platoSeleccionado.Nombre;
-                }
-                else if (AgregarDieta_radiobutton_cena.Checked)
-                {
-                    diaActual.Cena = platoSeleccionado;
-                    agregarDieta_textbox_cena.Text = platoSeleccionado.Nombre;
-                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -178,22 +215,27 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(dietaActual != null)
-            {
-                if (dietaActual.EsAutomatica)
+            try { 
+                if(dietaActual != null)
                 {
-                    dietaActual.Id = bllDieta.guardar(dietaActual);
-                }
-                Tratamiento tratamiento = new Tratamiento();
-                tratamiento.FechaInicio = turnoActual.Fecha;
-                tratamiento.Dieta = dietaActual;
-                tratamiento.Paciente = turnoActual.Paciente;
-                bllTratamiento.guardar(tratamiento);
+                    if (dietaActual.EsAutomatica)
+                    {
+                        dietaActual.Id = bllDieta.guardar(dietaActual);
+                    }
+                    Tratamiento tratamiento = new Tratamiento();
+                    tratamiento.FechaInicio = turnoActual.Fecha;
+                    tratamiento.Dieta = dietaActual;
+                    tratamiento.Paciente = turnoActual.Paciente;
+                    bllTratamiento.guardar(tratamiento);
 
-                TratamientoActual tratamientoActual = new TratamientoActual(turnoActual);
-                tratamientoActual.MdiParent = this.ParentForm;
-                tratamientoActual.Show();
-                this.Close();
+                    TratamientoActual tratamientoActual = new TratamientoActual(turnoActual);
+                    tratamientoActual.MdiParent = this.ParentForm;
+                    tratamientoActual.Show();
+                    this.Close();
+            }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -12,7 +12,7 @@ using NuSmart.BLL;
 
 namespace NuSmart
 {
-    public partial class Ejercicios : Form
+    public partial class Ejercicios : FormObserver
     {
 
         BLLEjercicio bllEjercicio;
@@ -28,14 +28,22 @@ namespace NuSmart
             rutinaActual = new Rutina();
 
             InitializeComponent();
+            setup();
         }
 
         private void Ejercicios_Load(object sender, EventArgs e)
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            cargando = true;
-            actualizarEjercicios();
-            cargando = false;
+            try
+            {
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                cargando = true;
+                actualizarEjercicios();
+                cargando = false;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void actualizarEjercicios()
@@ -47,11 +55,18 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Ejercicio ejercicio = new Ejercicio();
-            ejercicio.Nombre = Ejercicios_textbox_nombre.Text;
-            ejercicio.CaloriasQuemadas = Convert.ToInt32(Ejercicios_numericupdown_calorias.Value);
-            bllEjercicio.agregar(ejercicio);
-            actualizarEjercicios();
+            try
+            {
+                Ejercicio ejercicio = new Ejercicio();
+                ejercicio.Nombre = Ejercicios_textbox_nombre.Text;
+                ejercicio.CaloriasQuemadas = Convert.ToInt32(Ejercicios_numericupdown_calorias.Value);
+                bllEjercicio.agregar(ejercicio);
+                actualizarEjercicios();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -66,16 +81,24 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            rutinaActual.DiaEjercicioLunes.Duracion = (int)Ejercicios_numericupdown_lunes.Value;
-            rutinaActual.DiaEjercicioMartes.Duracion = (int)Ejercicios_numericupdown_martes.Value;
-            rutinaActual.DiaEjercicioMiercoles.Duracion = (int)Ejercicios_numericupdown_miercoles.Value;
-            rutinaActual.DiaEjercicioJueves.Duracion = (int)Ejercicios_numericupdown_jueves.Value;
-            rutinaActual.DiaEjercicioViernes.Duracion = (int)Ejercicios_numericupdown_viernes.Value;
-            rutinaActual.DiaEjercicioSabado.Duracion = (int)Ejercicios_numericupdown_sabado.Value;
-            rutinaActual.DiaEjercicioDomingo.Duracion = (int)Ejercicios_numericupdown_domingo.Value;
-            rutinaActual.Nombre = Ejercicios_textbox_rutinaNombre.Text;
-            bllRutina.agregar(rutinaActual);
-            MessageBox.Show("OK");
+            try
+            {
+                rutinaActual.DiaEjercicioLunes.Duracion = (int)Ejercicios_numericupdown_lunes.Value;
+                rutinaActual.DiaEjercicioMartes.Duracion = (int)Ejercicios_numericupdown_martes.Value;
+                rutinaActual.DiaEjercicioMiercoles.Duracion = (int)Ejercicios_numericupdown_miercoles.Value;
+                rutinaActual.DiaEjercicioJueves.Duracion = (int)Ejercicios_numericupdown_jueves.Value;
+                rutinaActual.DiaEjercicioViernes.Duracion = (int)Ejercicios_numericupdown_viernes.Value;
+                rutinaActual.DiaEjercicioSabado.Duracion = (int)Ejercicios_numericupdown_sabado.Value;
+                rutinaActual.DiaEjercicioDomingo.Duracion = (int)Ejercicios_numericupdown_domingo.Value;
+                rutinaActual.Nombre = Ejercicios_textbox_rutinaNombre.Text;
+                bllRutina.agregar(rutinaActual);
+                MessageBox.Show("OK");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -85,96 +108,116 @@ namespace NuSmart
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if(rutinaCargada == null)
+            try
             {
-                if (Ejercicios_radiobutton_lunes.Checked)
+                if (rutinaCargada == null)
                 {
-                    rutinaActual.DiaEjercicioLunes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_lunes.Text = rutinaActual.DiaEjercicioLunes.Ejercicio.ToString();
+                    if (AgregarDieta_dia_lunes.Checked)
+                    {
+                        rutinaActual.DiaEjercicioLunes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_lunes.Text = rutinaActual.DiaEjercicioLunes.Ejercicio.ToString();
 
+                    }
+                    else if (AgregarDieta_dia_martes.Checked)
+                    {
+                        rutinaActual.DiaEjercicioMartes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_martes.Text = rutinaActual.DiaEjercicioMartes.Ejercicio.ToString();
+                    }
+                    else if (AgregarDieta_dia_miercoles.Checked)
+                    {
+                        rutinaActual.DiaEjercicioMiercoles.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_miercoles.Text = rutinaActual.DiaEjercicioMiercoles.Ejercicio.ToString();
+                    }
+                    else if (AgregarDieta_dia_jueves.Checked)
+                    {
+                        rutinaActual.DiaEjercicioJueves.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_jueves.Text = rutinaActual.DiaEjercicioJueves.Ejercicio.ToString();
+                    }
+                    else if (AgregarDieta_dia_viernes.Checked)
+                    {
+                        rutinaActual.DiaEjercicioViernes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_viernes.Text = rutinaActual.DiaEjercicioViernes.Ejercicio.ToString();
+                    }
+                    else if (AgregarDieta_dia_sabado.Checked)
+                    {
+                        rutinaActual.DiaEjercicioSabado.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_sabado.Text = rutinaActual.DiaEjercicioSabado.Ejercicio.ToString();
+                    }
+                    else if (AgregarDieta_dia_domingo.Checked)
+                    {
+                        rutinaActual.DiaEjercicioDomingo.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                        Ejercicios_textbox_domingo.Text = rutinaActual.DiaEjercicioDomingo.Ejercicio.ToString();
+                    }
                 }
-                else if (Ejercicios_radiobutton_martes.Checked)
-                {
-                    rutinaActual.DiaEjercicioMartes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_martes.Text = rutinaActual.DiaEjercicioMartes.Ejercicio.ToString();
-                }
-                else if (Ejercicios_radiobutton_miercoles.Checked)
-                {
-                    rutinaActual.DiaEjercicioMiercoles.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_miercoles.Text = rutinaActual.DiaEjercicioMiercoles.Ejercicio.ToString();
-                }
-                else if (Ejercicios_radiobutton_jueves.Checked)
-                {
-                    rutinaActual.DiaEjercicioJueves.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_jueves.Text = rutinaActual.DiaEjercicioJueves.Ejercicio.ToString();
-                }
-                else if (Ejercicios_radiobutton_viernes.Checked)
-                {
-                    rutinaActual.DiaEjercicioViernes.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_viernes.Text = rutinaActual.DiaEjercicioViernes.Ejercicio.ToString();
-                }
-                else if (Ejercicios_radiobutton_sabado.Checked)
-                {
-                    rutinaActual.DiaEjercicioSabado.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_sabado.Text = rutinaActual.DiaEjercicioSabado.Ejercicio.ToString();
-                }
-                else if (Ejercicios_radiobutton_domingo.Checked)
-                {
-                    rutinaActual.DiaEjercicioDomingo.Ejercicio = (Ejercicio)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                    Ejercicios_textbox_domingo.Text = rutinaActual.DiaEjercicioDomingo.Ejercicio.ToString();
-                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+
           
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex >= 0 && !cargando)
+            try
             {
-                rutinaCargada = (Rutina)comboBox1.SelectedItem;
-                rutinaActual = rutinaCargada;
-            
-                Ejercicios_textbox_lunes.Text = rutinaActual.DiaEjercicioLunes.Ejercicio.Nombre;
-                Ejercicios_numericupdown_lunes.Value = rutinaActual.DiaEjercicioLunes.Duracion;
-                
-                Ejercicios_textbox_martes.Text = rutinaActual.DiaEjercicioMartes.Ejercicio.Nombre;
-                Ejercicios_numericupdown_martes.Value = rutinaActual.DiaEjercicioMartes.Duracion;
+                if (comboBox1.SelectedIndex >= 0 && !cargando)
+                {
+                    rutinaCargada = (Rutina)comboBox1.SelectedItem;
+                    rutinaActual = rutinaCargada;
 
-                Ejercicios_textbox_miercoles.Text = rutinaActual.DiaEjercicioMiercoles.Ejercicio.Nombre;
-                Ejercicios_numericupdown_miercoles.Value = rutinaActual.DiaEjercicioMiercoles.Duracion;
+                    Ejercicios_textbox_lunes.Text = rutinaActual.DiaEjercicioLunes.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_lunes.Value = rutinaActual.DiaEjercicioLunes.Duracion;
 
-                Ejercicios_textbox_jueves.Text = rutinaActual.DiaEjercicioJueves.Ejercicio.Nombre;
-                Ejercicios_numericupdown_jueves.Value = rutinaActual.DiaEjercicioJueves.Duracion;
+                    Ejercicios_textbox_martes.Text = rutinaActual.DiaEjercicioMartes.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_martes.Value = rutinaActual.DiaEjercicioMartes.Duracion;
 
-                Ejercicios_textbox_viernes.Text = rutinaActual.DiaEjercicioViernes.Ejercicio.Nombre;
-                Ejercicios_numericupdown_viernes.Value = rutinaActual.DiaEjercicioViernes.Duracion;
+                    Ejercicios_textbox_miercoles.Text = rutinaActual.DiaEjercicioMiercoles.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_miercoles.Value = rutinaActual.DiaEjercicioMiercoles.Duracion;
 
-                Ejercicios_textbox_sabado.Text = rutinaActual.DiaEjercicioSabado.Ejercicio.Nombre;
-                Ejercicios_numericupdown_sabado.Value = rutinaActual.DiaEjercicioSabado.Duracion;
+                    Ejercicios_textbox_jueves.Text = rutinaActual.DiaEjercicioJueves.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_jueves.Value = rutinaActual.DiaEjercicioJueves.Duracion;
 
-                Ejercicios_textbox_domingo.Text = rutinaActual.DiaEjercicioDomingo.Ejercicio.Nombre;
-                Ejercicios_numericupdown_domingo.Value = rutinaActual.DiaEjercicioDomingo.Duracion;
+                    Ejercicios_textbox_viernes.Text = rutinaActual.DiaEjercicioViernes.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_viernes.Value = rutinaActual.DiaEjercicioViernes.Duracion;
 
-                Ejercicios_textbox_lunes.Enabled = false;
-                Ejercicios_numericupdown_lunes.Enabled = false;
-                Ejercicios_textbox_martes.Enabled = false;
-                Ejercicios_numericupdown_martes.Enabled = false;
-                Ejercicios_textbox_miercoles.Enabled = false;
-                Ejercicios_numericupdown_miercoles.Enabled = false;
-                Ejercicios_textbox_jueves.Enabled = false;
-                Ejercicios_numericupdown_jueves.Enabled = false;
-                Ejercicios_textbox_viernes.Enabled = false;
-                Ejercicios_numericupdown_viernes.Enabled = false;
-                Ejercicios_textbox_sabado.Enabled = false;
-                Ejercicios_numericupdown_sabado.Enabled = false;
-                Ejercicios_textbox_domingo.Enabled = false;
-                Ejercicios_numericupdown_domingo.Enabled = false;
+                    Ejercicios_textbox_sabado.Text = rutinaActual.DiaEjercicioSabado.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_sabado.Value = rutinaActual.DiaEjercicioSabado.Duracion;
+
+                    Ejercicios_textbox_domingo.Text = rutinaActual.DiaEjercicioDomingo.Ejercicio.Nombre;
+                    Ejercicios_numericupdown_domingo.Value = rutinaActual.DiaEjercicioDomingo.Duracion;
+
+                    Ejercicios_textbox_lunes.Enabled = false;
+                    Ejercicios_numericupdown_lunes.Enabled = false;
+                    Ejercicios_textbox_martes.Enabled = false;
+                    Ejercicios_numericupdown_martes.Enabled = false;
+                    Ejercicios_textbox_miercoles.Enabled = false;
+                    Ejercicios_numericupdown_miercoles.Enabled = false;
+                    Ejercicios_textbox_jueves.Enabled = false;
+                    Ejercicios_numericupdown_jueves.Enabled = false;
+                    Ejercicios_textbox_viernes.Enabled = false;
+                    Ejercicios_numericupdown_viernes.Enabled = false;
+                    Ejercicios_textbox_sabado.Enabled = false;
+                    Ejercicios_numericupdown_sabado.Enabled = false;
+                    Ejercicios_textbox_domingo.Enabled = false;
+                    Ejercicios_numericupdown_domingo.Enabled = false;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            limpiar();
+            try
+            {
+                limpiar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void limpiar()

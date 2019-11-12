@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarDieta));
             this.AgregarDieta_groupbox_detalle_dieta = new System.Windows.Forms.GroupBox();
             this.AgregarDieta_label_buscar = new System.Windows.Forms.Label();
             this.AgregarDieta_radiobutton_cena = new System.Windows.Forms.RadioButton();
@@ -326,7 +327,7 @@
             // 
             // AgregarDieta_button_generar_dieta_automatica
             // 
-            this.AgregarDieta_button_generar_dieta_automatica.Location = new System.Drawing.Point(142, 30);
+            this.AgregarDieta_button_generar_dieta_automatica.Location = new System.Drawing.Point(143, 30);
             this.AgregarDieta_button_generar_dieta_automatica.Name = "AgregarDieta_button_generar_dieta_automatica";
             this.AgregarDieta_button_generar_dieta_automatica.Size = new System.Drawing.Size(134, 63);
             this.AgregarDieta_button_generar_dieta_automatica.TabIndex = 3;
@@ -374,6 +375,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(557, 658);
             this.Controls.Add(this.AgregarDieta_groupbox_detalle_dieta);
             this.Controls.Add(this.AgregarDieta_label_cambiar_plato);

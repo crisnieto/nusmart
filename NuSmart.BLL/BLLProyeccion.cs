@@ -9,40 +9,66 @@ namespace NuSmart.BLL
 {
     public class BLLProyeccion
     {
+        BLLBitacora bllBitacora;
+
+        public BLLProyeccion()
+        {
+            bllBitacora = new BLLBitacora();
+        }
 
         public Proyeccion calcularProyeccion(DateTime fechaInicio, double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
         {
-            double masaGrasa = porcentajeGrasaActual * pesoActual / 100;
 
-            double masaMagra = pesoActual - masaGrasa;
+            if(porcentajeGrasaActual < porcentajeGrasaCorporalIdeal)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Proyeccion_error_objetivo"));
+            }
 
-            double porcentajeObjetivoMasaMagra = (100 - porcentajeGrasaCorporalIdeal) * 0.01;
+            if(pesoActual < 0 || porcentajeGrasaActual < 0  || porcentajeGrasaCorporalIdeal < 0)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Proyeccion_error_proyeccion"));
+            }
 
-            double pesoTotalObjetivo = masaMagra / porcentajeObjetivoMasaMagra;
+            try
+            {
+                double masaGrasa = porcentajeGrasaActual * pesoActual / 100;
 
-            double masaGrasaAPerder = pesoActual - pesoTotalObjetivo;
+                double masaMagra = pesoActual - masaGrasa;
 
-            double masaGrasaFinal = masaGrasa - masaGrasaAPerder;
+                double porcentajeObjetivoMasaMagra = (100 - porcentajeGrasaCorporalIdeal) * 0.01;
 
-            double deficitMaximoDiario = ((masaGrasa + masaGrasaFinal) / 2) * 66;
+                double pesoTotalObjetivo = masaMagra / porcentajeObjetivoMasaMagra;
 
-            double deficitDiarioMediaAjustado = deficitMaximoDiario - 100;
+                double masaGrasaAPerder = pesoActual - pesoTotalObjetivo;
 
-            double caloriasMasaGrasaAPerder = masaGrasaAPerder * 7700;
+                double masaGrasaFinal = masaGrasa - masaGrasaAPerder;
 
-            int diasALaMeta = Convert.ToInt32(caloriasMasaGrasaAPerder / deficitDiarioMediaAjustado);
-            int semanasALaMeta = diasALaMeta / 7;
+                double deficitMaximoDiario = ((masaGrasa + masaGrasaFinal) / 2) * 66;
 
-            Proyeccion proyeccion = new Proyeccion();
+                double deficitDiarioMediaAjustado = deficitMaximoDiario - 100;
 
-            proyeccion.PesoActual = pesoActual;
-            proyeccion.PesoObjetivo = pesoTotalObjetivo;
-            proyeccion.GrasaCorporalActual = porcentajeGrasaActual;
-            proyeccion.GrasaCorporalObjetivo = porcentajeGrasaCorporalIdeal;
-            proyeccion.Semanas = semanasALaMeta >= 0 ? semanasALaMeta : semanasALaMeta * -1;
+                double caloriasMasaGrasaAPerder = masaGrasaAPerder * 7700;
 
-            obtenerPuntosParaProyeccion(proyeccion);
-            return proyeccion;
+                int diasALaMeta = Convert.ToInt32(caloriasMasaGrasaAPerder / deficitDiarioMediaAjustado);
+                int semanasALaMeta = diasALaMeta / 7;
+
+                Proyeccion proyeccion = new Proyeccion();
+
+                proyeccion.PesoActual = pesoActual;
+                proyeccion.PesoObjetivo = pesoTotalObjetivo;
+                proyeccion.GrasaCorporalActual = porcentajeGrasaActual;
+                proyeccion.GrasaCorporalObjetivo = porcentajeGrasaCorporalIdeal;
+                proyeccion.Semanas = semanasALaMeta >= 0 ? semanasALaMeta : semanasALaMeta * -1;
+
+                obtenerPuntosParaProyeccion(proyeccion);
+                bllBitacora.crearNuevaBitacora("Proyeccion de peso", "Se solicito una nueva proyeccion de peso", Criticidad.Media);
+                return proyeccion;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Proyeccion de peso", "Ocurrio un error al realizar la proyeccion de peso: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Proyeccion_error_proyeccion"));
+            }
+
             
         }
 

@@ -64,6 +64,16 @@ namespace NuSmart.DAL
             return tratamientos;
         }
 
+        public void finalizarTratamiento(Tratamiento tratamiento)
+        {
+            string textoComando = "UPDATE TRATAMIENTO SET fechaFinalizado = @FECHA WHERE TRATAMIENTOID = @TRATAMIENTOID";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@FECHA", tratamiento.FechaFinalizado));
+            lista.Add(new SqlParameter("@TRATAMIENTOID", tratamiento.Id));
+
+            sqlHelper.ejecutarNonQuery(textoComando, lista);
+        }
+
         public void agregarRutina(Tratamiento tratamiento)
         {
             string textoComando = "UPDATE TRATAMIENTO SET rutinaID = @RUTINAID WHERE TRATAMIENTOID = @TRATAMIENTOID";

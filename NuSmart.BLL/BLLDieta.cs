@@ -13,6 +13,7 @@ namespace NuSmart.BLL
         BLLDiaAlimenticio bllDiaAlimenticio;
         DALDieta dalDieta;
         BLLPlato bllPlato;
+        BLLBitacora bllBitacora;
 
         public const int ADELGAZAR = 1;
         public const int MANTENER = 2;
@@ -23,6 +24,7 @@ namespace NuSmart.BLL
             bllDiaAlimenticio = new BLLDiaAlimenticio();
             dalDieta = new DALDieta();
             bllPlato = new BLLPlato();
+            bllBitacora = new BLLBitacora();
         }
 
 
@@ -40,43 +42,60 @@ namespace NuSmart.BLL
                     dieta.Sabado.Id = bllDiaAlimenticio.guardar(dieta.Sabado);
                     dieta.Domingo.Id = bllDiaAlimenticio.guardar(dieta.Domingo);
 
+                    bllBitacora.crearNuevaBitacora("Dieta Creada", "Se creo una nueva dieta", Criticidad.Baja);
                     return dalDieta.guardar(dieta);
                 }catch(Exception ex)
                 {
-                    throw ex;
+                    bllBitacora.crearNuevaBitacora("Dieta Creada", "Ocurrio un error al guardar la dieta: " + ex.Message, Criticidad.Alta);
+                    throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_guardado"));
                 }
-            }else
+            }
+            else
             {
-                throw new Exception("Verifique que todos las comidas de los dias esten correctamente cargados");
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_invalida"));
             }
         }
 
         public int calcularCalorias(Dieta dieta)
         {
-            int calorias = 0;
+            try
+            {
+                int calorias = 0;
 
-            calorias += calcularCaloriasDia(dieta.Lunes);
-            calorias += calcularCaloriasDia(dieta.Martes);
-            calorias += calcularCaloriasDia(dieta.Miercoles);
-            calorias += calcularCaloriasDia(dieta.Jueves);
-            calorias += calcularCaloriasDia(dieta.Viernes);
-            calorias += calcularCaloriasDia(dieta.Sabado);
-            calorias += calcularCaloriasDia(dieta.Domingo);
+                calorias += calcularCaloriasDia(dieta.Lunes);
+                calorias += calcularCaloriasDia(dieta.Martes);
+                calorias += calcularCaloriasDia(dieta.Miercoles);
+                calorias += calcularCaloriasDia(dieta.Jueves);
+                calorias += calcularCaloriasDia(dieta.Viernes);
+                calorias += calcularCaloriasDia(dieta.Sabado);
+                calorias += calcularCaloriasDia(dieta.Domingo);
 
-            return calorias;
+                return calorias;
+            }catch(Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_calculo_calorias"));
+            }
+
         }
 
         public int calcularCaloriasDia(DiaAlimenticio dia)
         {
-            int calorias = 0;
+            try
+            {
+                int calorias = 0;
 
-            calorias += dia.Desayuno != null ? dia.Desayuno.Calorias : 0;
-            calorias += dia.Colacion != null ? dia.Colacion.Calorias : 0;
-            calorias += dia.Almuerzo != null ? dia.Almuerzo.Calorias : 0;
-            calorias += dia.Merienda != null ? dia.Merienda.Calorias : 0;
-            calorias += dia.Cena != null ? dia.Cena.Calorias : 0;
+                calorias += dia.Desayuno != null ? dia.Desayuno.Calorias : 0;
+                calorias += dia.Colacion != null ? dia.Colacion.Calorias : 0;
+                calorias += dia.Almuerzo != null ? dia.Almuerzo.Calorias : 0;
+                calorias += dia.Merienda != null ? dia.Merienda.Calorias : 0;
+                calorias += dia.Cena != null ? dia.Cena.Calorias : 0;
 
-            return calorias;
+                return calorias;
+            }catch(Exception ex)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_calculo_calorias_diarias"));
+            }
+
         }
 
         public bool dietaValida(Dieta dieta)
@@ -90,28 +109,34 @@ namespace NuSmart.BLL
 
         public List<Dieta> conseguirDietas()
         {
-            List<Dieta> dietasObtenidas = dalDieta.conseguirDietas();
+            try
+            {       
+                List<Dieta> dietasObtenidas = dalDieta.conseguirDietas();
             
-            foreach(Dieta dieta in dietasObtenidas)
+                foreach(Dieta dieta in dietasObtenidas)
+                {
+                    dieta.Lunes = bllDiaAlimenticio.obtener(dieta.Lunes.Id, dieta.Lunes.Nombre);
+                    dieta.Martes = bllDiaAlimenticio.obtener(dieta.Martes.Id, dieta.Martes.Nombre);
+                    dieta.Miercoles = bllDiaAlimenticio.obtener(dieta.Miercoles.Id, dieta.Miercoles.Nombre);
+                    dieta.Jueves = bllDiaAlimenticio.obtener(dieta.Jueves.Id, dieta.Jueves.Nombre);
+                    dieta.Viernes = bllDiaAlimenticio.obtener(dieta.Viernes.Id, dieta.Viernes.Nombre);
+                    dieta.Sabado = bllDiaAlimenticio.obtener(dieta.Sabado.Id, dieta.Sabado.Nombre);
+                    dieta.Domingo = bllDiaAlimenticio.obtener(dieta.Domingo.Id, dieta.Domingo.Nombre);
+
+                    obtenerPlatosDeDia(dieta.Lunes);
+                    obtenerPlatosDeDia(dieta.Martes);
+                    obtenerPlatosDeDia(dieta.Miercoles);
+                    obtenerPlatosDeDia(dieta.Jueves);
+                    obtenerPlatosDeDia(dieta.Viernes);
+                    obtenerPlatosDeDia(dieta.Sabado);
+                    obtenerPlatosDeDia(dieta.Domingo);
+
+                }
+                return dietasObtenidas;
+            }catch(Exception ex)
             {
-                dieta.Lunes = bllDiaAlimenticio.obtener(dieta.Lunes.Id, dieta.Lunes.Nombre);
-                dieta.Martes = bllDiaAlimenticio.obtener(dieta.Martes.Id, dieta.Martes.Nombre);
-                dieta.Miercoles = bllDiaAlimenticio.obtener(dieta.Miercoles.Id, dieta.Miercoles.Nombre);
-                dieta.Jueves = bllDiaAlimenticio.obtener(dieta.Jueves.Id, dieta.Jueves.Nombre);
-                dieta.Viernes = bllDiaAlimenticio.obtener(dieta.Viernes.Id, dieta.Viernes.Nombre);
-                dieta.Sabado = bllDiaAlimenticio.obtener(dieta.Sabado.Id, dieta.Sabado.Nombre);
-                dieta.Domingo = bllDiaAlimenticio.obtener(dieta.Domingo.Id, dieta.Domingo.Nombre);
-
-                obtenerPlatosDeDia(dieta.Lunes);
-                obtenerPlatosDeDia(dieta.Martes);
-                obtenerPlatosDeDia(dieta.Miercoles);
-                obtenerPlatosDeDia(dieta.Jueves);
-                obtenerPlatosDeDia(dieta.Viernes);
-                obtenerPlatosDeDia(dieta.Sabado);
-                obtenerPlatosDeDia(dieta.Domingo);
-
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_obtener_dietas"));
             }
-            return dietasObtenidas;
         }
 
         public void obtenerPlatosDeDia(DiaAlimenticio dia)
@@ -125,17 +150,23 @@ namespace NuSmart.BLL
 
         public Dieta obtenerDietaAutomatica(int tipo)
         {
-           switch(tipo)
+            try
             {
-                case ADELGAZAR:
-                    return calcularDietaAdegalzar();
-                case MANTENER:
-                    return calcularDietaMantener();
-                case ENGORDAR:
-                    return calcularDietaEngordar();
+                switch (tipo)
+                {
+                    case ADELGAZAR:
+                        return calcularDietaAdegalzar();
+                    case MANTENER:
+                        return calcularDietaMantener();
+                    case ENGORDAR:
+                        return calcularDietaEngordar();
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Ocurrio un error calculando la dieta automatica: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_dieta_automatica"));
             }
-            return null;
-                
         }
 
         public Dieta calcularDietaAdegalzar()
@@ -156,6 +187,7 @@ namespace NuSmart.BLL
 
             dieta.EsAutomatica = true;
             dieta.Nombre = "Dieta generada para adelgazar";
+            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para adelgazar", Criticidad.Baja);
 
             return dieta;
         }
@@ -179,6 +211,7 @@ namespace NuSmart.BLL
 
             dieta.EsAutomatica = true;
             dieta.Nombre = "Dieta generada para mantener peso";
+            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para mantener peso", Criticidad.Baja);
 
             return dieta;
         }
@@ -201,6 +234,7 @@ namespace NuSmart.BLL
 
             dieta.EsAutomatica = true;
             dieta.Nombre = "Dieta generada para engordar";
+            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para engordar", Criticidad.Baja);
 
             return dieta;
         }
@@ -281,25 +315,33 @@ namespace NuSmart.BLL
 
         public Dieta conseguirDieta(int dietaID)
         {
-            Dieta dieta = dalDieta.conseguirDieta(dietaID);
+            try
+            {
+                Dieta dieta = dalDieta.conseguirDieta(dietaID);
 
-            dieta.Lunes = bllDiaAlimenticio.obtener(dieta.Lunes.Id, dieta.Lunes.Nombre);
-            dieta.Martes = bllDiaAlimenticio.obtener(dieta.Martes.Id, dieta.Martes.Nombre);
-            dieta.Miercoles = bllDiaAlimenticio.obtener(dieta.Miercoles.Id, dieta.Miercoles.Nombre);
-            dieta.Jueves = bllDiaAlimenticio.obtener(dieta.Jueves.Id, dieta.Jueves.Nombre);
-            dieta.Viernes = bllDiaAlimenticio.obtener(dieta.Viernes.Id, dieta.Viernes.Nombre);
-            dieta.Sabado = bllDiaAlimenticio.obtener(dieta.Sabado.Id, dieta.Sabado.Nombre);
-            dieta.Domingo = bllDiaAlimenticio.obtener(dieta.Domingo.Id, dieta.Domingo.Nombre);
+                dieta.Lunes = bllDiaAlimenticio.obtener(dieta.Lunes.Id, dieta.Lunes.Nombre);
+                dieta.Martes = bllDiaAlimenticio.obtener(dieta.Martes.Id, dieta.Martes.Nombre);
+                dieta.Miercoles = bllDiaAlimenticio.obtener(dieta.Miercoles.Id, dieta.Miercoles.Nombre);
+                dieta.Jueves = bllDiaAlimenticio.obtener(dieta.Jueves.Id, dieta.Jueves.Nombre);
+                dieta.Viernes = bllDiaAlimenticio.obtener(dieta.Viernes.Id, dieta.Viernes.Nombre);
+                dieta.Sabado = bllDiaAlimenticio.obtener(dieta.Sabado.Id, dieta.Sabado.Nombre);
+                dieta.Domingo = bllDiaAlimenticio.obtener(dieta.Domingo.Id, dieta.Domingo.Nombre);
 
-            obtenerPlatosDeDia(dieta.Lunes);
-            obtenerPlatosDeDia(dieta.Martes);
-            obtenerPlatosDeDia(dieta.Miercoles);
-            obtenerPlatosDeDia(dieta.Jueves);
-            obtenerPlatosDeDia(dieta.Viernes);
-            obtenerPlatosDeDia(dieta.Sabado);
-            obtenerPlatosDeDia(dieta.Domingo);
+                obtenerPlatosDeDia(dieta.Lunes);
+                obtenerPlatosDeDia(dieta.Martes);
+                obtenerPlatosDeDia(dieta.Miercoles);
+                obtenerPlatosDeDia(dieta.Jueves);
+                obtenerPlatosDeDia(dieta.Viernes);
+                obtenerPlatosDeDia(dieta.Sabado);
+                obtenerPlatosDeDia(dieta.Domingo);
 
-            return dieta;
+                return dieta;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Conseguir Dieta", "Se produjo error al buscar la dieta con id: " + dietaID, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Dieta_error_busqueda"));
+            }
+
         }
     }
 }

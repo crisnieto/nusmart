@@ -13,7 +13,7 @@ using NuSmart.BE;
 
 namespace NuSmart
 {
-    public partial class GraficoProyeccion : Form
+    public partial class GraficoProyeccion : FormObserver
     {
         Series serieActual;
         Tratamiento tratamiento;
@@ -24,29 +24,41 @@ namespace NuSmart
             this.tratamiento = tratamiento;
             this.medicion = medicion;
             InitializeComponent();
+            setup();
         }
 
         private void Proyeccion_Load(object sender, EventArgs e)
         {
-            chart1.Series.Remove(chart1.Series["Series1"]);
-            Proyeccion_textbox_pesoInicial.Text = medicion.Peso.ToString();
-            Proyeccion_textbox_bfpInicial.Text = medicion.Bfp.ToString();
+            try
+            {
+                chart1.Series.Remove(chart1.Series["Series1"]);
+                Proyeccion_textbox_pesoInicial.Text = medicion.Peso.ToString();
+                Proyeccion_textbox_bfpInicial.Text = medicion.Bfp.ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Proyeccion proyeccion = new BLLProyeccion().calcularProyeccion(medicion.Fecha, medicion.Peso, Convert.ToDouble(Proyeccion_textbox_bfpInicial.Text), Convert.ToDouble(Proyeccion_textbox_bfpObjetivo.Text));
-            llenarGrafico(proyeccion);
-            Proyeccion_textbox_primerPeso.Text = proyeccion.Puntos[1].puntoPeso.ToString();
-            Proyeccion_textbox_segundoPeso.Text = proyeccion.Puntos[2].puntoPeso.ToString();
-            Proyeccion_textbox_tercerPeso.Text = proyeccion.Puntos[3].puntoPeso.ToString();
-            Proyeccion_textbox_cuartoPeso.Text = proyeccion.Puntos[4].puntoPeso.ToString();
+            try
+            {
+                Proyeccion proyeccion = new BLLProyeccion().calcularProyeccion(medicion.Fecha, medicion.Peso, Convert.ToDouble(Proyeccion_textbox_bfpInicial.Text), Convert.ToDouble(Proyeccion_textbox_bfpObjetivo.Text));
+                llenarGrafico(proyeccion);
+                Proyeccion_textbox_primerPeso.Text = proyeccion.Puntos[1].puntoPeso.ToString();
+                Proyeccion_textbox_segundoPeso.Text = proyeccion.Puntos[2].puntoPeso.ToString();
+                Proyeccion_textbox_tercerPeso.Text = proyeccion.Puntos[3].puntoPeso.ToString();
+                Proyeccion_textbox_cuartoPeso.Text = proyeccion.Puntos[4].puntoPeso.ToString();
 
-            Proyeccion_textbox_primerFecha.Text = proyeccion.Puntos[1].puntoFecha.ToString();
-            Proyeccion_textbox_segundaFecha.Text = proyeccion.Puntos[2].puntoFecha.ToString();
-            Proyeccion_textbox_terceraFecha.Text = proyeccion.Puntos[3].puntoFecha.ToString();
-            Proyeccion_textbox_cuartaFecha.Text = proyeccion.Puntos[4].puntoFecha.ToString();
-
+                Proyeccion_textbox_primerFecha.Text = Convert.ToInt32(proyeccion.Puntos[1].puntoFecha * 7).ToString();
+                Proyeccion_textbox_segundaFecha.Text = Convert.ToInt32(proyeccion.Puntos[2].puntoFecha * 7).ToString();
+                Proyeccion_textbox_terceraFecha.Text = Convert.ToInt32(proyeccion.Puntos[3].puntoFecha * 7).ToString();
+                Proyeccion_textbox_cuartaFecha.Text = Convert.ToInt32(proyeccion.Puntos[4].puntoFecha * 7).ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

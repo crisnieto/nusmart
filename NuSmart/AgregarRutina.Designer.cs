@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarRutina));
             this.Ejercicios_numericupdown_lunes = new System.Windows.Forms.NumericUpDown();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AgregarRutina_label_ver_rutinas = new System.Windows.Forms.Label();
+            this.AgregarRutina_button_asociar = new System.Windows.Forms.Button();
             this.Ejercicios_numericupdown_domingo = new System.Windows.Forms.NumericUpDown();
             this.Ejercicios_numericupdown_sabado = new System.Windows.Forms.NumericUpDown();
             this.Ejercicios_numericupdown_viernes = new System.Windows.Forms.NumericUpDown();
@@ -39,21 +40,21 @@
             this.Ejercicios_numericupdown_miercoles = new System.Windows.Forms.NumericUpDown();
             this.Ejercicios_numericupdown_martes = new System.Windows.Forms.NumericUpDown();
             this.Ejercicios_textbox_domingo = new System.Windows.Forms.TextBox();
-            this.Ejercicios_radiobutton_domingo = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_sabado = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_viernes = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_jueves = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_miercoles = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_martes = new System.Windows.Forms.RadioButton();
-            this.Ejercicios_radiobutton_lunes = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_domingo = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_sabado = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_viernes = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_jueves = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_miercoles = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_martes = new System.Windows.Forms.RadioButton();
+            this.AgregarDieta_dia_lunes = new System.Windows.Forms.RadioButton();
             this.Ejercicios_textbox_sabado = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_lunes = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_martes = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_miercoles = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_jueves = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_viernes = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.AgregarRutina_label_calorias_quemadas_dia = new System.Windows.Forms.Label();
+            this.AgregarRutina_label_calorias_quemadas_semanales = new System.Windows.Forms.Label();
             this.AgregarRutina_label_calorias_dia = new System.Windows.Forms.Label();
             this.AgregarRutina_label_calorias_semanales = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Ejercicios_numericupdown_lunes)).BeginInit();
@@ -86,24 +87,24 @@
             this.comboBox1.TabIndex = 94;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label2
+            // AgregarRutina_label_ver_rutinas
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(238, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 93;
-            this.label2.Text = "Ver Rutinas Existentes";
+            this.AgregarRutina_label_ver_rutinas.AutoSize = true;
+            this.AgregarRutina_label_ver_rutinas.Location = new System.Drawing.Point(238, 32);
+            this.AgregarRutina_label_ver_rutinas.Name = "AgregarRutina_label_ver_rutinas";
+            this.AgregarRutina_label_ver_rutinas.Size = new System.Drawing.Size(113, 13);
+            this.AgregarRutina_label_ver_rutinas.TabIndex = 93;
+            this.AgregarRutina_label_ver_rutinas.Text = "Ver Rutinas Existentes";
             // 
-            // button3
+            // AgregarRutina_button_asociar
             // 
-            this.button3.Location = new System.Drawing.Point(240, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(147, 40);
-            this.button3.TabIndex = 92;
-            this.button3.Text = "Asociar Rutina";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.AgregarRutina_button_asociar.Location = new System.Drawing.Point(240, 78);
+            this.AgregarRutina_button_asociar.Name = "AgregarRutina_button_asociar";
+            this.AgregarRutina_button_asociar.Size = new System.Drawing.Size(147, 40);
+            this.AgregarRutina_button_asociar.TabIndex = 92;
+            this.AgregarRutina_button_asociar.Text = "Asociar Rutina";
+            this.AgregarRutina_button_asociar.UseVisualStyleBackColor = true;
+            this.AgregarRutina_button_asociar.Click += new System.EventHandler(this.button3_Click);
             // 
             // Ejercicios_numericupdown_domingo
             // 
@@ -184,89 +185,89 @@
             this.Ejercicios_textbox_domingo.Size = new System.Drawing.Size(135, 20);
             this.Ejercicios_textbox_domingo.TabIndex = 85;
             // 
-            // Ejercicios_radiobutton_domingo
+            // AgregarDieta_dia_domingo
             // 
-            this.Ejercicios_radiobutton_domingo.AutoSize = true;
-            this.Ejercicios_radiobutton_domingo.Location = new System.Drawing.Point(12, 301);
-            this.Ejercicios_radiobutton_domingo.Name = "Ejercicios_radiobutton_domingo";
-            this.Ejercicios_radiobutton_domingo.Size = new System.Drawing.Size(67, 17);
-            this.Ejercicios_radiobutton_domingo.TabIndex = 84;
-            this.Ejercicios_radiobutton_domingo.TabStop = true;
-            this.Ejercicios_radiobutton_domingo.Text = "Domingo";
-            this.Ejercicios_radiobutton_domingo.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_domingo.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_domingo_CheckedChanged);
+            this.AgregarDieta_dia_domingo.AutoSize = true;
+            this.AgregarDieta_dia_domingo.Location = new System.Drawing.Point(12, 301);
+            this.AgregarDieta_dia_domingo.Name = "AgregarDieta_dia_domingo";
+            this.AgregarDieta_dia_domingo.Size = new System.Drawing.Size(67, 17);
+            this.AgregarDieta_dia_domingo.TabIndex = 84;
+            this.AgregarDieta_dia_domingo.TabStop = true;
+            this.AgregarDieta_dia_domingo.Text = "Domingo";
+            this.AgregarDieta_dia_domingo.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_domingo.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_domingo_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_sabado
+            // AgregarDieta_dia_sabado
             // 
-            this.Ejercicios_radiobutton_sabado.AutoSize = true;
-            this.Ejercicios_radiobutton_sabado.Location = new System.Drawing.Point(12, 252);
-            this.Ejercicios_radiobutton_sabado.Name = "Ejercicios_radiobutton_sabado";
-            this.Ejercicios_radiobutton_sabado.Size = new System.Drawing.Size(62, 17);
-            this.Ejercicios_radiobutton_sabado.TabIndex = 83;
-            this.Ejercicios_radiobutton_sabado.TabStop = true;
-            this.Ejercicios_radiobutton_sabado.Text = "Sabado";
-            this.Ejercicios_radiobutton_sabado.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_sabado.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_sabado_CheckedChanged);
+            this.AgregarDieta_dia_sabado.AutoSize = true;
+            this.AgregarDieta_dia_sabado.Location = new System.Drawing.Point(12, 252);
+            this.AgregarDieta_dia_sabado.Name = "AgregarDieta_dia_sabado";
+            this.AgregarDieta_dia_sabado.Size = new System.Drawing.Size(62, 17);
+            this.AgregarDieta_dia_sabado.TabIndex = 83;
+            this.AgregarDieta_dia_sabado.TabStop = true;
+            this.AgregarDieta_dia_sabado.Text = "Sabado";
+            this.AgregarDieta_dia_sabado.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_sabado.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_sabado_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_viernes
+            // AgregarDieta_dia_viernes
             // 
-            this.Ejercicios_radiobutton_viernes.AutoSize = true;
-            this.Ejercicios_radiobutton_viernes.Location = new System.Drawing.Point(12, 203);
-            this.Ejercicios_radiobutton_viernes.Name = "Ejercicios_radiobutton_viernes";
-            this.Ejercicios_radiobutton_viernes.Size = new System.Drawing.Size(60, 17);
-            this.Ejercicios_radiobutton_viernes.TabIndex = 82;
-            this.Ejercicios_radiobutton_viernes.TabStop = true;
-            this.Ejercicios_radiobutton_viernes.Text = "Viernes";
-            this.Ejercicios_radiobutton_viernes.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_viernes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_viernes_CheckedChanged);
+            this.AgregarDieta_dia_viernes.AutoSize = true;
+            this.AgregarDieta_dia_viernes.Location = new System.Drawing.Point(12, 203);
+            this.AgregarDieta_dia_viernes.Name = "AgregarDieta_dia_viernes";
+            this.AgregarDieta_dia_viernes.Size = new System.Drawing.Size(60, 17);
+            this.AgregarDieta_dia_viernes.TabIndex = 82;
+            this.AgregarDieta_dia_viernes.TabStop = true;
+            this.AgregarDieta_dia_viernes.Text = "Viernes";
+            this.AgregarDieta_dia_viernes.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_viernes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_viernes_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_jueves
+            // AgregarDieta_dia_jueves
             // 
-            this.Ejercicios_radiobutton_jueves.AutoSize = true;
-            this.Ejercicios_radiobutton_jueves.Location = new System.Drawing.Point(12, 154);
-            this.Ejercicios_radiobutton_jueves.Name = "Ejercicios_radiobutton_jueves";
-            this.Ejercicios_radiobutton_jueves.Size = new System.Drawing.Size(59, 17);
-            this.Ejercicios_radiobutton_jueves.TabIndex = 81;
-            this.Ejercicios_radiobutton_jueves.TabStop = true;
-            this.Ejercicios_radiobutton_jueves.Text = "Jueves";
-            this.Ejercicios_radiobutton_jueves.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_jueves.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_jueves_CheckedChanged);
+            this.AgregarDieta_dia_jueves.AutoSize = true;
+            this.AgregarDieta_dia_jueves.Location = new System.Drawing.Point(12, 154);
+            this.AgregarDieta_dia_jueves.Name = "AgregarDieta_dia_jueves";
+            this.AgregarDieta_dia_jueves.Size = new System.Drawing.Size(59, 17);
+            this.AgregarDieta_dia_jueves.TabIndex = 81;
+            this.AgregarDieta_dia_jueves.TabStop = true;
+            this.AgregarDieta_dia_jueves.Text = "Jueves";
+            this.AgregarDieta_dia_jueves.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_jueves.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_jueves_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_miercoles
+            // AgregarDieta_dia_miercoles
             // 
-            this.Ejercicios_radiobutton_miercoles.AutoSize = true;
-            this.Ejercicios_radiobutton_miercoles.Location = new System.Drawing.Point(12, 105);
-            this.Ejercicios_radiobutton_miercoles.Name = "Ejercicios_radiobutton_miercoles";
-            this.Ejercicios_radiobutton_miercoles.Size = new System.Drawing.Size(70, 17);
-            this.Ejercicios_radiobutton_miercoles.TabIndex = 80;
-            this.Ejercicios_radiobutton_miercoles.TabStop = true;
-            this.Ejercicios_radiobutton_miercoles.Text = "Miercoles";
-            this.Ejercicios_radiobutton_miercoles.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_miercoles.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_miercoles_CheckedChanged);
+            this.AgregarDieta_dia_miercoles.AutoSize = true;
+            this.AgregarDieta_dia_miercoles.Location = new System.Drawing.Point(12, 105);
+            this.AgregarDieta_dia_miercoles.Name = "AgregarDieta_dia_miercoles";
+            this.AgregarDieta_dia_miercoles.Size = new System.Drawing.Size(70, 17);
+            this.AgregarDieta_dia_miercoles.TabIndex = 80;
+            this.AgregarDieta_dia_miercoles.TabStop = true;
+            this.AgregarDieta_dia_miercoles.Text = "Miercoles";
+            this.AgregarDieta_dia_miercoles.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_miercoles.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_miercoles_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_martes
+            // AgregarDieta_dia_martes
             // 
-            this.Ejercicios_radiobutton_martes.AutoSize = true;
-            this.Ejercicios_radiobutton_martes.Location = new System.Drawing.Point(12, 56);
-            this.Ejercicios_radiobutton_martes.Name = "Ejercicios_radiobutton_martes";
-            this.Ejercicios_radiobutton_martes.Size = new System.Drawing.Size(57, 17);
-            this.Ejercicios_radiobutton_martes.TabIndex = 79;
-            this.Ejercicios_radiobutton_martes.TabStop = true;
-            this.Ejercicios_radiobutton_martes.Text = "Martes";
-            this.Ejercicios_radiobutton_martes.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_martes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_martes_CheckedChanged);
+            this.AgregarDieta_dia_martes.AutoSize = true;
+            this.AgregarDieta_dia_martes.Location = new System.Drawing.Point(12, 56);
+            this.AgregarDieta_dia_martes.Name = "AgregarDieta_dia_martes";
+            this.AgregarDieta_dia_martes.Size = new System.Drawing.Size(57, 17);
+            this.AgregarDieta_dia_martes.TabIndex = 79;
+            this.AgregarDieta_dia_martes.TabStop = true;
+            this.AgregarDieta_dia_martes.Text = "Martes";
+            this.AgregarDieta_dia_martes.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_martes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_martes_CheckedChanged);
             // 
-            // Ejercicios_radiobutton_lunes
+            // AgregarDieta_dia_lunes
             // 
-            this.Ejercicios_radiobutton_lunes.AutoSize = true;
-            this.Ejercicios_radiobutton_lunes.Location = new System.Drawing.Point(12, 12);
-            this.Ejercicios_radiobutton_lunes.Name = "Ejercicios_radiobutton_lunes";
-            this.Ejercicios_radiobutton_lunes.Size = new System.Drawing.Size(54, 17);
-            this.Ejercicios_radiobutton_lunes.TabIndex = 78;
-            this.Ejercicios_radiobutton_lunes.TabStop = true;
-            this.Ejercicios_radiobutton_lunes.Text = "Lunes";
-            this.Ejercicios_radiobutton_lunes.UseVisualStyleBackColor = true;
-            this.Ejercicios_radiobutton_lunes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_lunes_CheckedChanged);
+            this.AgregarDieta_dia_lunes.AutoSize = true;
+            this.AgregarDieta_dia_lunes.Location = new System.Drawing.Point(12, 12);
+            this.AgregarDieta_dia_lunes.Name = "AgregarDieta_dia_lunes";
+            this.AgregarDieta_dia_lunes.Size = new System.Drawing.Size(54, 17);
+            this.AgregarDieta_dia_lunes.TabIndex = 78;
+            this.AgregarDieta_dia_lunes.TabStop = true;
+            this.AgregarDieta_dia_lunes.Text = "Lunes";
+            this.AgregarDieta_dia_lunes.UseVisualStyleBackColor = true;
+            this.AgregarDieta_dia_lunes.CheckedChanged += new System.EventHandler(this.Ejercicios_radiobutton_lunes_CheckedChanged);
             // 
             // Ejercicios_textbox_sabado
             // 
@@ -310,55 +311,54 @@
             this.Ejercicios_textbox_viernes.Size = new System.Drawing.Size(135, 20);
             this.Ejercicios_textbox_viernes.TabIndex = 73;
             // 
-            // label1
+            // AgregarRutina_label_calorias_quemadas_dia
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(237, 177);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 13);
-            this.label1.TabIndex = 96;
-            this.label1.Text = "Calorias Quemadas del Dia:";
+            this.AgregarRutina_label_calorias_quemadas_dia.AutoSize = true;
+            this.AgregarRutina_label_calorias_quemadas_dia.Location = new System.Drawing.Point(237, 177);
+            this.AgregarRutina_label_calorias_quemadas_dia.Name = "AgregarRutina_label_calorias_quemadas_dia";
+            this.AgregarRutina_label_calorias_quemadas_dia.Size = new System.Drawing.Size(137, 13);
+            this.AgregarRutina_label_calorias_quemadas_dia.TabIndex = 96;
+            this.AgregarRutina_label_calorias_quemadas_dia.Text = "Calorias Quemadas del Dia:";
             // 
-            // label3
+            // AgregarRutina_label_calorias_quemadas_semanales
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(238, 205);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 13);
-            this.label3.TabIndex = 97;
-            this.label3.Text = "Calorias Semanales:";
+            this.AgregarRutina_label_calorias_quemadas_semanales.AutoSize = true;
+            this.AgregarRutina_label_calorias_quemadas_semanales.Location = new System.Drawing.Point(238, 205);
+            this.AgregarRutina_label_calorias_quemadas_semanales.Name = "AgregarRutina_label_calorias_quemadas_semanales";
+            this.AgregarRutina_label_calorias_quemadas_semanales.Size = new System.Drawing.Size(102, 13);
+            this.AgregarRutina_label_calorias_quemadas_semanales.TabIndex = 97;
+            this.AgregarRutina_label_calorias_quemadas_semanales.Text = "Calorias Semanales:";
             // 
             // AgregarRutina_label_calorias_dia
             // 
             this.AgregarRutina_label_calorias_dia.AutoSize = true;
             this.AgregarRutina_label_calorias_dia.Location = new System.Drawing.Point(381, 177);
             this.AgregarRutina_label_calorias_dia.Name = "AgregarRutina_label_calorias_dia";
-            this.AgregarRutina_label_calorias_dia.Size = new System.Drawing.Size(35, 13);
+            this.AgregarRutina_label_calorias_dia.Size = new System.Drawing.Size(0, 13);
             this.AgregarRutina_label_calorias_dia.TabIndex = 98;
-            this.AgregarRutina_label_calorias_dia.Text = "label4";
             // 
             // AgregarRutina_label_calorias_semanales
             // 
             this.AgregarRutina_label_calorias_semanales.AutoSize = true;
             this.AgregarRutina_label_calorias_semanales.Location = new System.Drawing.Point(381, 207);
             this.AgregarRutina_label_calorias_semanales.Name = "AgregarRutina_label_calorias_semanales";
-            this.AgregarRutina_label_calorias_semanales.Size = new System.Drawing.Size(35, 13);
+            this.AgregarRutina_label_calorias_semanales.Size = new System.Drawing.Size(0, 13);
             this.AgregarRutina_label_calorias_semanales.TabIndex = 99;
-            this.AgregarRutina_label_calorias_semanales.Text = "label5";
             // 
             // AgregarRutina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(453, 360);
             this.Controls.Add(this.AgregarRutina_label_calorias_semanales);
             this.Controls.Add(this.AgregarRutina_label_calorias_dia);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AgregarRutina_label_calorias_quemadas_semanales);
+            this.Controls.Add(this.AgregarRutina_label_calorias_quemadas_dia);
             this.Controls.Add(this.Ejercicios_numericupdown_lunes);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.AgregarRutina_label_ver_rutinas);
+            this.Controls.Add(this.AgregarRutina_button_asociar);
             this.Controls.Add(this.Ejercicios_numericupdown_domingo);
             this.Controls.Add(this.Ejercicios_numericupdown_sabado);
             this.Controls.Add(this.Ejercicios_numericupdown_viernes);
@@ -366,13 +366,13 @@
             this.Controls.Add(this.Ejercicios_numericupdown_miercoles);
             this.Controls.Add(this.Ejercicios_numericupdown_martes);
             this.Controls.Add(this.Ejercicios_textbox_domingo);
-            this.Controls.Add(this.Ejercicios_radiobutton_domingo);
-            this.Controls.Add(this.Ejercicios_radiobutton_sabado);
-            this.Controls.Add(this.Ejercicios_radiobutton_viernes);
-            this.Controls.Add(this.Ejercicios_radiobutton_jueves);
-            this.Controls.Add(this.Ejercicios_radiobutton_miercoles);
-            this.Controls.Add(this.Ejercicios_radiobutton_martes);
-            this.Controls.Add(this.Ejercicios_radiobutton_lunes);
+            this.Controls.Add(this.AgregarDieta_dia_domingo);
+            this.Controls.Add(this.AgregarDieta_dia_sabado);
+            this.Controls.Add(this.AgregarDieta_dia_viernes);
+            this.Controls.Add(this.AgregarDieta_dia_jueves);
+            this.Controls.Add(this.AgregarDieta_dia_miercoles);
+            this.Controls.Add(this.AgregarDieta_dia_martes);
+            this.Controls.Add(this.AgregarDieta_dia_lunes);
             this.Controls.Add(this.Ejercicios_textbox_sabado);
             this.Controls.Add(this.Ejercicios_textbox_lunes);
             this.Controls.Add(this.Ejercicios_textbox_martes);
@@ -398,8 +398,8 @@
 
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_lunes;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label AgregarRutina_label_ver_rutinas;
+        private System.Windows.Forms.Button AgregarRutina_button_asociar;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_domingo;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_sabado;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_viernes;
@@ -407,21 +407,21 @@
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_miercoles;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_martes;
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_domingo;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_sabado;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_viernes;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_jueves;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_miercoles;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_martes;
-        private System.Windows.Forms.RadioButton Ejercicios_radiobutton_lunes;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_domingo;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_sabado;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_viernes;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_jueves;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_miercoles;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_martes;
+        private System.Windows.Forms.RadioButton AgregarDieta_dia_lunes;
         private System.Windows.Forms.TextBox Ejercicios_textbox_sabado;
         private System.Windows.Forms.TextBox Ejercicios_textbox_lunes;
         private System.Windows.Forms.TextBox Ejercicios_textbox_martes;
         private System.Windows.Forms.TextBox Ejercicios_textbox_miercoles;
         private System.Windows.Forms.TextBox Ejercicios_textbox_jueves;
         private System.Windows.Forms.TextBox Ejercicios_textbox_viernes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label AgregarRutina_label_calorias_quemadas_dia;
+        private System.Windows.Forms.Label AgregarRutina_label_calorias_quemadas_semanales;
         private System.Windows.Forms.Label AgregarRutina_label_calorias_dia;
         private System.Windows.Forms.Label AgregarRutina_label_calorias_semanales;
     }

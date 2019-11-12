@@ -32,33 +32,48 @@ namespace NuSmart.BLL
 
         public Medicion conseguirUltimaMedicion(Paciente paciente)
         {
-            Medicion ultimaMedicion = null;
-            foreach(Medicion medicion in conseguirMediciones(paciente))
+            try
             {
-                if(ultimaMedicion == null)
+                Medicion ultimaMedicion = null;
+                foreach (Medicion medicion in conseguirMediciones(paciente))
                 {
-                    ultimaMedicion = medicion;
+                    if (ultimaMedicion == null)
+                    {
+                        ultimaMedicion = medicion;
+                    }
+                    if (DateTime.Compare(medicion.Fecha, ultimaMedicion.Fecha) > 0)
+                    {
+                        ultimaMedicion = medicion;
+                    }
                 }
-                if(DateTime.Compare(medicion.Fecha, ultimaMedicion.Fecha) > 0)
-                {
-                    ultimaMedicion = medicion;
-                }
+                return ultimaMedicion;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda Ultima Medicion", "Ocurrio un error en la busqueda de mediciones: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda"));
             }
-            return ultimaMedicion;
         }
 
         public Medicion obtenerPrimeraMedicionTratamiento(Tratamiento tratamiento)
         {
-            Medicion primeraMedicion = null;
-            foreach (Medicion medicion in conseguirMediciones(tratamiento.Paciente))
+            try
             {
-                if (DateTime.Compare(medicion.Fecha.Date, tratamiento.FechaInicio.Date) == 0)
+                Medicion primeraMedicion = null;
+                foreach (Medicion medicion in conseguirMediciones(tratamiento.Paciente))
                 {
-                    primeraMedicion = medicion;
-                    break;
+                    if (DateTime.Compare(medicion.Fecha.Date, tratamiento.FechaInicio.Date) == 0)
+                    {
+                        primeraMedicion = medicion;
+                        break;
+                    }
                 }
+                return primeraMedicion;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda Primera Medicion", "Ocurrio un error en la busqueda de mediciones: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda"));
             }
-            return primeraMedicion;
+
         }
 
 

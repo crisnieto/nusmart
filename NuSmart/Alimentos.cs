@@ -25,6 +25,7 @@ namespace NuSmart
         public Alimentos()
         {
             InitializeComponent();
+            setup();
             bllAlimento = new BLLAlimento();
             bllPlato = new BLLPlato();
             bllDieta = new BLLDieta();
@@ -39,18 +40,32 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Alimento alimento = new Alimento();
-            alimento.Nombre = Alimentos_textbox_nombre.Text;
-            alimento.TipoAlimento = Alimentos_textbox_tipo.Text;
-            alimento.Calorias = Convert.ToInt32(Alimentos_textbox_calorias.Text);
+            try
+            {
+                Alimento alimento = new Alimento();
+                alimento.Nombre = Alimentos_textbox_nombre.Text;
+                alimento.TipoAlimento = Alimentos_textbox_tipo.Text;
+                alimento.Calorias = Convert.ToInt32(Alimentos_textbox_calorias.Text);
 
-            bllAlimento.agregar(alimento);
-            refrescar();
+                bllAlimento.agregar(alimento);
+                refrescar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Alimentos_Load(object sender, EventArgs e)
         {
-            refrescar();
+            try
+            {
+                refrescar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void refrescar()
@@ -58,7 +73,7 @@ namespace NuSmart
             dataGridView1.DataSource = bllAlimento.obtenerTodos();
             dataGridView2.DataSource = bllPlato.obtenerTodos();
             dataGridView3.DataSource = bllPlato.obtenerTodos("esDesayuno");
-            GestionDieta_radiobutton_desayuno.Checked = true;
+            AgregarDieta_label_desayuno.Checked = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -77,49 +92,71 @@ namespace NuSmart
 
         private void button6_Click(object sender, EventArgs e)
         {
-            platoActual = new Plato();
-            platoActual.Nombre = Alimentos_textbox_nombre_plato.Text;
             try
             {
+                platoActual = new Plato();
+                platoActual.Nombre = Alimentos_textbox_nombre_plato.Text;
                 platoActual.Calorias = Convert.ToInt32(Alimentos_textbox_calorias_plato.Text);
-            }catch(Exception ex)
-            {
-                platoActual.Calorias = 0;
-            }
-            platoActual.EsDesayuno = Alimentos_checkbox_desayuno.Checked;
-            platoActual.EsMerienda = Alimentos_checkbox_merienda.Checked;
-            platoActual.EsColacion = Alimentos_checkbox_colacion.Checked;
-            platoActual.EsPlatoPrincipal = Alimentos_checkbox_plato_principal.Checked;
+                platoActual.EsDesayuno = Alimentos_checkbox_desayuno.Checked;
+                platoActual.EsMerienda = Alimentos_checkbox_merienda.Checked;
+                platoActual.EsColacion = Alimentos_checkbox_colacion.Checked;
+                platoActual.EsPlatoPrincipal = Alimentos_checkbox_plato_principal.Checked;
 
-            platoActual.Alimentos = listBox1.Items.OfType<Alimento>().ToList();
-            bllPlato.agregar(platoActual);
-            refrescar();
+                platoActual.Alimentos = listBox1.Items.OfType<Alimento>().ToList();
+                bllPlato.agregar(platoActual);
+                refrescar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Alimentos_messagebox_verificar"));
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Alimento alimento = (Alimento)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-            listBox1.Items.Add(alimento);
+            try
+            {
+                Alimento alimento = (Alimento)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
+                listBox1.Items.Add(alimento);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            dataGridView2.ClearSelection();
-            listBox1.DataSource = null;
-            platoActual = null;
-            Alimento_textbox_mostrar_nombre_plato.Text = "";
-
-
+            try
+            {
+                dataGridView2.ClearSelection();
+                listBox1.DataSource = null;
+                platoActual = null;
+                Alimento_textbox_mostrar_nombre_plato.Text = "";
+                Alimentos_label_agregar_alimento_a_plato.Enabled = true;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedCells.Count > 0)
+            try
             {
-                Plato platoActual = (Plato)(dataGridView2.SelectedCells[0].OwningRow.DataBoundItem);
-                listBox1.DataSource = ((Plato)(dataGridView2.SelectedCells[0].OwningRow.DataBoundItem)).Alimentos;
-                Alimento_textbox_mostrar_nombre_plato.Text = platoActual.Nombre;
+                if (dataGridView2.SelectedCells.Count > 0)
+                {
+                    Plato platoActual = (Plato)(dataGridView2.SelectedCells[0].OwningRow.DataBoundItem);
+                    Alimentos_label_agregar_alimento_a_plato.Enabled = false;
+                    listBox1.DataSource = ((Plato)(dataGridView2.SelectedCells[0].OwningRow.DataBoundItem)).Alimentos;
+                    Alimento_textbox_mostrar_nombre_plato.Text = platoActual.Nombre;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,41 +166,34 @@ namespace NuSmart
 
         private void GestionDieta_radiobutton_desayuno_CheckedChanged(object sender, EventArgs e)
         {
-            limpiar = true;
-            dataGridView3.ClearSelection();
-            dataGridView3.DataSource = bllPlato.obtenerTodos("esDesayuno");
-            limpiar = false;
+            cambiarTipoDePlato("esDesayuno");
         }
 
         private void GestionDieta_radiobutton_colacion_CheckedChanged(object sender, EventArgs e)
         {
-            limpiar = true;
-            dataGridView3.ClearSelection();
-            dataGridView3.DataSource = bllPlato.obtenerTodos("esColacion");
-            limpiar = false;
+            cambiarTipoDePlato("esColacion");
         }
 
         private void GestionDieta_radiobutton_almuerzo_CheckedChanged(object sender, EventArgs e)
         {
-            limpiar = true;
-            dataGridView3.ClearSelection();
-            dataGridView3.DataSource = bllPlato.obtenerTodos("esPlatoPrincipal");
-            limpiar = false;
+            cambiarTipoDePlato("esPlatoPrincipal");
         }
 
         private void GestionDieta_radiobutton_merienda_CheckedChanged(object sender, EventArgs e)
         {
-            limpiar = true;
-            dataGridView3.ClearSelection();
-            dataGridView3.DataSource = bllPlato.obtenerTodos("esMerienda");
-            limpiar = false;
+            cambiarTipoDePlato("esMerienda");
         }
 
         private void GestionDieta_radiobutton_cena_CheckedChanged(object sender, EventArgs e)
         {
+            cambiarTipoDePlato("esPlatoPrincipal");
+        }
+
+        private void cambiarTipoDePlato(string tipo)
+        {
             limpiar = true;
             dataGridView3.ClearSelection();
-            dataGridView3.DataSource = bllPlato.obtenerTodos("esPlatoPrincipal");
+            dataGridView3.DataSource = bllPlato.obtenerTodos(tipo);
             limpiar = false;
         }
 
@@ -174,42 +204,57 @@ namespace NuSmart
 
         private void dataGridView3_SelectionChanged(object sender, EventArgs e)
         {
-            if (diaActual != null && dataGridView3.SelectedCells.Count > 0 && !limpiar)
+            try
             {
-                Plato platoSeleccionado = (Plato)dataGridView3.SelectedCells[0].OwningRow.DataBoundItem;
-                if (GestionDieta_radiobutton_desayuno.Checked)
+                if (diaActual != null && dataGridView3.SelectedCells.Count > 0 && !limpiar)
                 {
-                    diaActual.Desayuno = platoSeleccionado;
+                    Plato platoSeleccionado = (Plato)dataGridView3.SelectedCells[0].OwningRow.DataBoundItem;
+                    if (AgregarDieta_label_desayuno.Checked)
+                    {
+                        diaActual.Desayuno = platoSeleccionado;
+                    }
+                    else if (AgregarDieta_label_colacion.Checked)
+                    {
+                        diaActual.Colacion = platoSeleccionado;
+                    }
+                    else if (AgregarDieta_label_almuerzo.Checked)
+                    {
+                        diaActual.Almuerzo = platoSeleccionado;
+                    }
+                    else if (AgregarDieta_label_merienda.Checked)
+                    {
+                        diaActual.Merienda = platoSeleccionado;
+                    }
+                    else if (AgregarDieta_label_cena.Checked)
+                    {
+                        diaActual.Cena = platoSeleccionado;
+                    }
+                    actualizarDatosDieta();
                 }
-                else if (GestionDieta_radiobutton_colacion.Checked)
-                {
-                    diaActual.Colacion = platoSeleccionado;
-                }
-                else if (GestionDieta_radiobutton_almuerzo.Checked)
-                {
-                    diaActual.Almuerzo = platoSeleccionado;
-                }
-                else if (GestionDieta_radiobutton_merienda.Checked)
-                {
-                    diaActual.Merienda = platoSeleccionado;
-                }
-                else if (GestionDieta_radiobutton_cena.Checked)
-                {
-                    diaActual.Cena = platoSeleccionado;
-                }
-                actualizarDatosDieta();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            diaActual = (DiaAlimenticio)listBox2.SelectedItem;
+            try
+            {
+                diaActual = (DiaAlimenticio)listBox2.SelectedItem;
+                actualizarDatosDieta();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            actualizarDatosDieta();
         }
 
         private void actualizarDatosDieta()
         {
+
             GestionDieta_textbox_desayuno.Text = diaActual.Desayuno != null ? diaActual.Desayuno.Nombre : "";
             GestionDieta_textbox_colacion.Text = diaActual.Colacion != null ? diaActual.Colacion.Nombre : "";
             GestionDieta_textbox_almuerzo.Text = diaActual.Almuerzo != null ? diaActual.Almuerzo.Nombre : "";
@@ -223,18 +268,18 @@ namespace NuSmart
 
         private void button13_Click(object sender, EventArgs e)
         {
-            if (GestionDieta_textbox_nombre_dieta.Text != null && GestionDieta_textbox_nombre_dieta.Text != "")
-            {
-                dietaActual.Nombre = GestionDieta_textbox_nombre_dieta.Text;
-            }
-            else
-            {
-                MessageBox.Show("Por favor introduzca un nombre");
-            }
             try
             {
-                bllDieta.guardar(dietaActual);
-                MessageBox.Show("Dieta Creada Correctamente");
+                if (GestionDieta_textbox_nombre_dieta.Text != null && GestionDieta_textbox_nombre_dieta.Text != "")
+                {
+                    dietaActual.Nombre = GestionDieta_textbox_nombre_dieta.Text;
+                    bllDieta.guardar(dietaActual);
+                    MessageBox.Show("Alimentos_messagebox_dieta_creada");
+                }
+                else
+                {
+                    MessageBox.Show("Alimentos_messagebox_insert_name");
+                }    
             }
             catch (Exception ex)
             {
@@ -248,10 +293,32 @@ namespace NuSmart
 
         private void Alimentos_textbox_buscar_TextChanged(object sender, EventArgs e)
         {
-            if (Alimentos_textbox_buscar.Text != null && Alimentos_textbox_buscar.Text != "")
+            try
             {
-                dataGridView1.DataSource = bllAlimento.buscarPorNombre(Alimentos_textbox_buscar.Text);
+                if (Alimentos_textbox_buscar.Text != null && Alimentos_textbox_buscar.Text != "")
+                {
+                    dataGridView1.DataSource = bllAlimento.buscarPorNombre(Alimentos_textbox_buscar.Text);
+                }else
+                {
+                    dataGridView1.DataSource = bllAlimento.obtenerTodos();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void Alimentos_button_limpiar_colacion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

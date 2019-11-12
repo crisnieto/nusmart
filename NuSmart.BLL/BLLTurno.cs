@@ -12,11 +12,13 @@ namespace NuSmart.BLL
     {
         DALTurno dalTurno;
         BLLBitacora bllBitacora;
+        BLLHorario bllHorario;
 
         public BLLTurno()
         {
             dalTurno = new DALTurno();
             bllBitacora = new BLLBitacora();
+            bllHorario = new BLLHorario();
         }
         public List<Turno> obtenerTurnosPosibles(Paciente paciente ,DateTime fecha, String preferencia)
         {
@@ -30,9 +32,15 @@ namespace NuSmart.BLL
 
                 Nutricionista nutricionista = new BLLNutricionista().conseguir(Sesion.Instancia().UsuarioActual.Id);
 
-                List<Horario> horariosConseguidos = new BLLHorario().obtenerHorariosDisponibles(nutricionista, fecha, preferencia);
+                List<Horario> horariosConseguidos = bllHorario.obtenerHorariosDisponibles(nutricionista, fecha, preferencia);
 
-                foreach(Horario horario in horariosConseguidos)
+                if(horariosConseguidos.Count == 0)
+                {
+                    fecha = fecha.AddDays(7);
+                    horariosConseguidos = bllHorario.obtenerHorariosDisponibles(nutricionista, fecha, preferencia);
+                }
+
+                foreach (Horario horario in horariosConseguidos)
                 {
                     Turno turno = new Turno();
                     turno.Fecha = fecha;

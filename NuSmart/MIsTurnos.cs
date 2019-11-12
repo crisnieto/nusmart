@@ -56,7 +56,7 @@ namespace NuSmart
             {
                 if (listBox1.SelectedItems.Count > 0 && turnoSeleccionado != null)
                 {
-                    if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente))
+                    if (new BLLTratamiento().existeTratamientoActivo(turnoSeleccionado.Paciente, turnoSeleccionado.Fecha))
                     {
                         TratamientoActual tratamientoActual = new TratamientoActual(turnoSeleccionado);
                         tratamientoActual.MdiParent = this.ParentForm;

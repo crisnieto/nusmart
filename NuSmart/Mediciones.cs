@@ -107,7 +107,7 @@ namespace NuSmart
                 bllMedicion.calcularBFP(turno.Medicion, turno.Paciente.Edad(), turno.Paciente.Sexo);
 
                 bllMedicion.guardarMedicionDeTurno(turno);
-                if (new BLLTratamiento().existeTratamientoActivo(turno.Paciente))
+                if (new BLLTratamiento().existeTratamientoActivo(turno.Paciente, turno.Fecha))
                 {
                     TratamientoActual tratamientoActual = new TratamientoActual(turno);
                     tratamientoActual.MdiParent = this.ParentForm;

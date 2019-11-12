@@ -277,6 +277,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\alimentos.jpg" />
     <Content Include="Resources\bananas-carrots-cherries.jpg" />
     <Content Include="Resources\english.jpg" />
     <Content Include="Resources\food_main.jpg" />

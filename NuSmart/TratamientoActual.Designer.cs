@@ -67,7 +67,7 @@
             this.AgregarDieta_dia_viernes = new System.Windows.Forms.Label();
             this.AgregarDieta_dia_sabado = new System.Windows.Forms.Label();
             this.AgregarDieta_dia_domingo = new System.Windows.Forms.Label();
-            this.AgregarDieta_label_rutina_actual = new System.Windows.Forms.Label();
+            this.TratamientoActual_label_rutina_actual = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_lunes_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_martes_duracion = new System.Windows.Forms.TextBox();
@@ -289,18 +289,16 @@
             this.AgregarDieta_textbox_cantidad_calorias_totales.AutoSize = true;
             this.AgregarDieta_textbox_cantidad_calorias_totales.Location = new System.Drawing.Point(379, 252);
             this.AgregarDieta_textbox_cantidad_calorias_totales.Name = "AgregarDieta_textbox_cantidad_calorias_totales";
-            this.AgregarDieta_textbox_cantidad_calorias_totales.Size = new System.Drawing.Size(35, 13);
+            this.AgregarDieta_textbox_cantidad_calorias_totales.Size = new System.Drawing.Size(0, 13);
             this.AgregarDieta_textbox_cantidad_calorias_totales.TabIndex = 35;
-            this.AgregarDieta_textbox_cantidad_calorias_totales.Text = "label3";
             // 
             // AgregarDieta_textbox_cantidad_calorias_dia
             // 
             this.AgregarDieta_textbox_cantidad_calorias_dia.AutoSize = true;
             this.AgregarDieta_textbox_cantidad_calorias_dia.Location = new System.Drawing.Point(379, 275);
             this.AgregarDieta_textbox_cantidad_calorias_dia.Name = "AgregarDieta_textbox_cantidad_calorias_dia";
-            this.AgregarDieta_textbox_cantidad_calorias_dia.Size = new System.Drawing.Size(35, 13);
+            this.AgregarDieta_textbox_cantidad_calorias_dia.Size = new System.Drawing.Size(0, 13);
             this.AgregarDieta_textbox_cantidad_calorias_dia.TabIndex = 36;
-            this.AgregarDieta_textbox_cantidad_calorias_dia.Text = "label3";
             // 
             // Ejercicios_textbox_domingo
             // 
@@ -414,14 +412,14 @@
             this.AgregarDieta_dia_domingo.TabIndex = 116;
             this.AgregarDieta_dia_domingo.Text = "Domingo";
             // 
-            // AgregarDieta_label_rutina_actual
+            // TratamientoActual_label_rutina_actual
             // 
-            this.AgregarDieta_label_rutina_actual.AutoSize = true;
-            this.AgregarDieta_label_rutina_actual.Location = new System.Drawing.Point(14, 454);
-            this.AgregarDieta_label_rutina_actual.Name = "AgregarDieta_label_rutina_actual";
-            this.AgregarDieta_label_rutina_actual.Size = new System.Drawing.Size(74, 13);
-            this.AgregarDieta_label_rutina_actual.TabIndex = 117;
-            this.AgregarDieta_label_rutina_actual.Text = "Rutina Actual:";
+            this.TratamientoActual_label_rutina_actual.AutoSize = true;
+            this.TratamientoActual_label_rutina_actual.Location = new System.Drawing.Point(14, 454);
+            this.TratamientoActual_label_rutina_actual.Name = "TratamientoActual_label_rutina_actual";
+            this.TratamientoActual_label_rutina_actual.Size = new System.Drawing.Size(74, 13);
+            this.TratamientoActual_label_rutina_actual.TabIndex = 117;
+            this.TratamientoActual_label_rutina_actual.Text = "Rutina Actual:";
             // 
             // label19
             // 
@@ -608,7 +606,7 @@
             this.Controls.Add(this.Ejercicios_textbox_martes_duracion);
             this.Controls.Add(this.Ejercicios_textbox_lunes_duracion);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.AgregarDieta_label_rutina_actual);
+            this.Controls.Add(this.TratamientoActual_label_rutina_actual);
             this.Controls.Add(this.AgregarDieta_dia_domingo);
             this.Controls.Add(this.AgregarDieta_dia_sabado);
             this.Controls.Add(this.AgregarDieta_dia_viernes);
@@ -697,7 +695,7 @@
         private System.Windows.Forms.Label AgregarDieta_dia_viernes;
         private System.Windows.Forms.Label AgregarDieta_dia_sabado;
         private System.Windows.Forms.Label AgregarDieta_dia_domingo;
-        private System.Windows.Forms.Label AgregarDieta_label_rutina_actual;
+        private System.Windows.Forms.Label TratamientoActual_label_rutina_actual;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox Ejercicios_textbox_lunes_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_martes_duracion;

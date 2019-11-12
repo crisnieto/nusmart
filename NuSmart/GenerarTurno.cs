@@ -72,12 +72,14 @@ namespace NuSmart
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             preferencia = "manana";
+            fechaSeleccionada = monthCalendar1.SelectionRange.Start;
             buscarSugerencias();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             preferencia = "tarde";
+            fechaSeleccionada = monthCalendar1.SelectionRange.Start;
             buscarSugerencias();
         }
 
@@ -87,8 +89,17 @@ namespace NuSmart
             {
                 comboBox1.SelectedIndex = -1;
                 comboBox1.DataSource = null;
-                comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
-            }catch(Exception ex)
+                List<Turno> turnos = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
+                if (turnos.Count > 0)
+                {
+                    if (turnos[0].Fecha.Date != fechaSeleccionada.Date)
+                    {
+                        MessageBox.Show(NuSmartMessage.formatearMensaje("GenerarTurno_messagebox_siguiente_semana"));
+                    }
+                    comboBox1.DataSource = turnos;
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

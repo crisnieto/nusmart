@@ -12,50 +12,85 @@ namespace NuSmart.BLL
     {
 
         DALPlato dalPlato;
+        BLLBitacora bllBitacora;
 
         public BLLPlato()
         {
+            bllBitacora = new BLLBitacora();
             dalPlato = new DALPlato();
         }
 
         public List<Plato> obtenerTodos(string tipoAlimento = null)
         {
-            BLLAlimento bllAliemento = new BLLAlimento();
-            List<Plato> listaPlatos = dalPlato.obtenerTodos(tipoAlimento);
-            foreach(Plato plato in listaPlatos)
+            try
             {
-                plato.Alimentos = bllAliemento.obtenerAlimentosDePlato(plato);
+                BLLAlimento bllAliemento = new BLLAlimento();
+                List<Plato> listaPlatos = dalPlato.obtenerTodos(tipoAlimento);
+                foreach (Plato plato in listaPlatos)
+                {
+                    plato.Alimentos = bllAliemento.obtenerAlimentosDePlato(plato);
+                }
+
+                return listaPlatos;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda de Platos", "Ocurrio un error mientras se buscaban los platos: "+ ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_busqueda"));
             }
 
-            return listaPlatos;
         }
 
         public void agregar(Plato plato)
         {
-            if(plato.Calorias == 0)
+            try
             {
-                plato.Calorias = calcularCalorias(plato.Alimentos);
+                if (plato.Calorias == 0)
+                {
+                    plato.Calorias = calcularCalorias(plato.Alimentos);
+                }
+                int id = dalPlato.agregar(plato);
+
+                plato.Id = id;
+
+                dalPlato.asociarAlimentosAPlato(plato);
+                bllBitacora.crearNuevaBitacora("Agregar Plato", "Se agrego correctamente un nuevo plato: " + plato.Nombre, Criticidad.Alta);
             }
-            int id = dalPlato.agregar(plato);
+            catch (Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Agregar Plato", "Ocurrio un error al intentar crear un nuevo plato: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_agregado"));
+            }
 
-            plato.Id = id;
-
-            dalPlato.asociarAlimentosAPlato(plato);
         }
 
         public int calcularCalorias(List<Alimento> alimentos)
         {
-            int calorias = 0;
-            foreach(Alimento alimento in alimentos)
+            try
             {
-                calorias += alimento.Calorias;
+                int calorias = 0;
+                foreach (Alimento alimento in alimentos)
+                {
+                    calorias += alimento.Calorias;
+                }
+                return calorias;
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Calcular Calorias", "Ocurrio un error al intentar calcular las calorias de un plato: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_calculo_calorias"));
             }
-            return calorias;
+
         }
 
         public Plato obtenerPlato(int id)
         {
-            return dalPlato.obtenerPlato(id);
+            try
+            {
+                return dalPlato.obtenerPlato(id);
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Busqueda de Plato", "Ocurrio un error mientras se buscaban un plato: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_busqueda"));
+            }
         }
     }
 }
