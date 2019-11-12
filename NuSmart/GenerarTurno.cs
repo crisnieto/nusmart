@@ -63,9 +63,11 @@ namespace NuSmart
                 turnoSeleccionado.Motivo = GenerarTurno_textbox_motivoConsulta.Text;
                 bllTurno.registrarTurno(turnoSeleccionado);
                 comboBox1.DataSource = bllTurno.obtenerTurnosPosibles(paciente, fechaSeleccionada, preferencia);
-            }catch(Exception ex)
+                MessageBox.Show(NuSmartMessage.formatearMensaje("GenerarTurno_messagebox_creado"));
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("GenerarTurno_messagebox_errorTurno");
+                MessageBox.Show(NuSmartMessage.formatearMensaje("GenerarTurno_messagebox_errorTurno"));
             }
         }
 

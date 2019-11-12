@@ -57,6 +57,7 @@ namespace NuSmart
                 Proyeccion_textbox_cuartaFecha.Text = Convert.ToInt32(proyeccion.Puntos[4].puntoFecha * 7).ToString();
             }catch(Exception ex)
             {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_verifique_datos"));
                 MessageBox.Show(ex.Message);
             }
         }

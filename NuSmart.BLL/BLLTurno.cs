@@ -22,7 +22,9 @@ namespace NuSmart.BLL
         }
         public List<Turno> obtenerTurnosPosibles(Paciente paciente ,DateTime fecha, String preferencia)
         {
-                try { 
+            Sesion.Instancia().verificarPermiso("OP001");
+            try
+            { 
                 List<Turno> turnos = new List<Turno>();
 
                 if(fecha.DayOfWeek == DayOfWeek.Saturday || fecha.DayOfWeek == DayOfWeek.Sunday)
@@ -59,6 +61,8 @@ namespace NuSmart.BLL
 
         public void registrarTurno(Turno turno)
         {
+            Sesion.Instancia().verificarPermiso("OP001");
+
             try
             {
                 dalTurno.registrarTurno(turno);
@@ -73,6 +77,7 @@ namespace NuSmart.BLL
 
         public List<Turno> obtenerTurnos(DateTime fecha)
         {
+            Sesion.Instancia().verificarPermiso("OP044");
             try
             {
                 Nutricionista nutricionista = new BLLNutricionista().conseguir(Sesion.Instancia().UsuarioActual.Id);
@@ -82,6 +87,11 @@ namespace NuSmart.BLL
                 bllBitacora.crearNuevaBitacora("Busqueda De Turnos de Nutricionista", "Error en la busqueda de turnos del nutricionista: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda"));
             }
+        }
+
+        public void borrarTurno(Turno turno)
+        {
+            Sesion.Instancia().verificarPermiso("OP003");
         }
     }
 }

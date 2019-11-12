@@ -22,6 +22,7 @@ namespace NuSmart.BLL
 
         public List<Plato> obtenerTodos(string tipoAlimento = null)
         {
+            Sesion.Instancia().verificarPermiso("OP007");
             try
             {
                 BLLAlimento bllAliemento = new BLLAlimento();
@@ -42,6 +43,7 @@ namespace NuSmart.BLL
 
         public void agregar(Plato plato)
         {
+            Sesion.Instancia().verificarPermiso("OP008");
             try
             {
                 if (plato.Calorias == 0)
@@ -83,6 +85,7 @@ namespace NuSmart.BLL
 
         public Plato obtenerPlato(int id)
         {
+            Sesion.Instancia().verificarPermiso("OP008");
             try
             {
                 return dalPlato.obtenerPlato(id);

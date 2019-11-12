@@ -24,6 +24,7 @@ namespace NuSmart.BLL
 
         public List<Rutina> obtenerTodos()
         {
+            Sesion.Instancia().verificarPermiso("OP025");
             List<Rutina> rutinas;
             try
             {
@@ -49,6 +50,7 @@ namespace NuSmart.BLL
 
         public void obtenerDiasEjercicioDeRutina(Rutina rutina)
         {
+            Sesion.Instancia().verificarPermiso("OP025");
             try
             {
                 rutina.DiaEjercicioLunes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioLunes.Id);
@@ -68,6 +70,7 @@ namespace NuSmart.BLL
 
         public void agregar(Rutina rutina)
         {
+            Sesion.Instancia().verificarPermiso("OP021");
             try
             {
                 rutina.DiaEjercicioLunes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioLunes);
@@ -108,6 +111,7 @@ namespace NuSmart.BLL
 
         public Rutina obtener(int id)
         {
+            Sesion.Instancia().verificarPermiso("OP025");
             try
             {
                 Rutina rutina = dalRutina.obtener(id);

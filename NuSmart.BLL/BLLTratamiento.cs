@@ -23,6 +23,7 @@ namespace NuSmart.BLL
 
         public void guardar(Tratamiento tratamiento)
         {
+            Sesion.Instancia().verificarPermiso("OP041");
             try
             {
                 dalTratamiento.guardar(tratamiento);
@@ -99,6 +100,7 @@ namespace NuSmart.BLL
 
         public void finalizarTratamiento(Tratamiento tratamiento)
         {
+            Sesion.Instancia().verificarPermiso("OP042");
             try
             {
                 dalTratamiento.finalizarTratamiento(tratamiento);

@@ -18,8 +18,9 @@ namespace NuSmart.BLL
 
         public Proyeccion calcularProyeccion(DateTime fechaInicio, double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
         {
+            Sesion.Instancia().verificarPermiso("OP034");
 
-            if(porcentajeGrasaActual < porcentajeGrasaCorporalIdeal)
+            if (porcentajeGrasaActual < porcentajeGrasaCorporalIdeal)
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("Proyeccion_error_objetivo"));
             }

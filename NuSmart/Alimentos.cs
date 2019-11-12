@@ -51,6 +51,7 @@ namespace NuSmart
                 refrescar();
             }catch(Exception ex)
             {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_verifique_datos"));
                 MessageBox.Show(ex.Message);
             }
 
@@ -274,11 +275,11 @@ namespace NuSmart
                 {
                     dietaActual.Nombre = GestionDieta_textbox_nombre_dieta.Text;
                     bllDieta.guardar(dietaActual);
-                    MessageBox.Show("Alimentos_messagebox_dieta_creada");
+                    MessageBox.Show(NuSmartMessage.formatearMensaje("Alimentos_messagebox_dieta_creada"));
                 }
                 else
                 {
-                    MessageBox.Show("Alimentos_messagebox_insert_name");
+                    MessageBox.Show(NuSmartMessage.formatearMensaje("Alimentos_messagebox_insert_name"));
                 }    
             }
             catch (Exception ex)

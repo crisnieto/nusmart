@@ -30,6 +30,7 @@ namespace NuSmart.BLL
 
         public int guardar(Dieta dieta)
         {
+            Sesion.Instancia().verificarPermiso("OP012");
             if (dietaValida(dieta))
             {
                 try
@@ -109,6 +110,7 @@ namespace NuSmart.BLL
 
         public List<Dieta> conseguirDietas()
         {
+            Sesion.Instancia().verificarPermiso("OP011");
             try
             {       
                 List<Dieta> dietasObtenidas = dalDieta.conseguirDietas();
@@ -141,6 +143,7 @@ namespace NuSmart.BLL
 
         public void obtenerPlatosDeDia(DiaAlimenticio dia)
         {
+
             dia.Desayuno = bllPlato.obtenerPlato(dia.Desayuno.Id);
             dia.Colacion = bllPlato.obtenerPlato(dia.Colacion.Id);
             dia.Almuerzo = bllPlato.obtenerPlato(dia.Almuerzo.Id);
@@ -150,6 +153,7 @@ namespace NuSmart.BLL
 
         public Dieta obtenerDietaAutomatica(int tipo)
         {
+            Sesion.Instancia().verificarPermiso("OP026");
             try
             {
                 switch (tipo)
@@ -315,6 +319,7 @@ namespace NuSmart.BLL
 
         public Dieta conseguirDieta(int dietaID)
         {
+            Sesion.Instancia().verificarPermiso("OP011");
             try
             {
                 Dieta dieta = dalDieta.conseguirDieta(dietaID);

@@ -21,7 +21,9 @@ namespace NuSmart.BLL
 
         public List<Medicion> conseguirMediciones(Paciente paciente)
         {
-            try {
+            Sesion.Instancia().verificarPermiso("OP046");
+            try
+            {
                 return dalMedicion.conseguirMediciones(paciente);
             }catch(Exception ex)
             {
@@ -32,6 +34,7 @@ namespace NuSmart.BLL
 
         public Medicion conseguirUltimaMedicion(Paciente paciente)
         {
+            Sesion.Instancia().verificarPermiso("OP046");
             try
             {
                 Medicion ultimaMedicion = null;
@@ -56,6 +59,7 @@ namespace NuSmart.BLL
 
         public Medicion obtenerPrimeraMedicionTratamiento(Tratamiento tratamiento)
         {
+            Sesion.Instancia().verificarPermiso("OP046");
             try
             {
                 Medicion primeraMedicion = null;
@@ -79,6 +83,7 @@ namespace NuSmart.BLL
 
         public void calcularBMI(Medicion medicion)
         {
+            Sesion.Instancia().verificarPermiso("OP019");
             try
             {
                 medicion.Bmi = Math.Round((medicion.Peso / (medicion.Altura * medicion.Altura)), 1);
@@ -96,6 +101,7 @@ namespace NuSmart.BLL
 
         public void calcularBFP(Medicion medicion, int edad, string sexo)
         {
+            Sesion.Instancia().verificarPermiso("OP020");
             try
             {
                 calcularBMI(medicion);
@@ -206,6 +212,8 @@ namespace NuSmart.BLL
 
         public void guardarMedicionDeTurno(Turno turno)
         {
+            Sesion.Instancia().verificarPermiso("OP047");
+
             try
             {
                 dalMedicion.guardarMedicionDeTurno(turno);

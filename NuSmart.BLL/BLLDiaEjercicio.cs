@@ -21,6 +21,7 @@ namespace NuSmart.BLL
 
         public int agregar(DiaEjercicio diaEjercicio)
         {
+            Sesion.Instancia().verificarPermiso("OP021");
             return dalDiaEjercicio.agregar(diaEjercicio);
         }
 

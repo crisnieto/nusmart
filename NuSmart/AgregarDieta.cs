@@ -215,7 +215,9 @@ namespace NuSmart
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try { 
+            Sesion.Instancia().verificarPermiso("OP041");
+            try
+            { 
                 if(dietaActual != null)
                 {
                     if (dietaActual.EsAutomatica)
