@@ -54,7 +54,6 @@
             this.AgregarDieta_textbox_cantidad_calorias_dia = new System.Windows.Forms.Label();
             this.AgregarDieta_label_calorias_totales = new System.Windows.Forms.Label();
             this.AgregarDieta_label_calorias_dia = new System.Windows.Forms.Label();
-            this.AgregarDieta_button_nueva_dieta = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.AgregarDieta_button_generar_dieta_automatica = new System.Windows.Forms.Button();
             this.AgregarDieta_radiobutton_subir = new System.Windows.Forms.RadioButton();
@@ -306,22 +305,12 @@
             this.AgregarDieta_label_calorias_dia.TabIndex = 20;
             this.AgregarDieta_label_calorias_dia.Text = "Calorias del Dia:";
             // 
-            // AgregarDieta_button_nueva_dieta
-            // 
-            this.AgregarDieta_button_nueva_dieta.Location = new System.Drawing.Point(449, 144);
-            this.AgregarDieta_button_nueva_dieta.Name = "AgregarDieta_button_nueva_dieta";
-            this.AgregarDieta_button_nueva_dieta.Size = new System.Drawing.Size(96, 30);
-            this.AgregarDieta_button_nueva_dieta.TabIndex = 18;
-            this.AgregarDieta_button_nueva_dieta.Text = "Nueva Dieta";
-            this.AgregarDieta_button_nueva_dieta.UseVisualStyleBackColor = true;
-            this.AgregarDieta_button_nueva_dieta.Click += new System.EventHandler(this.button4_Click);
-            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(360, 30);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(185, 108);
+            this.listBox1.Size = new System.Drawing.Size(185, 121);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -385,7 +374,6 @@
             this.Controls.Add(this.AgregarDieta_textbox_cantidad_calorias_dia);
             this.Controls.Add(this.AgregarDieta_label_calorias_totales);
             this.Controls.Add(this.AgregarDieta_label_calorias_dia);
-            this.Controls.Add(this.AgregarDieta_button_nueva_dieta);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.AgregarDieta_button_generar_dieta_automatica);
             this.Controls.Add(this.AgregarDieta_radiobutton_subir);
@@ -420,7 +408,6 @@
         private System.Windows.Forms.Label AgregarDieta_label_merienda;
         private System.Windows.Forms.TextBox agregarDieta_textbox_cena;
         private System.Windows.Forms.Label AgregarDieta_label_cena;
-        private System.Windows.Forms.Button AgregarDieta_button_nueva_dieta;
         private System.Windows.Forms.Label AgregarDieta_label_calorias_dia;
         private System.Windows.Forms.Label AgregarDieta_label_calorias_totales;
         private System.Windows.Forms.Label AgregarDieta_textbox_cantidad_calorias_dia;

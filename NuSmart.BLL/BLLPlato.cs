@@ -44,6 +44,10 @@ namespace NuSmart.BLL
         public void agregar(Plato plato)
         {
             Sesion.Instancia().verificarPermiso("OP008");
+            if ((!plato.EsColacion && !plato.EsDesayuno && !plato.EsMerienda && !plato.EsPlatoPrincipal) || plato.Nombre == null || plato.Nombre == "") 
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_indique_tipo"));
+            }
             try
             {
                 if (plato.Calorias == 0)

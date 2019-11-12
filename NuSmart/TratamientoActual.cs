@@ -24,6 +24,7 @@ namespace NuSmart
         Medicion primeraMedicion;
         DiaAlimenticio diaActual;
         Tratamiento tratamientoActivo;
+
         public TratamientoActual(Turno turno)
         {
             this.turno = turno;
@@ -40,16 +41,8 @@ namespace NuSmart
             try
             {
                 tratamientoActivo = bllTratamiento.obtenerTratamientoActivo(turno.Paciente);
-                primeraMedicion = bllMedicion.obtenerPrimeraMedicionTratamiento(tratamientoActivo);
 
-                ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
-                List<Medicion> dataSourceUltimaMedicion = new List<Medicion>();
-                dataSourceUltimaMedicion.Add(ultimaMedicion);
-                dataGridView1.DataSource = dataSourceUltimaMedicion;
-
-                List<Medicion> dataSourcePrimeraMedicion = new List<Medicion>();
-                dataSourcePrimeraMedicion.Add(primeraMedicion);
-                dataGridView2.DataSource = dataSourcePrimeraMedicion;
+                actualizarMediciones();
 
                 dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
                 tratamientoActivo.Dieta = dietaActual;
@@ -73,9 +66,24 @@ namespace NuSmart
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Mediciones mediciones = new Mediciones(turno);
+            Mediciones mediciones = new Mediciones(turno, this);
             mediciones.MdiParent = this.ParentForm;
             mediciones.Show();
+        }
+
+
+        public void actualizarMediciones()
+        {
+            primeraMedicion = bllMedicion.obtenerPrimeraMedicionTratamiento(tratamientoActivo);
+
+            ultimaMedicion = bllMedicion.conseguirUltimaMedicion(turno.Paciente);
+            List<Medicion> dataSourceUltimaMedicion = new List<Medicion>();
+            dataSourceUltimaMedicion.Add(ultimaMedicion);
+            dataGridView1.DataSource = dataSourceUltimaMedicion;
+
+            List<Medicion> dataSourcePrimeraMedicion = new List<Medicion>();
+            dataSourcePrimeraMedicion.Add(primeraMedicion);
+            dataGridView2.DataSource = dataSourcePrimeraMedicion;
         }
 
         private void button5_Click(object sender, EventArgs e)

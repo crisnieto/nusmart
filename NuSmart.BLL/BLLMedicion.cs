@@ -44,7 +44,7 @@ namespace NuSmart.BLL
                     {
                         ultimaMedicion = medicion;
                     }
-                    if (DateTime.Compare(medicion.Fecha, ultimaMedicion.Fecha) > 0)
+                    if (DateTime.Compare(medicion.Fecha, ultimaMedicion.Fecha) >= 0)
                     {
                         ultimaMedicion = medicion;
                     }

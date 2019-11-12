@@ -20,7 +20,7 @@ namespace NuSmart.DAL
 
         public List<Medicion> conseguirMediciones(Paciente paciente)
         {
-            string textoComando = "SELECT altura, peso, cadera, bmi, categoriaBmi, bfp, categoriaBfp, cintura, turno.fecha from Medicion inner join Turno on (turno.turnoID = Medicion.turnoID) where turno.pacienteID = @IDPACIENTE ORDER BY FECHA DESC";
+            string textoComando = "SELECT altura, peso, cadera, bmi, categoriaBmi, bfp, categoriaBfp, cintura, turno.fecha from Medicion inner join Turno on (turno.turnoID = Medicion.turnoID) where turno.pacienteID = @IDPACIENTE ORDER BY FECHA DESC, MEDICIONID ASC";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 

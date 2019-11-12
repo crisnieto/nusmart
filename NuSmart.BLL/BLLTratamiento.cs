@@ -72,15 +72,21 @@ namespace NuSmart.BLL
             Tratamiento tratamientoActivo;
 
             tratamientoActivo = obtenerTratamientoActivo(paciente);
- 
+
+            if (DateTime.Compare(fecha.Date, DateTime.Today.Date) < 0)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Tratamiento_error_fecha_anterior"));
+            }
+
             if (tratamientoActivo != null)
             {
-                if (DateTime.Compare(tratamientoActivo.FechaInicio.Date, fecha) > 0)
+                if (DateTime.Compare(tratamientoActivo.FechaInicio.Date, fecha.Date) > 0)
                 {
                     throw new Exception(NuSmartMessage.formatearMensaje("Tratamiento_error_fecha_tratamiento"));
                 }
                 return true;
-            }else
+            }
+            else
             {
                 return false;
             }

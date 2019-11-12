@@ -17,12 +17,14 @@ namespace NuSmart
         Turno turno;
         BLLMedicion bllMedicion;
         BLLTratamiento bllTratamiento;
-        public Mediciones(Turno turno)
+        TratamientoActual tratamientoForm;
+        public Mediciones(Turno turno, TratamientoActual tratamiento = null)
         {
             this.turno = turno;
             bllMedicion = new BLLMedicion();
             bllTratamiento = new BLLTratamiento();
             InitializeComponent();
+            this.tratamientoForm = tratamiento;
             setup();
         }
 
@@ -107,11 +109,9 @@ namespace NuSmart
                 bllMedicion.calcularBFP(turno.Medicion, turno.Paciente.Edad(), turno.Paciente.Sexo);
 
                 bllMedicion.guardarMedicionDeTurno(turno);
-                if (new BLLTratamiento().existeTratamientoActivo(turno.Paciente, turno.Fecha))
+                if (tratamientoForm != null)
                 {
-                    TratamientoActual tratamientoActual = new TratamientoActual(turno);
-                    tratamientoActual.MdiParent = this.ParentForm;
-                    tratamientoActual.Show();
+                    tratamientoForm.actualizarMediciones();
                     this.Close();
                 }
                 else

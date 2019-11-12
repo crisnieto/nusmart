@@ -97,7 +97,10 @@ namespace NuSmart
             {
                 platoActual = new Plato();
                 platoActual.Nombre = Alimentos_textbox_nombre_plato.Text;
-                platoActual.Calorias = Convert.ToInt32(Alimentos_textbox_calorias_plato.Text);
+                if(Alimentos_textbox_calorias_plato.Text != null & Alimentos_textbox_calorias_plato.Text != "")
+                {
+                    platoActual.Calorias = Convert.ToInt32(Alimentos_textbox_calorias_plato.Text);
+                }
                 platoActual.EsDesayuno = Alimentos_checkbox_desayuno.Checked;
                 platoActual.EsMerienda = Alimentos_checkbox_merienda.Checked;
                 platoActual.EsColacion = Alimentos_checkbox_colacion.Checked;
