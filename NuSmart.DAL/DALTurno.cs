@@ -36,7 +36,7 @@ namespace NuSmart.DAL
         public List<Turno> obtenerTurnos(DateTime fecha, Nutricionista nutricionista)
         {
             List<Turno> turnos = new List<Turno>();
-            string textoComando = "select * from turno INNER JOIN Paciente on (turno.pacienteID = Paciente.pacienteID) inner join Horario on (turno.horarioID = horario.id) where fecha = @FECHA and nutricionistaID = @NUTRICIONISTA";
+            string textoComando = "select * from turno INNER JOIN Paciente on (turno.pacienteID = Paciente.pacienteID) inner join Horario on (turno.horarioID = horario.id) where fecha = @FECHA and nutricionistaID = @NUTRICIONISTA and turno.eliminado = 0";
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@FECHA", fecha));
@@ -69,6 +69,17 @@ namespace NuSmart.DAL
 
             return turnos;
 
+        }
+
+        public void eliminar(Turno turno)
+        {
+            string textoComando = "update TURNO set ELIMINADO = 1 WHERE turnoID = @ID";
+
+            List<SqlParameter> lista = new List<SqlParameter>();
+
+            lista.Add(new SqlParameter("@ID", turno.Id));
+
+            sqlHelper.ejecutarNonQuery(textoComando, lista);
         }
     }
 }

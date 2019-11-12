@@ -15,6 +15,7 @@ namespace NuSmart.BE
         DateTime fecha;
         Medicion medicion;
         string motivo;
+        bool eliminado;
 
         public Nutricionista Nutricionista
         {
@@ -104,6 +105,19 @@ namespace NuSmart.BE
             set
             {
                 motivo = value;
+            }
+        }
+
+        public bool Eliminado
+        {
+            get
+            {
+                return eliminado;
+            }
+
+            set
+            {
+                eliminado = value;
             }
         }
 

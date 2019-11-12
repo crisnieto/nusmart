@@ -92,6 +92,14 @@ namespace NuSmart.BLL
         public void borrarTurno(Turno turno)
         {
             Sesion.Instancia().verificarPermiso("OP003");
+            try
+            {
+                dalTurno.eliminar(turno);
+            }catch(Exception ex)
+            {
+                bllBitacora.crearNuevaBitacora("Eliminado de Turno", "Error al eliminar turno del nutricionista: " + ex.Message, Criticidad.Alta);
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarTurno_error_eliminado"));
+            }
         }
     }
 }

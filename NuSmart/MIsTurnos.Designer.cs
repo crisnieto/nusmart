@@ -34,6 +34,7 @@
             this.MisTurnos_label_titulo = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.MisTurnos_button_iniciar = new System.Windows.Forms.Button();
+            this.MisTurnos_button_borrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // MisTurnos_label_nutricionista
@@ -82,12 +83,24 @@
             this.MisTurnos_button_iniciar.UseVisualStyleBackColor = true;
             this.MisTurnos_button_iniciar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // MisTurnos_button_borrar
+            // 
+            this.MisTurnos_button_borrar.Enabled = false;
+            this.MisTurnos_button_borrar.Location = new System.Drawing.Point(16, 207);
+            this.MisTurnos_button_borrar.Name = "MisTurnos_button_borrar";
+            this.MisTurnos_button_borrar.Size = new System.Drawing.Size(227, 42);
+            this.MisTurnos_button_borrar.TabIndex = 5;
+            this.MisTurnos_button_borrar.Text = "Borrar Turno";
+            this.MisTurnos_button_borrar.UseVisualStyleBackColor = true;
+            this.MisTurnos_button_borrar.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MisTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(560, 258);
+            this.Controls.Add(this.MisTurnos_button_borrar);
             this.Controls.Add(this.MisTurnos_button_iniciar);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.MisTurnos_label_titulo);
@@ -108,5 +121,6 @@
         private System.Windows.Forms.Label MisTurnos_label_titulo;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button MisTurnos_button_iniciar;
+        private System.Windows.Forms.Button MisTurnos_button_borrar;
     }
 }

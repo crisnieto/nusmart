@@ -43,8 +43,15 @@ namespace NuSmart
         {
             try
             {
+
                 listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
-            }catch(Exception ex)
+                if(listBox1.SelectedIndex < 0)
+                {
+                    MisTurnos_button_iniciar.Enabled = false;
+                    MisTurnos_button_borrar.Enabled = false;
+                }
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -88,11 +95,33 @@ namespace NuSmart
                 if (listBox1.Items.Count > 0)
                 {
                     MisTurnos_button_iniciar.Enabled = true;
+                    MisTurnos_button_borrar.Enabled = true;
                     turnoSeleccionado = (Turno)listBox1.SelectedItem;
                 }
                 else
                 {
                     turnoSeleccionado = null;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listBox1.SelectedItems.Count > 0 && turnoSeleccionado != null)
+                {
+                    turnoSeleccionado = (Turno)listBox1.SelectedItem;
+                    bllTurnos.borrarTurno(turnoSeleccionado);
+                    listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
+                    if (listBox1.SelectedIndex < 0)
+                    {
+                        MisTurnos_button_iniciar.Enabled = false;
+                        MisTurnos_button_borrar.Enabled = false;
+                    }
                 }
             }catch(Exception ex)
             {
