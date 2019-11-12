@@ -26,6 +26,7 @@ namespace NuSmart.BLL
         }
 
         public DiaEjercicio obtenerDiaEjercicio(int idDiaEjercicio) {
+            Sesion.Instancia().verificarPermiso("OP025");
             DiaEjercicio dia = dalDiaEjercicio.obtener(idDiaEjercicio);
             dia.Ejercicio = bllEjercicio.obtener(dia.Ejercicio.Id);
             return dia;

@@ -56,6 +56,7 @@
     <Compile Include="BLLDiaEjercicio.cs" />
     <Compile Include="BLLDieta.cs" />
     <Compile Include="BLLEjercicio.cs" />
+    <Compile Include="BLLEscritura.cs" />
     <Compile Include="BLLFamilia.cs" />
     <Compile Include="BLLHorario.cs" />
     <Compile Include="BLLIdioma.cs" />

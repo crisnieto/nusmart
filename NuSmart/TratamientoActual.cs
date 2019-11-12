@@ -52,6 +52,7 @@ namespace NuSmart
                 dataGridView2.DataSource = dataSourcePrimeraMedicion;
 
                 dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
+                tratamientoActivo.Dieta = dietaActual;
                 TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
 
                 TratamientoActual_listbox_dias.Items.Add(dietaActual.Lunes);
@@ -176,6 +177,17 @@ namespace NuSmart
             AgregarRutina agregarRutina = new AgregarRutina(tratamientoActivo, this);
             agregarRutina.MdiParent = this.ParentForm;
             agregarRutina.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(new BLLEscritura().escribir(tratamientoActivo, turno));
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

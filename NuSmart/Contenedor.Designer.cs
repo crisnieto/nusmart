@@ -39,12 +39,8 @@
             this.Contenedor_menu_gestion_pacientes = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_nutricionistas = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_nutricionistas = new System.Windows.Forms.ToolStripMenuItem();
-            this.alimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDeAlimentosYPlatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDeDietasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_dieta_ejercicio = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_alimentos = new System.Windows.Forms.ToolStripMenuItem();
-            this.Contenedor_menu_gestion_dietas = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_ejercicios = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_gestion_bitacora = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor_menu_backup = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +60,6 @@
             this.Contenedor_menu_turnos,
             this.Contenedor_menu_pacientes,
             this.Contenedor_menu_nutricionistas,
-            this.alimentosToolStripMenuItem,
             this.Contenedor_menu_dieta_ejercicio,
             this.Contenedor_menu_gestion_bitacora,
             this.Contenedor_menu_backup,
@@ -76,6 +71,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1149, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // Contenedor_menu_micuenta
             // 
@@ -139,6 +135,7 @@
             this.Contenedor_menu_nutricionistas.Name = "Contenedor_menu_nutricionistas";
             this.Contenedor_menu_nutricionistas.Size = new System.Drawing.Size(92, 22);
             this.Contenedor_menu_nutricionistas.Text = "Nutricionistas";
+            this.Contenedor_menu_nutricionistas.Click += new System.EventHandler(this.Contenedor_menu_nutricionistas_Click);
             // 
             // Contenedor_menu_gestion_nutricionistas
             // 
@@ -147,56 +144,28 @@
             this.Contenedor_menu_gestion_nutricionistas.Text = "Gestión de Nutricionistas";
             this.Contenedor_menu_gestion_nutricionistas.Click += new System.EventHandler(this.menu_gestion_nutricionistas_Click);
             // 
-            // alimentosToolStripMenuItem
-            // 
-            this.alimentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDeAlimentosYPlatosToolStripMenuItem,
-            this.gestionDeDietasToolStripMenuItem});
-            this.alimentosToolStripMenuItem.Name = "alimentosToolStripMenuItem";
-            this.alimentosToolStripMenuItem.Size = new System.Drawing.Size(73, 22);
-            this.alimentosToolStripMenuItem.Text = "Alimentos";
-            // 
-            // gestionDeAlimentosYPlatosToolStripMenuItem
-            // 
-            this.gestionDeAlimentosYPlatosToolStripMenuItem.Name = "gestionDeAlimentosYPlatosToolStripMenuItem";
-            this.gestionDeAlimentosYPlatosToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.gestionDeAlimentosYPlatosToolStripMenuItem.Text = "Gestion de Alimentos y Platos";
-            this.gestionDeAlimentosYPlatosToolStripMenuItem.Click += new System.EventHandler(this.gestionDeAlimentosYPlatosToolStripMenuItem_Click);
-            // 
-            // gestionDeDietasToolStripMenuItem
-            // 
-            this.gestionDeDietasToolStripMenuItem.Name = "gestionDeDietasToolStripMenuItem";
-            this.gestionDeDietasToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.gestionDeDietasToolStripMenuItem.Text = "Gestion de Dietas";
-            this.gestionDeDietasToolStripMenuItem.Click += new System.EventHandler(this.gestionDeDietasToolStripMenuItem_Click);
-            // 
             // Contenedor_menu_dieta_ejercicio
             // 
             this.Contenedor_menu_dieta_ejercicio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Contenedor_menu_gestion_alimentos,
-            this.Contenedor_menu_gestion_dietas,
             this.Contenedor_menu_gestion_ejercicios});
             this.Contenedor_menu_dieta_ejercicio.Name = "Contenedor_menu_dieta_ejercicio";
             this.Contenedor_menu_dieta_ejercicio.Size = new System.Drawing.Size(107, 22);
             this.Contenedor_menu_dieta_ejercicio.Text = "Dieta y Ejercicios";
+            this.Contenedor_menu_dieta_ejercicio.Click += new System.EventHandler(this.Contenedor_menu_dieta_ejercicio_Click);
             // 
             // Contenedor_menu_gestion_alimentos
             // 
             this.Contenedor_menu_gestion_alimentos.Name = "Contenedor_menu_gestion_alimentos";
             this.Contenedor_menu_gestion_alimentos.Size = new System.Drawing.Size(187, 22);
             this.Contenedor_menu_gestion_alimentos.Text = "Gestión de Alimentos";
-            // 
-            // Contenedor_menu_gestion_dietas
-            // 
-            this.Contenedor_menu_gestion_dietas.Name = "Contenedor_menu_gestion_dietas";
-            this.Contenedor_menu_gestion_dietas.Size = new System.Drawing.Size(187, 22);
-            this.Contenedor_menu_gestion_dietas.Text = "Gestión de Dieta";
+            this.Contenedor_menu_gestion_alimentos.Click += new System.EventHandler(this.Contenedor_menu_gestion_alimentos_Click);
             // 
             // Contenedor_menu_gestion_ejercicios
             // 
             this.Contenedor_menu_gestion_ejercicios.Name = "Contenedor_menu_gestion_ejercicios";
             this.Contenedor_menu_gestion_ejercicios.Size = new System.Drawing.Size(187, 22);
-            this.Contenedor_menu_gestion_ejercicios.Text = "Gestión Proyecciones";
+            this.Contenedor_menu_gestion_ejercicios.Text = "Gestión de Ejercicios";
             this.Contenedor_menu_gestion_ejercicios.Click += new System.EventHandler(this.Contenedor_menu_gestion_ejercicios_Click);
             // 
             // Contenedor_menu_gestion_bitacora
@@ -286,7 +255,6 @@
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_nutricionistas;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_dieta_ejercicio;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_alimentos;
-        private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_dietas;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_ejercicios;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_bitacora;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_backup;
@@ -295,8 +263,5 @@
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_cambiar_idioma;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_idioma;
         private System.Windows.Forms.ToolStripMenuItem Contenedor_menu_gestion_etiquetas;
-        private System.Windows.Forms.ToolStripMenuItem alimentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionDeAlimentosYPlatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestionDeDietasToolStripMenuItem;
     }
 }

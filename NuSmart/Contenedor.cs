@@ -36,7 +36,6 @@ namespace NuSmart
             Contenedor_menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
             Contenedor_menu_gestion_alimentos.Enabled = Sesion.Instancia().validar("GE102");
             Contenedor_menu_gestion_ejercicios.Enabled = Sesion.Instancia().validar("GE102");
-            Contenedor_menu_gestion_dietas.Enabled = Sesion.Instancia().validar("GE102");
             Contenedor_menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
             Contenedor_menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
@@ -44,6 +43,8 @@ namespace NuSmart
             Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_gestion_idioma.Enabled = Sesion.Instancia().validar("OP83");
             Contenedor_menu_gestion_etiquetas.Enabled = Sesion.Instancia().validar("OP84");
+
+            ocultarItems();
         }
 
         private void menu_gestion_bitacora_Click(object sender, EventArgs e)
@@ -149,11 +150,6 @@ namespace NuSmart
             crearFormulario(typeof(MisTurnos));
         }
 
-        private void gestionDeAlimentosYPlatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crearFormulario(typeof(Alimentos));
-        }
-
         private void gestionDeDietasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(NuevaDieta));
@@ -162,6 +158,54 @@ namespace NuSmart
         private void Contenedor_menu_gestion_ejercicios_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(Ejercicios));
+        }
+
+        private void Contenedor_menu_gestion_alimentos_Click(object sender, EventArgs e)
+        {
+            crearFormulario(typeof(Alimentos));
+        }
+
+        private void Contenedor_menu_dieta_ejercicio_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void ocultarItems()
+        {
+            foreach(ToolStripMenuItem toolStrip in menuStrip1.Items)
+            {
+                if (toolStrip.HasDropDownItems)
+                {
+                    bool tieneHijosVisibles = false;
+                    foreach(ToolStripDropDownItem item in toolStrip.DropDownItems)
+                    {
+                        if(item.Enabled == true)
+                        {
+                            tieneHijosVisibles = true;
+                        }else
+                        {
+                            item.Visible = false;
+                        }
+                    }
+                    toolStrip.Visible = tieneHijosVisibles;
+                }
+                else{
+                    if (!toolStrip.Enabled)
+                    {
+                        toolStrip.Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void Contenedor_menu_nutricionistas_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

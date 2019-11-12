@@ -15,6 +15,7 @@ namespace NuSmart
         [STAThread]
         static void Main()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");//en-US
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Inicializo el Singleton de la sesion

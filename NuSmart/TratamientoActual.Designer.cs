@@ -89,6 +89,7 @@
             this.Ejercicios_textbox_domingo_calorias = new System.Windows.Forms.TextBox();
             this.TratamientoActual_label_primera_medicion = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -579,12 +580,23 @@
             this.dataGridView2.Size = new System.Drawing.Size(407, 67);
             this.dataGridView2.TabIndex = 137;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(291, 307);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 41);
+            this.button1.TabIndex = 139;
+            this.button1.Text = "Guardar Resumen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // TratamientoActual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(434, 675);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TratamientoActual_label_primera_medicion);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.Ejercicios_textbox_domingo_calorias);
@@ -717,5 +729,6 @@
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo_calorias;
         private System.Windows.Forms.Label TratamientoActual_label_primera_medicion;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button1;
     }
 }
