@@ -305,8 +305,8 @@ namespace NuSmart.BLL
                         }
                     }
                 }
-                max = max + 50;
-                min = min > 0 ? min - 50 : min;
+                max = max + 100;
+                min = min > 0 ? min - 100 : min;
 
                 if(dia.Desayuno.Calorias == 0 || dia.Colacion.Calorias == 0 || dia.Almuerzo.Calorias == 0 || dia.Merienda.Calorias == 0 || dia.Cena.Calorias == 0)
                 {

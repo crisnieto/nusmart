@@ -73,13 +73,35 @@ namespace NuSmart.BLL
             Sesion.Instancia().verificarPermiso("OP021");
             try
             {
-                rutina.DiaEjercicioLunes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioLunes);
-                rutina.DiaEjercicioMartes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMartes);
-                rutina.DiaEjercicioMiercoles.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMiercoles);
-                rutina.DiaEjercicioJueves.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioJueves);
-                rutina.DiaEjercicioViernes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioViernes);
-                rutina.DiaEjercicioSabado.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioSabado);
-                rutina.DiaEjercicioDomingo.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioDomingo);
+                if (rutina.DiaEjercicioLunes.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioLunes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioLunes);
+                }
+                if (rutina.DiaEjercicioMartes.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioMartes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMartes);
+                }
+                if (rutina.DiaEjercicioMiercoles.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioMiercoles.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMiercoles);
+                }
+                if (rutina.DiaEjercicioJueves.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioJueves.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioJueves);
+                }
+                if (rutina.DiaEjercicioViernes.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioViernes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioViernes);
+                }
+                if (rutina.DiaEjercicioSabado.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioSabado.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioSabado);
+                }
+                if (rutina.DiaEjercicioDomingo.Ejercicio != null)
+                {
+                    rutina.DiaEjercicioDomingo.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioDomingo);
+                }
+
 
                 dalRutina.agregar(rutina);
                 bllBitacora.crearNuevaBitacora("Agregar Rutina", "Se agrego una nueva rutina: " + rutina.Nombre, Criticidad.Media);

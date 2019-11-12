@@ -22,13 +22,20 @@ namespace NuSmart.BLL
         public int agregar(DiaEjercicio diaEjercicio)
         {
             Sesion.Instancia().verificarPermiso("OP021");
-            return dalDiaEjercicio.agregar(diaEjercicio);
+            if(diaEjercicio.Ejercicio.Id > 0) 
+            {
+                return dalDiaEjercicio.agregar(diaEjercicio);
+            }
+            return 0;
         }
 
         public DiaEjercicio obtenerDiaEjercicio(int idDiaEjercicio) {
             Sesion.Instancia().verificarPermiso("OP025");
             DiaEjercicio dia = dalDiaEjercicio.obtener(idDiaEjercicio);
-            dia.Ejercicio = bllEjercicio.obtener(dia.Ejercicio.Id);
+            if(dia.Id > 0)
+            {
+                dia.Ejercicio = bllEjercicio.obtener(dia.Ejercicio.Id);
+            }
             return dia;
         }
     }

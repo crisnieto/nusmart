@@ -68,7 +68,6 @@
             this.AgregarDieta_dia_sabado = new System.Windows.Forms.Label();
             this.AgregarDieta_dia_domingo = new System.Windows.Forms.Label();
             this.TratamientoActual_label_rutina_actual = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.Ejercicios_textbox_lunes_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_martes_duracion = new System.Windows.Forms.TextBox();
             this.Ejercicios_textbox_miercoles_duracion = new System.Windows.Forms.TextBox();
@@ -89,7 +88,7 @@
             this.Ejercicios_textbox_domingo_calorias = new System.Windows.Forms.TextBox();
             this.TratamientoActual_label_primera_medicion = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TratamientoActual_button_guardar_resumen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -416,20 +415,11 @@
             // TratamientoActual_label_rutina_actual
             // 
             this.TratamientoActual_label_rutina_actual.AutoSize = true;
-            this.TratamientoActual_label_rutina_actual.Location = new System.Drawing.Point(14, 454);
+            this.TratamientoActual_label_rutina_actual.Location = new System.Drawing.Point(13, 467);
             this.TratamientoActual_label_rutina_actual.Name = "TratamientoActual_label_rutina_actual";
             this.TratamientoActual_label_rutina_actual.Size = new System.Drawing.Size(74, 13);
             this.TratamientoActual_label_rutina_actual.TabIndex = 117;
             this.TratamientoActual_label_rutina_actual.Text = "Rutina Actual:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(15, 467);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 13);
-            this.label19.TabIndex = 118;
-            this.label19.Text = "No posee";
             // 
             // Ejercicios_textbox_lunes_duracion
             // 
@@ -580,15 +570,15 @@
             this.dataGridView2.Size = new System.Drawing.Size(407, 67);
             this.dataGridView2.TabIndex = 137;
             // 
-            // button1
+            // TratamientoActual_button_guardar_resumen
             // 
-            this.button1.Location = new System.Drawing.Point(291, 307);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 41);
-            this.button1.TabIndex = 139;
-            this.button1.Text = "Guardar Resumen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.TratamientoActual_button_guardar_resumen.Location = new System.Drawing.Point(291, 307);
+            this.TratamientoActual_button_guardar_resumen.Name = "TratamientoActual_button_guardar_resumen";
+            this.TratamientoActual_button_guardar_resumen.Size = new System.Drawing.Size(130, 41);
+            this.TratamientoActual_button_guardar_resumen.TabIndex = 139;
+            this.TratamientoActual_button_guardar_resumen.Text = "Guardar Resumen";
+            this.TratamientoActual_button_guardar_resumen.UseVisualStyleBackColor = true;
+            this.TratamientoActual_button_guardar_resumen.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // TratamientoActual
             // 
@@ -596,7 +586,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(434, 675);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TratamientoActual_button_guardar_resumen);
             this.Controls.Add(this.TratamientoActual_label_primera_medicion);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.Ejercicios_textbox_domingo_calorias);
@@ -617,7 +607,6 @@
             this.Controls.Add(this.Ejercicios_textbox_miercoles_duracion);
             this.Controls.Add(this.Ejercicios_textbox_martes_duracion);
             this.Controls.Add(this.Ejercicios_textbox_lunes_duracion);
-            this.Controls.Add(this.label19);
             this.Controls.Add(this.TratamientoActual_label_rutina_actual);
             this.Controls.Add(this.AgregarDieta_dia_domingo);
             this.Controls.Add(this.AgregarDieta_dia_sabado);
@@ -708,7 +697,6 @@
         private System.Windows.Forms.Label AgregarDieta_dia_sabado;
         private System.Windows.Forms.Label AgregarDieta_dia_domingo;
         private System.Windows.Forms.Label TratamientoActual_label_rutina_actual;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox Ejercicios_textbox_lunes_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_martes_duracion;
         private System.Windows.Forms.TextBox Ejercicios_textbox_miercoles_duracion;
@@ -729,6 +717,6 @@
         private System.Windows.Forms.TextBox Ejercicios_textbox_domingo_calorias;
         private System.Windows.Forms.Label TratamientoActual_label_primera_medicion;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button TratamientoActual_button_guardar_resumen;
     }
 }

@@ -83,6 +83,9 @@ namespace NuSmart
         {
             try
             {
+
+
+
                 rutinaActual.DiaEjercicioLunes.Duracion = (int)Ejercicios_numericupdown_lunes.Value;
                 rutinaActual.DiaEjercicioMartes.Duracion = (int)Ejercicios_numericupdown_martes.Value;
                 rutinaActual.DiaEjercicioMiercoles.Duracion = (int)Ejercicios_numericupdown_miercoles.Value;
@@ -91,6 +94,8 @@ namespace NuSmart
                 rutinaActual.DiaEjercicioSabado.Duracion = (int)Ejercicios_numericupdown_sabado.Value;
                 rutinaActual.DiaEjercicioDomingo.Duracion = (int)Ejercicios_numericupdown_domingo.Value;
                 rutinaActual.Nombre = Ejercicios_textbox_rutinaNombre.Text;
+
+
                 bllRutina.agregar(rutinaActual);
                 MessageBox.Show("OK");
             }

@@ -30,13 +30,13 @@ namespace NuSmart.DAL
             {
                 Rutina rutina = new Rutina();
                 rutina.Id = (int)dr["rutinaID"];
-                rutina.DiaEjercicioLunes.Id = (int)dr["idDiaEjercicioLunes"];
-                rutina.DiaEjercicioMartes.Id = (int)dr["idDiaEjercicioMartes"];
-                rutina.DiaEjercicioMiercoles.Id = (int)dr["idDiaEjercicioMiercoles"];
-                rutina.DiaEjercicioJueves.Id = (int)dr["idDiaEjercicioJueves"];
-                rutina.DiaEjercicioViernes.Id = (int)dr["idDiaEjercicioViernes"];
-                rutina.DiaEjercicioSabado.Id = (int)dr["idDiaEjercicioSabado"];
-                rutina.DiaEjercicioDomingo.Id = (int)dr["idDiaEjercicioDomingo"];
+                rutina.DiaEjercicioLunes.Id = dr["idDiaEjercicioLunes"] is DBNull ? 0 : (int)dr["idDiaEjercicioLunes"];
+                rutina.DiaEjercicioMartes.Id = dr["idDiaEjercicioMartes"] is DBNull ? 0 : (int)dr["idDiaEjercicioMartes"];
+                rutina.DiaEjercicioMiercoles.Id = dr["idDiaEjercicioMiercoles"] is DBNull ? 0 : (int)dr["idDiaEjercicioMiercoles"];
+                rutina.DiaEjercicioJueves.Id = dr["idDiaEjercicioJueves"] is DBNull ? 0 : (int)dr["idDiaEjercicioJueves"];
+                rutina.DiaEjercicioViernes.Id = dr["idDiaEjercicioViernes"] is DBNull ? 0 : (int)dr["idDiaEjercicioViernes"];
+                rutina.DiaEjercicioSabado.Id = dr["idDiaEjercicioSabado"] is DBNull ? 0 : (int)dr["idDiaEjercicioSabado"];
+                rutina.DiaEjercicioDomingo.Id = dr["idDiaEjercicioDomingo"] is DBNull ? 0 : (int)dr["idDiaEjercicioDomingo"];
                 rutina.Nombre = (string)dr["nombre"];
 
                 rutinas.Add(rutina);
@@ -44,21 +44,34 @@ namespace NuSmart.DAL
             return rutinas;
         }
 
+       
+
         public void agregar(Rutina rutina)
         {
             string textoComando = "INSERT INTO RUTINA (idDiaEjercicioLunes, idDiaEjercicioMartes, idDiaEjercicioMiercoles, idDiaEjercicioJueves, idDiaEjercicioViernes, idDiaEjercicioSabado, idDiaEjercicioDomingo, nombre) VALUES (@LUNES, @MARTES, @MIERCOLES, @JUEVES, @VIERNES, @SABADO, @DOMINGO, @NOMBRE)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@LUNES", rutina.DiaEjercicioLunes.Id));
-            lista.Add(new SqlParameter("@MARTES", rutina.DiaEjercicioMartes.Id));
-            lista.Add(new SqlParameter("@MIERCOLES", rutina.DiaEjercicioMiercoles.Id));
-            lista.Add(new SqlParameter("@JUEVES", rutina.DiaEjercicioJueves.Id));
-            lista.Add(new SqlParameter("@VIERNES", rutina.DiaEjercicioViernes.Id));
-            lista.Add(new SqlParameter("@SABADO", rutina.DiaEjercicioSabado.Id));
-            lista.Add(new SqlParameter("@DOMINGO", rutina.DiaEjercicioDomingo.Id));
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioLunes, "@LUNES");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioMartes, "@MARTES");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioMiercoles, "@MIERCOLES");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioJueves, "@JUEVES");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioViernes, "@VIERNES");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioSabado, "@SABADO");
+            formatearOptionalParamDiaEjercicio(lista, rutina.DiaEjercicioDomingo, "@DOMINGO");
             lista.Add(new SqlParameter("@NOMBRE", rutina.Nombre));
 
-            sqlHelper.ejecutarDataAdapter(textoComando, lista);
+            sqlHelper.ejecutarNonQuery(textoComando, lista);
+        }
+
+        public void formatearOptionalParamDiaEjercicio(List<SqlParameter> lista, DiaEjercicio dia, string param)
+        {
+            if(dia.Id > 0)
+            {
+                lista.Add(new SqlParameter(param, dia.Id));
+            }else
+            {
+                lista.Add(new SqlParameter(param, DBNull.Value));
+            }
         }
 
         public Rutina obtener(int id)
@@ -76,13 +89,13 @@ namespace NuSmart.DAL
                 DataRow dr = dt.Rows[0];
                 Rutina rutina = new Rutina();
                 rutina.Id = (int)dr["rutinaID"];
-                rutina.DiaEjercicioLunes.Id = (int)dr["idDiaEjercicioLunes"];
-                rutina.DiaEjercicioMartes.Id = (int)dr["idDiaEjercicioMartes"];
-                rutina.DiaEjercicioMiercoles.Id = (int)dr["idDiaEjercicioMiercoles"];
-                rutina.DiaEjercicioJueves.Id = (int)dr["idDiaEjercicioJueves"];
-                rutina.DiaEjercicioViernes.Id = (int)dr["idDiaEjercicioViernes"];
-                rutina.DiaEjercicioSabado.Id = (int)dr["idDiaEjercicioSabado"];
-                rutina.DiaEjercicioDomingo.Id = (int)dr["idDiaEjercicioDomingo"];
+                rutina.DiaEjercicioLunes.Id = dr["idDiaEjercicioLunes"] is DBNull ? 0 : (int)dr["idDiaEjercicioLunes"];
+                rutina.DiaEjercicioMartes.Id = dr["idDiaEjercicioMartes"] is DBNull ? 0 : (int)dr["idDiaEjercicioMartes"];
+                rutina.DiaEjercicioMiercoles.Id = dr["idDiaEjercicioMiercoles"] is DBNull ? 0 : (int)dr["idDiaEjercicioMiercoles"];
+                rutina.DiaEjercicioJueves.Id = dr["idDiaEjercicioJueves"] is DBNull ? 0 : (int)dr["idDiaEjercicioJueves"];
+                rutina.DiaEjercicioViernes.Id = dr["idDiaEjercicioViernes"] is DBNull ? 0 : (int)dr["idDiaEjercicioViernes"];
+                rutina.DiaEjercicioSabado.Id = dr["idDiaEjercicioSabado"] is DBNull ? 0 : (int)dr["idDiaEjercicioSabado"];
+                rutina.DiaEjercicioDomingo.Id = dr["idDiaEjercicioDomingo"] is DBNull ? 0 : (int)dr["idDiaEjercicioDomingo"];
                 rutina.Nombre = (string)dr["nombre"];
 
                 return rutina;
