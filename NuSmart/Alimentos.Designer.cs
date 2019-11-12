@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Alimentos));
-            this.Alimentos_label_buscar_nombre_plato = new System.Windows.Forms.Label();
             this.Alimentos_label_buscar_nombre_alimento = new System.Windows.Forms.Label();
             this.GestionDieta_textbox_calorias_dia = new System.Windows.Forms.TextBox();
             this.Alimentos_label_calorias_dia = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@
             this.Alimentos_label_agregar_alimento_a_plato = new System.Windows.Forms.Button();
             this.Alimentos_label_nombre_plato = new System.Windows.Forms.Label();
             this.Alimentos_textbox_nombre_plato = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.Alimentos_textbox_buscar = new System.Windows.Forms.TextBox();
             this.Alimentos_button_agregar = new System.Windows.Forms.Button();
             this.Alimentos_label_tipo_alimento = new System.Windows.Forms.Label();
@@ -80,16 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Alimentos_label_buscar_nombre_plato
-            // 
-            this.Alimentos_label_buscar_nombre_plato.AutoSize = true;
-            this.Alimentos_label_buscar_nombre_plato.Location = new System.Drawing.Point(1022, 71);
-            this.Alimentos_label_buscar_nombre_plato.Name = "Alimentos_label_buscar_nombre_plato";
-            this.Alimentos_label_buscar_nombre_plato.Size = new System.Drawing.Size(125, 13);
-            this.Alimentos_label_buscar_nombre_plato.TabIndex = 58;
-            this.Alimentos_label_buscar_nombre_plato.Text = "Buscar Plato por Nombre";
-            this.Alimentos_label_buscar_nombre_plato.Click += new System.EventHandler(this.label1_Click);
             // 
             // Alimentos_label_buscar_nombre_alimento
             // 
@@ -398,13 +386,6 @@
             this.Alimentos_textbox_nombre_plato.Size = new System.Drawing.Size(100, 20);
             this.Alimentos_textbox_nombre_plato.TabIndex = 18;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(1025, 87);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(157, 20);
-            this.textBox5.TabIndex = 17;
-            // 
             // Alimentos_textbox_buscar
             // 
             this.Alimentos_textbox_buscar.Location = new System.Drawing.Point(295, 81);
@@ -504,7 +485,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1203, 640);
-            this.Controls.Add(this.Alimentos_label_buscar_nombre_plato);
             this.Controls.Add(this.Alimentos_label_buscar_nombre_alimento);
             this.Controls.Add(this.GestionDieta_textbox_calorias_dia);
             this.Controls.Add(this.Alimentos_label_calorias_dia);
@@ -539,7 +519,6 @@
             this.Controls.Add(this.Alimentos_label_agregar_alimento_a_plato);
             this.Controls.Add(this.Alimentos_label_nombre_plato);
             this.Controls.Add(this.Alimentos_textbox_nombre_plato);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.Alimentos_textbox_buscar);
             this.Controls.Add(this.Alimentos_button_agregar);
             this.Controls.Add(this.Alimentos_label_tipo_alimento);
@@ -574,7 +553,6 @@
         private System.Windows.Forms.Label Alimentos_label_tipo_alimento;
         private System.Windows.Forms.Button Alimentos_button_agregar;
         private System.Windows.Forms.TextBox Alimentos_textbox_buscar;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label Alimentos_label_nombre_plato;
         private System.Windows.Forms.TextBox Alimentos_textbox_nombre_plato;
         private System.Windows.Forms.Button Alimentos_label_agregar_alimento_a_plato;
@@ -609,6 +587,5 @@
         private System.Windows.Forms.TextBox GestionDieta_textbox_calorias_dia;
         private System.Windows.Forms.Label Alimentos_label_calorias_dia;
         private System.Windows.Forms.Label Alimentos_label_buscar_nombre_alimento;
-        private System.Windows.Forms.Label Alimentos_label_buscar_nombre_plato;
     }
 }
