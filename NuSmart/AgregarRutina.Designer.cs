@@ -380,7 +380,6 @@
             this.Controls.Add(this.Ejercicios_textbox_jueves);
             this.Controls.Add(this.Ejercicios_textbox_viernes);
             this.Name = "AgregarRutina";
-            this.Text = "AgregarRutina";
             this.Load += new System.EventHandler(this.AgregarRutina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Ejercicios_numericupdown_lunes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ejercicios_numericupdown_domingo)).EndInit();

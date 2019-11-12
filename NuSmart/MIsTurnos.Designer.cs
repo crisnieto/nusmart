@@ -107,7 +107,6 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.MisTurnos_label_nutricionista);
             this.Name = "MisTurnos";
-            this.Text = "MIsTurnos";
             this.Load += new System.EventHandler(this.MIsTurnos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

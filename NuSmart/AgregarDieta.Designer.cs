@@ -380,7 +380,6 @@
             this.Controls.Add(this.AgregarDieta_radiobutton_mantener);
             this.Controls.Add(this.AgregarDieta_radiobutton_bajar);
             this.Name = "AgregarDieta";
-            this.Text = "AgregarDieta";
             this.Load += new System.EventHandler(this.AgregarDieta_Load);
             this.AgregarDieta_groupbox_detalle_dieta.ResumeLayout(false);
             this.AgregarDieta_groupbox_detalle_dieta.PerformLayout();

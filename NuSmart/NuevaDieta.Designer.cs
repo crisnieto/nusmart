@@ -318,7 +318,6 @@
             this.Controls.Add(this.GestionDieta_textbox_desayuno);
             this.Controls.Add(this.listBox1);
             this.Name = "NuevaDieta";
-            this.Text = "NuevaDieta";
             this.Load += new System.EventHandler(this.NuevaDieta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

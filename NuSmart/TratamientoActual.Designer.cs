@@ -647,7 +647,6 @@
             this.Controls.Add(this.TratamientoActual_button_proyecciones);
             this.Controls.Add(this.TratamientoActual_label_resumen);
             this.Name = "TratamientoActual";
-            this.Text = "TratamientoActual";
             this.Load += new System.EventHandler(this.TratamientoActual_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

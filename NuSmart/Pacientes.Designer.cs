@@ -277,7 +277,6 @@
             this.Controls.Add(this.Pacientes_button_crear_turno);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Pacientes";
-            this.Text = "Pacientes";
             this.Load += new System.EventHandler(this.Pacientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

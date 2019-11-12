@@ -369,7 +369,6 @@
             this.Controls.Add(this.Proyeccion_textbox_pesoInicial);
             this.Controls.Add(this.chart1);
             this.Name = "GraficoProyeccion";
-            this.Text = "Proyeccion";
             this.Load += new System.EventHandler(this.Proyeccion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);

@@ -152,7 +152,6 @@
             this.Controls.Add(this.GenerarTurno_label_titulo);
             this.Controls.Add(this.monthCalendar1);
             this.Name = "GenerarTurno";
-            this.Text = "GenerarTurno";
             this.Load += new System.EventHandler(this.GenerarTurno_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,6 +16,7 @@ namespace NuSmart
             InitializeComponent();
             base.setup();
             this.WindowState = FormWindowState.Maximized;
+            this.MaximizeBox = true;
             //agenda_lbl_username.Text = Sesion.Instancia().UsuarioActual.Username;
         }
 
