@@ -44,3 +44,10 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Pacientes.resour
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GenerarTurno.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Mediciones.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.MisTurnos.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.AgregarDieta.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.AgregarRutina.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Alimentos.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Ejercicios.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.NuevaDieta.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GraficoProyeccion.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.TratamientoActual.resources

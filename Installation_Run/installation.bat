@@ -6,6 +6,8 @@ echo Please introduce your Database Engine Server Name, example: DESKTOP-EJGFO76
 
 echo ......................................................................................
 
+rm test.txt
+
 set /P name=Enter Database Engine Server Name:
 sqlcmd -S %name% -i installation.sql
 
