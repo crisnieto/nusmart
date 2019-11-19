@@ -213,6 +213,7 @@
             this.nutricionista_txt_especializacion.Name = "nutricionista_txt_especializacion";
             this.nutricionista_txt_especializacion.Size = new System.Drawing.Size(74, 20);
             this.nutricionista_txt_especializacion.TabIndex = 31;
+            this.nutricionista_txt_especializacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nutricionista_txt_especializacion_KeyPress);
             // 
             // nutricionista_txt_dni
             // 
@@ -221,6 +222,7 @@
             this.nutricionista_txt_dni.Name = "nutricionista_txt_dni";
             this.nutricionista_txt_dni.Size = new System.Drawing.Size(74, 20);
             this.nutricionista_txt_dni.TabIndex = 30;
+            this.nutricionista_txt_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nutricionista_txt_dni_KeyPress);
             // 
             // nutricionista_txt_matricula
             // 
@@ -237,6 +239,7 @@
             this.nutricionista_txt_apellido.Name = "nutricionista_txt_apellido";
             this.nutricionista_txt_apellido.Size = new System.Drawing.Size(74, 20);
             this.nutricionista_txt_apellido.TabIndex = 28;
+            this.nutricionista_txt_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nutricionista_txt_apellido_KeyPress);
             // 
             // nutricionista_txt_nombre
             // 
@@ -245,6 +248,7 @@
             this.nutricionista_txt_nombre.Name = "nutricionista_txt_nombre";
             this.nutricionista_txt_nombre.Size = new System.Drawing.Size(74, 20);
             this.nutricionista_txt_nombre.TabIndex = 27;
+            this.nutricionista_txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nutricionista_txt_nombre_KeyPress);
             // 
             // nutricionista_txt_password
             // 

@@ -188,8 +188,6 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int actualizarPassword(string password)
         {
-            Sesion.Instancia().verificarPermiso("GE110");
-
             try
             {
                 if (password.Length > 0)

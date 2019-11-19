@@ -35,6 +35,10 @@ namespace NuSmart
         private void GestionNutricionista_Load(object sender, EventArgs e)
         {
             try {
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+                comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+                nutricionista_txt_sexo.DropDownStyle = ComboBoxStyle.DropDownList;
                 recargar();
                 loading = false;
             } catch(Exception ex)
@@ -185,6 +189,26 @@ namespace NuSmart
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void nutricionista_txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
+        }
+
+        private void nutricionista_txt_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
+        }
+
+        private void nutricionista_txt_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerico(e);
+        }
+
+        private void nutricionista_txt_especializacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
         }
     }
 }

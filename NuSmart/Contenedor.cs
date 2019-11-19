@@ -33,15 +33,14 @@ namespace NuSmart
             //TODO: Validar el Rol del usuario para validar qué opciones se muestran
             reloadMainMenu(menuStrip1);
             Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("OP45");
-            Contenedor_menu_backup.Enabled = Sesion.Instancia().validar("OP46");
+            Contenedor_menu_backup.Enabled = Sesion.Instancia().validar("GE121");
             Contenedor_menu_gestion_pacientes.Enabled = Sesion.Instancia().validar("GE100");
             Contenedor_menu_gestion_alimentos.Enabled = Sesion.Instancia().validar("GE102");
             Contenedor_menu_gestion_ejercicios.Enabled = Sesion.Instancia().validar("GE102");
-            Contenedor_menu_gestion_micuenta.Enabled = Sesion.Instancia().validar("GE110");
             Contenedor_menu_gestion_nutricionistas.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_roles.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_gestion_turnos.Enabled = Sesion.Instancia().validar("GE101");
-            Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
+            //Contenedor_menu_gestion_bitacora.Enabled = Sesion.Instancia().validar("AA099");
             Contenedor_menu_gestion_idioma.Enabled = Sesion.Instancia().validar("OP83");
             Contenedor_menu_gestion_etiquetas.Enabled = Sesion.Instancia().validar("OP84");
 

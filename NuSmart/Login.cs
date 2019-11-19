@@ -30,6 +30,11 @@ namespace NuSmart
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            ejecutarLogin();
+        }
+
+        private void ejecutarLogin()
+        {
             Usuario usuario = new Usuario();
 
             usuario.Username = txtUsuario.Text;
@@ -58,5 +63,6 @@ namespace NuSmart
         {
 
         }
+
     }
 }

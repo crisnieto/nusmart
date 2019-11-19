@@ -92,7 +92,8 @@ namespace NuSmart.BE
         {
             if (!validar(codigo))
             {
-                throw new Exception(NuSmartMessage.formatearMensaje("Roles_messagebox_usuario_sin_permisos"));
+                string mensaje = NuSmartMessage.formatearMensaje("Roles_messagebox_usuario_sin_permisos") + ": " + codigo;
+                throw new Exception(mensaje);
             }
         }
 

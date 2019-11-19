@@ -106,5 +106,20 @@ namespace NuSmart.BLL
             }
         }
 
+        public List<Leyenda> conseguirLeyendasFaltantes(int idiomaId)
+        {
+            return dalLeyenda.conseguirLeyendasFaltantes(idiomaId);
+        }
+
+        public void guardar(List<Leyenda> leyendas, Idioma idioma)
+        {
+            foreach(Leyenda leyenda in leyendas)
+            {
+                if(leyenda.Texto != "")
+                {
+                    dalLeyenda.crearLeyenda(leyenda, idioma);   
+                }
+            }
+        }
     }
 }

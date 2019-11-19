@@ -14,6 +14,7 @@ namespace NuSmart.BE
         string _texto;
         bool _eliminado;
 
+        [Browsable(false)]
         public int Id
         {
             get

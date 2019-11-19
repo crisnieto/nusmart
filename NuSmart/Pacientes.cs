@@ -27,9 +27,14 @@ namespace NuSmart
 
         private void Pacientes_Load(object sender, EventArgs e)
         {
+            try { 
             Pacientes_combobox_sexo.DropDownStyle = ComboBoxStyle.DropDownList;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             obtenerTodos();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void obtenerTodos()
@@ -141,6 +146,31 @@ namespace NuSmart
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Pacientes_textbox_buscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerico(e);
+        }
+
+        private void Pacientes_textbox_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerico(e);
+        }
+
+        private void Pacientes_textbox_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerico(e);
+        }
+
+        private void Pacientes_textbox_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
+        }
+
+        private void Pacientes_textbox_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarLetras(e);
         }
     }
 }

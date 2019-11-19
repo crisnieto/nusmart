@@ -106,5 +106,15 @@ namespace NuSmart
         {
 
         }
+
+        private void Proyeccion_textbox_bfpInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
+
+        private void Proyeccion_textbox_bfpObjetivo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
     }
 }

@@ -37,6 +37,9 @@ namespace NuSmart
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView1.MultiSelect = false;
                 dataGridView1.ReadOnly = true;
+                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dataGridView2.MultiSelect = false;
                 recargarEtiquetas();
             }catch(Exception ex)
             {
@@ -49,7 +52,13 @@ namespace NuSmart
             try
             {
                 dataGridView1.DataSource = bllLeyenda.conseguirLeyendasParaIdioma(idiomaSeleccionado.Id);
-            }catch(Exception ex)
+                dataGridView2.DataSource = bllLeyenda.conseguirLeyendasFaltantes(idiomaSeleccionado.Id);
+                if(dataGridView2.Rows.Count > 0)
+                {
+                    dataGridView2.Columns[0].ReadOnly = true;
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -134,8 +143,22 @@ namespace NuSmart
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            } 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Leyenda> leyendas = (List<Leyenda>)dataGridView2.DataSource;
+                bllLeyenda.guardar(leyendas, idiomaSeleccionado);
+                recargarEtiquetas();
+                Sesion.Instancia().IdiomaActual.Leyendas = bllLeyenda.conseguirLeyendasParaIdioma(Sesion.Instancia().IdiomaActual.Id);
+                bllIdioma.Notify();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
-  
         }
     }
 }

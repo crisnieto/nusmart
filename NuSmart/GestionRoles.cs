@@ -125,10 +125,17 @@ namespace NuSmart
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bllRol.eliminar(rolSeleccionado);
-            popularTreeView(treeView1, bllRol.conseguir());
-            popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
-            limpiarSelecciones();
+            try
+            {
+                bllRol.eliminar(rolSeleccionado);
+                popularTreeView(treeView1, bllRol.conseguir());
+                popularTreeView(treeView2, bllRol.conseguir(usuarioSeleccionado));
+                limpiarSelecciones();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void roles_btn_crear_rol_Click(object sender, EventArgs e)

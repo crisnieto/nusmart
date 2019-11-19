@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NuSmart.BE;
 using NuSmart.DAL;
+using System.Text.RegularExpressions;
 
 namespace NuSmart.BLL
 {
@@ -20,6 +21,28 @@ namespace NuSmart.BLL
             bllBitacora = new BLLBitacora();
         }
 
+        bool esEmailValido(string email)
+        {
+            try
+            {
+                Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,4})+)$");
+                Match match = regex.Match(email);
+                if (match.Success)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
         public void agregar(Paciente paciente)
         {
             Sesion.Instancia().verificarPermiso("OP004");
@@ -27,6 +50,11 @@ namespace NuSmart.BLL
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("Pacientes_messagebox_errorEdad"));
             }
+            if (!esEmailValido(paciente.Email))
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("Pacientes_messagebox_errorMail"));
+            }
+
             try
             {
                 dalPaciente.agregar(paciente);

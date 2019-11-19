@@ -35,6 +35,7 @@ namespace NuSmart
                 listBox1.DataSource = bllTurnos.obtenerTurnos(monthCalendar1.SelectionRange.Start);
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
             }
         }

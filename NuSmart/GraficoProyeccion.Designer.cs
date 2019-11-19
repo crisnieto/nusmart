@@ -95,6 +95,7 @@
             this.Proyeccion_textbox_bfpInicial.Name = "Proyeccion_textbox_bfpInicial";
             this.Proyeccion_textbox_bfpInicial.Size = new System.Drawing.Size(116, 20);
             this.Proyeccion_textbox_bfpInicial.TabIndex = 2;
+            this.Proyeccion_textbox_bfpInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Proyeccion_textbox_bfpInicial_KeyPress);
             // 
             // Proyeccion_textbox_bfpObjetivo
             // 
@@ -102,6 +103,7 @@
             this.Proyeccion_textbox_bfpObjetivo.Name = "Proyeccion_textbox_bfpObjetivo";
             this.Proyeccion_textbox_bfpObjetivo.Size = new System.Drawing.Size(128, 20);
             this.Proyeccion_textbox_bfpObjetivo.TabIndex = 3;
+            this.Proyeccion_textbox_bfpObjetivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Proyeccion_textbox_bfpObjetivo_KeyPress);
             // 
             // Proyeccion_label_peso_inicial
             // 

@@ -114,6 +114,7 @@
             this.Mediciones_textbox_peso.Size = new System.Drawing.Size(51, 20);
             this.Mediciones_textbox_peso.TabIndex = 8;
             this.Mediciones_textbox_peso.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.Mediciones_textbox_peso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mediciones_textbox_peso_KeyPress);
             // 
             // Mediciones_label_peso
             // 
@@ -130,6 +131,7 @@
             this.Mediciones_textbox_altura.Name = "Mediciones_textbox_altura";
             this.Mediciones_textbox_altura.Size = new System.Drawing.Size(51, 20);
             this.Mediciones_textbox_altura.TabIndex = 10;
+            this.Mediciones_textbox_altura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mediciones_textbox_altura_KeyPress);
             // 
             // Mediciones_label_altura
             // 
@@ -147,6 +149,7 @@
             this.Mediciones_textbox_edad.Name = "Mediciones_textbox_edad";
             this.Mediciones_textbox_edad.Size = new System.Drawing.Size(47, 20);
             this.Mediciones_textbox_edad.TabIndex = 12;
+            this.Mediciones_textbox_edad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mediciones_textbox_edad_KeyPress);
             // 
             // Mediciones_label_edad
             // 
@@ -183,6 +186,7 @@
             this.Mediciones_textbox_cintura.Name = "Mediciones_textbox_cintura";
             this.Mediciones_textbox_cintura.Size = new System.Drawing.Size(60, 20);
             this.Mediciones_textbox_cintura.TabIndex = 18;
+            this.Mediciones_textbox_cintura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mediciones_textbox_cintura_KeyPress);
             // 
             // Mediciones_label_cintura
             // 
@@ -199,6 +203,8 @@
             this.Mediciones_textbox_cadera.Name = "Mediciones_textbox_cadera";
             this.Mediciones_textbox_cadera.Size = new System.Drawing.Size(61, 20);
             this.Mediciones_textbox_cadera.TabIndex = 16;
+            this.Mediciones_textbox_cadera.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Mediciones_textbox_cadera_KeyDown);
+            this.Mediciones_textbox_cadera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mediciones_textbox_cadera_KeyPress);
             // 
             // Mediciones_label_cadera
             // 

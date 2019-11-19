@@ -45,7 +45,7 @@ namespace NuSmart.DAL
         public List<string> conseguirLeyendasPorNombre()
         {
             string textoComando = "SELECT DISTINCT nombreControl from Leyenda";
-            DataTable dt =sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+            DataTable dt= sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
             List<string> listaNombres = new List<string>();
             foreach(DataRow dr in dt.Rows)
             {
@@ -53,6 +53,24 @@ namespace NuSmart.DAL
             }
 
             return listaNombres;
+        }
+
+        public List<Leyenda> conseguirLeyendasFaltantes(int idiomaId)
+        {
+            string textoComando = "SELECT DISTINCT(nombreControl) FROM Leyenda where nombreControl not in(select nombreControl from Leyenda where IdiomaID = @ID and eliminado = 0) and eliminado = 0";
+            List<SqlParameter> lista = new List<SqlParameter>();
+            lista.Add(new SqlParameter("@ID", idiomaId));
+            DataTable leyendasDT = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
+            List<Leyenda> listaLeyendas = new List<Leyenda>();
+
+            foreach (DataRow dr in leyendasDT.Rows)
+            {
+                Leyenda leyenda = new Leyenda();
+                leyenda.NombreControl = Convert.ToString(dr["nombreControl"]);
+                leyenda.Texto = "";
+                listaLeyendas.Add(leyenda);
+            }
+            return listaLeyendas;
         }
 
         public Leyenda conseguirLeyendaParaIdioma(string nombre, int idiomaId)

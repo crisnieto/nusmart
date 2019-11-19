@@ -47,6 +47,10 @@ namespace NuSmart.BLL
         public void eliminar(Rol rol)
         {
             Sesion.Instancia().verificarPermiso("AA099");
+            if (Sesion.Instancia().validar(rol.Codigo))
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_eliminar_rol_asociado"));
+            }
             dalRol.desasociarDeTodos(rol);
             dalRol.eliminarRecursivamente(rol.Id);
             bllBitacora.crearNuevaBitacora("Eliminacion de Rol", "Se elimino el rol " + rol.Codigo, Criticidad.Alta);

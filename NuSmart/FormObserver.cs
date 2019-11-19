@@ -89,6 +89,30 @@ namespace NuSmart
             }
         }
 
+        public void validarLetras(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        public void validarNumerico(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void validarDouble(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !(e.KeyChar == ','))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
 

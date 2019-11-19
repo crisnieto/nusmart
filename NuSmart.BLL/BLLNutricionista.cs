@@ -28,7 +28,6 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public Nutricionista conseguir(int idUsuario)
         {
-            Sesion.Instancia().verificarPermiso("GE110");
             return dalNutricionista.conseguir(idUsuario);
         }
 

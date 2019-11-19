@@ -130,5 +130,35 @@ namespace NuSmart
 
 
         }
+
+        private void Mediciones_textbox_peso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
+
+        private void Mediciones_textbox_altura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
+
+        private void Mediciones_textbox_edad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarNumerico(e);
+        }
+
+        private void Mediciones_textbox_cadera_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Mediciones_textbox_cadera_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
+
+        private void Mediciones_textbox_cintura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validarDouble(e);
+        }
     }
 }
