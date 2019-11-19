@@ -178,6 +178,12 @@
     <Compile Include="TratamientoActual.Designer.cs">
       <DependentUpon>TratamientoActual.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerDietas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDietas.Designer.cs">
+      <DependentUpon>VerDietas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AgregarDieta.resx">
       <DependentUpon>AgregarDieta.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TratamientoActual.resx">
       <DependentUpon>TratamientoActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerDietas.resx">
+      <DependentUpon>VerDietas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

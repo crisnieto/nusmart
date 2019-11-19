@@ -9,6 +9,7 @@ echo ...........................................................................
 del test.txt
 
 set /P name=Enter Database Engine Server Name:
+sqlcmd -S %name% -i drop_database.sql
 sqlcmd -S %name% -i installation.sql
 
 echo Data Source=%name%;Initial Catalog=nusmart;Integrated Security=True >> test.txt

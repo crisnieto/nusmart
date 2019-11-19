@@ -74,6 +74,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Alimentos_button_ver_dietas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -479,12 +480,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(426, 189);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Alimentos_button_ver_dietas
+            // 
+            this.Alimentos_button_ver_dietas.Location = new System.Drawing.Point(951, 374);
+            this.Alimentos_button_ver_dietas.Name = "Alimentos_button_ver_dietas";
+            this.Alimentos_button_ver_dietas.Size = new System.Drawing.Size(143, 43);
+            this.Alimentos_button_ver_dietas.TabIndex = 58;
+            this.Alimentos_button_ver_dietas.Text = "Ver dietas existentes";
+            this.Alimentos_button_ver_dietas.UseVisualStyleBackColor = true;
+            this.Alimentos_button_ver_dietas.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Alimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1203, 640);
+            this.Controls.Add(this.Alimentos_button_ver_dietas);
             this.Controls.Add(this.Alimentos_label_buscar_nombre_alimento);
             this.Controls.Add(this.GestionDieta_textbox_calorias_dia);
             this.Controls.Add(this.Alimentos_label_calorias_dia);
@@ -587,5 +599,6 @@
         private System.Windows.Forms.TextBox GestionDieta_textbox_calorias_dia;
         private System.Windows.Forms.Label Alimentos_label_calorias_dia;
         private System.Windows.Forms.Label Alimentos_label_buscar_nombre_alimento;
+        private System.Windows.Forms.Button Alimentos_button_ver_dietas;
     }
 }

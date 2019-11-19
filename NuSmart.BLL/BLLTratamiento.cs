@@ -43,6 +43,7 @@ namespace NuSmart.BLL
 
         public Tratamiento obtenerTratamientoActivo(Paciente paciente)
         {
+            verificarPermiso("OP200");
             try
             {
                 List<Tratamiento> tratamientos = obtenerTratamientosDePaciente(paciente.Id);

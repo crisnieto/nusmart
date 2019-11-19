@@ -329,5 +329,13 @@ namespace NuSmart
         {
 
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            VerDietas dietaForm = new VerDietas();
+            dietaForm.MdiParent = this.ParentForm;
+            dietaForm.Show();
+            this.Close();
+        }
     }
 }
