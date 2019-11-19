@@ -34,10 +34,16 @@ namespace NuSmart
         {
             try
             {
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
                 cargando = true;
                 label3.Text = paciente.Nombre + " " + paciente.Apellido;
                 preferencia = "manana";
-                if(DateTime.Now.Hour >= 18)
+                if((DateTime.Now.Hour >= 13 && DateTime.Now.Hour < 18) || (DateTime.Now.Hour == 12 && DateTime.Now.Minute > 30))
+                {
+                    preferencia = "tarde";
+                    GenerarTurno_label_tarde.Checked = true;
+                }
+                else if(DateTime.Now.Hour >= 18)
                 {
                     DateTime diaSiguiente = DateTime.Today.AddDays(1);
                     fechaSeleccionada = diaSiguiente;
@@ -93,14 +99,20 @@ namespace NuSmart
         {
             preferencia = "manana";
             fechaSeleccionada = monthCalendar1.SelectionRange.Start;
-            buscarSugerencias();
+            if (GenerarTurno_label_manana.Checked && !cargando)
+            {
+                buscarSugerencias();
+            }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             preferencia = "tarde";
             fechaSeleccionada = monthCalendar1.SelectionRange.Start;
-            buscarSugerencias();
+            if (GenerarTurno_label_tarde.Checked && !cargando)
+            {
+                buscarSugerencias();
+            }
         }
 
         private void buscarSugerencias()
