@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLDiaEjercicio
+    public class BLLDiaEjercicio : BLLBase
     {
         BLLEjercicio bllEjercicio;
         DALDiaEjercicio dalDiaEjercicio;
@@ -21,7 +21,7 @@ namespace NuSmart.BLL
 
         public int agregar(DiaEjercicio diaEjercicio)
         {
-            Sesion.Instancia().verificarPermiso("OP021");
+            verificarPermiso("OP021");
             if(diaEjercicio.Ejercicio.Id > 0) 
             {
                 return dalDiaEjercicio.agregar(diaEjercicio);
@@ -30,7 +30,7 @@ namespace NuSmart.BLL
         }
 
         public DiaEjercicio obtenerDiaEjercicio(int idDiaEjercicio) {
-            Sesion.Instancia().verificarPermiso("OP025");
+            verificarPermiso("OP025");
             DiaEjercicio dia = dalDiaEjercicio.obtener(idDiaEjercicio);
             if(dia.Id > 0)
             {

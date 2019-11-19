@@ -8,7 +8,7 @@ using NuSmart.BE;
 
 namespace NuSmart.BLL
 {
-    public class BLLBackupManager
+    public class BLLBackupManager : BLLBase
     {
         /// <summary>
         /// crearBackup se encarga de la creacion y guardado de un archivo .bak
@@ -17,7 +17,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int crearBackup(string path)
         {
-            Sesion.Instancia().verificarPermiso("OP090");
+            verificarPermiso("OP090");
 
             try
             {
@@ -40,7 +40,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int ejecutarRestore(string path)
         {
-            Sesion.Instancia().verificarPermiso("OP091");
+            verificarPermiso("OP091");
 
             try
             {

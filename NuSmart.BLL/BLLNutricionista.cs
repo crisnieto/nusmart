@@ -8,7 +8,7 @@ using NuSmart.BE;
 
 namespace NuSmart.BLL
 {
-    public class BLLNutricionista
+    public class BLLNutricionista : BLLBase
     {
         BLLUsuario bllUsuario;
         DALNutricionista dalNutricionista;
@@ -85,7 +85,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public bool ingresar(Nutricionista nutricionista)
         {
-            Sesion.Instancia().verificarPermiso("OP038");
+            verificarPermiso("OP038");
 
             try
             {
@@ -119,7 +119,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int modificar(Nutricionista nutricionista)
         {
-            Sesion.Instancia().verificarPermiso("OP040");
+            verificarPermiso("OP040");
             try
             {
                 nutricionista.Dvh = calcularDVH(nutricionista);
@@ -154,7 +154,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public bool eliminar(Nutricionista nutricionista)
         {
-            Sesion.Instancia().verificarPermiso("OP039");
+            verificarPermiso("OP039");
 
             try
             {

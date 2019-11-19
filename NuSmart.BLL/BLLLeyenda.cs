@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLLeyenda
+    public class BLLLeyenda : BLLBase
     {
 
         DALLeyenda dalLeyenda;
@@ -44,7 +44,7 @@ namespace NuSmart.BLL
         /// <param name="leyenda"></param>
         public void eliminarLeyenda(Leyenda leyenda)
         {
-            Sesion.Instancia().verificarPermiso("OP86");
+            verificarPermiso("OP86");
             try
             {
                 dalLeyenda.eliminarLeyenda(leyenda);
@@ -63,7 +63,7 @@ namespace NuSmart.BLL
         /// <param name="leyenda"></param>
         public void modificarLeyenda(Leyenda leyenda)
         {
-            Sesion.Instancia().verificarPermiso("OP87");
+            verificarPermiso("OP87");
             try
             {
                 dalLeyenda.modificarLeyenda(leyenda);
@@ -86,7 +86,7 @@ namespace NuSmart.BLL
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("OP85");
+                verificarPermiso("OP85");
                 Leyenda leyendaConseguida = dalLeyenda.conseguirLeyendaParaIdioma(leyenda.NombreControl, idioma.Id);
 
                 if (leyendaConseguida.NombreControl == null)

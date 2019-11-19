@@ -21,9 +21,9 @@ namespace NuSmart
 
         private void Bitacora_Load(object sender, EventArgs e)
         {
-            Sesion.Instancia().verificarPermiso("OP45");
             try
             {
+                Sesion.Instancia().verificarPermiso("OP45");
                 bllBitacora = new BLLBitacora();
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

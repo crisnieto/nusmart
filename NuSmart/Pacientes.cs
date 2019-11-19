@@ -133,7 +133,15 @@ namespace NuSmart
             {
                 MessageBox.Show(ex.Message);
             }
-         }
+
+            try
+            {
+                obtenerTodos();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {

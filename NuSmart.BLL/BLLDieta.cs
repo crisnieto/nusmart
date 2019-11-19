@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLDieta
+    public class BLLDieta : BLLBase
     {
         BLLDiaAlimenticio bllDiaAlimenticio;
         DALDieta dalDieta;
@@ -30,7 +30,7 @@ namespace NuSmart.BLL
 
         public int guardar(Dieta dieta)
         {
-            Sesion.Instancia().verificarPermiso("OP012");
+            verificarPermiso("OP012");
             if (dietaValida(dieta))
             {
                 try
@@ -110,7 +110,7 @@ namespace NuSmart.BLL
 
         public List<Dieta> conseguirDietas()
         {
-            Sesion.Instancia().verificarPermiso("OP011");
+            verificarPermiso("OP011");
             try
             {       
                 List<Dieta> dietasObtenidas = dalDieta.conseguirDietas();
@@ -153,7 +153,7 @@ namespace NuSmart.BLL
 
         public Dieta obtenerDietaAutomatica(int tipo)
         {
-            Sesion.Instancia().verificarPermiso("OP026");
+            verificarPermiso("OP026");
             try
             {
                 switch (tipo)
@@ -319,7 +319,7 @@ namespace NuSmart.BLL
 
         public Dieta conseguirDieta(int dietaID)
         {
-            Sesion.Instancia().verificarPermiso("OP011");
+            verificarPermiso("OP011");
             try
             {
                 Dieta dieta = dalDieta.conseguirDieta(dietaID);

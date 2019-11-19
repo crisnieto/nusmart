@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLTratamiento
+    public class BLLTratamiento : BLLBase
     {
         DALTratamiento dalTratamiento;
         BLLRutina bllRutina;
@@ -23,7 +23,9 @@ namespace NuSmart.BLL
 
         public void guardar(Tratamiento tratamiento)
         {
-            Sesion.Instancia().verificarPermiso("OP041");
+
+            verificarPermiso("OP041");
+
             try
             {
                 dalTratamiento.guardar(tratamiento);
@@ -63,7 +65,7 @@ namespace NuSmart.BLL
             }catch(Exception ex)
             {
                 bllBitacora.crearNuevaBitacora("Busqueda de Tratamiento", "Ocurrio un error buscando tratamiento: " + ex.Message, Criticidad.Alta);
-                throw new Exception(NuSmartMessage.formatearMensaje("Tratamiento_error_buscar_activo"));
+                throw new Exception(NuSmartMessage.formatearMensaje("Tratamiento_error_buscar_activo") + ": " + ex.Message);
             }
         }
 
@@ -106,7 +108,8 @@ namespace NuSmart.BLL
 
         public void finalizarTratamiento(Tratamiento tratamiento)
         {
-            Sesion.Instancia().verificarPermiso("OP042");
+            verificarPermiso("OP042");
+
             try
             {
                 dalTratamiento.finalizarTratamiento(tratamiento);

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BLLAlimento.cs" />
     <Compile Include="BLLBackupManager.cs" />
+    <Compile Include="BLLBase.cs" />
     <Compile Include="BLLBitacora.cs" />
     <Compile Include="BLLDiaAlimenticio.cs" />
     <Compile Include="BLLDiaEjercicio.cs" />

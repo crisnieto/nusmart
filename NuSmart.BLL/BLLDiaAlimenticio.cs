@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLDiaAlimenticio
+    public class BLLDiaAlimenticio : BLLBase
     {
         DALDiaAlimenticio dalDiaAlimenticio;
 
@@ -19,13 +19,13 @@ namespace NuSmart.BLL
 
         public int guardar(DiaAlimenticio dia)
         {
-            Sesion.Instancia().verificarPermiso("OP012");
+            verificarPermiso("OP012");
             return dalDiaAlimenticio.guardar(dia);
         }
 
         public DiaAlimenticio obtener(int id, string nombre)
         {
-            Sesion.Instancia().verificarPermiso("OP011");
+            verificarPermiso("OP011");
             DiaAlimenticio diaAlimenticio = dalDiaAlimenticio.obtener(id);
             diaAlimenticio.Nombre = nombre;
             return diaAlimenticio;

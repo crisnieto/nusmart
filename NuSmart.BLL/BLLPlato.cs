@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLPlato
+    public class BLLPlato : BLLBase
     {
 
         DALPlato dalPlato;
@@ -22,7 +22,7 @@ namespace NuSmart.BLL
 
         public List<Plato> obtenerTodos(string tipoAlimento = null)
         {
-            Sesion.Instancia().verificarPermiso("OP007");
+            verificarPermiso("OP007");
             try
             {
                 BLLAlimento bllAliemento = new BLLAlimento();
@@ -43,7 +43,7 @@ namespace NuSmart.BLL
 
         public void agregar(Plato plato)
         {
-            Sesion.Instancia().verificarPermiso("OP008");
+            verificarPermiso("OP008");
             if ((!plato.EsColacion && !plato.EsDesayuno && !plato.EsMerienda && !plato.EsPlatoPrincipal) || plato.Nombre == null || plato.Nombre == "") 
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_indique_tipo"));
@@ -89,7 +89,7 @@ namespace NuSmart.BLL
 
         public Plato obtenerPlato(int id)
         {
-            Sesion.Instancia().verificarPermiso("OP008");
+            verificarPermiso("OP007");
             try
             {
                 return dalPlato.obtenerPlato(id);

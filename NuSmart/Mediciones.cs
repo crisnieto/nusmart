@@ -58,7 +58,7 @@ namespace NuSmart
                 Mediciones_lbl_estadoBmiObtenido.Text = medicionActual.CategoriaBmi;
             }catch(Exception ex)
             {
-                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas") + " : " + ex.Message);
             }
         }
 
@@ -96,7 +96,7 @@ namespace NuSmart
                 Mediciones_lbl_valorBfpObtenido.Text = medicionActual.Bfp.ToString();
             }catch(Exception ex)
             {
-                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas"));
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Mediciones_messagebox_error_medidas_introducidas") + " : " + ex.Message);
             }
         }
 

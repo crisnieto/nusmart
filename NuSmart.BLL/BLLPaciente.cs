@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace NuSmart.BLL
 {
-    public class BLLPaciente
+    public class BLLPaciente : BLLBase
     {
 
         DALPaciente dalPaciente;
@@ -45,7 +45,7 @@ namespace NuSmart.BLL
 
         public void agregar(Paciente paciente)
         {
-            Sesion.Instancia().verificarPermiso("OP004");
+            verificarPermiso("OP004");
             if (!tieneEdadValida(paciente))
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("Pacientes_messagebox_errorEdad"));
@@ -69,7 +69,7 @@ namespace NuSmart.BLL
 
         public void modificar(Paciente paciente)
         {
-            Sesion.Instancia().verificarPermiso("OP005");
+            verificarPermiso("OP005");
             try
             {
                 dalPaciente.modificar(paciente);
@@ -99,13 +99,13 @@ namespace NuSmart.BLL
 
         public List<Paciente> obtenerTodos()
         {
-            Sesion.Instancia().verificarPermiso("OP043");
+            verificarPermiso("OP043");
             return dalPaciente.obtenerTodos();
         }
 
         public Paciente obtener(int dni)
         {
-            Sesion.Instancia().verificarPermiso("OP043");
+            verificarPermiso("OP043");
             try
             {
                 return dalPaciente.obtener(dni);

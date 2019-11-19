@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLTurno
+    public class BLLTurno : BLLBase
     {
         DALTurno dalTurno;
         BLLBitacora bllBitacora;
@@ -22,7 +22,9 @@ namespace NuSmart.BLL
         }
         public List<Turno> obtenerTurnosPosibles(Paciente paciente ,DateTime fecha, String preferencia)
         {
-            Sesion.Instancia().verificarPermiso("OP001");
+
+            verificarPermiso("OP044");
+
             try
             { 
                 List<Turno> turnos = new List<Turno>();
@@ -66,7 +68,7 @@ namespace NuSmart.BLL
 
         public void registrarTurno(Turno turno)
         {
-            Sesion.Instancia().verificarPermiso("OP001");
+            verificarPermiso("OP001");
 
             try
             {
@@ -82,7 +84,9 @@ namespace NuSmart.BLL
 
         public List<Turno> obtenerTurnos(DateTime fecha)
         {
-            Sesion.Instancia().verificarPermiso("OP044");
+
+            verificarPermiso("OP044");
+
             try
             {
                 Nutricionista nutricionista = new BLLNutricionista().conseguir(Sesion.Instancia().UsuarioActual.Id);
@@ -96,7 +100,8 @@ namespace NuSmart.BLL
 
         public void borrarTurno(Turno turno)
         {
-            Sesion.Instancia().verificarPermiso("OP003");
+            verificarPermiso("OP003");
+
             try
             {
                 dalTurno.eliminar(turno);

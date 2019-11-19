@@ -8,7 +8,7 @@ using NuSmart.BE;
 
 namespace NuSmart.BLL
 {
-    public class BLLEjercicio
+    public class BLLEjercicio : BLLBase
     {
         DALEjercicio dalEjercicio;
         BLLBitacora bllBitacora;
@@ -21,7 +21,7 @@ namespace NuSmart.BLL
 
         public void agregar(Ejercicio ejercicio)
         {
-            Sesion.Instancia().verificarPermiso("OP016");
+            verificarPermiso("OP016");
             try
             {
                 dalEjercicio.agregar(ejercicio);
@@ -37,7 +37,7 @@ namespace NuSmart.BLL
 
         public List<Ejercicio> obtenerTodos()
         {
-            Sesion.Instancia().verificarPermiso("OP015");
+            verificarPermiso("OP015");
             try
             {
                 return dalEjercicio.obtenerTodos();
@@ -50,7 +50,7 @@ namespace NuSmart.BLL
 
         public Ejercicio obtener(int id)
         {
-            Sesion.Instancia().verificarPermiso("OP015");
+            verificarPermiso("OP015");
             try
             {
                 return dalEjercicio.obtener(id);

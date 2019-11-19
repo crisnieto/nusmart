@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLUsuario
+    public class BLLUsuario : BLLBase
     {
         public BLLRol bllRol;
         public DALUsuario dalUsuario;
@@ -155,7 +155,9 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int actualizarPassword(Usuario usuario, string password)
         {
-            Sesion.Instancia().verificarPermiso("OP100");
+
+            verificarPermiso("OP100");
+
             try
             {
                 if(password.Length > 0)
@@ -265,6 +267,7 @@ namespace NuSmart.BLL
                 usuario.Dvh = calcularDVH(usuario);
                 dalUsuario.desbloquear(usuario);
                 new DVVH().actualizarDVV("Usuario");
+                bllBitacora.crearNuevaBitacora("Desbloqueo de Usuario", "Se desbloqueo el usuario " + usuario.Id, Criticidad.Media);
                 return true;
             }
             catch (Exception e)

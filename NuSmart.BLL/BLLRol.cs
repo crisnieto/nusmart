@@ -5,7 +5,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLRol
+    public class BLLRol : BLLBase
     {
 
         DALRol dalRol;
@@ -34,7 +34,8 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public List<Rol> conseguir()
         {
-            Sesion.Instancia().verificarPermiso("AA099");
+            verificarPermiso("AA099");
+
             List<Rol> roles = dalRol.conseguirRoles();
             return roles;
         }
@@ -46,7 +47,8 @@ namespace NuSmart.BLL
         /// <param name="rol"></param>
         public void eliminar(Rol rol)
         {
-            Sesion.Instancia().verificarPermiso("AA099");
+            verificarPermiso("AA099");
+
             if (Sesion.Instancia().validar(rol.Codigo))
             {
                 throw new Exception(NuSmartMessage.formatearMensaje("GestionRoles_messagebox_eliminar_rol_asociado"));
@@ -85,7 +87,7 @@ namespace NuSmart.BLL
             }
             try
             {
-                Sesion.Instancia().verificarPermiso("AA099");
+                verificarPermiso("AA099");
                 bool result = dalRol.crearRol(rol, padre);
                 bllBitacora.crearNuevaBitacora("Creacion de Rol", "Se creo el rol " + rol.Codigo, Criticidad.Alta);
                 return result;
@@ -105,7 +107,9 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public bool asociarAUsuario(Rol rol, Usuario usuario)
         {
-            Sesion.Instancia().verificarPermiso("AA099");
+            verificarPermiso("AA099");
+
+
             if (esPosibleAsociarRol(rol, usuario.Roles))
             {
                 bllBitacora.crearNuevaBitacora("Asociacion de Rol", "Se asocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);
@@ -128,7 +132,10 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public bool desasociarDeUsuario(Rol rol, Usuario usuario)
         {
-            Sesion.Instancia().verificarPermiso("AA099");
+            verificarPermiso("AA099");
+
+
+
             if (esPosibleDesociarRol(rol, usuario))
             {
                 bllBitacora.crearNuevaBitacora("Desasociacion de Rol", "Se desasocio el rol " + rol.Codigo + " del usuario " + usuario.Username, Criticidad.Media);

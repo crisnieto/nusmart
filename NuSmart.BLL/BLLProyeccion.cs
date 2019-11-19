@@ -7,7 +7,7 @@ using NuSmart.BE;
 
 namespace NuSmart.BLL
 {
-    public class BLLProyeccion
+    public class BLLProyeccion : BLLBase
     {
         BLLBitacora bllBitacora;
 
@@ -18,7 +18,7 @@ namespace NuSmart.BLL
 
         public Proyeccion calcularProyeccion(DateTime fechaInicio, double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
         {
-            Sesion.Instancia().verificarPermiso("OP034");
+            verificarPermiso("OP034");
 
             if (porcentajeGrasaActual < porcentajeGrasaCorporalIdeal)
             {

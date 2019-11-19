@@ -7,7 +7,7 @@ using System;
 
 namespace NuSmart.BLL
 {
-    public class BLLIdioma
+    public class BLLIdioma : BLLBase
     {
 
         DALIdioma dalIdioma;
@@ -123,7 +123,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int guardar(Idioma idioma)
         {
-            Sesion.Instancia().verificarPermiso("OP80");
+            verificarPermiso("OP80");
 
             try
             {
@@ -145,7 +145,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int eliminar(int idiomaId)
         {
-            Sesion.Instancia().verificarPermiso("OP82");
+            verificarPermiso("OP82");
 
             try
             {
@@ -167,7 +167,7 @@ namespace NuSmart.BLL
         /// <returns></returns>
         public int modificar(Idioma idioma)
         {
-            Sesion.Instancia().verificarPermiso("OP81");
+            verificarPermiso("OP81");
 
             try
             {

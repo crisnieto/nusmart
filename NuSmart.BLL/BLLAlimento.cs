@@ -5,7 +5,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLAlimento
+    public class BLLAlimento : BLLBase
     {
         DALAlimento dalAlimento;
         BLLBitacora bllBitacora;
@@ -18,7 +18,8 @@ namespace NuSmart.BLL
 
         public void agregar(Alimento alimento)
         {
-            Sesion.Instancia().verificarPermiso("OP008");
+
+            verificarPermiso("OP008");
 
             try
             {
@@ -34,7 +35,7 @@ namespace NuSmart.BLL
 
         public List<Alimento> obtenerTodos()
         {
-            Sesion.Instancia().verificarPermiso("OP007");
+            verificarPermiso("OP007");
             try
             {
                 return dalAlimento.obtenerTodos();
@@ -47,7 +48,7 @@ namespace NuSmart.BLL
 
         public List<Alimento> obtenerAlimentosDePlato(Plato plato)
         {
-            Sesion.Instancia().verificarPermiso("OP007");
+            verificarPermiso("OP007");
             try
             {
                 return dalAlimento.obtenerAlimentosDePlato(plato);
@@ -60,7 +61,7 @@ namespace NuSmart.BLL
 
         public List<Alimento> buscarPorNombre(String nombre)
         {
-            Sesion.Instancia().verificarPermiso("OP007");
+            verificarPermiso("OP007");
             try
             {
                 return dalAlimento.buscar(nombre);
