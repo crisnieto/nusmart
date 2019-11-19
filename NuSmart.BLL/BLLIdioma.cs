@@ -149,6 +149,11 @@ namespace NuSmart.BLL
 
             try
             {
+                if(idiomaId == 1)
+                {
+                    new BLLBitacora().crearNuevaBitacora("Eliminacion de Idioma", "No es posible eliminar el idioma principal " + idiomaId.ToString(), Criticidad.Media);
+                    throw new Exception("No es posible eliminar el idioma principal");
+                }
                 int resultado = dalIdioma.eliminar(idiomaId);
                 new BLLBitacora().crearNuevaBitacora("Eliminacion de Idioma", "Idioma eliminado " + idiomaId.ToString(), Criticidad.Media);
                 return resultado;

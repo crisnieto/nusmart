@@ -422,9 +422,8 @@
             this.TratamientoActual_lbl_dietaActual.AutoSize = true;
             this.TratamientoActual_lbl_dietaActual.Location = new System.Drawing.Point(84, 236);
             this.TratamientoActual_lbl_dietaActual.Name = "TratamientoActual_lbl_dietaActual";
-            this.TratamientoActual_lbl_dietaActual.Size = new System.Drawing.Size(35, 13);
+            this.TratamientoActual_lbl_dietaActual.Size = new System.Drawing.Size(0, 13);
             this.TratamientoActual_lbl_dietaActual.TabIndex = 30;
-            this.TratamientoActual_lbl_dietaActual.Text = "label3";
             // 
             // TratamientoActual_label_ultima_medicion
             // 
