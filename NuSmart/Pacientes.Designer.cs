@@ -93,7 +93,7 @@
             // 
             // Pacientes_button_modificar
             // 
-            this.Pacientes_button_modificar.Location = new System.Drawing.Point(656, 198);
+            this.Pacientes_button_modificar.Location = new System.Drawing.Point(656, 208);
             this.Pacientes_button_modificar.Name = "Pacientes_button_modificar";
             this.Pacientes_button_modificar.Size = new System.Drawing.Size(84, 43);
             this.Pacientes_button_modificar.TabIndex = 18;

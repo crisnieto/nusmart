@@ -18,6 +18,7 @@ namespace NuSmart
         DateTime fechaSeleccionada;
         BLLTurno bllTurno;
         string preferencia;
+        bool cargando = false;
 
         public GenerarTurno(Paciente paciente)
         {
@@ -26,7 +27,6 @@ namespace NuSmart
             this.preferencia = "manana";
             InitializeComponent();
             setup();
-            monthCalendar1.SetDate(DateTime.Now);
 
         }
 
@@ -34,20 +34,38 @@ namespace NuSmart
         {
             try
             {
+                cargando = true;
                 label3.Text = paciente.Nombre + " " + paciente.Apellido;
                 preferencia = "manana";
-                buscarSugerencias();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
+                if(DateTime.Now.Hour >= 18)
+                {
+                    DateTime diaSiguiente = DateTime.Today.AddDays(1);
+                    fechaSeleccionada = diaSiguiente;
+                    monthCalendar1.SelectionStart = diaSiguiente;
+                    monthCalendar1.SetDate(diaSiguiente);
+                }
+                else
+                {
+                    fechaSeleccionada = DateTime.Today;
+                    monthCalendar1.SetDate(DateTime.Now);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario") + ": " + ex.Message);
+            }
+            buscarSugerencias();
+            cargando = false;
 
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            fechaSeleccionada = monthCalendar1.SelectionRange.Start;
-            buscarSugerencias();
+            if(!cargando)
+            {
+                fechaSeleccionada = monthCalendar1.SelectionRange.Start;
+                buscarSugerencias();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
