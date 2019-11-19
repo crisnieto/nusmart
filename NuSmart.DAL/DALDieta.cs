@@ -21,7 +21,7 @@ namespace NuSmart.DAL
 
         public int guardar(Dieta dieta)
         {
-            string textoComando = "INSERT INTO DIETA (LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESGENERADAAUTOMATICAMENTE) Output Inserted.dietaID VALUES (@LUNES, @MARTES, @MIERCOLES, @JUEVES, @VIERNES, @SABADO, @DOMINGO, @ESAUTOMATICA)";
+            string textoComando = "INSERT INTO DIETA (LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESGENERADAAUTOMATICAMENTE, nombre) Output Inserted.dietaID VALUES (@LUNES, @MARTES, @MIERCOLES, @JUEVES, @VIERNES, @SABADO, @DOMINGO, @ESAUTOMATICA, @NOMBRE)";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
@@ -33,6 +33,8 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@SABADO", dieta.Sabado.Id));
             lista.Add(new SqlParameter("@DOMINGO", dieta.Domingo.Id));
             lista.Add(new SqlParameter("@ESAUTOMATICA", dieta.EsAutomatica));
+            lista.Add(new SqlParameter("@NOMBRE", dieta.Nombre));
+
 
             return sqlHelper.ejecutarEscalar(textoComando, lista);
 

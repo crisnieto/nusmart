@@ -101,7 +101,7 @@ namespace NuSmart.BLL
 
         public bool dietaValida(Dieta dieta)
         {
-            if(dieta.Lunes != null && dieta.Martes != null && dieta.Miercoles != null && dieta.Jueves != null && dieta.Viernes != null && dieta.Sabado != null && dieta.Domingo != null)
+            if(dieta.Lunes != null && dieta.Martes != null && dieta.Miercoles != null && dieta.Jueves != null && dieta.Viernes != null && dieta.Sabado != null && dieta.Domingo != null && dieta.Nombre != null && dieta.Nombre != "")
             {
                 return true;
             }

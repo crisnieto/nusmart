@@ -200,6 +200,7 @@
             // 
             // Ejercicios_textbox_domingo
             // 
+            this.Ejercicios_textbox_domingo.Enabled = false;
             this.Ejercicios_textbox_domingo.Location = new System.Drawing.Point(361, 332);
             this.Ejercicios_textbox_domingo.Name = "Ejercicios_textbox_domingo";
             this.Ejercicios_textbox_domingo.Size = new System.Drawing.Size(135, 20);
@@ -346,6 +347,7 @@
             // 
             // Ejercicios_textbox_sabado
             // 
+            this.Ejercicios_textbox_sabado.Enabled = false;
             this.Ejercicios_textbox_sabado.Location = new System.Drawing.Point(361, 283);
             this.Ejercicios_textbox_sabado.Name = "Ejercicios_textbox_sabado";
             this.Ejercicios_textbox_sabado.Size = new System.Drawing.Size(135, 20);
@@ -354,6 +356,7 @@
             // 
             // Ejercicios_textbox_lunes
             // 
+            this.Ejercicios_textbox_lunes.Enabled = false;
             this.Ejercicios_textbox_lunes.Location = new System.Drawing.Point(361, 38);
             this.Ejercicios_textbox_lunes.Name = "Ejercicios_textbox_lunes";
             this.Ejercicios_textbox_lunes.Size = new System.Drawing.Size(135, 20);
@@ -361,6 +364,7 @@
             // 
             // Ejercicios_textbox_martes
             // 
+            this.Ejercicios_textbox_martes.Enabled = false;
             this.Ejercicios_textbox_martes.Location = new System.Drawing.Point(361, 87);
             this.Ejercicios_textbox_martes.Name = "Ejercicios_textbox_martes";
             this.Ejercicios_textbox_martes.Size = new System.Drawing.Size(135, 20);
@@ -368,6 +372,7 @@
             // 
             // Ejercicios_textbox_miercoles
             // 
+            this.Ejercicios_textbox_miercoles.Enabled = false;
             this.Ejercicios_textbox_miercoles.Location = new System.Drawing.Point(361, 136);
             this.Ejercicios_textbox_miercoles.Name = "Ejercicios_textbox_miercoles";
             this.Ejercicios_textbox_miercoles.Size = new System.Drawing.Size(135, 20);
@@ -375,6 +380,7 @@
             // 
             // Ejercicios_textbox_jueves
             // 
+            this.Ejercicios_textbox_jueves.Enabled = false;
             this.Ejercicios_textbox_jueves.Location = new System.Drawing.Point(361, 185);
             this.Ejercicios_textbox_jueves.Name = "Ejercicios_textbox_jueves";
             this.Ejercicios_textbox_jueves.Size = new System.Drawing.Size(135, 20);
@@ -382,6 +388,7 @@
             // 
             // Ejercicios_textbox_viernes
             // 
+            this.Ejercicios_textbox_viernes.Enabled = false;
             this.Ejercicios_textbox_viernes.Location = new System.Drawing.Point(361, 234);
             this.Ejercicios_textbox_viernes.Name = "Ejercicios_textbox_viernes";
             this.Ejercicios_textbox_viernes.Size = new System.Drawing.Size(135, 20);

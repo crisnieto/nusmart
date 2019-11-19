@@ -75,34 +75,48 @@ namespace NuSmart.BLL
         {
             verificarPermiso("OP021");
 
+            if(rutina.Nombre == null || rutina.Nombre == "")
+            {
+                Exception ex = new Exception(NuSmartMessage.formatearMensaje("Rutina_error_guardar"));
+                bllBitacora.crearNuevaBitacora("Agregar Rutina", "Se produjo un error al guardar una rutina: " + ex.Message, Criticidad.Alta);
+                throw ex;
+            }
+
             try
             {
                 if (rutina.DiaEjercicioLunes.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioLunes);
                     rutina.DiaEjercicioLunes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioLunes);
                 }
                 if (rutina.DiaEjercicioMartes.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioMartes);
                     rutina.DiaEjercicioMartes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMartes);
                 }
                 if (rutina.DiaEjercicioMiercoles.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioMiercoles);
                     rutina.DiaEjercicioMiercoles.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioMiercoles);
                 }
                 if (rutina.DiaEjercicioJueves.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioJueves);
                     rutina.DiaEjercicioJueves.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioJueves);
                 }
                 if (rutina.DiaEjercicioViernes.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioViernes);
                     rutina.DiaEjercicioViernes.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioViernes);
                 }
                 if (rutina.DiaEjercicioSabado.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioSabado);
                     rutina.DiaEjercicioSabado.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioSabado);
                 }
                 if (rutina.DiaEjercicioDomingo.Ejercicio != null)
                 {
+                    validarDuracion(rutina.DiaEjercicioDomingo);
                     rutina.DiaEjercicioDomingo.Id = bllDiaEjercicio.agregar(rutina.DiaEjercicioDomingo);
                 }
 
@@ -133,6 +147,14 @@ namespace NuSmart.BLL
                 throw new Exception(NuSmartMessage.formatearMensaje("Rutina_error_calcular_calorias"));
             }
         
+        }
+
+        public void validarDuracion(DiaEjercicio dia)
+        {
+            if(dia.Duracion == 0 && dia.Ejercicio.Nombre != null)
+            {
+                throw new Exception("Error de duracion de Ejercicio");
+            }
         }
 
         public Rutina obtener(int id)
