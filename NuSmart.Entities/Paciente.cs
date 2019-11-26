@@ -7,29 +7,24 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    public class Paciente
+    public class Paciente : Persona
     {
-        private int _id;
-        private string _email;
-        private int _telefono;
-        private string _nombre;
-        private string _apellido;
-        private int _dni;
-        private string _sexo;
-        private bool _eliminado;
-        private DateTime _fechaNacimiento;
+        private int id;
+        private string email;
+        private int telefono;
+        private DateTime fechaNacimiento;
 
         [Browsable(false)]
         public int Id
         {
             get
             {
-                return _id;
+                return id;
             }
 
             set
             {
-                _id = value;
+                id = value;
             }
         }
 
@@ -37,12 +32,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _email;
+                return email;
             }
 
             set
             {
-                _email = value;
+                email = value;
             }
         }
 
@@ -50,12 +45,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _telefono;
+                return telefono;
             }
 
             set
             {
-                _telefono = value;
+                telefono = value;
             }
         }
 
@@ -63,12 +58,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _nombre;
+                return nombre;
             }
 
             set
             {
-                _nombre = value;
+                nombre = value;
             }
         }
 
@@ -76,12 +71,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _apellido;
+                return apellido;
             }
 
             set
             {
-                _apellido = value;
+                apellido = value;
             }
         }
 
@@ -89,12 +84,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _dni;
+                return dni;
             }
 
             set
             {
-                _dni = value;
+                dni = value;
             }
         }
 
@@ -102,26 +97,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _sexo;
+                return sexo;
             }
 
             set
             {
-                _sexo = value;
-            }
-        }
-
-        [Browsable(false)]
-        public bool Eliminado
-        {
-            get
-            {
-                return _eliminado;
-            }
-
-            set
-            {
-                _eliminado = value;
+                sexo = value;
             }
         }
 
@@ -129,12 +110,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _fechaNacimiento;
+                return fechaNacimiento;
             }
 
             set
             {
-                _fechaNacimiento = value;
+                fechaNacimiento = value;
             }
         }
 

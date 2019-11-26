@@ -9,11 +9,11 @@ namespace NuSmart.BLL
 {
     public abstract class BLLBase
     {
-        protected BLLBitacora bitacoraErrores;
+        protected BLLBitacora bitacora;
 
         public BLLBase()
         {
-           bitacoraErrores = new BLLBitacora();
+           bitacora = new BLLBitacora();
         }
 
 
@@ -24,10 +24,15 @@ namespace NuSmart.BLL
                 Sesion.Instancia().verificarPermiso(operacion);
             }catch(Exception ex)
             {
-                bitacoraErrores.crearNuevaBitacora("Error de Permisos", ex.Message, Criticidad.Alta);
+                bitacora.crearNuevaBitacora("Error de Permisos", ex.Message, Criticidad.Alta);
                 throw ex;
             }
 
+        }
+
+        public void crearNuevaBitacora(string actividad, string descripcion, Criticidad criticidad)
+        {
+            bitacora.crearNuevaBitacora(actividad, descripcion, criticidad);   
         }
 
     }

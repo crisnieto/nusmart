@@ -36,18 +36,6 @@ namespace NuSmart.DAL
             sqlHelper.ejecutarNonQuery(textoComando, lista);
         }
 
-        public void eliminar(Paciente paciente)
-        {
-            string textoComando = "UPDATE PACIENTE SET eliminado = @ELIMINADO where dni = @DNI";
-            List<SqlParameter> lista = new List<SqlParameter>();
-
-            lista.Add(new SqlParameter("@DNI", paciente.Dni));
-            lista.Add(new SqlParameter("@ELIMINADO", paciente.Eliminado));
-
-            sqlHelper.ejecutarNonQuery(textoComando, lista);
-
-        }
-
         public void modificar(Paciente paciente)
         {
             string textoComando = "UPDATE PACIENTE SET nombre = @NOMBRE, apellido = @APELLIDO, email = @EMAIL, telefono = @TELEFONO, dni = @DNI, sexo = @SEXO WHERE PACIENTEID = @PACIENTEID";
@@ -67,7 +55,7 @@ namespace NuSmart.DAL
 
         public List<Paciente> obtenerTodos()
         {
-            string textoComando = "SELECT * FROM PACIENTE WHERE eliminado = 0";
+            string textoComando = "SELECT * FROM PACIENTE";
             List<Paciente> listaPacientes = new List<Paciente>();
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
@@ -78,7 +66,6 @@ namespace NuSmart.DAL
                 paciente.Nombre = (string)row["nombre"];
                 paciente.Apellido = (string)row["apellido"];
                 paciente.Dni = (int)row["dni"];
-                paciente.Eliminado = (bool)row["eliminado"];
                 paciente.Email = (string)row["email"];
                 paciente.Id = (int)row["pacienteId"];
                 paciente.Telefono = (int)row["telefono"];
@@ -92,7 +79,7 @@ namespace NuSmart.DAL
         public Paciente obtener(int dni)
         {
 
-            string textoComando = "SELECT * FROM PACIENTE WHERE dni = @DNI AND eliminado = 0";
+            string textoComando = "SELECT * FROM PACIENTE WHERE dni = @DNI";
             Paciente paciente = null;
 
             List<SqlParameter> lista = new List<SqlParameter>();
@@ -108,7 +95,6 @@ namespace NuSmart.DAL
                 paciente.Nombre = (string)dt.Rows[0]["nombre"];
                 paciente.Apellido = (string)dt.Rows[0]["apellido"];
                 paciente.Dni = (int)dt.Rows[0]["dni"];
-                paciente.Eliminado = (bool)dt.Rows[0]["eliminado"];
                 paciente.Email = (string)dt.Rows[0]["email"];
                 paciente.Id = (int)dt.Rows[0]["pacienteID"];
                 paciente.Telefono = (int)dt.Rows[0]["telefono"];

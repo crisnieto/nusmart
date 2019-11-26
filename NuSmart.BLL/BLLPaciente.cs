@@ -82,21 +82,6 @@ namespace NuSmart.BLL
             }
         }
 
-        public void eliminar(Paciente paciente)
-        {
-            try
-            {
-                paciente.Eliminado = true;
-                dalPaciente.eliminar(paciente);
-                bllBitacora.crearNuevaBitacora("Eliminacion de Paciente", "Se elimino el paciente con DNI " + paciente.Dni, Criticidad.Media);
-            }
-            catch (Exception ex)
-            {
-                bllBitacora.crearNuevaBitacora("Eliminacion de Paciente", "Se produjo un error al modificar un paciente " + ex.Message, Criticidad.Alta);
-                throw new Exception(NuSmartMessage.formatearMensaje("Pacientes_messagebox_errorSeleccion"));
-            }
-        }
-
         public List<Paciente> obtenerTodos()
         {
             verificarPermiso("OP043");

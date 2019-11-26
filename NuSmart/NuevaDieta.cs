@@ -114,7 +114,7 @@ namespace NuSmart
 
             if(diaActual != null && dataGridView2.SelectedCells.Count > 0)
             {
-                Alimento alimentoSeleccionado = (Alimento)dataGridView2.SelectedCells[0].OwningRow.DataBoundItem;
+                Plato alimentoSeleccionado = (Plato)dataGridView2.SelectedCells[0].OwningRow.DataBoundItem;
                 if (GestionDieta_radiobutton_desayuno.Checked)
                 {
                     diaActual.Desayuno = alimentoSeleccionado;

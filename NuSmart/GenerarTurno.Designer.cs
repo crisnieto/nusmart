@@ -35,7 +35,7 @@
             this.GenerarTurno_label_manana = new System.Windows.Forms.RadioButton();
             this.GenerarTurno_label_tarde = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboHorarios = new System.Windows.Forms.ComboBox();
             this.GenerarTurno_label_crear_turno = new System.Windows.Forms.Button();
             this.GenerarTurno_label_motivo = new System.Windows.Forms.Label();
             this.GenerarTurno_textbox_motivoConsulta = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.GenerarTurno_label_manana.TabStop = true;
             this.GenerarTurno_label_manana.Text = "Manana";
             this.GenerarTurno_label_manana.UseVisualStyleBackColor = true;
-            this.GenerarTurno_label_manana.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.GenerarTurno_label_manana.CheckedChanged += new System.EventHandler(this.manana_CheckedChanged);
             // 
             // GenerarTurno_label_tarde
             // 
@@ -89,7 +89,7 @@
             this.GenerarTurno_label_tarde.TabStop = true;
             this.GenerarTurno_label_tarde.Text = "Tarde";
             this.GenerarTurno_label_tarde.UseVisualStyleBackColor = true;
-            this.GenerarTurno_label_tarde.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.GenerarTurno_label_tarde.CheckedChanged += new System.EventHandler(this.tarde_CheckedChanged);
             // 
             // label3
             // 
@@ -101,13 +101,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "label3";
             // 
-            // comboBox1
+            // comboHorarios
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(295, 92);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 21);
-            this.comboBox1.TabIndex = 7;
+            this.comboHorarios.FormattingEnabled = true;
+            this.comboHorarios.Location = new System.Drawing.Point(295, 92);
+            this.comboHorarios.Name = "comboHorarios";
+            this.comboHorarios.Size = new System.Drawing.Size(178, 21);
+            this.comboHorarios.TabIndex = 7;
+            this.comboHorarios.SelectedIndexChanged += new System.EventHandler(this.comboHorarios_SelectedIndexChanged);
             // 
             // GenerarTurno_label_crear_turno
             // 
@@ -117,7 +118,7 @@
             this.GenerarTurno_label_crear_turno.TabIndex = 8;
             this.GenerarTurno_label_crear_turno.Text = "Crear Turno";
             this.GenerarTurno_label_crear_turno.UseVisualStyleBackColor = true;
-            this.GenerarTurno_label_crear_turno.Click += new System.EventHandler(this.button2_Click);
+            this.GenerarTurno_label_crear_turno.Click += new System.EventHandler(this.GenerarTurno_label_crear_turno_Click);
             // 
             // GenerarTurno_label_motivo
             // 
@@ -144,7 +145,7 @@
             this.Controls.Add(this.GenerarTurno_textbox_motivoConsulta);
             this.Controls.Add(this.GenerarTurno_label_motivo);
             this.Controls.Add(this.GenerarTurno_label_crear_turno);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboHorarios);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.GenerarTurno_label_tarde);
             this.Controls.Add(this.GenerarTurno_label_manana);
@@ -166,7 +167,7 @@
         private System.Windows.Forms.RadioButton GenerarTurno_label_manana;
         private System.Windows.Forms.RadioButton GenerarTurno_label_tarde;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboHorarios;
         private System.Windows.Forms.Button GenerarTurno_label_crear_turno;
         private System.Windows.Forms.Label GenerarTurno_label_motivo;
         private System.Windows.Forms.TextBox GenerarTurno_textbox_motivoConsulta;

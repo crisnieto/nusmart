@@ -12,8 +12,6 @@ namespace NuSmart.BLL
     {
         BLLDiaAlimenticio bllDiaAlimenticio;
         DALDieta dalDieta;
-        BLLPlato bllPlato;
-        BLLBitacora bllBitacora;
 
         public const int ADELGAZAR = 1;
         public const int MANTENER = 2;
@@ -23,8 +21,6 @@ namespace NuSmart.BLL
         {
             bllDiaAlimenticio = new BLLDiaAlimenticio();
             dalDieta = new DALDieta();
-            bllPlato = new BLLPlato();
-            bllBitacora = new BLLBitacora();
         }
 
 
@@ -43,11 +39,11 @@ namespace NuSmart.BLL
                     dieta.Sabado.Id = bllDiaAlimenticio.guardar(dieta.Sabado);
                     dieta.Domingo.Id = bllDiaAlimenticio.guardar(dieta.Domingo);
 
-                    bllBitacora.crearNuevaBitacora("Dieta Creada", "Se creo una nueva dieta", Criticidad.Baja);
+                    crearNuevaBitacora("Dieta Creada", "Se creo una nueva dieta", Criticidad.Baja);
                     return dalDieta.guardar(dieta);
                 }catch(Exception ex)
                 {
-                    bllBitacora.crearNuevaBitacora("Dieta Creada", "Ocurrio un error al guardar la dieta: " + ex.Message, Criticidad.Alta);
+                    crearNuevaBitacora("Dieta Creada", "Ocurrio un error al guardar la dieta: " + ex.Message, Criticidad.Alta);
                     throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_guardado"));
                 }
             }
@@ -143,6 +139,7 @@ namespace NuSmart.BLL
 
         public void obtenerPlatosDeDia(DiaAlimenticio dia)
         {
+            BLLPlato bllPlato = new BLLPlato();
 
             dia.Desayuno = bllPlato.obtenerPlato(dia.Desayuno.Id);
             dia.Colacion = bllPlato.obtenerPlato(dia.Colacion.Id);
@@ -156,166 +153,33 @@ namespace NuSmart.BLL
             verificarPermiso("OP026");
             try
             {
+                BLLPlato bllPlato = new BLLPlato();
+                List<Plato> platos = bllPlato.obtenerTodos();
+                BLLContextoDietaAutomatica contexto = new BLLContextoDietaAutomatica();
+
                 switch (tipo)
                 {
                     case ADELGAZAR:
-                        return calcularDietaAdegalzar();
+                        contexto.asociarEstrategia(new BLLAdelgazarEstrategia());
+                        return contexto.calcularDieta(platos);
                     case MANTENER:
-                        return calcularDietaMantener();
+                        contexto.asociarEstrategia(new BLLMantenerEstrategia());
+                        return contexto.calcularDieta(platos);
                     case ENGORDAR:
-                        return calcularDietaEngordar();
+                        contexto.asociarEstrategia(new BLLEngordarEstrategia());
+                        return contexto.calcularDieta(platos);
+                    default:
+                        contexto.asociarEstrategia(new BLLAdelgazarEstrategia());
+                        return contexto.calcularDieta(platos);
                 }
-                return null;
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Ocurrio un error calculando la dieta automatica: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Calculo Dieta Automatica", "Ocurrio un error calculando la dieta automatica: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("AgregarDieta_error_dieta_automatica"));
             }
         }
 
-        public Dieta calcularDietaAdegalzar()
-        {
-            int caloriasDiariasMaximas = 1400;
-            int caloriasDiarasMinimas = 1000;
-
-            List<Plato> platos = bllPlato.obtenerTodos();
-
-            Dieta dieta = new Dieta();
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Lunes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Martes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Miercoles, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Jueves, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Viernes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Sabado, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Domingo, new List<Plato>(platos));
-
-            dieta.EsAutomatica = true;
-            dieta.Nombre = "Dieta generada para adelgazar";
-            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para adelgazar", Criticidad.Baja);
-
-            return dieta;
-        }
-
-
-        public Dieta calcularDietaMantener()
-        {
-            int caloriasDiariasMaximas = 2300;
-            int caloriasDiarasMinimas = 1800;
-
-            List<Plato> platos = bllPlato.obtenerTodos();
-
-            Dieta dieta = new Dieta();
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Lunes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Martes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Miercoles, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Jueves, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Viernes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Sabado, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Domingo, new List<Plato>(platos));
-
-            dieta.EsAutomatica = true;
-            dieta.Nombre = "Dieta generada para mantener peso";
-            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para mantener peso", Criticidad.Baja);
-
-            return dieta;
-        }
-
-        public Dieta calcularDietaEngordar()
-        {
-            int caloriasDiariasMaximas = 3000;
-            int caloriasDiarasMinimas = 2200;
-
-            List<Plato> platos = bllPlato.obtenerTodos();
-
-            Dieta dieta = new Dieta();
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Lunes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Martes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Miercoles, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Jueves, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Viernes, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Sabado, new List<Plato>(platos));
-            calcularPlatosdeDia(caloriasDiarasMinimas, caloriasDiariasMaximas, dieta.Domingo, new List<Plato>(platos));
-
-            dieta.EsAutomatica = true;
-            dieta.Nombre = "Dieta generada para engordar";
-            bllBitacora.crearNuevaBitacora("Calculo Dieta Automatica", "Se produjo un calculo de dieta para engordar", Criticidad.Baja);
-
-            return dieta;
-        }
-
-
-
-        public void calcularPlatosdeDia(int min, int max, DiaAlimenticio dia, List<Plato> platos)
-        {
-            Randomizer.Shuffle(platos);
-            double porcentajeDesayuno = 0.20;
-            double porcentajeColacion = 0.10;
-            double porcentajeAlmuerzo = 0.30;
-            double porcentajeMerienda = 0.15;
-            double porcentajeCena = 0.25;
-            bool continueLoop = false;
-
-            do
-            {
-                foreach (Plato plato in platos.ToList())
-                {
-                    if (plato.EsDesayuno && dia.Desayuno.Calorias == 0)
-                    {
-                        if (plato.Calorias >= min * porcentajeDesayuno && plato.Calorias <= max * porcentajeDesayuno)
-                        {
-                            dia.Desayuno = plato;
-                            platos.Remove(plato);
-                            continue;
-                        }
-                    }
-                    if (plato.EsColacion && dia.Colacion.Calorias == 0)
-                    {
-                        if (plato.Calorias >= min * porcentajeColacion && plato.Calorias <= max * porcentajeColacion)
-                        {
-                            dia.Colacion = plato;
-                            platos.Remove(plato);
-                            continue;
-                        }
-                    }
-                    if (plato.EsPlatoPrincipal && dia.Almuerzo.Calorias == 0)
-                    {
-                        if (plato.Calorias >= min * porcentajeAlmuerzo && plato.Calorias <= max * porcentajeAlmuerzo)
-                        {
-                            dia.Almuerzo = plato;
-                            platos.Remove(plato);
-                            continue;
-                        }
-                    }
-                    if (plato.EsMerienda && dia.Merienda.Calorias == 0)
-                    {
-                        if (plato.Calorias >= min * porcentajeMerienda && plato.Calorias <= max * porcentajeMerienda)
-                        {
-                            dia.Merienda = plato;
-                            platos.Remove(plato);
-                            continue;
-                        }
-                    }
-                    if (plato.EsPlatoPrincipal && dia.Cena.Calorias == 0)
-                    {
-                        if (plato.Calorias >= min * porcentajeCena && plato.Calorias <= max * porcentajeCena)
-                        {
-                            dia.Cena = plato;
-                            platos.Remove(plato);
-                            continue;
-                        }
-                    }
-                }
-                max = max + 100;
-                min = min > 0 ? min - 100 : min;
-
-                if(dia.Desayuno.Calorias == 0 || dia.Colacion.Calorias == 0 || dia.Almuerzo.Calorias == 0 || dia.Merienda.Calorias == 0 || dia.Cena.Calorias == 0)
-                {
-                    continueLoop = true;
-                }
-
-            } while (max <= 3500 && continueLoop);
-            
-        }
 
         public Dieta conseguirDieta(int dietaID)
         {
@@ -343,7 +207,7 @@ namespace NuSmart.BLL
                 return dieta;
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Conseguir Dieta", "Se produjo error al buscar la dieta con id: " + dietaID, Criticidad.Alta);
+                crearNuevaBitacora("Conseguir Dieta", "Se produjo error al buscar la dieta con id: " + dietaID, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Dieta_error_busqueda"));
             }
 

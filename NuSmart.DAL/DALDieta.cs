@@ -35,9 +35,7 @@ namespace NuSmart.DAL
             lista.Add(new SqlParameter("@ESAUTOMATICA", dieta.EsAutomatica));
             lista.Add(new SqlParameter("@NOMBRE", dieta.Nombre));
 
-
             return sqlHelper.ejecutarEscalar(textoComando, lista);
-
         }
 
         public List<Dieta> conseguirDietas()

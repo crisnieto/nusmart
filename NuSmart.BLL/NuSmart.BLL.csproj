@@ -49,13 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLEngordarEstrategia.cs" />
+    <Compile Include="BLLMantenerEstrategia.cs" />
+    <Compile Include="BLLAdelgazarEstrategia.cs" />
     <Compile Include="BLLAlimento.cs" />
     <Compile Include="BLLBackupManager.cs" />
     <Compile Include="BLLBase.cs" />
     <Compile Include="BLLBitacora.cs" />
+    <Compile Include="BLLContextoDietaAutomatica.cs" />
     <Compile Include="BLLDiaAlimenticio.cs" />
     <Compile Include="BLLDiaEjercicio.cs" />
     <Compile Include="BLLDieta.cs" />
+    <Compile Include="BLLDietaEstrategia.cs" />
     <Compile Include="BLLEjercicio.cs" />
     <Compile Include="BLLEscritura.cs" />
     <Compile Include="BLLFamilia.cs" />

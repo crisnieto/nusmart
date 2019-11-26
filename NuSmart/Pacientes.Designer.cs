@@ -32,7 +32,6 @@
             this.Pacientes_label_fecha = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.Pacientes_button_buscar_todos = new System.Windows.Forms.Button();
-            this.Pacientes_button_eliminar = new System.Windows.Forms.Button();
             this.Pacientes_button_modificar = new System.Windows.Forms.Button();
             this.Pacientes_combobox_sexo = new System.Windows.Forms.ComboBox();
             this.Pacientes_label_sexo = new System.Windows.Forms.Label();
@@ -78,18 +77,6 @@
             this.Pacientes_button_buscar_todos.Text = "Buscar Todos";
             this.Pacientes_button_buscar_todos.UseVisualStyleBackColor = true;
             this.Pacientes_button_buscar_todos.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // Pacientes_button_eliminar
-            // 
-            this.Pacientes_button_eliminar.Enabled = false;
-            this.Pacientes_button_eliminar.Location = new System.Drawing.Point(181, 208);
-            this.Pacientes_button_eliminar.Name = "Pacientes_button_eliminar";
-            this.Pacientes_button_eliminar.Size = new System.Drawing.Size(84, 43);
-            this.Pacientes_button_eliminar.TabIndex = 19;
-            this.Pacientes_button_eliminar.Text = "Eliminar Seleccionado";
-            this.Pacientes_button_eliminar.UseVisualStyleBackColor = true;
-            this.Pacientes_button_eliminar.Visible = false;
-            this.Pacientes_button_eliminar.Click += new System.EventHandler(this.button4_Click);
             // 
             // Pacientes_button_modificar
             // 
@@ -263,7 +250,6 @@
             this.Controls.Add(this.Pacientes_label_fecha);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.Pacientes_button_buscar_todos);
-            this.Controls.Add(this.Pacientes_button_eliminar);
             this.Controls.Add(this.Pacientes_button_modificar);
             this.Controls.Add(this.Pacientes_combobox_sexo);
             this.Controls.Add(this.Pacientes_label_sexo);
@@ -310,7 +296,6 @@
         private System.Windows.Forms.Label Pacientes_label_sexo;
         private System.Windows.Forms.ComboBox Pacientes_combobox_sexo;
         private System.Windows.Forms.Button Pacientes_button_modificar;
-        private System.Windows.Forms.Button Pacientes_button_eliminar;
         private System.Windows.Forms.Button Pacientes_button_buscar_todos;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label Pacientes_label_fecha;

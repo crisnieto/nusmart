@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    public class Alimento
+    public abstract class Persona
     {
-        private int id;
-        private string nombre;
-        private int calorias;
-        private string tipoAlimento;
+        protected int dni;
+        protected string nombre;
+        protected string apellido;
+        protected string sexo;
 
-        public int Id
+        public int Dni
         {
             get
             {
-                return id;
+                return dni;
             }
 
             set
             {
-                id = value;
+                dni = value;
             }
         }
 
@@ -39,35 +39,30 @@ namespace NuSmart.BE
             }
         }
 
-        public int Calorias
+        public string Apellido
         {
             get
             {
-                return calorias;
+                return apellido;
             }
 
             set
             {
-                calorias = value;
+                apellido = value;
             }
         }
 
-        public string TipoAlimento
+        public string Sexo
         {
             get
             {
-                return tipoAlimento;
+                return sexo;
             }
 
             set
             {
-                tipoAlimento = value;
+                sexo = value;
             }
-        }
-
-        public override string ToString()
-        {
-            return nombre;
         }
     }
 }

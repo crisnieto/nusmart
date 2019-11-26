@@ -11,15 +11,15 @@ namespace NuSmart.BLL
     public class BLLTurno : BLLBase
     {
         DALTurno dalTurno;
-        BLLBitacora bllBitacora;
         BLLHorario bllHorario;
 
         public BLLTurno()
         {
             dalTurno = new DALTurno();
-            bllBitacora = new BLLBitacora();
             bllHorario = new BLLHorario();
         }
+
+
         public List<Turno> obtenerTurnosPosibles(Paciente paciente ,DateTime fecha, String preferencia)
         {
 
@@ -29,15 +29,12 @@ namespace NuSmart.BLL
             { 
                 List<Turno> turnos = new List<Turno>();
 
-                if(fecha.DayOfWeek == DayOfWeek.Saturday || fecha.DayOfWeek == DayOfWeek.Sunday)
+                if (validarFinDeSemana(fecha))
                 {
                     return turnos;
                 }
 
-                if(DateTime.Compare(fecha.Date, DateTime.Today.Date) < 0)
-                {
-                    throw new Exception("No es posible crear un turno para una fecha posterior a la actual");
-                }
+                validarFechaPosterior(fecha);
 
                 Nutricionista nutricionista = new BLLNutricionista().conseguir(Sesion.Instancia().UsuarioActual.Id);
 
@@ -45,24 +42,52 @@ namespace NuSmart.BLL
 
                 if(horariosConseguidos.Count == 0)
                 {
-                    fecha = fecha.AddDays(7);
+                    fecha = agregarSemana(fecha);
                     horariosConseguidos = bllHorario.obtenerHorariosDisponibles(nutricionista, fecha, preferencia);
                 }
 
                 foreach (Horario horario in horariosConseguidos)
                 {
-                    Turno turno = new Turno();
-                    turno.Fecha = fecha;
-                    turno.Nutricionista = nutricionista;
-                    turno.Paciente = paciente;
-                    turno.Horario = horario;
-                    turnos.Add(turno);
+                    
+                    turnos.Add(crearTurnoPosible(horario, nutricionista, paciente, fecha));
                 }
                 return turnos;
             } catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Busqueda De Turnos", "Error en la busqueda de turnos: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Busqueda De Turnos", "Error en la busqueda de turnos: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda") + ": " + ex.Message);
+            }
+        }
+
+        public Turno crearTurnoPosible(Horario horario, Nutricionista nutricionista, Paciente paciente, DateTime fecha)
+        {
+            Turno turno = new Turno();
+            turno.Fecha = fecha;
+            turno.Nutricionista = nutricionista;
+            turno.Paciente = paciente;
+            turno.Horario = horario;
+            return turno;
+        }
+
+        public bool validarFinDeSemana(DateTime fecha)
+        {
+            if (fecha.DayOfWeek == DayOfWeek.Saturday || fecha.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public DateTime agregarSemana(DateTime fecha)
+        {
+            return fecha.AddDays(7);
+        }
+
+        public void validarFechaPosterior(DateTime fecha)
+        {
+            if (DateTime.Compare(fecha.Date, DateTime.Today.Date) < 0)
+            {
+                throw new Exception(NuSmartMessage.formatearMensaje("AgregarTurno_messagebox_fecha_anterior_error"));
             }
         }
 
@@ -73,11 +98,11 @@ namespace NuSmart.BLL
             try
             {
                 dalTurno.registrarTurno(turno);
-                bllBitacora.crearNuevaBitacora("Creacion de turno", "Se creo un turno para el paciente con id " + turno.Paciente.Id, Criticidad.Alta);
+                crearNuevaBitacora("Creacion de turno", "Se creo un turno para el paciente con id " + turno.Paciente.Id, Criticidad.Alta);
             }
             catch (Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Creacion de turno", "Error de creacion de turno: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Creacion de turno", "Error de creacion de turno: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("AgregarTurno_messagebox_errorTurno"));
             }
         }
@@ -93,7 +118,7 @@ namespace NuSmart.BLL
                 return dalTurno.obtenerTurnos(fecha, nutricionista);
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Busqueda De Turnos de Nutricionista", "Error en la busqueda de turnos del nutricionista: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Busqueda De Turnos de Nutricionista", "Error en la busqueda de turnos del nutricionista: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Error_messagebox_busqueda"));
             }
         }
@@ -105,11 +130,11 @@ namespace NuSmart.BLL
             try
             {
                 dalTurno.eliminar(turno);
-                bllBitacora.crearNuevaBitacora("Eliminado de Turno", "Se elimino el turno con id: " + turno.Id, Criticidad.Alta);
+                crearNuevaBitacora("Eliminado de Turno", "Se elimino el turno con id: " + turno.Id, Criticidad.Alta);
             }
             catch (Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Eliminado de Turno", "Error al eliminar turno del nutricionista: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Eliminado de Turno", "Error al eliminar turno del nutricionista: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("AgregarTurno_error_eliminado"));
             }
         }

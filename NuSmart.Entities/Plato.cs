@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    public class Plato : ComidaDieta
+    public class Plato
     {
-        int _id;
-        string _nombre;
-        int _calorias;
-        bool _esDesayuno = false;
-        bool _esColacion = false;
-        bool _esMerienda = false;
-        bool _esPlatoPrincipal = false;
-        bool _eliminado = false;
+        int id;
+        string nombre;
+        int calorias;
+        bool esDesayuno = false;
+        bool esColacion = false;
+        bool esMerienda = false;
+        bool esPlatoPrincipal = false;
+
         List<Alimento> _alimentos;
 
         public string Nombre
         {
             get
             {
-                return _nombre;
+                return nombre;
             }
 
             set
             {
-                _nombre = value;
+                nombre = value;
             }
         }
 
@@ -35,12 +35,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _calorias;
+                return calorias;
             }
 
             set
             {
-                _calorias = value;
+                calorias = value;
             }
         }
 
@@ -48,12 +48,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _esPlatoPrincipal;
+                return esPlatoPrincipal;
             }
 
             set
             {
-                _esPlatoPrincipal = value;
+                esPlatoPrincipal = value;
             }
         }
 
@@ -61,12 +61,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _esDesayuno;
+                return esDesayuno;
             }
 
             set
             {
-                _esDesayuno = value;
+                esDesayuno = value;
             }
         }
 
@@ -75,12 +75,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _esMerienda;
+                return esMerienda;
             }
 
             set
             {
-                _esMerienda = value;
+                esMerienda = value;
             }
         }
 
@@ -89,12 +89,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _esColacion;
+                return esColacion;
             }
 
             set
             {
-                _esColacion = value;
+                esColacion = value;
             }
         }
 
@@ -103,12 +103,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _id;
+                return id;
             }
 
             set
             {
-                _id = value;
+                id = value;
             }
         }
 
@@ -124,19 +124,6 @@ namespace NuSmart.BE
             set
             {
                 _alimentos = value;
-            }
-        }
-
-        public bool Eliminado
-        {
-            get
-            {
-                return _eliminado;
-            }
-
-            set
-            {
-                _eliminado = value;
             }
         }
     }

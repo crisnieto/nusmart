@@ -8,7 +8,7 @@ using NuSmart.DAL;
 
 namespace NuSmart.BLL
 {
-    public class BLLHorario
+    public class BLLHorario : BLLBase
     {
         DALHorario dalHorario;
 
@@ -21,16 +21,22 @@ namespace NuSmart.BLL
         {
             List<Horario> horarios = dalHorario.obtenerHorariosDisponibles(nutricionista, fecha, preferencia);
 
+            return filtrarHorarios(horarios, fecha);
+        }
+
+        public List<Horario> filtrarHorarios(List<Horario> horarios, DateTime fecha)
+        {
             List<Horario> horariosFiltrados = new List<Horario>();
-            foreach(Horario horario in horarios)
+            foreach (Horario horario in horarios)
             {
-                if(DateTime.Compare(fecha.Date, DateTime.Today.Date) == 0)
+                if (DateTime.Compare(fecha.Date, DateTime.Today.Date) == 0)
                 {
                     if (horario.Tiempo.Hour > DateTime.Now.Hour || (horario.Tiempo.Hour == DateTime.Now.Hour && horario.Tiempo.Minute >= DateTime.Now.Minute))
                     {
                         horariosFiltrados.Add(horario);
                     }
-                }else if(DateTime.Compare(fecha.Date, DateTime.Today.Date) > 0)
+                }
+                else if (DateTime.Compare(fecha.Date, DateTime.Today.Date) > 0)
                 {
                     horariosFiltrados.Add(horario);
                 }

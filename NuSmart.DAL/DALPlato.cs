@@ -20,11 +20,11 @@ namespace NuSmart.DAL
 
         public List<Plato> obtenerTodos(string tipoAlimento = null)
         {
-            string textoComando = "SELECT platoID, nombre, calorias, esDesayuno, esColacion, esMerienda, esPlatoPrincipal, eliminado FROM PLATO WHERE ELIMINADO = 0";
+            string textoComando = "SELECT platoID, nombre, calorias, esDesayuno, esColacion, esMerienda, esPlatoPrincipal FROM PLATO";
 
             if(tipoAlimento != null)
             {
-                textoComando += " AND " + tipoAlimento + " = 1";
+                textoComando += " WHERE " + tipoAlimento + " = 1";
             }
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
@@ -41,7 +41,6 @@ namespace NuSmart.DAL
                 plato.EsMerienda = Convert.ToBoolean(dr["esMerienda"]);
                 plato.EsPlatoPrincipal = Convert.ToBoolean(dr["esPlatoPrincipal"]);
                 plato.Id = Convert.ToInt32(dr["platoID"]);
-                plato.Eliminado = Convert.ToBoolean(dr["eliminado"]);
                 platos.Add(plato);
             }
             return platos;
@@ -76,39 +75,14 @@ namespace NuSmart.DAL
             }
         }
 
-        public List<Alimento> buscar(Alimento alimentoBuscado)
-        {
-            string textoComando = "SELECT * FROM ALIMENTO WHERE ELIMINADO = 0 AND NOMBRE CONTAINS(NOMBRE, @NOMBRE)";
-
-            List<SqlParameter> lista = new List<SqlParameter>();
-            lista.Add(new SqlParameter("@NOMBRE", alimentoBuscado.Nombre));
-
-
-            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
-
-            List<Alimento> alimentos = new List<Alimento>();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Alimento alimento = new Alimento();
-                alimento.Calorias = Convert.ToInt32(dr["calorias"]);
-                alimento.Nombre = Convert.ToString(dr["nombre"]);
-                alimento.TipoAlimento = Convert.ToString(dr["tipoAlimento"]);
-                alimento.Id = Convert.ToInt32(dr["alimentoID"]);
-                alimento.Eliminado = Convert.ToBoolean(dr["eliminado"]);
-                alimentos.Add(alimento);
-            }
-            return alimentos;
-        }
 
         public Plato obtenerPlato(int id)
         {
-            string textoComando = "SELECT platoID, nombre, calorias, esDesayuno, esColacion, esMerienda, esPlatoPrincipal, eliminado FROM PLATO WHERE ELIMINADO = 0 AND platoID = @ID";
+            string textoComando = "SELECT platoID, nombre, calorias, esDesayuno, esColacion, esMerienda, esPlatoPrincipal FROM PLATO WHERE platoID = @ID";
 
             List<SqlParameter> lista = new List<SqlParameter>();
 
             lista.Add(new SqlParameter("@ID", id));
-
 
             DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando, lista).Tables[0];
 
@@ -124,7 +98,6 @@ namespace NuSmart.DAL
                 plato.EsMerienda = Convert.ToBoolean(dr["esMerienda"]);
                 plato.EsPlatoPrincipal = Convert.ToBoolean(dr["esPlatoPrincipal"]);
                 plato.Id = Convert.ToInt32(dr["platoID"]);
-                plato.Eliminado = Convert.ToBoolean(dr["eliminado"]);
             }
             return plato;
         }

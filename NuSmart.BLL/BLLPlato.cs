@@ -12,11 +12,9 @@ namespace NuSmart.BLL
     {
 
         DALPlato dalPlato;
-        BLLBitacora bllBitacora;
 
         public BLLPlato()
         {
-            bllBitacora = new BLLBitacora();
             dalPlato = new DALPlato();
         }
 
@@ -35,7 +33,7 @@ namespace NuSmart.BLL
                 return listaPlatos;
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Busqueda de Platos", "Ocurrio un error mientras se buscaban los platos: "+ ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Busqueda de Platos", "Ocurrio un error mientras se buscaban los platos: "+ ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_busqueda"));
             }
 
@@ -59,11 +57,11 @@ namespace NuSmart.BLL
                 plato.Id = id;
 
                 dalPlato.asociarAlimentosAPlato(plato);
-                bllBitacora.crearNuevaBitacora("Agregar Plato", "Se agrego correctamente un nuevo plato: " + plato.Nombre, Criticidad.Alta);
+                crearNuevaBitacora("Agregar Plato", "Se agrego correctamente un nuevo plato: " + plato.Nombre, Criticidad.Alta);
             }
             catch (Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Agregar Plato", "Ocurrio un error al intentar crear un nuevo plato: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Agregar Plato", "Ocurrio un error al intentar crear un nuevo plato: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_agregado"));
             }
 
@@ -81,7 +79,7 @@ namespace NuSmart.BLL
                 return calorias;
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Calcular Calorias", "Ocurrio un error al intentar calcular las calorias de un plato: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Calcular Calorias", "Ocurrio un error al intentar calcular las calorias de un plato: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_calculo_calorias"));
             }
 
@@ -95,7 +93,7 @@ namespace NuSmart.BLL
                 return dalPlato.obtenerPlato(id);
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Busqueda de Plato", "Ocurrio un error mientras se buscaban un plato: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Busqueda de Plato", "Ocurrio un error mientras se buscaban un plato: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Plato_error_busqueda"));
             }
         }

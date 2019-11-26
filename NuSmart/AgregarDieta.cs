@@ -44,7 +44,12 @@ namespace NuSmart
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listaDietas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            actualizarCamposDieta();
+        }
+
+        public void actualizarCamposDieta()
         {
             try
             {
@@ -67,11 +72,11 @@ namespace NuSmart
                 {
                     AgregarDieta_radiobutton_desayuno.Enabled = AgregarDieta_radiobutton_colacion.Enabled = AgregarDieta_radiobutton_almuerzo.Enabled = AgregarDieta_radiobutton_merienda.Enabled = AgregarDieta_radiobutton_cena.Enabled = true;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void actualizarCaloriasMostradas()
@@ -104,7 +109,7 @@ namespace NuSmart
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AgregarDieta_button_generar_dieta_automatica_Click(object sender, EventArgs e)
         {
             try
             {
@@ -193,17 +198,17 @@ namespace NuSmart
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void AgregarDieta_radiobutton_bajar_CheckedChanged(object sender, EventArgs e)
         {
             estrategiaActual = BLLDieta.ADELGAZAR;
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void AgregarDieta_radiobutton_mantener_CheckedChanged(object sender, EventArgs e)
         {
             estrategiaActual = BLLDieta.MANTENER;
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void AgregarDieta_radiobutton_subir_CheckedChanged(object sender, EventArgs e)
         {
             estrategiaActual = BLLDieta.ENGORDAR;
         }
@@ -213,11 +218,10 @@ namespace NuSmart
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void AgregarDieta_button_iniciar_tratamiento_Click(object sender, EventArgs e)
         {
             try
             {
-                Sesion.Instancia().verificarPermiso("OP041");
                 if (dietaActual != null)
                 {
                     if (dietaActual.EsAutomatica)

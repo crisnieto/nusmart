@@ -10,11 +10,11 @@ namespace NuSmart.BE
     {
         int _id;
         string _nombre;
-        ComidaDieta _desayuno;
-        ComidaDieta _colacion;
-        ComidaDieta _almuerzo;
-        ComidaDieta _merienda;
-        ComidaDieta _cena;
+        Plato _desayuno;
+        Plato _colacion;
+        Plato _almuerzo;
+        Plato _merienda;
+        Plato _cena;
 
         public DiaAlimenticio()
         {
@@ -25,7 +25,7 @@ namespace NuSmart.BE
             _cena = new Plato();
         }
 
-        public ComidaDieta Desayuno
+        public Plato Desayuno
         {
             get
             {
@@ -38,7 +38,7 @@ namespace NuSmart.BE
             }
         }
 
-        public ComidaDieta Colacion
+        public Plato Colacion
         {
             get
             {
@@ -51,7 +51,7 @@ namespace NuSmart.BE
             }
         }
 
-        public ComidaDieta Almuerzo
+        public Plato Almuerzo
         {
             get
             {
@@ -64,7 +64,7 @@ namespace NuSmart.BE
             }
         }
 
-        public ComidaDieta Merienda
+        public Plato Merienda
         {
             get
             {
@@ -77,7 +77,7 @@ namespace NuSmart.BE
             }
         }
 
-        public ComidaDieta Cena
+        public Plato Cena
         {
             get
             {

@@ -269,7 +269,7 @@
             this.AgregarDieta_button_iniciar_tratamiento.TabIndex = 24;
             this.AgregarDieta_button_iniciar_tratamiento.Text = "Iniciar Tratamiento";
             this.AgregarDieta_button_iniciar_tratamiento.UseVisualStyleBackColor = true;
-            this.AgregarDieta_button_iniciar_tratamiento.Click += new System.EventHandler(this.button2_Click);
+            this.AgregarDieta_button_iniciar_tratamiento.Click += new System.EventHandler(this.AgregarDieta_button_iniciar_tratamiento_Click);
             // 
             // AgregarDieta_textbox_cantidad_calorias_totales
             // 
@@ -312,7 +312,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(185, 121);
             this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listaDietas_SelectedIndexChanged);
             // 
             // AgregarDieta_button_generar_dieta_automatica
             // 
@@ -322,7 +322,7 @@
             this.AgregarDieta_button_generar_dieta_automatica.TabIndex = 3;
             this.AgregarDieta_button_generar_dieta_automatica.Text = "Generar Dieta Automatica";
             this.AgregarDieta_button_generar_dieta_automatica.UseVisualStyleBackColor = true;
-            this.AgregarDieta_button_generar_dieta_automatica.Click += new System.EventHandler(this.button1_Click);
+            this.AgregarDieta_button_generar_dieta_automatica.Click += new System.EventHandler(this.AgregarDieta_button_generar_dieta_automatica_Click);
             // 
             // AgregarDieta_radiobutton_subir
             // 
@@ -334,7 +334,7 @@
             this.AgregarDieta_radiobutton_subir.TabStop = true;
             this.AgregarDieta_radiobutton_subir.Text = "Subir de Peso";
             this.AgregarDieta_radiobutton_subir.UseVisualStyleBackColor = true;
-            this.AgregarDieta_radiobutton_subir.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.AgregarDieta_radiobutton_subir.CheckedChanged += new System.EventHandler(this.AgregarDieta_radiobutton_subir_CheckedChanged);
             // 
             // AgregarDieta_radiobutton_mantener
             // 
@@ -346,7 +346,7 @@
             this.AgregarDieta_radiobutton_mantener.TabStop = true;
             this.AgregarDieta_radiobutton_mantener.Text = "Mantener Forma";
             this.AgregarDieta_radiobutton_mantener.UseVisualStyleBackColor = true;
-            this.AgregarDieta_radiobutton_mantener.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.AgregarDieta_radiobutton_mantener.CheckedChanged += new System.EventHandler(this.AgregarDieta_radiobutton_mantener_CheckedChanged);
             // 
             // AgregarDieta_radiobutton_bajar
             // 
@@ -358,7 +358,7 @@
             this.AgregarDieta_radiobutton_bajar.TabStop = true;
             this.AgregarDieta_radiobutton_bajar.Text = "Bajar de Peso";
             this.AgregarDieta_radiobutton_bajar.UseVisualStyleBackColor = true;
-            this.AgregarDieta_radiobutton_bajar.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.AgregarDieta_radiobutton_bajar.CheckedChanged += new System.EventHandler(this.AgregarDieta_radiobutton_bajar_CheckedChanged);
             // 
             // AgregarDieta
             // 

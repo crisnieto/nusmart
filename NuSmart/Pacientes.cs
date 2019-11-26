@@ -45,9 +45,14 @@ namespace NuSmart
 
         private void paciente_btn_turno_Click(object sender, EventArgs e)
         {
-            if(pacienteSeleccionado != null)
+            seleccionaNuevoTurno(pacienteSeleccionado);
+        }
+
+        private void seleccionaNuevoTurno(Paciente paciente)
+        {
+            if (paciente != null)
             {
-                GenerarTurno generarTurno = new GenerarTurno(pacienteSeleccionado);
+                GenerarTurno generarTurno = new GenerarTurno(paciente);
                 generarTurno.MdiParent = this.ParentForm;
                 generarTurno.Show();
             }
@@ -55,6 +60,7 @@ namespace NuSmart
             {
                 MessageBox.Show(NuSmartMessage.formatearMensaje("Pacientes_messagebox_errorSeleccion"));
             }
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -148,7 +154,6 @@ namespace NuSmart
             try
             {
                 Paciente paciente = (Paciente)dataGridView1.SelectedCells[0].OwningRow.DataBoundItem;
-                bllPaciente.eliminar(paciente);
                 obtenerTodos();
             }catch(Exception ex)
             {

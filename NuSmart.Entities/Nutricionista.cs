@@ -7,18 +7,14 @@ using System.Threading.Tasks;
 
 namespace NuSmart.BE
 {
-    public class Nutricionista
+    public class Nutricionista : Persona
     {
-        int _id;
-        string _nombre;
-        string _apellido;
-        string _matricula;
-        int _dni;
-        string _especializacion;
+        int id;
+        string matricula;
+        string especializacion;
         Usuario usuario;
-        string _sexo;
-        int _dvh;
-        bool _eliminado;
+        int dvh;
+        bool eliminado;
 
         public Nutricionista()
         {
@@ -29,12 +25,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _id;
+                return id;
             }
 
             set
             {
-                _id = value;
+                id = value;
             }
         }
 
@@ -42,12 +38,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _nombre;
+                return nombre;
             }
 
             set
             {
-                _nombre = value;
+                nombre = value;
             }
         }
 
@@ -55,12 +51,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _apellido;
+                return apellido;
             }
 
             set
             {
-                _apellido = value;
+                apellido = value;
             }
         }
 
@@ -68,12 +64,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _matricula;
+                return matricula;
             }
 
             set
             {
-                _matricula = value;
+                matricula = value;
             }
         }
 
@@ -81,12 +77,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _dni;
+                return dni;
             }
 
             set
             {
-                _dni = value;
+                dni = value;
             }
         }
 
@@ -94,12 +90,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _especializacion;
+                return especializacion;
             }
 
             set
             {
-                _especializacion = value;
+                especializacion = value;
             }
         }
 
@@ -120,12 +116,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _sexo;
+                return sexo;
             }
 
             set
             {
-                _sexo = value;
+                sexo = value;
             }
         }
 
@@ -133,12 +129,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _dvh;
+                return dvh;
             }
 
             set
             {
-                _dvh = value;
+                dvh = value;
             }
         }
 
@@ -147,12 +143,12 @@ namespace NuSmart.BE
         {
             get
             {
-                return _eliminado;
+                return eliminado;
             }
 
             set
             {
-                _eliminado = value;
+                eliminado = value;
             }
         }
 
