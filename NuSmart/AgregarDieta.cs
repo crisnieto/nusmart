@@ -153,7 +153,8 @@ namespace NuSmart
                 cargando = true;
                 dataGridView1.DataSource = bllPlato.obtenerTodos(tipo);
                 cargando = false;
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -171,28 +172,35 @@ namespace NuSmart
                     {
                         diaActual.Desayuno = platoSeleccionado;
                         agregarDieta_textbox_desayuno.Text = platoSeleccionado.Nombre;
-                    }else if (AgregarDieta_radiobutton_colacion.Checked)
+                        actualizarCaloriasMostradas();
+                    }
+                    else if (AgregarDieta_radiobutton_colacion.Checked)
                     {
                         diaActual.Colacion = platoSeleccionado;
                         agregarDieta_textbox_colacion.Text = platoSeleccionado.Nombre;
+                        actualizarCaloriasMostradas();
                     }
                     else if (AgregarDieta_radiobutton_almuerzo.Checked)
                     {
                         diaActual.Almuerzo = platoSeleccionado;
                         agregarDieta_textbox_almuerzo.Text = platoSeleccionado.Nombre;
+                        actualizarCaloriasMostradas();
                     }
                     else if (AgregarDieta_radiobutton_merienda.Checked)
                     {
                         diaActual.Merienda = platoSeleccionado;
                         agregarDieta_textbox_merienda.Text = platoSeleccionado.Nombre;
+                        actualizarCaloriasMostradas();
                     }
                     else if (AgregarDieta_radiobutton_cena.Checked)
                     {
                         diaActual.Cena = platoSeleccionado;
                         agregarDieta_textbox_cena.Text = platoSeleccionado.Nombre;
+                        actualizarCaloriasMostradas();
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
