@@ -81,7 +81,7 @@ namespace NuSmart.BLL
         }
 
 
-        public void calcularBMI(Medicion medicion)
+        public Medicion calcularBMI(Medicion medicion)
         {
             verificarPermiso("OP019");
             try
@@ -89,6 +89,7 @@ namespace NuSmart.BLL
                 medicion.Bmi = Math.Round((medicion.Peso / (medicion.Altura * medicion.Altura)), 1);
                 medicion.CategoriaBmi = calcularCategoriaBMI(medicion.Bmi);
                 bllBitacora.crearNuevaBitacora("Calculo BMI", "Calculo de BMI realizado por el usuario id: " + Sesion.Instancia().UsuarioActual.Id, Criticidad.Alta);
+                return medicion;
             }
             catch (Exception ex)
             {
@@ -99,7 +100,7 @@ namespace NuSmart.BLL
 
         }
 
-        public void calcularBFP(Medicion medicion, int edad, string sexo)
+        public Medicion calcularBFP(Medicion medicion, int edad, string sexo)
         {
             verificarPermiso("OP020");
             try
@@ -153,6 +154,7 @@ namespace NuSmart.BLL
                 }
                 medicion.Bfp = porcentaje;
                 bllBitacora.crearNuevaBitacora("Calculo BMI", "Calculo de BFP realizado por el usuario id: " + Sesion.Instancia().UsuarioActual.Id, Criticidad.Alta);
+                return medicion;
             }
             catch (Exception ex)
             {

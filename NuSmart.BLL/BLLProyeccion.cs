@@ -9,11 +9,9 @@ namespace NuSmart.BLL
 {
     public class BLLProyeccion : BLLBase
     {
-        BLLBitacora bllBitacora;
 
         public BLLProyeccion()
         {
-            bllBitacora = new BLLBitacora();
         }
 
         public Proyeccion calcularProyeccion(DateTime fechaInicio, double pesoActual, double porcentajeGrasaActual, double porcentajeGrasaCorporalIdeal)
@@ -62,11 +60,11 @@ namespace NuSmart.BLL
                 proyeccion.Semanas = semanasALaMeta >= 0 ? semanasALaMeta : semanasALaMeta * -1;
 
                 obtenerPuntosParaProyeccion(proyeccion);
-                bllBitacora.crearNuevaBitacora("Proyeccion de peso", "Se solicito una nueva proyeccion de peso", Criticidad.Media);
+                crearNuevaBitacora("Proyeccion de peso", "Se solicito una nueva proyeccion de peso", Criticidad.Media);
                 return proyeccion;
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Proyeccion de peso", "Ocurrio un error al realizar la proyeccion de peso: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Proyeccion de peso", "Ocurrio un error al realizar la proyeccion de peso: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Proyeccion_error_proyeccion"));
             }
 

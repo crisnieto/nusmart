@@ -11,12 +11,10 @@ namespace NuSmart.BLL
     {
 
         DALIdioma dalIdioma;
-        BLLBitacora bllBitacora;
 
         public BLLIdioma()
         {
             dalIdioma = new DALIdioma();
-            bllBitacora = new BLLBitacora();
         }
 
         /// <summary>
@@ -128,12 +126,12 @@ namespace NuSmart.BLL
             try
             {
                 int resultado = dalIdioma.guardar(idioma);
-                bllBitacora.crearNuevaBitacora("Creacion de Idioma", "Nuevo Idioma Creado " + idioma.NombreIdioma, Criticidad.Media);
+                crearNuevaBitacora("Creacion de Idioma", "Nuevo Idioma Creado " + idioma.NombreIdioma, Criticidad.Media);
                 return resultado;
             }
             catch (Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Creacion de Idioma", "Error en la creacion de idioma: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Creacion de Idioma", "Error en la creacion de idioma: " + ex.Message, Criticidad.Alta);
                 throw new Exception(ex.Message);
             }
         }

@@ -101,7 +101,7 @@
             this.TratamientoActual_button_guardar_resumen.TabIndex = 139;
             this.TratamientoActual_button_guardar_resumen.Text = "Guardar Resumen";
             this.TratamientoActual_button_guardar_resumen.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_guardar_resumen.Click += new System.EventHandler(this.button1_Click_1);
+            this.TratamientoActual_button_guardar_resumen.Click += new System.EventHandler(this.TratamientoActual_button_guardar_resumen_Click);
             // 
             // TratamientoActual_label_primera_medicion
             // 
@@ -397,7 +397,7 @@
             this.AgregarDieta_button_finalizar.TabIndex = 34;
             this.AgregarDieta_button_finalizar.Text = "Finalizar Tratamiento";
             this.AgregarDieta_button_finalizar.UseVisualStyleBackColor = true;
-            this.AgregarDieta_button_finalizar.Click += new System.EventHandler(this.button5_Click);
+            this.AgregarDieta_button_finalizar.Click += new System.EventHandler(this.AgregarDieta_button_finalizar_Click);
             // 
             // AgregarDieta_label_calorias_dia
             // 
@@ -450,7 +450,7 @@
             this.TratamientoActual_button_manejar_ejercicios.TabIndex = 27;
             this.TratamientoActual_button_manejar_ejercicios.Text = "Manejar Ejercicios";
             this.TratamientoActual_button_manejar_ejercicios.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_manejar_ejercicios.Click += new System.EventHandler(this.button2_Click);
+            this.TratamientoActual_button_manejar_ejercicios.Click += new System.EventHandler(this.TratamientoActual_button_manejar_ejercicios_Click);
             // 
             // TratamientoActual_listbox_dias
             // 
@@ -558,7 +558,7 @@
             this.TratamientoActual_button_nueva_medicion.TabIndex = 6;
             this.TratamientoActual_button_nueva_medicion.Text = "Nueva Medicion";
             this.TratamientoActual_button_nueva_medicion.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_nueva_medicion.Click += new System.EventHandler(this.button3_Click);
+            this.TratamientoActual_button_nueva_medicion.Click += new System.EventHandler(this.TratamientoActual_button_nueva_medicion_Click);
             // 
             // TratamientoActual_button_proyecciones
             // 
@@ -568,7 +568,7 @@
             this.TratamientoActual_button_proyecciones.TabIndex = 4;
             this.TratamientoActual_button_proyecciones.Text = "Ver Proyecciones";
             this.TratamientoActual_button_proyecciones.UseVisualStyleBackColor = true;
-            this.TratamientoActual_button_proyecciones.Click += new System.EventHandler(this.button1_Click);
+            this.TratamientoActual_button_proyecciones.Click += new System.EventHandler(this.TratamientoActual_button_proyecciones_Click);
             // 
             // TratamientoActual_label_resumen
             // 

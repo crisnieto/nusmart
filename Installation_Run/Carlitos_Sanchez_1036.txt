@@ -1,0 +1,63 @@
+CarlitosSanchez - 02/12/2019 0:00:00
+
+--------------------
+Dieta
+
+--------------------
+Lunes:
+    Desayuno: Porcion de Frutos Secos - Calorias: 427
+    Colacion: Taza de Ensalada de Frutas- Calorias: 150
+    Almuerzo: Ensalada de Pasta con Atun y Cangrejo Kanikama- Calorias: 370
+    Merienda: Batido de Avena y Jugo- Calorias: 354
+    Cena: Berenjena Rellena con Carne- Calorias: 253
+--------------------
+Martes:
+    Desayuno: Porcion de Frutos Secos - Calorias: 427
+    Colacion: Taza de Ensalada de Frutas- Calorias: 150
+    Almuerzo: Canelones de Espinaca con Salsa- Calorias: 135
+    Merienda: Tostada con Queso Fresco y Jugo- Calorias: 150
+    Cena: Porcion de Tortilla de Papas- Calorias: 330
+--------------------
+Miercoles:
+    Desayuno: Batido de Avena y Jugo - Calorias: 354
+    Colacion: Yogur con Cereales- Calorias: 174
+    Almuerzo: Ensalada de Pasta con Atun y Cangrejo Kanikama- Calorias: 370
+    Merienda: Tostada con Queso Fresco y Jugo- Calorias: 150
+    Cena: Pollo con Arroz- Calorias: 280
+--------------------
+Jueves:
+    Desayuno: Yogurt con cereales y banana - Calorias: 190
+    Colacion: Banana Y Manzana- Calorias: 150
+    Almuerzo: Pescado (Merluza) con Papas- Calorias: 190
+    Merienda: Porcion de Frutos Secos- Calorias: 427
+    Cena: Porcion de Tarta- Calorias: 380
+--------------------
+Viernes:
+    Desayuno: Tostadas con Queso y Cafe - Calorias: 195
+    Colacion: Taza de Ensalada de Frutas- Calorias: 150
+    Almuerzo: Canelones de Espinaca con Salsa- Calorias: 135
+    Merienda: Porcion de Frutos Secos- Calorias: 427
+    Cena: Ensalada de Pasta con Atun y Cangrejo Kanikama- Calorias: 370
+--------------------
+Sabado:
+    Desayuno: Porcion de Frutos Secos - Calorias: 427
+    Colacion: Taza de Ensalada de Frutas- Calorias: 150
+    Almuerzo: Pollo con Arroz- Calorias: 280
+    Merienda: Porcion de Frutos Secos- Calorias: 427
+    Cena: Berenjena Rellena con Carne- Calorias: 253
+--------------------
+Domingo:
+    Desayuno: Porcion de Frutos Secos - Calorias: 427
+    Colacion: Taza de Ensalada de Frutas- Calorias: 150
+    Almuerzo: Bife con Pastas- Calorias: 870
+    Merienda: Tostada con Queso Fresco y Jugo- Calorias: 150
+    Cena: Tomate Relleno de Atun y Papa al Horno- Calorias: 175
+--------------------
+Rutina
+Lunes: Caminata Rapida - Duracion: 50 - Calorias: 208
+Martes: Caminata Rapida - Duracion: 60 - Calorias: 250
+Miercoles: Yoga - Duracion: 20 - Calorias: 33
+Jueves: Yoga - Duracion: 10 - Calorias: 16
+Viernes: Caminata Rapida - Duracion: 30 - Calorias: 125
+Sabado: Yoga - Duracion: 20 - Calorias: 33
+Domingo: Yoga - Duracion: 50 - Calorias: 83

@@ -44,7 +44,8 @@ namespace NuSmart
 
                 actualizarMediciones();
 
-                dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
+                //dietaActual = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
+                dietaActual = tratamientoActivo.Dieta;
                 tratamientoActivo.Dieta = dietaActual;
                 TratamientoActual_lbl_dietaActual.Text = dietaActual.Nombre;
 
@@ -64,7 +65,7 @@ namespace NuSmart
             
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void TratamientoActual_button_nueva_medicion_Click(object sender, EventArgs e)
         {
             Mediciones mediciones = new Mediciones(turno, this);
             mediciones.MdiParent = this.ParentForm;
@@ -86,7 +87,7 @@ namespace NuSmart
             dataGridView2.DataSource = dataSourcePrimeraMedicion;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void AgregarDieta_button_finalizar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -172,7 +173,7 @@ namespace NuSmart
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TratamientoActual_button_proyecciones_Click(object sender, EventArgs e)
         {
             GraficoProyeccion graficoProyeccion = new GraficoProyeccion(tratamientoActivo, ultimaMedicion);
             graficoProyeccion.MdiParent = this.ParentForm;
@@ -180,14 +181,14 @@ namespace NuSmart
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void TratamientoActual_button_manejar_ejercicios_Click(object sender, EventArgs e)
         {
             AgregarRutina agregarRutina = new AgregarRutina(tratamientoActivo, this);
             agregarRutina.MdiParent = this.ParentForm;
             agregarRutina.Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void TratamientoActual_button_guardar_resumen_Click(object sender, EventArgs e)
         {
             try
             {

@@ -168,7 +168,7 @@
             this.Mediciones_button_calcular_bmi.TabIndex = 13;
             this.Mediciones_button_calcular_bmi.Text = "Calcular BMI";
             this.Mediciones_button_calcular_bmi.UseVisualStyleBackColor = true;
-            this.Mediciones_button_calcular_bmi.Click += new System.EventHandler(this.button1_Click);
+            this.Mediciones_button_calcular_bmi.Click += new System.EventHandler(this.Mediciones_button_calcular_bmi_Click);
             // 
             // Mediciones_button_calcular_bfp
             // 
@@ -178,7 +178,7 @@
             this.Mediciones_button_calcular_bfp.TabIndex = 14;
             this.Mediciones_button_calcular_bfp.Text = "Calcular BFP";
             this.Mediciones_button_calcular_bfp.UseVisualStyleBackColor = true;
-            this.Mediciones_button_calcular_bfp.Click += new System.EventHandler(this.button2_Click);
+            this.Mediciones_button_calcular_bfp.Click += new System.EventHandler(this.Mediciones_button_calcular_bfp_Click);
             // 
             // Mediciones_textbox_cintura
             // 
@@ -258,7 +258,7 @@
             this.Mediciones_button_guardar_mediciones.TabIndex = 23;
             this.Mediciones_button_guardar_mediciones.Text = "Guardar Mediciones";
             this.Mediciones_button_guardar_mediciones.UseVisualStyleBackColor = true;
-            this.Mediciones_button_guardar_mediciones.Click += new System.EventHandler(this.button3_Click);
+            this.Mediciones_button_guardar_mediciones.Click += new System.EventHandler(this.Mediciones_button_guardar_mediciones_Click);
             // 
             // Mediciones_lbl_valorBmiObtenido
             // 

@@ -12,3 +12,4 @@ C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.Prop
 C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.csproj.GenerateResource.Cache
 C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.dll
 C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.csprojResolveAssemblyReference.cache

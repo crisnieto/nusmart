@@ -141,7 +141,7 @@
             this.Proyeccion_button_proyeccion.TabIndex = 7;
             this.Proyeccion_button_proyeccion.Text = "Obtener Proyeccion";
             this.Proyeccion_button_proyeccion.UseVisualStyleBackColor = true;
-            this.Proyeccion_button_proyeccion.Click += new System.EventHandler(this.button1_Click);
+            this.Proyeccion_button_proyeccion.Click += new System.EventHandler(this.Proyeccion_button_proyeccion_Click);
             // 
             // Proyeccion_textbox_primerPeso
             // 

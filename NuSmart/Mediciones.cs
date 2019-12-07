@@ -48,12 +48,12 @@ namespace NuSmart
             dataGridView1.DataSource = bllMedicion.conseguirMediciones(turno.Paciente);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Mediciones_button_calcular_bmi_Click(object sender, EventArgs e)
         {
             try
             {
                 Medicion medicionActual = obtenerMedicion();
-                bllMedicion.calcularBMI(medicionActual);
+                medicionActual = bllMedicion.calcularBMI(medicionActual);
                 Mediciones_lbl_valorBmiObtenido.Text = medicionActual.Bmi.ToString();
                 Mediciones_lbl_estadoBmiObtenido.Text = medicionActual.CategoriaBmi;
             }catch(Exception ex)
@@ -85,13 +85,13 @@ namespace NuSmart
             return medicion;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Mediciones_button_calcular_bfp_Click(object sender, EventArgs e)
         {          
             try
             {
                 Medicion medicionActual = obtenerMedicion();
 
-                bllMedicion.calcularBFP(medicionActual, turno.Paciente.Edad(), turno.Paciente.Sexo);
+                medicionActual = bllMedicion.calcularBFP(medicionActual, turno.Paciente.Edad(), turno.Paciente.Sexo);
                 Mediciones_lbl_estadoBfpObtenido.Text = medicionActual.CategoriaBfp;
                 Mediciones_lbl_valorBfpObtenido.Text = medicionActual.Bfp.ToString();
             }catch(Exception ex)
@@ -100,7 +100,7 @@ namespace NuSmart
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Mediciones_button_guardar_mediciones_Click(object sender, EventArgs e)
         {
             try
             {

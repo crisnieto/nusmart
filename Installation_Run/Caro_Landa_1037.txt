@@ -1,0 +1,63 @@
+CaroLanda - 02/12/2019 0:00:00
+
+--------------------
+Dieta
+
+--------------------
+Lunes:
+    Desayuno: Yogur y Tostadas - Calorias: 144
+    Colacion: Barra de Cereal con Cafe- Calorias: 145
+    Almuerzo: Fideos Integrales con Pollo- Calorias: 330
+    Merienda: Almohaditas de Avena y Cafe- Calorias: 180
+    Cena: Churrasco con Zanahoria y Queso- Calorias: 485
+--------------------
+Martes:
+    Desayuno: Yogur con Cereales y Jugo de Naranja - Calorias: 145
+    Colacion: Manzana de Colacion- Calorias: 50
+    Almuerzo: Churrasco con Zanahoria y Queso- Calorias: 485
+    Merienda: Tostada con Queso Fresco y Jugo- Calorias: 150
+    Cena: Milanesa con Arroz Integral queso untable y Mayonesa- Calorias: 385
+--------------------
+Miercoles:
+    Desayuno: Yogur y Tostadas - Calorias: 144
+    Colacion: Banana de Colacion- Calorias: 90
+    Almuerzo: Milanesa con Budin de Espinaca y Arroz- Calorias: 500
+    Merienda: Barra de Cereal con Jugo de Frutas- Calorias: 200
+    Cena: Pollo con papa hervida- Calorias: 240
+--------------------
+Jueves:
+    Desayuno: Yogur con Cereales y Jugo de Naranja - Calorias: 145
+    Colacion: Barra de Cereal con Cafe- Calorias: 145
+    Almuerzo: Porcion de Tarta de Espinaca- Calorias: 440
+    Merienda: Tostada con Queso Fresco y Jugo- Calorias: 150
+    Cena: Pastel de Papa y Zapallo- Calorias: 300
+--------------------
+Viernes:
+    Desayuno: Yogur y Tostadas - Calorias: 144
+    Colacion: Almohaditas de Avena y Cafe- Calorias: 180
+    Almuerzo: Pastel de Papa y Zapallo- Calorias: 300
+    Merienda: Barra de Cereal con Jugo de Frutas- Calorias: 200
+    Cena: Milanesa de Soja con Pure Mixto- Calorias: 374
+--------------------
+Sabado:
+    Desayuno: Panqueque con Jugo - Calorias: 309
+    Colacion: Manzana de Colacion- Calorias: 50
+    Almuerzo: Churrasco con Pure- Calorias: 330
+    Merienda: Tostadas con Queso y Cafe- Calorias: 195
+    Cena: Dos Porciones de Pizza- Calorias: 500
+--------------------
+Domingo:
+    Desayuno: Huevo con Jugo de Naranja - Calorias: 185
+    Colacion: Manzana de Colacion- Calorias: 50
+    Almuerzo: Fideos Integrales con Pollo- Calorias: 330
+    Merienda: Tostadas con Queso y Cafe- Calorias: 195
+    Cena: Crepe de espinaca con Pollo- Calorias: 200
+--------------------
+Rutina
+Lunes: Zumba - Duracion: 60 - Calorias: 500
+Martes:  - Duracion: 0 - Calorias: 0
+Miercoles: Caminata Rapida - Duracion: 30 - Calorias: 125
+Jueves: Zumba - Duracion: 60 - Calorias: 500
+Viernes:  - Duracion: 0 - Calorias: 0
+Sabado: Caminata Rapida - Duracion: 30 - Calorias: 125
+Domingo:  - Duracion: 0 - Calorias: 0

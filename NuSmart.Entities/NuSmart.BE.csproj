@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Alimento.cs" />
     <Compile Include="Bitacora.cs" />
-    <Compile Include="BMI.cs" />
     <Compile Include="Criticidad.cs" />
     <Compile Include="DiaAlimenticio.cs" />
     <Compile Include="DiaEjercicio.cs" />

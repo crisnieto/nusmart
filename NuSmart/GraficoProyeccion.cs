@@ -40,7 +40,7 @@ namespace NuSmart
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Proyeccion_button_proyeccion_Click(object sender, EventArgs e)
         {
             try
             {

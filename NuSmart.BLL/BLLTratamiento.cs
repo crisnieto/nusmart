@@ -13,12 +13,14 @@ namespace NuSmart.BLL
         DALTratamiento dalTratamiento;
         BLLRutina bllRutina;
         BLLBitacora bllBitacora;
+        BLLDieta bllDieta;
 
         public BLLTratamiento()
         {
             dalTratamiento = new DALTratamiento();
             bllRutina = new BLLRutina();
             bllBitacora = new BLLBitacora();
+            bllDieta = new BLLDieta();
         }
 
         public void guardar(Tratamiento tratamiento)
@@ -57,10 +59,14 @@ namespace NuSmart.BLL
                         break;
                     }
                 }
-                if (tratamientoActivo != null && tratamientoActivo.Rutina != null)
+                if (tratamientoActivo != null)
                 {
-                    Rutina rutinaObtenida = bllRutina.obtener(tratamientoActivo.Rutina.Id);
-                    tratamientoActivo.Rutina = rutinaObtenida;
+                    tratamientoActivo.Dieta = bllDieta.conseguirDieta(tratamientoActivo.Dieta.Id);
+                    if (tratamientoActivo.Rutina != null)
+                    {
+                        Rutina rutinaObtenida = bllRutina.obtener(tratamientoActivo.Rutina.Id);
+                        tratamientoActivo.Rutina = rutinaObtenida;
+                    }   
                 }
                 return tratamientoActivo;
             }catch(Exception ex)
