@@ -11,12 +11,10 @@ namespace NuSmart.BLL
     public class BLLEjercicio : BLLBase
     {
         DALEjercicio dalEjercicio;
-        BLLBitacora bllBitacora;
 
         public BLLEjercicio()
         {
             dalEjercicio = new DALEjercicio();
-            bllBitacora = new BLLBitacora();
         }
 
         public void agregar(Ejercicio ejercicio)
@@ -25,11 +23,11 @@ namespace NuSmart.BLL
             try
             {
                 dalEjercicio.agregar(ejercicio);
-                bllBitacora.crearNuevaBitacora("Obtener Ejercicios", "Se guardo un nuevo ejercicio: " + ejercicio.Nombre, Criticidad.Baja);
+                crearNuevaBitacora("Obtener Ejercicios", "Se guardo un nuevo ejercicio: " + ejercicio.Nombre, Criticidad.Baja);
             }
             catch (Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al intentar agregar un nuevo ejercicio: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al intentar agregar un nuevo ejercicio: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Ejercicios_error_agregar"));
             }
 
@@ -43,7 +41,7 @@ namespace NuSmart.BLL
                 return dalEjercicio.obtenerTodos();
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al buscar los ejercicios: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al buscar los ejercicios: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Ejercicios_error_busqueda"));
             }
         }
@@ -56,7 +54,7 @@ namespace NuSmart.BLL
                 return dalEjercicio.obtener(id);
             }catch(Exception ex)
             {
-                bllBitacora.crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al buscar el ejercicio con id: " + id + " error: " + ex.Message, Criticidad.Alta);
+                crearNuevaBitacora("Obtener Ejercicios", "Ocurrio un error al buscar el ejercicio con id: " + id + " error: " + ex.Message, Criticidad.Alta);
                 throw new Exception(NuSmartMessage.formatearMensaje("Ejercicios_error_busqueda"));
             }
         }

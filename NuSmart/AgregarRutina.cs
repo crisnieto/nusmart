@@ -35,7 +35,7 @@ namespace NuSmart
         {
             try
             {
-                comboBox1.DataSource = bllRutina.obtenerTodos();
+                rutinaCombo.DataSource = bllRutina.obtenerTodos();
             }catch(Exception ex)
             {
                 MessageBox.Show(NuSmartMessage.formatearMensaje("Error_messagebox_carga_formulario"));
@@ -43,13 +43,13 @@ namespace NuSmart
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void rutinaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if (comboBox1.SelectedIndex >= 0)
+                if (rutinaCombo.SelectedIndex >= 0)
                 {
-                    rutinaActual = (Rutina)comboBox1.SelectedItem;
+                    rutinaActual = (Rutina)rutinaCombo.SelectedItem;
 
                     Ejercicios_textbox_lunes.Text = rutinaActual.DiaEjercicioLunes.Ejercicio.Nombre;
                     Ejercicios_numericupdown_lunes.Value = rutinaActual.DiaEjercicioLunes.Duracion;
@@ -144,7 +144,7 @@ namespace NuSmart
             actualizarCaloriasQuemadasDiarias(rutinaActual.DiaEjercicioDomingo);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void AgregarRutina_button_asociar_Click(object sender, EventArgs e)
         {
             try
             {

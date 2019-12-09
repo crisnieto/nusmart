@@ -52,8 +52,6 @@ namespace NuSmart.BLL
         public void obtenerDiasEjercicioDeRutina(Rutina rutina)
         {
             verificarPermiso("OP025");
-
-
             try
             {
                 rutina.DiaEjercicioLunes = bllDiaEjercicio.obtenerDiaEjercicio(rutina.DiaEjercicioLunes.Id);

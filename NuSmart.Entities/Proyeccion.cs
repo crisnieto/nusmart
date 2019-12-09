@@ -16,7 +16,7 @@ namespace NuSmart.BE
         double pesoObjetivo;
 
         int semanas;
-
+        List<Fase> fases; 
         List<PuntoProyeccion> puntos;
 
         public Proyeccion()
@@ -99,6 +99,19 @@ namespace NuSmart.BE
             set
             {
                 semanas = value;
+            }
+        }
+
+        public List<Fase> Fases
+        {
+            get
+            {
+                return fases;
+            }
+
+            set
+            {
+                fases = value;
             }
         }
     }

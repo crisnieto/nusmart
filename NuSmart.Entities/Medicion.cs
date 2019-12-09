@@ -8,6 +8,7 @@ namespace NuSmart.BE
 {
     public class Medicion
     {
+        int id;
         double altura;
         double peso;
         double cintura;
@@ -132,6 +133,19 @@ namespace NuSmart.BE
             set
             {
                 categoriaBfp = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
             }
         }
     }

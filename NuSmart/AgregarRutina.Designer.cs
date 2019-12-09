@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarRutina));
             this.Ejercicios_numericupdown_lunes = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.rutinaCombo = new System.Windows.Forms.ComboBox();
             this.AgregarRutina_label_ver_rutinas = new System.Windows.Forms.Label();
             this.AgregarRutina_button_asociar = new System.Windows.Forms.Button();
             this.Ejercicios_numericupdown_domingo = new System.Windows.Forms.NumericUpDown();
@@ -78,14 +78,14 @@
             this.Ejercicios_numericupdown_lunes.Size = new System.Drawing.Size(58, 20);
             this.Ejercicios_numericupdown_lunes.TabIndex = 95;
             // 
-            // comboBox1
+            // rutinaCombo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(240, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 94;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.rutinaCombo.FormattingEnabled = true;
+            this.rutinaCombo.Location = new System.Drawing.Point(240, 51);
+            this.rutinaCombo.Name = "rutinaCombo";
+            this.rutinaCombo.Size = new System.Drawing.Size(147, 21);
+            this.rutinaCombo.TabIndex = 94;
+            this.rutinaCombo.SelectedIndexChanged += new System.EventHandler(this.rutinaCombo_SelectedIndexChanged);
             // 
             // AgregarRutina_label_ver_rutinas
             // 
@@ -104,7 +104,7 @@
             this.AgregarRutina_button_asociar.TabIndex = 92;
             this.AgregarRutina_button_asociar.Text = "Asociar Rutina";
             this.AgregarRutina_button_asociar.UseVisualStyleBackColor = true;
-            this.AgregarRutina_button_asociar.Click += new System.EventHandler(this.button3_Click);
+            this.AgregarRutina_button_asociar.Click += new System.EventHandler(this.AgregarRutina_button_asociar_Click);
             // 
             // Ejercicios_numericupdown_domingo
             // 
@@ -356,7 +356,7 @@
             this.Controls.Add(this.AgregarRutina_label_calorias_quemadas_semanales);
             this.Controls.Add(this.AgregarRutina_label_calorias_quemadas_dia);
             this.Controls.Add(this.Ejercicios_numericupdown_lunes);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.rutinaCombo);
             this.Controls.Add(this.AgregarRutina_label_ver_rutinas);
             this.Controls.Add(this.AgregarRutina_button_asociar);
             this.Controls.Add(this.Ejercicios_numericupdown_domingo);
@@ -396,7 +396,7 @@
         #endregion
 
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_lunes;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox rutinaCombo;
         private System.Windows.Forms.Label AgregarRutina_label_ver_rutinas;
         private System.Windows.Forms.Button AgregarRutina_button_asociar;
         private System.Windows.Forms.NumericUpDown Ejercicios_numericupdown_domingo;

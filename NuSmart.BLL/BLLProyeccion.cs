@@ -77,13 +77,14 @@ namespace NuSmart.BLL
             double diferenciaDePeso = proyeccion.PesoActual - proyeccion.PesoObjetivo;
 
             Fase primeraFasePeso = new Fase(37, 10);
-            Fase segundaFasePeso = new Fase(55, 20);
-            Fase terceraFasePeso = new Fase(80, 30);
-            Fase cuartaFasePeso = new Fase(88, 65);
-            Fase quintaFasePeso = new Fase(100, 100);
+            Fase segundaFasePeso = new Fase(55, 25);
+            Fase terceraFasePeso = new Fase(80, 55);
+            Fase cuartaFasePeso = new Fase(100, 100);
 
 
-            List<Fase> fases = new List<Fase>() {primeraFasePeso, segundaFasePeso, terceraFasePeso, cuartaFasePeso };
+            proyeccion.Fases = new List<Fase>() {primeraFasePeso, segundaFasePeso, terceraFasePeso, cuartaFasePeso };
+
+            
 
             PuntoProyeccion primerPunto = new PuntoProyeccion();
             primerPunto.puntoFecha = 0;
@@ -91,7 +92,7 @@ namespace NuSmart.BLL
 
             proyeccion.Puntos.Add(primerPunto);
 
-            foreach(Fase fase in fases)
+            foreach(Fase fase in proyeccion.Fases)
             {
                 PuntoProyeccion punto = new PuntoProyeccion();
                 punto.puntoPeso = proyeccion.PesoActual - (diferenciaDePeso * (fase.porcetajePeso * 0.01));

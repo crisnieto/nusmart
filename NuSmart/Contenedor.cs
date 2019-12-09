@@ -150,11 +150,6 @@ namespace NuSmart
             crearFormulario(typeof(MisTurnos));
         }
 
-        private void gestionDeDietasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crearFormulario(typeof(NuevaDieta));
-        }
-
         private void Contenedor_menu_gestion_ejercicios_Click(object sender, EventArgs e)
         {
             crearFormulario(typeof(Ejercicios));
