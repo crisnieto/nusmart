@@ -16,11 +16,17 @@ namespace NuSmart.DAL
 
         public int crearBackup(string path)
         {
+            string textoComando1 = "USE master ALTER DATABASE nusmart SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
+            sqlHelper.ejecutarNonQuery(textoComando1);
+
+            string textoComando2 = "ALTER DATABASE nusmart SET MULTI_USER;";
+            sqlHelper.ejecutarNonQuery(textoComando2);
+
             //Si hay un error de Access denied, verificar la configuración del servicio de SQL Server.
             //Debe estar configurado en Local System Account
             //Fuente: https://stackoverflow.com/a/35464963
-            string textoComando = "BACKUP DATABASE nusmart TO DISK='"+path+"'";
-            return sqlHelper.ejecutarNonQuery(textoComando);
+            string textoComando3 = "USE master BACKUP DATABASE nusmart TO DISK='" + path + "'";
+            return sqlHelper.ejecutarNonQuery(textoComando3);
         }
 
         public int ejecutarRestore(string path)
@@ -36,6 +42,6 @@ namespace NuSmart.DAL
             string textoComando3 = "USE MASTER RESTORE DATABASE [nusmart] FROM DISK= '" + path + "'";
             return sqlHelper.ejecutarNonQuery(textoComando3);
         }
-            
+
     }
 }

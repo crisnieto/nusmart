@@ -1,0 +1,15 @@
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\bin\Release\NuSmart.BE.dll.config
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\bin\Release\NuSmart.BE.dll
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\bin\Release\NuSmart.BE.pdb
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\obj\Release\NuSmart.BE.Properties.Resources.resources
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\obj\Release\NuSmart.BE.csproj.GenerateResource.Cache
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\obj\Release\NuSmart.BE.dll
+C:\Users\navegador\Desktop\nusmart-1ra-clase\NuSmart.Entities\obj\Release\NuSmart.BE.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\bin\Release\NuSmart.BE.dll.config
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\bin\Release\NuSmart.BE.dll
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\bin\Release\NuSmart.BE.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.Properties.Resources.resources
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.csproj.GenerateResource.Cache
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.dll
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.pdb
+C:\Users\Cristian\workspace\nusmart\NuSmart.Entities\obj\Release\NuSmart.BE.csprojResolveAssemblyReference.cache

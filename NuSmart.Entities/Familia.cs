@@ -12,24 +12,35 @@ namespace NuSmart.BE
 
         public Familia()
         {
-            roles = new List<Rol>();
+            Roles = new List<Rol>();
         }
 
-        public List<Rol> Roles { get => roles; set => roles = value; }
+        public List<Rol> Roles
+        {
+            get
+            {
+                return roles;
+            }
+
+            set
+            {
+                roles = value;
+            }
+        }
 
         public override void agregar(Rol rol)
         {
-            roles.Add(rol);
+            Roles.Add(rol);
         }
 
         public override void eliminar(Rol rol)
         {
-
+            Roles.Remove(rol);
         }
 
-        public override void mostrar()
+        public override List<Rol> mostrar()
         {
-            
+            return Roles;
         }
 
     }

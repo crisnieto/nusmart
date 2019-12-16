@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using NuSmart.BE;
 
 namespace NuSmart.DAL
 {
@@ -29,12 +31,28 @@ namespace NuSmart.DAL
 
         public SqlConnection conseguirStringConexion()
         {
-            return new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True");
+            
+            Console.WriteLine(System.AppContext.BaseDirectory);
+            string textFile = System.AppContext.BaseDirectory + "test.txt";
+            if (File.Exists(textFile))
+            {
+                return new SqlConnection(File.ReadAllText(textFile));
+            }else
+            {
+                return new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=nusmart;Integrated Security=True");
+            }
         }
 
-        public int ejecutarComando(SqlCommand comando)
+        private int ejecutarComando(SqlCommand comando)
         {
-            return comando.ExecuteNonQuery();
+            try
+            {
+                return comando.ExecuteNonQuery();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new Exception(NuSmartMessage.formatearMensaje("Database_messagebox_error_conexion"));
+            }
         }
 
            
@@ -51,7 +69,37 @@ namespace NuSmart.DAL
             cerrarConexion(conexion);
             return 0;
         }
-        
+
+
+
+        public int ejecutarEscalar(string textoComando, List<SqlParameter> lista = null)
+        {
+            SqlConnection conexion = conseguirStringConexion();
+            SqlCommand comando = nuevoComando(textoComando, conexion);
+            if (lista != null)
+            {
+                agregarParametro(comando, lista);
+            }
+            abrirConexion(conexion);
+            int id = ejecutarComandoEscalar(comando);
+            cerrarConexion(conexion);
+            return id;
+        }
+
+        private int ejecutarComandoEscalar(SqlCommand comando)
+        {
+            try
+            {
+                return (int)comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new Exception(NuSmartMessage.formatearMensaje("Database_messagebox_error_conexion"));
+            }
+        }
+
+
         public DataSet ejecutarSelect(SqlCommand comando)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -66,7 +114,7 @@ namespace NuSmart.DAL
             return new SqlCommand(textoComando, conexion);
         }
 
-        public DataSet ejecutarDataAdapter(String textoComando, List<SqlParameter> lista = null)
+        public DataSet ejecutarDataAdapter(string textoComando, List<SqlParameter> lista = null)
         {
             SqlConnection conexion = conseguirStringConexion();
             SqlCommand comando = nuevoComando(textoComando, conexion);
@@ -79,5 +127,6 @@ namespace NuSmart.DAL
             cerrarConexion(conexion);
             return data;
         }
+
     }
 }

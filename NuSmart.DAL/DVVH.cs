@@ -37,12 +37,30 @@ namespace NuSmart.DAL
 
             List<int> listaDVH = new List<int>();
 
-            foreach(DataRow row in dvhDS.Tables[0].Rows)
+            foreach (DataRow row in dvhDS.Tables[0].Rows)
             {
                 listaDVH.Add((int)row["DVH"]);
             }
-                
+
             return listaDVH;
+        }
+
+        public int actualizarDVV(string tabla)
+        {
+            string textoComando = "SELECT DVH FROM " + tabla;
+            DataTable dt = sqlHelper.ejecutarDataAdapter(textoComando).Tables[0];
+            int suma = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                suma += (int)dr["DVH"];
+            }
+
+            string textoComando2 = "UPDATE DVV SET valor = @SUMA WHERE nombreTabla = @TABLA";
+            List<SqlParameter> lista2 = new List<SqlParameter>();
+            lista2.Add(new SqlParameter("@SUMA", suma));
+            lista2.Add(new SqlParameter("@TABLA", tabla));
+            return sqlHelper.ejecutarNonQuery(textoComando2, lista2);
         }
     }
 }
+

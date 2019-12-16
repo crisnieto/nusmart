@@ -49,14 +49,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLEngordarEstrategia.cs" />
+    <Compile Include="BLLMantenerEstrategia.cs" />
+    <Compile Include="BLLAdelgazarEstrategia.cs" />
+    <Compile Include="BLLAlimento.cs" />
     <Compile Include="BLLBackupManager.cs" />
+    <Compile Include="BLLBase.cs" />
     <Compile Include="BLLBitacora.cs" />
+    <Compile Include="BLLContextoDietaAutomatica.cs" />
+    <Compile Include="BLLDiaAlimenticio.cs" />
+    <Compile Include="BLLDiaEjercicio.cs" />
+    <Compile Include="BLLDieta.cs" />
+    <Compile Include="BLLDietaEstrategia.cs" />
+    <Compile Include="BLLEjercicio.cs" />
+    <Compile Include="BLLEscritura.cs" />
+    <Compile Include="BLLFamilia.cs" />
+    <Compile Include="BLLHorario.cs" />
     <Compile Include="BLLIdioma.cs" />
     <Compile Include="BLLLeyenda.cs" />
+    <Compile Include="BLLNutricionista.cs" />
+    <Compile Include="BLLPaciente.cs" />
+    <Compile Include="BLLPlato.cs" />
+    <Compile Include="BLLProyeccion.cs" />
     <Compile Include="BLLRol.cs" />
+    <Compile Include="BLLRutina.cs" />
+    <Compile Include="BLLTratamiento.cs" />
+    <Compile Include="BLLTurno.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="DVVH.cs" />
+    <Compile Include="BLLMedicion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Randomizer.cs" />
     <Compile Include="Seguridad.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

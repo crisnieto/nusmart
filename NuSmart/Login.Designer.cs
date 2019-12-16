@@ -31,76 +31,76 @@ namespace NuSmart
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.Login_button_login = new System.Windows.Forms.Button();
+            this.Login_label_password = new System.Windows.Forms.Label();
+            this.Login_label_usuario = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
-            this.login_lbl_usuario = new System.Windows.Forms.Label();
-            this.login_lbl_password = new System.Windows.Forms.Label();
-            this.login_btn_login = new System.Windows.Forms.Button();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtUsuario
+            // Login_button_login
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(332, 273);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(6);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(552, 31);
-            this.txtUsuario.TabIndex = 0;
+            this.Login_button_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_button_login.Location = new System.Drawing.Point(261, 279);
+            this.Login_button_login.Name = "Login_button_login";
+            this.Login_button_login.Size = new System.Drawing.Size(88, 37);
+            this.Login_button_login.TabIndex = 4;
+            this.Login_button_login.Text = "Log In";
+            this.Login_button_login.UseVisualStyleBackColor = true;
+            this.Login_button_login.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // Login_label_password
+            // 
+            this.Login_label_password.AutoSize = true;
+            this.Login_label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_label_password.Location = new System.Drawing.Point(163, 194);
+            this.Login_label_password.Name = "Login_label_password";
+            this.Login_label_password.Size = new System.Drawing.Size(69, 17);
+            this.Login_label_password.TabIndex = 3;
+            this.Login_label_password.Text = "Password";
+            this.Login_label_password.Click += new System.EventHandler(this.login_lbl_password_Click);
+            // 
+            // Login_label_usuario
+            // 
+            this.Login_label_usuario.AutoSize = true;
+            this.Login_label_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_label_usuario.Location = new System.Drawing.Point(163, 126);
+            this.Login_label_usuario.Name = "Login_label_usuario";
+            this.Login_label_usuario.Size = new System.Drawing.Size(57, 17);
+            this.Login_label_usuario.TabIndex = 2;
+            this.Login_label_usuario.Text = "Usuario";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(332, 404);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(6);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(166, 210);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(552, 31);
+            this.txtPassword.Size = new System.Drawing.Size(278, 23);
             this.txtPassword.TabIndex = 1;
             // 
-            // login_lbl_usuario
+            // txtUsuario
             // 
-            this.login_lbl_usuario.AutoSize = true;
-            this.login_lbl_usuario.Location = new System.Drawing.Point(326, 242);
-            this.login_lbl_usuario.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.login_lbl_usuario.Name = "login_lbl_usuario";
-            this.login_lbl_usuario.Size = new System.Drawing.Size(86, 25);
-            this.login_lbl_usuario.TabIndex = 2;
-            this.login_lbl_usuario.Text = "Usuario";
-            // 
-            // login_lbl_password
-            // 
-            this.login_lbl_password.AutoSize = true;
-            this.login_lbl_password.Location = new System.Drawing.Point(326, 373);
-            this.login_lbl_password.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.login_lbl_password.Name = "login_lbl_password";
-            this.login_lbl_password.Size = new System.Drawing.Size(106, 25);
-            this.login_lbl_password.TabIndex = 3;
-            this.login_lbl_password.Text = "Password";
-            // 
-            // login_btn_login
-            // 
-            this.login_btn_login.Location = new System.Drawing.Point(522, 537);
-            this.login_btn_login.Margin = new System.Windows.Forms.Padding(6);
-            this.login_btn_login.Name = "login_btn_login";
-            this.login_btn_login.Size = new System.Drawing.Size(176, 71);
-            this.login_btn_login.TabIndex = 4;
-            this.login_btn_login.Text = "Log In";
-            this.login_btn_login.UseVisualStyleBackColor = true;
-            this.login_btn_login.Click += new System.EventHandler(this.btnLogin_Click);
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(166, 142);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(278, 23);
+            this.txtUsuario.TabIndex = 0;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AcceptButton = this.Login_button_login;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1168, 713);
-            this.Controls.Add(this.login_btn_login);
-            this.Controls.Add(this.login_lbl_password);
-            this.Controls.Add(this.login_lbl_usuario);
+            this.ClientSize = new System.Drawing.Size(584, 371);
+            this.Controls.Add(this.Login_button_login);
+            this.Controls.Add(this.Login_label_password);
+            this.Controls.Add(this.Login_label_usuario);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsuario);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
@@ -112,9 +112,9 @@ namespace NuSmart
 
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.MaskedTextBox txtPassword;
-        private System.Windows.Forms.Label login_lbl_usuario;
-        private System.Windows.Forms.Label login_lbl_password;
-        private System.Windows.Forms.Button login_btn_login;
+        private System.Windows.Forms.Label Login_label_usuario;
+        private System.Windows.Forms.Label Login_label_password;
+        private System.Windows.Forms.Button Login_button_login;
     }
 }
 

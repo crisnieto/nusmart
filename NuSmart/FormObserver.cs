@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NuSmart.BLL;
+using NuSmart.BE;
+
 
 namespace NuSmart
 {
@@ -16,9 +18,13 @@ namespace NuSmart
             bllIdioma = new BLLIdioma();
             bllIdioma.Attach(this);
             this.conseguirLeyendas();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public void Actualizar()
+        public virtual void Actualizar()
         {
             conseguirLeyendas();
         }
@@ -29,9 +35,10 @@ namespace NuSmart
 
             foreach (Control control in this.Controls)
             {
-                control.Text = bllIdioma.conseguirLeyenda(control);
+                bllIdioma.conseguirLeyenda(control);
             }
         }
+
 
         private void InitializeComponent()
         {
@@ -39,9 +46,8 @@ namespace NuSmart
             // 
             // FormObserver
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(274, 229);
             this.Name = "FormObserver";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormObserver_FormClosed);
             this.Load += new System.EventHandler(this.FormObserver_Load);
             this.ResumeLayout(false);
 
@@ -50,13 +56,62 @@ namespace NuSmart
         private void FormObserver_Load(object sender, EventArgs e)
         {
 
-
         }
 
-        private void FormObserver_FormClosed(object sender, FormClosedEventArgs e)
+
+        protected void reloadMainMenu(MenuStrip menu)
         {
-            if (Application.OpenForms.Count == 0)
-                Application.Exit();
+            foreach (ToolStripMenuItem subitem in menu.Items) // Access each item
+            {
+                subitem.Text = bllIdioma.conseguirLeyendaMenu(subitem);
+                if (subitem.HasDropDownItems)
+                {
+                    foreach (ToolStripMenuItem child in subitem.DropDownItems)
+                    {
+                        reloadMainMenu(child);
+                    }
+                }
+            }
+        }
+
+        private void reloadMainMenu(ToolStripMenuItem item)
+        {
+            item.Text = bllIdioma.conseguirLeyendaMenu(item);
+            if (item.HasDropDownItems)
+            {
+                foreach (ToolStripMenuItem subitem in item.DropDownItems) // access each item
+                {
+                    foreach (ToolStripMenuItem dropdownItem in subitem.DropDownItems)
+                    {
+                        reloadMainMenu(dropdownItem);
+                    }
+                }
+            }
+        }
+
+        public void validarLetras(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        public void validarNumerico(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void validarDouble(KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !(e.KeyChar == ','))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
