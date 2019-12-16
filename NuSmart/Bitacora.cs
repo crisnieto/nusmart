@@ -70,15 +70,21 @@ namespace NuSmart
         {
             try
             {
-                if(listBox1.SelectedItem != null)
+                DateTime hasta = bitacora_datepicker_hasta.Value.Date;
+                hasta = hasta.AddHours(23 - hasta.Hour);
+                hasta = hasta.AddMinutes(59 - hasta.Minute);
+
+                DateTime desde = bitacora_datepicker_desde.Value.Date;
+
+                if (listBox1.SelectedItem != null)
                 {
                     Usuario usuario = (Usuario)listBox1.SelectedItem;
-                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
+                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasConUsuario(usuario, desde, hasta, conseguirFiltroCriticidad());
                     dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
                 }
                 else
                 {
-                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasSinUsuario(bitacora_datepicker_desde.Value.Date, bitacora_datepicker_hasta.Value, conseguirFiltroCriticidad());
+                    dataGridView1.DataSource = bllBitacora.conseguirBitacorasSinUsuario(desde, hasta, conseguirFiltroCriticidad());
                     dataGridView1.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
                 }
                 return;

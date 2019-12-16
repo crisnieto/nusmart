@@ -21,6 +21,7 @@ namespace NuSmart
         Dieta dietaActual;
         DiaAlimenticio diaActual;
         bool limpiar;
+        bool cargando;
 
         public Alimentos()
         {
@@ -71,14 +72,18 @@ namespace NuSmart
 
         private void refrescar()
         {
+
+            cargando = true;
             dataGridView1.DataSource = bllAlimento.obtenerTodos();
             dataGridView2.DataSource = bllPlato.obtenerTodos();
             dataGridView3.DataSource = bllPlato.obtenerTodos("esDesayuno");
             AgregarDieta_label_desayuno.Checked = true;
+            cargando = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            listBox2.Items.Clear();
 
             listBox2.Items.Add(dietaActual.Lunes);
             listBox2.Items.Add(dietaActual.Martes);
@@ -210,36 +215,38 @@ namespace NuSmart
         {
             try
             {
-                if (diaActual != null && dataGridView3.SelectedCells.Count > 0 && !limpiar)
+                if (!cargando)
                 {
-                    Plato platoSeleccionado = (Plato)dataGridView3.SelectedCells[0].OwningRow.DataBoundItem;
-                    if (AgregarDieta_label_desayuno.Checked)
+                    if (diaActual != null && dataGridView3.SelectedCells.Count > 0 && !limpiar)
                     {
-                        diaActual.Desayuno = platoSeleccionado;
+                        Plato platoSeleccionado = (Plato)dataGridView3.SelectedCells[0].OwningRow.DataBoundItem;
+                        if (AgregarDieta_label_desayuno.Checked)
+                        {
+                            diaActual.Desayuno = platoSeleccionado;
+                        }
+                        else if (AgregarDieta_label_colacion.Checked)
+                        {
+                            diaActual.Colacion = platoSeleccionado;
+                        }
+                        else if (AgregarDieta_label_almuerzo.Checked)
+                        {
+                            diaActual.Almuerzo = platoSeleccionado;
+                        }
+                        else if (AgregarDieta_label_merienda.Checked)
+                        {
+                            diaActual.Merienda = platoSeleccionado;
+                        }
+                        else if (AgregarDieta_label_cena.Checked)
+                        {
+                            diaActual.Cena = platoSeleccionado;
+                        }
+                        actualizarDatosDieta();
                     }
-                    else if (AgregarDieta_label_colacion.Checked)
-                    {
-                        diaActual.Colacion = platoSeleccionado;
-                    }
-                    else if (AgregarDieta_label_almuerzo.Checked)
-                    {
-                        diaActual.Almuerzo = platoSeleccionado;
-                    }
-                    else if (AgregarDieta_label_merienda.Checked)
-                    {
-                        diaActual.Merienda = platoSeleccionado;
-                    }
-                    else if (AgregarDieta_label_cena.Checked)
-                    {
-                        diaActual.Cena = platoSeleccionado;
-                    }
-                    actualizarDatosDieta();
                 }
-            }catch(Exception ex)
+            }catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)

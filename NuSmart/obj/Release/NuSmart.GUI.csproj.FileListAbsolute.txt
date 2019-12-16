@@ -48,7 +48,6 @@ C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.AgregarDieta.res
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.AgregarRutina.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Alimentos.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.Ejercicios.resources
-C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.NuevaDieta.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.GraficoProyeccion.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.TratamientoActual.resources
 C:\Users\Cristian\workspace\nusmart\NuSmart\obj\Release\NuSmart.VerDietas.resources
